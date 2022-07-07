@@ -20,7 +20,7 @@ class Project1IT extends InvokeMainTestCase {
     }
 
   /**
-   * Tests that invoking the main method with no arguments issues an error
+   * Tests that invoke the main method with no arguments issued as an error
    */
   @Test
   void testNoCommandLineArguments() {
@@ -29,41 +29,41 @@ class Project1IT extends InvokeMainTestCase {
   }
 
     @Test
-    public void dashReadmeOptionPrintsOnlyReadme() {
+    public void readmeOptionPrintsOnlyReadmeFile() {
         MainMethodResult result = invokeMain("-README");
         //assertThat(result.getTextWrittenToStandardOut(), equalTo(0));
         assertThat(result.getTextWrittenToStandardOut(), equalTo(Project1.README + "\n"));
         assertThat(result.getTextWrittenToStandardError(), equalTo(""));
     }
     @Test
-    public void dashPrintOptionsPrintsNewlyCreatedPhoneCall() {
+    public void printOptionsPrintsOnlyNewlyCreatedPhoneCall() {
         String caller = "123-456-7890";
         String callee = "234-567-8901";
-        String startDate = "07/04/2018";
-        String startTime = "6:24";
-        String endDate = "07/04/2018";
-        String endTime = "6:48";
+        String beginDate = "07/07/2022";
+        String beginTime = "7:12";
+        String endDate = "07/07/2022";
+        String endTime = "7:56";
 
         MainMethodResult result =
-                invokeMain("-print", "My Customer", caller, callee, startDate, startTime, endDate, endTime);
+                invokeMain("-print", "Customer Name", caller, callee, beginDate, beginTime, endDate, endTime);
 
         //assertThat(result.getTextWrittenToStandardOut(), equalTo(0));
-        String phoneCallToString = String.format("Phone call from %s to %s from %s %s to %s %s",
-                caller, callee, startDate, startTime, endDate, endTime);
-        assertThat(result.getTextWrittenToStandardOut(), equalTo(phoneCallToString + "\n"));
+        String phoneCallToStringPhonecall = String.format("Registered phone call from %s to %s from %s %s to %s %s",
+                caller, callee, beginDate, beginTime, endDate, endTime);
+        assertThat(result.getTextWrittenToStandardOut(), equalTo(phoneCallToStringPhonecall + "\n"));
     }
 
     @Test
-    public void validCommandLineWithNoDashPrintOptionPrintsNothingToStandardOut() {
+    public void validCommandLineWithNoPrintOptionPrintsNothingToStandardOut() {
         String caller = "123-456-7890";
         String callee = "234-567-8901";
-        String startDate = "07/04/2018";
-        String startTime = "6:24";
-        String endDate = "07/04/2018";
-        String endTime = "6:48";
+        String beginDate = "07/07/2022";
+        String beginTime = "7:12";
+        String endDate = "07/07/2022";
+        String endTime = "7:56";
 
         MainMethodResult result =
-                invokeMain("My Customer", caller, callee, startDate, startTime, endDate, endTime);
+                invokeMain("Customer Name", caller, callee, beginDate, beginTime, endDate, endTime);
 
         //assertThat(result.getTextWrittenToStandardOut(), equalTo(0));
         assertThat(result.getTextWrittenToStandardOut(), equalTo(""));

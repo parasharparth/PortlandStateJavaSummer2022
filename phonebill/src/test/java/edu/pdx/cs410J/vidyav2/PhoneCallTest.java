@@ -19,7 +19,6 @@ public class PhoneCallTest {
   @Test
   void getBeginTimeStringNeedsToBeImplemented() {
     PhoneCall call = new PhoneCall();
-    //assertThrows(UnsupportedOperationException.class, call::getBeginTimeString);
     call.getBeginTimeString();
   }
 

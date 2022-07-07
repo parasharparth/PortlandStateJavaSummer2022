@@ -23,13 +23,13 @@ public class TextParser implements PhoneBillParser<PhoneBill> {
       String customer = br.readLine();
 
       if (customer == null) {
-        throw new ParserException("Missing customer");
+        throw new ParserException("Missing customer details");
       }
 
       return new PhoneBill(customer);
 
     } catch (IOException e) {
-      throw new ParserException("While parsing phone bill text", e);
+      throw new ParserException("You are viewing this as phone bill text is parsed", e);
     }
   }
 }

@@ -7,7 +7,7 @@ import java.util.Arrays;
  * The main class for the CS410J Phone Bill Project
  */
 public class Project1 {
-  static final String README = "This is my README. Your's should be much better!";
+  static final String README = "This is my README that prints basic information.";
   @VisibleForTesting
   static boolean isValidPhoneNumber(String phoneNumber) {
     return true;
@@ -27,13 +27,13 @@ public class Project1 {
     }
 
       if (containsOption(args, "-print")) {
-        printTotallyBogusPhoneCallForTestingPurposesOnly();
+        printDummyPhoneCallForTestingPurposesOnly();
       }
 
   }
 
-    private static void printTotallyBogusPhoneCallForTestingPurposesOnly() {
-      String phoneBillToString = "Phone call from 123-456-7890 to 234-567-8901 from 07/04/2018 6:24 to 07/04/2018 6:48";
+    private static void printDummyPhoneCallForTestingPurposesOnly() {
+      String phoneBillToString = "Registered phone call from 123-456-7890 to 234-567-8901 from 07/07/2022 7:12 to 07/07/2022 7:56";
       System.out.println(phoneBillToString);
     }
 
