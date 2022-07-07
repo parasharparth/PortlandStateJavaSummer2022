@@ -31,7 +31,7 @@ class Project1IT extends InvokeMainTestCase {
     @Test
     public void dashReadmeOptionPrintsOnlyReadme() {
         MainMethodResult result = invokeMain("-README");
-        //assertThat(result.getExitCode(), equalTo(0));
+        assertThat(result.getTextWrittenToStandardOut(), equalTo(0));
         assertThat(result.getTextWrittenToStandardOut(), equalTo(Project1.README + "\n"));
         assertThat(result.getTextWrittenToStandardError(), equalTo(""));
     }
@@ -47,7 +47,7 @@ class Project1IT extends InvokeMainTestCase {
         MainMethodResult result =
                 invokeMain("-print", "My Customer", caller, callee, startDate, startTime, endDate, endTime);
 
-        //assertThat(result.getExitCode(), equalTo(0));
+        assertThat(result.getTextWrittenToStandardOut(), equalTo(0));
         String phoneCallToString = String.format("Phone call from %s to %s from %s %s to %s %s",
                 caller, callee, startDate, startTime, endDate, endTime);
         assertThat(result.getTextWrittenToStandardOut(), equalTo(phoneCallToString + "\n"));
@@ -65,7 +65,7 @@ class Project1IT extends InvokeMainTestCase {
         MainMethodResult result =
                 invokeMain("My Customer", caller, callee, startDate, startTime, endDate, endTime);
 
-        //assertThat(result.getExitCode(), equalTo(0));
+        assertThat(result.getTextWrittenToStandardOut(), equalTo(0));
         assertThat(result.getTextWrittenToStandardOut(), equalTo(""));
         assertThat(result.getTextWrittenToStandardError(), equalTo(""));
 

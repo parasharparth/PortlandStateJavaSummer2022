@@ -18,22 +18,19 @@ public class Project1 {
 
     if (args.length == 0) {
       System.err.println("Missing command line arguments");
-      System.exit(1);
+      return;
     }
 
     if (containsOption(args, "-README")) {
       printReadme();
-      System.exit(0);
+      return;
     }
 
       if (containsOption(args, "-print")) {
         printTotallyBogusPhoneCallForTestingPurposesOnly();
-        System.exit(0);
       }
 
-      // Otherwise, no output.  Just validate the command line arguments!
-      System.exit(0);
-    }
+  }
 
     private static void printTotallyBogusPhoneCallForTestingPurposesOnly() {
       String phoneBillToString = "Phone call from 123-456-7890 to 234-567-8901 from 07/04/2018 6:24 to 07/04/2018 6:48";
@@ -45,7 +42,7 @@ public class Project1 {
     }
 
     private static boolean containsOption(String[] args, String option) {
-      return Arrays.stream(args).anyMatch(s -> s.equals(option));
+      return Arrays.asList(args).contains(option);
     }
 
   }

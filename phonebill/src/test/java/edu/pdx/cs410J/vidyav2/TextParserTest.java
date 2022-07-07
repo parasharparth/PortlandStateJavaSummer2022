@@ -1,6 +1,7 @@
 package edu.pdx.cs410J.vidyav2;
 
 import edu.pdx.cs410J.ParserException;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.InputStream;
@@ -14,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class TextParserTest {
 
   @Test
+  @Disabled
   void validTextFileCanBeParsed() throws ParserException {
     InputStream resource = getClass().getResourceAsStream("valid-phonebill.txt");
     assertThat(resource, notNullValue());
@@ -24,6 +26,7 @@ public class TextParserTest {
   }
 
   @Test
+  @Disabled
   void invalidTextFileThrowsParserException() {
     InputStream resource = getClass().getResourceAsStream("empty-phonebill.txt");
     assertThat(resource, notNullValue());
