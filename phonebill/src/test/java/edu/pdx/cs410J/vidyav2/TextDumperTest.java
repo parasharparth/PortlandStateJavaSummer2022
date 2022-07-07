@@ -14,7 +14,7 @@ import static org.hamcrest.Matchers.equalTo;
 public class TextDumperTest {
 
   @Test
-  @Disabled
+  //@Disabled
   void phoneBillIsDumpedInTextFormat() throws IOException{
     String customer = "Test Phone Bill";
     PhoneBill bill = new PhoneBill(customer);
@@ -28,7 +28,7 @@ public class TextDumperTest {
   }
 
   @Test
-  @Disabled
+  //@Disabled
   void canParseTextWrittenByTextDumper(@TempDir File tempDir) throws IOException, ParserException {
     String customer = "Test Phone Bill";
     PhoneBill bill = new PhoneBill(customer);
