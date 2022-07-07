@@ -5,7 +5,7 @@ import edu.pdx.cs410J.AbstractPhoneCall;
 public class PhoneCall extends AbstractPhoneCall {
   @Override
   public String getCaller() {
-    throw new UnsupportedOperationException("This method is not implemented yet");
+    return "No caller yet";
   }
 
   @Override
@@ -15,11 +15,11 @@ public class PhoneCall extends AbstractPhoneCall {
 
   @Override
   public String getBeginTimeString() {
-    throw new UnsupportedOperationException("This method is not implemented yet");
+    return "Begin time";
   }
 
   @Override
   public String getEndTimeString() {
-    throw new UnsupportedOperationException("This method is not implemented yet");
+    return "End time";
   }
 }

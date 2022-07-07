@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * Unit tests for the {@link PhoneCall} class.
@@ -20,7 +19,8 @@ public class PhoneCallTest {
   @Test
   void getBeginTimeStringNeedsToBeImplemented() {
     PhoneCall call = new PhoneCall();
-    assertThrows(UnsupportedOperationException.class, call::getBeginTimeString);
+    //assertThrows(UnsupportedOperationException.class, call::getBeginTimeString);
+    call.getBeginTimeString();
   }
 
   /**
