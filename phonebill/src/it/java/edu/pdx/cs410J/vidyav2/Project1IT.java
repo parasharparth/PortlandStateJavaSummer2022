@@ -8,15 +8,15 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.equalTo;
 
 /**
- * Tests the functionality in the {@link Project2} main class.
+ * Tests the functionality in the {@link Project1} main class.
  */
-class Project2IT extends InvokeMainTestCase {
+class Project1IT extends InvokeMainTestCase {
 
     /**
-     * Invokes the main method of {@link Project2} with the given arguments.
+     * Invokes the main method of {@link Project1} with the given arguments.
      */
     private MainMethodResult invokeMain(String... args) {
-        return invokeMain( Project2.class, args );
+        return invokeMain( Project1.class, args );
     }
 
   /**
@@ -32,7 +32,7 @@ class Project2IT extends InvokeMainTestCase {
     public void readmeOptionPrintsOnlyReadmeFile() {
         MainMethodResult result = invokeMain("-README");
         //assertThat(result.getTextWrittenToStandardOut(), equalTo(0));
-        assertThat(result.getTextWrittenToStandardOut(), equalTo(Project2.README + "\n"));
+        assertThat(result.getTextWrittenToStandardOut(), equalTo(Project1.README + "\n"));
         assertThat(result.getTextWrittenToStandardError(), equalTo(""));
     }
     @Test
