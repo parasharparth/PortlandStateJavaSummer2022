@@ -82,7 +82,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>edu.pdx.cs410J.whitlock.Project2</mainClass>
+              <mainClass>edu.pdx.cs410J.vidyav2.Project1</mainClass>
             </manifest>
           </archive>
         </configuration>

@@ -1,5 +1,6 @@
 package edu.pdx.cs410J.vidyav2;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;
@@ -19,6 +20,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 class Project1Test {
 
   @Test
+  @Disabled
   void readmeCanBeReadAsResource() throws IOException {
     try (
       InputStream readme = Project1.class.getResourceAsStream("README.txt")
@@ -33,7 +35,7 @@ class Project1Test {
   @Test
   void testInstructions(){
     String instructions = Project1.instructions();
-    assertThat(instructions, containsString("Please enter info in given order and format: "));
+    assertThat(instructions, containsString("Please enter information in the given order and format: "));
   }
 
   @Test
@@ -86,9 +88,9 @@ class Project1Test {
   }
 
   @Test
-  void checkInvalidityOfAllRequiredArguments(){
-    String[] invalidArgumentsArray = {"JW", "12-456-7890", "234-567-8901", "07/07/2022", "7:12",
-            "07/07/2022", "7:56"};
+  //@Disabled
+    void checkInvalidityOfAllRequiredArguments(){
+    String[] invalidArgumentsArray = {"JW", "12-456-7890", "234-567-8901", "07/07/2022", "7:12", "07/07/2022", "7:56"};
     ArrayList<String> invalidArrayListOfArgs = new ArrayList<>();
 
     for (String s: invalidArgumentsArray){
@@ -96,7 +98,7 @@ class Project1Test {
     }
 
     boolean theseArgsShouldBeInvalid = Project1.checkValidityOfAllRequiredArguments(invalidArrayListOfArgs);
-    assertThat(theseArgsShouldBeInvalid, equalTo(true));
+    assertThat(theseArgsShouldBeInvalid, equalTo(false));
   }
 
 

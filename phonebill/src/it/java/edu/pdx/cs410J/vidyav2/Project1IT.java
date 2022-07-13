@@ -1,10 +1,10 @@
 package edu.pdx.cs410J.vidyav2;
 
 import edu.pdx.cs410J.InvokeMainTestCase;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
@@ -23,22 +23,23 @@ class Project1IT extends InvokeMainTestCase {
      * Tests that invoke the main method with no arguments issued as an error
      */
     @Test
-    void testNoCommandLineArguments() {
+     void testNoCommandLineArguments() {
         MainMethodResult result = invokeMain();
-        assertThat(result.getTextWrittenToStandardOut(), containsString("No arguments were given at command line"));
+        assertThat(result.getTextWrittenToStandardOut(), containsString("No arguments were given at command line!"));
     }
 
     @Test
+    //@Disabled
     void testNoEnoughCommandLineArguments() {
         MainMethodResult result = invokeMain("JW");
         assertThat(result.getTextWrittenToStandardOut(), containsString("You did not enter correct number of values"));
     }
 
     @Test
+    //@Disabled
     public void testPrintOptionsPrintsOnlyNewlyCreatedPhoneCall() {
-        MainMethodResult result = invokeMain("-print", "JW", "123-456-7890", "234-567-8901", "07/07/2022", "7:12",
-                "07/07/2022", "7:56");
-        assertThat(result.getTextWrittenToStandardOut(), containsString("Phone call from JW to callee from 7:12 to 7:56 on 07/07/2022"));
+        MainMethodResult result = invokeMain("-print", "JW", "123-456-7890", "234-567-8901", "07/07/2022", "7:12", "07/07/2022", "7:56");
+        assertThat(result.getTextWrittenToStandardOut(), containsString("Phone call from JW to callee from 7:12 to 7:56\n"));
     }
 }
 

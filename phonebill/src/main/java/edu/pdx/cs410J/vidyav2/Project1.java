@@ -18,8 +18,7 @@ public class Project1 {
     int numberOfOriginalCommandLineArguments = args.length;
     //if no arguments are given at command line
     if (numberOfOriginalCommandLineArguments == 0) {
-      System.out.println("------------------------------------------------------\n" +
-              "No arguments were given at the command line!\n" + instructions());
+      System.out.println("No arguments were given at the command line!\n" + instructions());
       return;
     }
     /**
@@ -93,7 +92,7 @@ public class Project1 {
     bill1.addPhoneCall(call1);
 
     if(print){
-      System.out.println( "------------------------------------------------------\n" + call1.toString());
+      System.out.println( call1.toString());
     }
   }
   /**
@@ -149,8 +148,7 @@ public class Project1 {
     boolean validTimeOfPhoneCall = Pattern.compile(regexTime).matcher(timeOfPhoneCall).matches();
 
     if(validTimeOfPhoneCall == false){
-      String invalidTimeOfPhoneCallMessage = "------------------------------------------------------\n" +
-      "Sorry some of the arguments you provided are invalid!\n\n" +
+      String invalidTimeOfPhoneCallMessage = "Sorry some of the arguments you provided are invalid!\n\n" +
               "For example, the time that you entered: " + timeOfPhoneCall + " is invalid!\n" +
               "All dates should be in the format: hh:mm and be numeric\n" +
               "Additionally, please remember that values at the command line should follow the order below:\n" +
@@ -170,8 +168,7 @@ public class Project1 {
     String regexDate = "\\d{1,2}[/]\\d{1,2}[/]\\d\\d\\d\\d";
     boolean validDateOfPhoneCall = Pattern.compile(regexDate).matcher(dateOfPhoneCall).matches();
     if(validDateOfPhoneCall== false){
-      String invalidDateOfPhoneCallMessage = "------------------------------------------------------\n" +
-      "Sorry some of the arguments you provided are invalid!\n\n" +
+      String invalidDateOfPhoneCallMessage = "Sorry some of the arguments you provided are invalid!\n\n" +
               "For example, the date that you entered: " + dateOfPhoneCall + " is invalid!\n" +
               "All dates should be in the format: mm-dd-yyyy and be numeric\n" +
               "Additionally, please remember that values at the command line should follow the order below:\n" +
@@ -191,8 +188,7 @@ public class Project1 {
     String regexPhoneNumber = "\\d\\d\\d[-]\\d\\d\\d[-]\\d\\d\\d\\d";
     boolean validNumberOfCaller = Pattern.compile(regexPhoneNumber).matcher(phoneNumber).matches();
     if(validNumberOfCaller == false){
-      String invalidPhoneNumberMessage = "------------------------------------------------------\n" +
-              "Sorry some of the arguments you provided are invalid!\n\n" +
+      String invalidPhoneNumberMessage = "Sorry some of the arguments you provided are invalid!\n\n" +
               "For example, the phone number that you entered: " + phoneNumber + " is invalid!\n" +
               "All phone numbers should be in the format: nnn-nnn-nnnn where n is a number 0-9\n" +
               "Additionally, please remember that values at the command line should follow the order below:\n" + "customer callerNumber calleeNumber beginDate beginTime endDate endTime\n";
@@ -235,8 +231,7 @@ public class Project1 {
    * @return a string of the instructions of how to use the program
    */
   static String instructions(){
-    String instructions = "------------------------------------------------------\n" +
-            "Please enter information in the given order and format: \n" +
+    String instructions = "Please enter information in the given order and format: \n" +
             "Format: java -jar target/phonebill-2022.0.0.jar [options] <args> \n" +
             "options are (options may appear in any order): -README -print \n" +
             "*** required args are (in this order): customer callerNumber calleeNumber beginDate beginTime endDate endTime *** \n" + "-customer format: wrap multi-word name in double quotes if you are putting more than one name, like a first and last: i.e \"John Jacobs\"\n" +
