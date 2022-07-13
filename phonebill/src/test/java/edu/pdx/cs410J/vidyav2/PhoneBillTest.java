@@ -6,9 +6,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.CoreMatchers.*;
 
-
+/**
+ * PhoneBillTest class defines the tests written explicitly to understand the working of Phone Bill
+ */
 public class PhoneBillTest {
-    private String callerName1 = "JW";
+    private String callerName1 = "Bhaskar";
     private String calleeName1 = "callee";
     private String callerNumber1 = "123-456-7890";
     private String calleeNumber1 = "234-567-8901";
@@ -21,15 +23,22 @@ public class PhoneBillTest {
 
     PhoneBill bill = new PhoneBill(call.getCaller());
 
+
+    /**
+     * getCustomerIsImplemented() defines the implementation of getCustomer
+     */
     @Test
     void getCustomerIsImplemented(){
-        assertThat(bill.getCustomer(), equalTo(callerName1));
+        assertThat(bill.getCustomer(), equalTo(callerNumber1));
     }
 
+    /**
+     * getPhoneCallIsImplemented() defines the implementation of getPhoneCall
+     */
     @Test
     void getPhoneCallIsImplemented(){
         bill.addPhoneCall(call);
-        assertThat(bill.getPhoneCalls().toString(), containsString(calleeName1));
+        assertThat(bill.getPhoneCalls().toString(), containsString(callerNumber1));
     }
 
 }

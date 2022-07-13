@@ -22,24 +22,31 @@ class Project1IT extends InvokeMainTestCase {
     /**
      * Tests that invoke the main method with no arguments issued as an error
      */
+
+    /* Test to check the behavior when no Command Line Arguments are passed
+    */
+
     @Test
-     void testNoCommandLineArguments() {
+     void noCommandLineArgumentsTest() {
         MainMethodResult result = invokeMain();
-        assertThat(result.getTextWrittenToStandardOut(), containsString("No arguments are given at the command line"));
+        assertThat(result.getTextWrittenToStandardOut(), containsString("No arguments passed at the command line"));
     }
+
+    /* Test to check the behavior when not enough Command Line Arguments are passed
+     */
+    @Test
+    //@Disabled
+    void notEnoughCommandLineArgumentsTest() {
+        MainMethodResult result = invokeMain("Bhaskar");
+        assertThat(result.getTextWrittenToStandardOut(), containsString("Correct number of values are not entered"));
+    }
+
 
     @Test
     //@Disabled
-    void testNoEnoughCommandLineArguments() {
-        MainMethodResult result = invokeMain("JW");
-        assertThat(result.getTextWrittenToStandardOut(), containsString("You did not enter correct number of values"));
-    }
-
-    @Test
-    //@Disabled
-    public void testPrintOptionsPrintsOnlyNewlyCreatedPhoneCall() {
-        MainMethodResult result = invokeMain("-print", "JW", "123-456-7890", "234-567-8901", "07/07/2022", "7:12", "07/07/2022", "7:56");
-        assertThat(result.getTextWrittenToStandardOut(), containsString("Phone call from JW to callee from 7:12 to 7:56\n"));
+    public void printOptionPrintsOnlyNewlyCreatedPhoneCallTest() {
+        MainMethodResult result = invokeMain("-print", "Bhaskar", "123-456-7890", "279-842-8901", "07/07/2022", "7:12", "07/07/2022", "7:56");
+        assertThat(result.getTextWrittenToStandardOut(), containsString("Phone call from 123-456-7890 to 279-842-8901 from 7:12 to 7:56"));
     }
 }
 
@@ -72,21 +79,4 @@ class Project1IT extends InvokeMainTestCase {
         assertThat(result.getTextWrittenToStandardOut(), equalTo(phoneCallToStringPhonecall + "\n"));
     }
 */
-    /*@Test
-    public void validCommandLineWithNoPrintOptionPrintsNothingToStandardOut() {
-        String caller = "123-456-7890";
-        String callee = "234-567-8901";
-        String beginDate = "07/07/2022";
-        String beginTime = "7:12";
-        String endDate = "07/07/2022";
-        String endTime = "7:56";
-
-        MainMethodResult result =
-                invokeMain("Customer Name", caller, callee, beginDate, beginTime, endDate, endTime);
-
-        //assertThat(result.getTextWrittenToStandardOut(), equalTo(0));
-        assertThat(result.getTextWrittenToStandardOut(), equalTo(""));
-        assertThat(result.getTextWrittenToStandardError(), equalTo(""));
-
-    }*/
 

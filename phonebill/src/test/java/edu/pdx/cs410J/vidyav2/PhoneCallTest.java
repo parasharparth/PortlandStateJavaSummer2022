@@ -11,7 +11,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
  */
 public class PhoneCallTest {
 
-  private String callerName1 = "JW";
+  private String callerName1 = "Bhaskar";
   private String calleeName1 = "callee";
   private String callerNumber1 = "123-456-7890";
   private String calleeNumber1 = "234-567-8901";
@@ -29,12 +29,12 @@ public class PhoneCallTest {
 
   @Test
   void getCallerIsImplemented() {
-    assertThat(call.getCaller(), equalTo(callerName1));
+    assertThat(call.getCaller(), equalTo(callerNumber1));
   }
 
   @Test
   void getCalleeIsImplemented() {
-    assertThat(call.getCallee(), equalTo(calleeName1));
+    assertThat(call.getCallee(), equalTo(calleeNumber1));
   }
   @Test
   void getBeginTimeStringIsImplemented() {
@@ -46,9 +46,18 @@ public class PhoneCallTest {
     assertThat(call.getEndTimeString(), equalTo(phoneCallEndTime1));
   }
 
+  /*@Test
+  void getBeginDateStringIsImplemented() {
+    assertThat(call.getEndTimeString(), equalTo(phoneCallBeginDate1));
+  }
+  @Test
+  void getEndDateStringIsImplemented() {
+    assertThat(call.getEndTimeString(), equalTo(phoneCallEndDate1));
+  }*/
+
   @Test
   void initiallyAllPhoneCallsHaveTheSameCallee() {
-    assertThat(call.getCallee(), containsString(calleeName1));
+    assertThat(call.getCallee(), containsString(calleeNumber1));
   }
 
   @Test

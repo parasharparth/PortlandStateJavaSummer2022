@@ -32,64 +32,64 @@ class Project1Test {
   }
 
   @Test
-  void testReadmeBooleanFlag(){
+  void readMeBooleanFlagTested(){
     String[] hasNoReadme = {"random", "words"};
     String[] hasReadme = {"-README"};
-    boolean displayReadMeNo = Project1.checkReadmeFlag(hasNoReadme);
-    boolean displayReadMeYes = Project1.checkReadmeFlag(hasReadme);
+    boolean displayReadMeNo = Project1.readMeFlagCheck(hasNoReadme);
+    boolean displayReadMeYes = Project1.readMeFlagCheck(hasReadme);
     assertThat(displayReadMeNo, equalTo(false));
     assertThat(displayReadMeYes,equalTo(true));
   }
 
 
   @Test
-  void validationOfPhoneNumber(){
-    boolean thisNumberShouldBeValid = Project1.checkValidityOfPhoneNumber("123-456-7890");
-    boolean thisNumberShouldBeInvalid = Project1.checkValidityOfPhoneNumber("23-567-8901");
+  void phoneNumberValidation(){
+    boolean thisNumberShouldBeValid = Project1.checkForValidPhoneNumber("123-456-7890");
+    boolean thisNumberShouldBeInvalid = Project1.checkForValidPhoneNumber("23-567-8901");
     assertThat(thisNumberShouldBeValid, equalTo(true));
     assertThat(thisNumberShouldBeInvalid, equalTo(false));
   }
 
   @Test
-  void validationOfDate(){
-    boolean thisDateShouldBeValid = Project1.checkValidityOfDate("07/07/2022");
-    boolean thisDateShouldBeInvalid = Project1.checkValidityOfDate("077/07/2022");
-    assertThat(thisDateShouldBeValid, equalTo(true));
-    assertThat(thisDateShouldBeInvalid, equalTo(false));
-  }
-
-  @Test
   void validationOfTime(){
-    boolean thisTimeShouldBeValid = Project1.checkValidityOfPhoneCallTime("7:12");
-    boolean thisTimeShouldBeInvalid = Project1.checkValidityOfPhoneCallTime("7777:12");
+    boolean thisTimeShouldBeValid = Project1.checkForValidPhoneCallTime("7:12");
+    boolean thisTimeShouldBeInvalid = Project1.checkForValidPhoneCallTime("7777:12");
     assertThat(thisTimeShouldBeValid, equalTo(true));
     assertThat(thisTimeShouldBeInvalid, equalTo(false));
   }
 
   @Test
-  void checkValidityOfAllRequiredArguments(){
-    String[] argumentsArray = {"JW", "123-456-7890", "234-567-8901", "07/07/2022", "7:12", "07/07/2022", "7:56"};
+  void correctDateValidation(){
+    boolean thisDateShouldBeValid = Project1.checkForValidDate("07/07/2022");
+    boolean thisDateShouldBeInvalid = Project1.checkForValidDate("077/07/2022");
+    assertThat(thisDateShouldBeValid, equalTo(true));
+    assertThat(thisDateShouldBeInvalid, equalTo(false));
+  }
+
+  @Test
+  void requiredArgumentsValidation(){
+    String[] argumentsArray = {"Bhaskar", "123-456-7890", "234-567-8901", "07/07/2022", "7:12", "07/07/2022", "7:56"};
     ArrayList<String> arrayListOfArgs = new ArrayList<>();
 
     for (String s: argumentsArray){
       arrayListOfArgs.add(s);
     }
 
-    boolean theseArgsShouldBeValid = Project1.checkValidityOfAllRequiredArguments(arrayListOfArgs);
+    boolean theseArgsShouldBeValid = Project1.checkValidityOfRequiredArgs(arrayListOfArgs);
     assertThat(theseArgsShouldBeValid, equalTo(true));
   }
 
   @Test
   //@Disabled
-    void checkInvalidityOfAllRequiredArguments(){
-    String[] invalidArgumentsArray = {"JW", "12-456-7890", "234-567-8901", "07/07/2022", "7:12", "07/07/2022", "7:56"};
+    void requiredArgumentsInvalidation(){
+    String[] invalidArgumentsArray = {"Bhaskar", "12-456-7890", "234-567-8901", "07/07/2022", "7:12", "07/07/2022", "7:56"};
     ArrayList<String> invalidArrayListOfArgs = new ArrayList<>();
 
     for (String s: invalidArgumentsArray){
       invalidArrayListOfArgs.add(s);
     }
 
-    boolean theseArgsShouldBeInvalid = Project1.checkValidityOfAllRequiredArguments(invalidArrayListOfArgs);
+    boolean theseArgsShouldBeInvalid = Project1.checkValidityOfRequiredArgs(invalidArrayListOfArgs);
     assertThat(theseArgsShouldBeInvalid, equalTo(false));
   }
 
