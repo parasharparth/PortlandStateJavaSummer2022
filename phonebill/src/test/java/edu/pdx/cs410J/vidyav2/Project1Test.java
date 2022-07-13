@@ -20,7 +20,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 class Project1Test {
 
   @Test
-  @Disabled
   void readmeCanBeReadAsResource() throws IOException {
     try (
       InputStream readme = Project1.class.getResourceAsStream("README.txt")
@@ -69,8 +68,7 @@ class Project1Test {
 
   @Test
   void checkValidityOfAllRequiredArguments(){
-    String[] argumentsArray = {"JW", "123-456-7890", "234-567-8901", "07/07/2022", "7:12",
-            "07/07/2022", "7:56"};
+    String[] argumentsArray = {"JW", "123-456-7890", "234-567-8901", "07/07/2022", "7:12", "07/07/2022", "7:56"};
     ArrayList<String> arrayListOfArgs = new ArrayList<>();
 
     for (String s: argumentsArray){

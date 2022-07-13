@@ -2,8 +2,6 @@ package edu.pdx.cs410J.vidyav2;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Scanner;
 import java.util.regex.Pattern;
 
 /**
@@ -27,8 +25,7 @@ public class Project1 {
     boolean readmeFlag = checkReadmeFlag(args);
     if(readmeFlag){
       String readmeFileContent = readFromReadmeFile();
-      System.out.println( "------------------------------------------------------\n" +
-              readmeFileContent);
+      System.out.println(readmeFileContent);
       return;
     }
     //copy over command line arguments to a new arraylist for flexibility
@@ -51,7 +48,7 @@ public class Project1 {
       }
       else if (arg.toLowerCase().contains("print") && (countIndexForOptionalPrint == 1)) {
         //if there is a non -README argument before -print
-        System.out.println("***You entered the values in the wrong order, optional arguments must be placed at the beginning before the required arguments!\n\n");
+        System.out.println("You entered the values in the wrong order");
         return;
       }
       else {
