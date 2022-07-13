@@ -11,11 +11,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 
-public class TextDumperTest {
+public class  TextDumperTest {
 
   @Test
   //@Disabled
-  void phoneBillIsDumpedInTextFormat() throws IOException{
+  void appointmentBookOwnerIsDumpedInTextFormat(){
     String customer = "Test Phone Bill";
     PhoneBill bill = new PhoneBill(customer);
 
@@ -33,7 +33,7 @@ public class TextDumperTest {
     String customer = "Test Phone Bill";
     PhoneBill bill = new PhoneBill(customer);
 
-    File textFile = new File(tempDir, "phonebill.txt");
+    File textFile = new File(tempDir, "apptbook.txt");
     TextDumper dumper = new TextDumper(new FileWriter(textFile));
     dumper.dump(bill);
 

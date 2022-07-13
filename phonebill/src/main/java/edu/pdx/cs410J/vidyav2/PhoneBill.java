@@ -8,12 +8,11 @@ import java.util.Collection;
 public class  PhoneBill extends AbstractPhoneBill<PhoneCall> {
   private final String customer;
 
+  private final ArrayList<PhoneCall> calls = new ArrayList();
+
   public PhoneBill(String customer) {
     this.customer = customer;
   }
-
-  private final Collection<PhoneCall> calls = new ArrayList<>();
-
 
     @Override
   public String getCustomer() {
@@ -27,6 +26,6 @@ public class  PhoneBill extends AbstractPhoneBill<PhoneCall> {
 
   @Override
   public Collection<PhoneCall> getPhoneCalls() {
-    return this.calls;
+    return calls;
   }
 }
