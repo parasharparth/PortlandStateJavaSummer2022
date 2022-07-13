@@ -28,14 +28,8 @@ class Project1Test {
       assertThat(readme, not(nullValue()));
       BufferedReader reader = new BufferedReader(new InputStreamReader(readme));
       String line = reader.readLine();
-      assertThat(line, containsString("JW"));
+      assertThat(line, containsString("Java"));
     }
-  }
-
-  @Test
-  void testInstructions(){
-    String instructions = Project1.instructions();
-    assertThat(instructions, containsString("Please enter information in the given order and format: "));
   }
 
   @Test

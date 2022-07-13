@@ -24,9 +24,6 @@ public class PhoneCall extends AbstractPhoneCall {
     this.phoneCallEndTime = phoneCallEndTime;
   }
 
-  //public PhoneCall(String customerName, String numberOfCaller, String numberOfCallee, String dateOfPhoneCallStart, String timeOfPhoneCallStart, String dateOfPhoneCallEnd, String timeOfPhoneCallEnd) {
-  //}
-
 
   @Override
   public String getCaller() {

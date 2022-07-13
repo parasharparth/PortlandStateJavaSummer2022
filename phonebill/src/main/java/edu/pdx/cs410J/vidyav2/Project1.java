@@ -16,9 +16,8 @@ public class Project1 {
 // }
   public static void main(String[] args) {
     int numberOfOriginalCommandLineArguments = args.length;
-    //if no arguments are given at command line
     if (numberOfOriginalCommandLineArguments == 0) {
-      System.out.println("No arguments were given at the command line!\n" + instructions());
+      System.out.println("No arguments are given at the command line");
       return;
     }
     /**
@@ -52,8 +51,7 @@ public class Project1 {
       }
       else if (arg.toLowerCase().contains("print") && (countIndexForOptionalPrint == 1)) {
         //if there is a non -README argument before -print
-        System.out.println("------------------------------------------------------\n" +
-                        "***You entered the values in the wrong order, optional arguments must be placed at the beginning before the required arguments!\n\n" + instructions() );
+        System.out.println("***You entered the values in the wrong order, optional arguments must be placed at the beginning before the required arguments!\n\n");
         return;
       }
       else {
@@ -67,8 +65,7 @@ public class Project1 {
     //this is after removing the optional arguments of course
     int numberOfRequiredCommandLineArguments = 7;
     if(commandLineArguments.size() != numberOfRequiredCommandLineArguments){
-      System.out.println("------------------------------------------------------\n" +
-                      "You did not enter the correct number of values/arguments at the command line! Please read the guide below: \n" + instructions());
+      System.out.println("You did not enter correct number of values");
       return;
     }
     //declaration of what each of the arguments are
@@ -224,25 +221,7 @@ public class Project1 {
     }
     return false;
   }
-  /**
-   * The instructions() method is a method for getting instructions on how to use the PhoneCall
-   application
-   *
-   * @return a string of the instructions of how to use the program
-   */
-  static String instructions(){
-    String instructions = "Please enter information in the given order and format: \n" +
-            "Format: java -jar target/phonebill-2022.0.0.jar [options] <args> \n" +
-            "options are (options may appear in any order): -README -print \n" +
-            "*** required args are (in this order): customer callerNumber calleeNumber beginDate beginTime endDate endTime *** \n" + "-customer format: wrap multi-word name in double quotes if you are putting more than one name, like a first and last: i.e \"John Jacobs\"\n" +
-            "-do not double quote anything else except full name\n" +
-            "-phone number format: nnn-nnn-nnnn where n is a number 0-9\n" +
-            "-date format: The following dates and times are valid: 3/15/2022 10:39 and 03/2/2022\n"
-            +
-            "-Date and time should be in the format: mm/dd/yyyy hh:mm \n" +
-            "-dates and times should not be quoted (they are two separate command line arguments)\n";
-    return instructions;
-  }
+
   /**
    * The readFromFile() method is responsible for reading from the README.txt file
    *

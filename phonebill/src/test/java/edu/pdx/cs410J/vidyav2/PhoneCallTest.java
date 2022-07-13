@@ -1,7 +1,6 @@
 package edu.pdx.cs410J.vidyav2;
 
 import org.junit.jupiter.api.Test;
-
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 

@@ -32,6 +32,4 @@ public class PhoneBillTest {
         assertThat(bill.getPhoneCalls().toString(), containsString(calleeName1));
     }
 
-
-
 }
