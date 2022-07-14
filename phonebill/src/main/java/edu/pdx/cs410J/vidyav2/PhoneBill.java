@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class  PhoneBill extends AbstractPhoneBill<PhoneCall> {
-  private final String customer;
+  private String customer;
 
   private final ArrayList<PhoneCall> calls = new ArrayList();
 
@@ -14,9 +14,17 @@ public class  PhoneBill extends AbstractPhoneBill<PhoneCall> {
     this.customer = customer;
   }
 
-    @Override
+//  public PhoneBill() {
+//
+//  }
+
+  @Override
   public String getCustomer() {
-      return this.customer;
+    return this.customer;
+  }
+
+  public String setCustomer(String phoneBill){
+    return this.customer = phoneBill;
   }
 
   @Override
@@ -27,5 +35,13 @@ public class  PhoneBill extends AbstractPhoneBill<PhoneCall> {
   @Override
   public Collection<PhoneCall> getPhoneCalls() {
     return calls;
+  }
+
+  public Object getBytes() {
+    return null;
+  }
+
+  public PhoneBill get(int i) {
+    return null;
   }
 }

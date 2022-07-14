@@ -15,7 +15,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class TextParserTest {
 
   @Test
-  //@Disabled
   void validTextFileCanBeParsed() throws ParserException {
     InputStream resource = getClass().getResourceAsStream("valid-phonebill.txt");
     assertThat(resource, notNullValue());

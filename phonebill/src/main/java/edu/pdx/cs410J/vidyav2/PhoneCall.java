@@ -24,6 +24,10 @@ public class PhoneCall extends AbstractPhoneCall {
     this.phoneCallEndTime = phoneCallEndTime;
   }
 
+  public PhoneCall() {
+
+  }
+
 
   @Override
   public String getCaller() {
@@ -46,6 +50,8 @@ public class PhoneCall extends AbstractPhoneCall {
     //return phoneCallEndTime + " on " + phoneCallEndDate;
     return phoneCallEndTime;
   }
+
+
 
 
 
