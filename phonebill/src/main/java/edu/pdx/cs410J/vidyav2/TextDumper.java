@@ -1,20 +1,48 @@
 package edu.pdx.cs410J.vidyav2;
 import edu.pdx.cs410J.PhoneBillDumper;
-import java.io.PrintWriter;
-import java.io.Writer;
+import java.io.*;
+import java.util.*;
 
 public class TextDumper implements PhoneBillDumper<PhoneBill> {
     private final Writer writer;
-
+    public String filename;
     public TextDumper(Writer writer) {
         this.writer = writer;
     }
 
+    public TextDumper()
+    {
+        this.writer = null;
+    }
+
     @Override
     public void dump(PhoneBill bill) {
-        try (PrintWriter pw = new PrintWriter(this.writer)) {
-            pw.println(bill.getCustomer());
-            pw.flush();
+        ArrayList phonecallList = (ArrayList) bill.getPhoneCalls();
+        String[] calls = new String[phonecallList.size()];
+        File f = new File(filename);
+        try {
+            PrintWriter out = new PrintWriter(filename);
+            out.write("");
+            out.write(bill.getCustomer());
+
+            Collections.sort(phonecallList);
+
+            for (int i = 0; i < phonecallList.size(); i++) {
+                calls[i] = phonecallList.get(i).toString();
+                out.write("\n");
+                out.write(calls[i]);
+                out.close();
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println(e.getMessage());
         }
     }
+
+    public void setFileName(String filename)
+    {
+        this.filename = filename;
+    }
+
 }

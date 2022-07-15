@@ -2,17 +2,14 @@ package edu.pdx.cs410J.vidyav2;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.regex.Pattern;
 
 /**
  * The main class for the CS410J Phone Bill Project
  */
 public class Project2 {
-  // @VisibleForTesting
-// static boolean isValidPhoneNumber(String phoneNumber) {
-// return true;
-// }
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
     int totalCommandLineArgumentsConsidered = args.length;
     if (totalCommandLineArgumentsConsidered == 0) {
       System.out.println("No arguments passed at the command line");
@@ -25,11 +22,9 @@ public class Project2 {
       System.out.println(FileContentReadMe);
       return;
     }
+
     //copying command line arguments to a new arraylist
-    ArrayList<String> commandLineArgs = new ArrayList<>();
-    for (String arg : args) {
-      commandLineArgs.add(arg);
-    }
+    ArrayList<String> commandLineArgs = new ArrayList<>(Arrays.asList(args));
 
     boolean print = false;
     int countIdxValueForPrint = 0;
@@ -39,8 +34,6 @@ public class Project2 {
       }
       else if (arg.toLowerCase().contains("print") && (countIdxValueForPrint == 0)) {
         print = true;
-
-        commandLineArgs.remove(countIdxValueForPrint);
         break;
       }
       else if (arg.toLowerCase().contains("print") && (countIdxValueForPrint == 1)) {
@@ -53,33 +46,49 @@ public class Project2 {
       }
     }
 
-    int numberOfRequiredCommandLineArguments = 7;
+    if(commandLineArgs.size() == 8)
+    {
+      int index = 0;
+      for(int i=0; i<commandLineArgs.size(); i++)
+      {
+        if(commandLineArgs.get(i).contains("-textFile"))
+        {
+            index = i+1;
+            break;
+        }
+        else
+        {
+          break;
+        }
+      }
+       String fileName = commandLineArgs.get(index);
+      TextDumper dumper = new TextDumper();
+      TextParser parser = new TextParser();
+      parser.setFilename(fileName);
+      dumper.setFileName(fileName);
+      PhoneBill bill = parser.parse();
+      dumper.dump(bill);
+    }
+
+    int numberOfRequiredCommandLineArguments = 8;
     if(commandLineArgs.size() != numberOfRequiredCommandLineArguments){
       System.out.println("Correct number of values are not entered");
       return;
     }
-
-    //Our Command Line Arguments
-    String custName = commandLineArgs.get(0);
-    String noOfCaller = commandLineArgs.get(1);
-    String noOfCallee = commandLineArgs.get(2);
-    String dateOfPhoneCallBegin = commandLineArgs.get(3);
-    String timeOfPhoneCallBegin = commandLineArgs.get(4);
-    String dateOfPhoneCallEnd = commandLineArgs.get(5);
-    String timeOfPhoneCallEnd = commandLineArgs.get(6);
 
     boolean allRequiredArgumentsAreValid = checkValidityOfRequiredArgs(commandLineArgs);
     if(!allRequiredArgumentsAreValid){
       return;
     }
     //Creating and adding phone call for the customer
-    PhoneCall call1 = new PhoneCall(custName, noOfCaller, noOfCallee, dateOfPhoneCallBegin, timeOfPhoneCallBegin, dateOfPhoneCallEnd, timeOfPhoneCallEnd);
+    PhoneCall call1 = new PhoneCall(commandLineArgs.get(0), commandLineArgs.get(1), commandLineArgs.get(2), commandLineArgs.get(3)
+            , commandLineArgs.get(4), commandLineArgs.get(5), commandLineArgs.get(6));
 
-    PhoneBill bill1 = new PhoneBill(custName);
+    PhoneBill bill1 = new PhoneBill(commandLineArgs.get(0));
     bill1.addPhoneCall(call1);
 
     if(print){
-      System.out.println( call1.toString());
+      System.out.println(call1);
     }
   }
 
@@ -89,39 +98,27 @@ public class Project2 {
    * @return returns the command line input data if it is correct
    */
   static boolean checkValidityOfRequiredArgs(ArrayList<String> commandLineArgs) {
-    //CustomerName is never passed here because it is unnecessary to validate name
-    String callerName = commandLineArgs.get(0);
-    String noOfCaller = commandLineArgs.get(1);
-    String noOfCallee = commandLineArgs.get(2);
-    String dateOfPhoneCallBegin = commandLineArgs.get(3);
-    String timeOfPhoneCallBegin = commandLineArgs.get(4);
-    String dateOfPhoneCallEnd = commandLineArgs.get(5);
-    String timeOfPhoneCallEnd = commandLineArgs.get(6);
-    boolean isCallerNumberValid = checkForValidPhoneNumber(noOfCaller);
+    boolean isCallerNumberValid = checkForValidPhoneNumber(commandLineArgs.get(1));
     if(!isCallerNumberValid){
       return false;
     }
-    boolean isCalleeNumberValid = checkForValidPhoneNumber(noOfCallee);
+    boolean isCalleeNumberValid = checkForValidPhoneNumber(commandLineArgs.get(2));
     if(!isCalleeNumberValid){
       return false;
     }
-    boolean isPhoneCallBeginDateValid = checkForValidDate(dateOfPhoneCallBegin);
+    boolean isPhoneCallBeginDateValid = checkForValidDate(commandLineArgs.get(3));
     if(!isPhoneCallBeginDateValid){
       return false;
     }
-    boolean isPhoneCallBeginTimeValid = checkForValidPhoneCallTime(timeOfPhoneCallBegin);
+    boolean isPhoneCallBeginTimeValid = checkForValidPhoneCallTime(commandLineArgs.get(4));
     if(!isPhoneCallBeginTimeValid){
       return false;
     }
-    boolean isPhoneCallEndDateValid = checkForValidDate(dateOfPhoneCallEnd);
+    boolean isPhoneCallEndDateValid = checkForValidDate(commandLineArgs.get(5));
     if(!isPhoneCallEndDateValid){
       return false;
     }
-    boolean isPhoneCallEndTimeValid = checkForValidPhoneCallTime(timeOfPhoneCallEnd);
-    if(!isPhoneCallEndTimeValid){
-      return false;
-    }
-    return true;
+    return checkForValidPhoneCallTime(commandLineArgs.get(6));
   }
 
   /** checkForValidPhoneCallTime() method is used to describe the correctness of the Time specified for a
@@ -131,7 +128,7 @@ public class Project2 {
    * @return the value of the Phone Call time validity
    */
   static boolean checkForValidPhoneCallTime(String timeOfPhoneCall) {
-    String regTime = "\\d{1,2}[:]\\d\\d";
+    String regTime = "\\d{1,2}:\\d\\d";
     boolean validTimeOfPhoneCall = Pattern.compile(regTime).matcher(timeOfPhoneCall).matches();
 
     if(!validTimeOfPhoneCall){
@@ -149,7 +146,7 @@ public class Project2 {
    * @return the start or end Date of Phone Call
    */
   static boolean checkForValidDate(String dateOfPhoneCall) {
-    String regDate = "\\d{1,2}[/]\\d{1,2}[/]\\d\\d\\d\\d";
+    String regDate = "\\d{1,2}/\\d{1,2}/\\d\\d\\d\\d";
     boolean validDateOfPhoneCall = Pattern.compile(regDate).matcher(dateOfPhoneCall).matches();
     if(!validDateOfPhoneCall){
       String invalidDateOfPhoneCallMessage = "Date provided is invalid, please retry by entering the correct one's";
@@ -166,7 +163,7 @@ public class Project2 {
    * @return the Phone Number for the customer
    */
   static boolean checkForValidPhoneNumber(String phoneNumber){
-    String regPhoneNumber = "\\d\\d\\d[-]\\d\\d\\d[-]\\d\\d\\d\\d";
+    String regPhoneNumber = "\\d\\d\\d-\\d\\d\\d-\\d\\d\\d\\d";
     boolean validNumberOfCaller = Pattern.compile(regPhoneNumber).matcher(phoneNumber).matches();
     if(!validNumberOfCaller){
       String invalidPhoneNumberMessage = "Phone Number provided is invalid, please retry by entering the correct one's";
@@ -203,10 +200,9 @@ public class Project2 {
   static String readFromReadMeFileOnly() {
     String line = "";
     try (
-            InputStream ReadMe = Project1.class.getResourceAsStream("README.txt")
+            InputStream ReadMe = Project2.class.getResourceAsStream("README.txt")
     ) {
-
-
+      assert ReadMe != null;
       BufferedReader reader = new BufferedReader(new InputStreamReader(ReadMe));
       line = reader.readLine();
     } catch (IOException e) {

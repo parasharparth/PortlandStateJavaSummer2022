@@ -1,30 +1,25 @@
 package edu.pdx.cs410J.vidyav2;
 
 import edu.pdx.cs410J.AbstractPhoneBill;
-
 import java.util.ArrayList;
 import java.util.Collection;
 
 public class  PhoneBill extends AbstractPhoneBill<PhoneCall> {
   private String customer;
 
-  private final ArrayList<PhoneCall> calls = new ArrayList();
+  private final ArrayList<PhoneCall> calls = new ArrayList<>();
 
   public PhoneBill(String customer) {
     this.customer = customer;
   }
-
-//  public PhoneBill() {
-//
-//  }
 
   @Override
   public String getCustomer() {
     return this.customer;
   }
 
-  public String setCustomer(String phoneBill){
-    return this.customer = phoneBill;
+  public void setCustomer(String phoneBill){
+    this.customer = phoneBill;
   }
 
   @Override
@@ -37,11 +32,7 @@ public class  PhoneBill extends AbstractPhoneBill<PhoneCall> {
     return calls;
   }
 
-  public Object getBytes() {
-    return null;
-  }
-
-  public PhoneBill get(int i) {
-    return null;
+  public int get(int i) {
+    return i;
   }
 }
