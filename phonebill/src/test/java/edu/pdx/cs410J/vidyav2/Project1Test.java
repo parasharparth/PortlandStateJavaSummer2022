@@ -22,7 +22,7 @@ class Project1Test {
   @Test
   void readmeCanBeReadAsResource() throws IOException {
     try (
-      InputStream readme = Project1.class.getResourceAsStream("README.txt")
+      InputStream readme = Project2.class.getResourceAsStream("README.txt")
     ) {
       assertThat(readme, not(nullValue()));
       BufferedReader reader = new BufferedReader(new InputStreamReader(readme));
@@ -35,8 +35,8 @@ class Project1Test {
   void readMeBooleanFlagTested(){
     String[] hasNoReadme = {"random", "words"};
     String[] hasReadme = {"-README"};
-    boolean displayReadMeNo = Project1.readMeFlagCheck(hasNoReadme);
-    boolean displayReadMeYes = Project1.readMeFlagCheck(hasReadme);
+    boolean displayReadMeNo = Project2.readMeFlagCheck(hasNoReadme);
+    boolean displayReadMeYes = Project2.readMeFlagCheck(hasReadme);
     assertThat(displayReadMeNo, equalTo(false));
     assertThat(displayReadMeYes,equalTo(true));
   }
@@ -44,24 +44,24 @@ class Project1Test {
 
   @Test
   void phoneNumberValidation(){
-    boolean thisNumberShouldBeValid = Project1.checkForValidPhoneNumber("123-456-7890");
-    boolean thisNumberShouldBeInvalid = Project1.checkForValidPhoneNumber("23-567-8901");
+    boolean thisNumberShouldBeValid = Project2.checkForValidPhoneNumber("123-456-7890");
+    boolean thisNumberShouldBeInvalid = Project2.checkForValidPhoneNumber("23-567-8901");
     assertThat(thisNumberShouldBeValid, equalTo(true));
     assertThat(thisNumberShouldBeInvalid, equalTo(false));
   }
 
   @Test
   void validationOfTime(){
-    boolean thisTimeShouldBeValid = Project1.checkForValidPhoneCallTime("7:12");
-    boolean thisTimeShouldBeInvalid = Project1.checkForValidPhoneCallTime("7777:12");
+    boolean thisTimeShouldBeValid = Project2.checkForValidPhoneCallTime("7:12");
+    boolean thisTimeShouldBeInvalid = Project2.checkForValidPhoneCallTime("7777:12");
     assertThat(thisTimeShouldBeValid, equalTo(true));
     assertThat(thisTimeShouldBeInvalid, equalTo(false));
   }
 
   @Test
   void correctDateValidation(){
-    boolean thisDateShouldBeValid = Project1.checkForValidDate("07/07/2022");
-    boolean thisDateShouldBeInvalid = Project1.checkForValidDate("077/07/2022");
+    boolean thisDateShouldBeValid = Project2.checkForValidDate("07/07/2022");
+    boolean thisDateShouldBeInvalid = Project2.checkForValidDate("077/07/2022");
     assertThat(thisDateShouldBeValid, equalTo(true));
     assertThat(thisDateShouldBeInvalid, equalTo(false));
   }
@@ -75,7 +75,7 @@ class Project1Test {
       arrayListOfArgs.add(s);
     }
 
-    boolean theseArgsShouldBeValid = Project1.checkValidityOfRequiredArgs(arrayListOfArgs);
+    boolean theseArgsShouldBeValid = Project2.checkValidityOfRequiredArgs(arrayListOfArgs);
     assertThat(theseArgsShouldBeValid, equalTo(true));
   }
 
@@ -89,11 +89,7 @@ class Project1Test {
       invalidArrayListOfArgs.add(s);
     }
 
-    boolean theseArgsShouldBeInvalid = Project1.checkValidityOfRequiredArgs(invalidArrayListOfArgs);
+    boolean theseArgsShouldBeInvalid = Project2.checkValidityOfRequiredArgs(invalidArrayListOfArgs);
     assertThat(theseArgsShouldBeInvalid, equalTo(false));
   }
-
-
-
-
 }
