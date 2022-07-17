@@ -13,13 +13,17 @@ public class  PhoneBill extends AbstractPhoneBill<PhoneCall> {
     this.customer = customer;
   }
 
+  public PhoneBill()
+  {
+  }
+
   @Override
   public String getCustomer() {
     return this.customer;
   }
 
-  public void setCustomer(String phoneBill){
-    this.customer = phoneBill;
+  public void setCustomer(String customer){
+    this.customer = customer;
   }
 
   @Override

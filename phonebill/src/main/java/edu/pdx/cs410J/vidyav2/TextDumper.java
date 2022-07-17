@@ -20,9 +20,10 @@ public class TextDumper implements PhoneBillDumper<PhoneBill> {
         ArrayList phonecallList = (ArrayList) bill.getPhoneCalls();
         String[] calls = new String[phonecallList.size()];
         File f = new File(filename);
+        //FileReader fr = new FileReader(f);
         try {
             PrintWriter out = new PrintWriter(filename);
-            out.write("");
+           out.write("");
             out.write(bill.getCustomer());
 
             Collections.sort(phonecallList);

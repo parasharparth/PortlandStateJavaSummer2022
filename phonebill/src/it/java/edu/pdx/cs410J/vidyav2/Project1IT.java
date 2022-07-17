@@ -30,25 +30,27 @@ class Project1IT extends InvokeMainTestCase {
         MainMethodResult result = invokeMain();
         assertThat(result.getTextWrittenToStandardOut(), containsString("No arguments passed at the command line"));
     }
-}
+
 
     /* Test to check the behavior when not enough Command Line Arguments are passed
      */
-    //@Test
-    //@Disabled
-//    void notEnoughCommandLineArgumentsTest() {
-//        MainMethodResult result = invokeMain("Bhaskar");
-//        assertThat(result.getTextWrittenToStandardOut(), containsString("Correct number of values are not entered"));
-//    }
+    @Test
+    void notEnoughCommandLineArgumentsTest() {
+        MainMethodResult result = invokeMain("Bhaskar");
+        assertThat(result.getTextWrittenToStandardOut(), containsString("Correct number of values are not entered"));
+    }
 
 
-    //@Test
-    //@Disabled
-    //public void printOptionPrintsOnlyNewlyCreatedPhoneCallTest() {
-      //  MainMethodResult result = invokeMain("-print", "Bhaskar", "123-456-7890", "279-842-8901", "07/07/2022", "7:12", "07/07/2022", "7:56");
-       // assertThat(result.getTextWrittenToStandardOut(), containsString("Phone call from 123-456-7890 to 279-842-8901 from 7:12 to 7:56"));
-    //}
-//}
+    @Test
+    public void printOptionPrintsOnlyNewlyCreatedPhoneCallTest() {
+        MainMethodResult result = invokeMain("-print", "Bhaskar", "123-456-7890", "279-842-8901", "07/07/2022", "7:12", "07/07/2022", "7:56");
+        assertThat(result.getTextWrittenToStandardOut(), containsString("Phone call from 123-456-7890 to 279-842-8901 from 7:12 to 7:56"));
+    }
+}
+
+
+
+
 
 
 //

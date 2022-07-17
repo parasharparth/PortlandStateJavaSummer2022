@@ -1,12 +1,10 @@
 package edu.pdx.cs410J.vidyav2;
 
+import edu.pdx.cs410J.InvokeMainTestCase;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 
 import static org.hamcrest.CoreMatchers.*;
@@ -17,7 +15,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
  * from <code>Project1IT</code> which is an integration test (and can capture data
  * written to {@link System#out} and the like.
  */
-class Project1Test {
+class Project1Test extends InvokeMainTestCase {
+
+  private MainMethodResult invokeMain(String... args) {
+    return invokeMain(Project2.class, args);
+  }
 
   @Test
   void readmeCanBeReadAsResource() throws IOException {
@@ -74,7 +76,6 @@ class Project1Test {
     for (String s: argumentsArray){
       arrayListOfArgs.add(s);
     }
-
     boolean theseArgsShouldBeValid = Project2.checkValidityOfRequiredArgs(arrayListOfArgs);
     assertThat(theseArgsShouldBeValid, equalTo(true));
   }
@@ -92,4 +93,53 @@ class Project1Test {
     boolean theseArgsShouldBeInvalid = Project2.checkValidityOfRequiredArgs(invalidArrayListOfArgs);
     assertThat(theseArgsShouldBeInvalid, equalTo(false));
   }
+
+
+
+
+
+//  @Test
+//  void testToPrintToTextfile() throws Exception {
+//    String[] argumentsArray = {"-print", "Bhaskar", "12-456-7890", "234-567-8901", "07/07/2022", "7:12", "07/07/2022", "7:56"};
+//    String arrayListOfArgs;
+//
+//    boolean theseArgsShouldBeInvalid = Project2.checkTextFileToPrint(argumentsArray);
+//    assertThat(argumentsArray, equalTo(true));
+//  }
+
+  @Test
+  void testToPrintToTextFile(){
+    MainMethodResult result = invokeMain("-print", "Bhaskar", "12-456-7890", "234-567-8901", "07/07/2022", "7:12", "07/07/2022", "7:56");
+    //assertThat(result.getExitCode(), equalTo(0) );
+    assertThat(result.getTextWrittenToStandardOut(), containsString("Phone call details"));
+    
+  }
+
+  @Test
+  void fileNotExists(){
+    File f = new File("TestPhoneBill.txt");
+    MainMethodResult result = null;
+    if (f.delete()){
+      invokeMain("-textFile", "phonebill.txt", "-print", "Bhaskar", "12-456-7890", "234-567-8901", "07/07/2022", "7:12", "07/07/2022", "7:56");
+    } else {
+      invokeMain("-textFile", "phonebill.txt", "-print", "Bhaskar", "12-456-7890", "234-567-8901", "07/07/2022", "7:12", "07/07/2022", "7:56");
+    }
+    //assertThat(result.getExitCode(), equalTo(0));
+    assert true;
+    assertThat(result.getTextWrittenToStandardOut(), containsString("File with the given name does not exist. New file has been created"));
+  }
+
+//  @Test
+//  void testNewlyAddedPhoneCallInPrint(){
+//    File f = new File("TestPhoneBill.txt");
+//
+//  }
+
+
+
+
+
+
+
+
 }

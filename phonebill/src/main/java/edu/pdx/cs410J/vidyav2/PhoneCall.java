@@ -65,7 +65,69 @@ public class PhoneCall extends AbstractPhoneCall {
     return phoneCallEndDate;
   }*/
 
+  public String getCallerName() {
+    return callerName;
+  }
 
+  public void setCallerName(String callerName) {
+    this.callerName = callerName;
+  }
+
+  public String getCalleeName() {
+    return calleeName;
+  }
+
+  public void setCalleeName(String calleeName) {
+    this.calleeName = calleeName;
+  }
+
+  public String getCallerNumber() {
+    return callerNumber;
+  }
+
+  public void setCallerNumber(String callerNumber) {
+    this.callerNumber = callerNumber;
+  }
+
+  public String getCalleeNumber() {
+    return calleeNumber;
+  }
+
+  public void setCalleeNumber(String calleeNumber) {
+    this.calleeNumber = calleeNumber;
+  }
+
+  public String getPhoneCallBeginDate() {
+    return phoneCallBeginDate;
+  }
+
+  public void setPhoneCallBeginDate(String phoneCallBeginDate) {
+    this.phoneCallBeginDate = phoneCallBeginDate;
+  }
+
+  public String getPhoneCallBeginTime() {
+    return phoneCallBeginTime;
+  }
+
+  public void setPhoneCallBeginTime(String phoneCallBeginTime) {
+    this.phoneCallBeginTime = phoneCallBeginTime;
+  }
+
+  public String getPhoneCallEndDate() {
+    return phoneCallEndDate;
+  }
+
+  public void setPhoneCallEndDate(String phoneCallEndDate) {
+    this.phoneCallEndDate = phoneCallEndDate;
+  }
+
+  public String getPhoneCallEndTime() {
+    return phoneCallEndTime;
+  }
+
+  public void setPhoneCallEndTime(String phoneCallEndTime) {
+    this.phoneCallEndTime = phoneCallEndTime;
+  }
 }
 
 
