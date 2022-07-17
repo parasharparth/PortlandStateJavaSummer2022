@@ -70,7 +70,7 @@ class Project1Test extends InvokeMainTestCase {
 
   @Test
   void requiredArgumentsValidation(){
-    String[] argumentsArray = {"Bhaskar", "123-456-7890", "234-567-8901", "07/07/2022", "7:12", "07/07/2022", "7:56"};
+    String[] argumentsArray = {"-textFile", "phonebill.txt", "-print", "Bhaskar", "123-456-7890", "245-566-7863", "07/07/2022", "12:43", "07/07/2022", "12:45"};
     ArrayList<String> arrayListOfArgs = new ArrayList<>();
 
     for (String s: argumentsArray){
@@ -83,7 +83,7 @@ class Project1Test extends InvokeMainTestCase {
   @Test
   //@Disabled
     void requiredArgumentsInvalidation(){
-    String[] invalidArgumentsArray = {"Bhaskar", "12-456-7890", "234-567-8901", "07/07/2022", "7:12", "07/07/2022", "7:56"};
+    String[] invalidArgumentsArray = {"-textFile", "phonebill.txt", "-print", "Bhaskar", "13-456-7890", "245-566-7863", "07/07/2022", "12:43", "07/07/2022", "12:45"};
     ArrayList<String> invalidArrayListOfArgs = new ArrayList<>();
 
     for (String s: invalidArgumentsArray){
@@ -95,45 +95,20 @@ class Project1Test extends InvokeMainTestCase {
   }
 
 
-
-
-
-//  @Test
-//  void testToPrintToTextfile() throws Exception {
-//    String[] argumentsArray = {"-print", "Bhaskar", "12-456-7890", "234-567-8901", "07/07/2022", "7:12", "07/07/2022", "7:56"};
-//    String arrayListOfArgs;
-//
-//    boolean theseArgsShouldBeInvalid = Project2.checkTextFileToPrint(argumentsArray);
-//    assertThat(argumentsArray, equalTo(true));
-//  }
-
   @Test
-  void testToPrintToTextFile(){
-    MainMethodResult result = invokeMain("-print", "Bhaskar", "12-456-7890", "234-567-8901", "07/07/2022", "7:12", "07/07/2022", "7:56");
-    //assertThat(result.getExitCode(), equalTo(0) );
-    assertThat(result.getTextWrittenToStandardOut(), containsString("Phone call details"));
-    
+  void testToPrintToTextFileWithValidArguments(){
+    String[] argumentsArray = {"-textFile", "phonebill.txt", "-print", "Bhaskar", "123-456-7890", "245-566-7863", "07/07/2022", "12:43", "07/07/2022", "12:45"};
+    ArrayList<String> arrayListOfArgs = new ArrayList<>();
+
+    for (String s: argumentsArray){
+      arrayListOfArgs.add(s);
+    }
+    boolean theseArgsShouldBeValid = Project2.checkValidityOfRequiredArgs(arrayListOfArgs);
+    assertThat(theseArgsShouldBeValid, equalTo(true));
   }
 
   @Test
   void fileNotExists(){
-    File f = new File("TestPhoneBill.txt");
-    MainMethodResult result = null;
-    if (f.delete()){
-      invokeMain("-textFile", "phonebill.txt", "-print", "Bhaskar", "12-456-7890", "234-567-8901", "07/07/2022", "7:12", "07/07/2022", "7:56");
-    } else {
-      invokeMain("-textFile", "phonebill.txt", "-print", "Bhaskar", "12-456-7890", "234-567-8901", "07/07/2022", "7:12", "07/07/2022", "7:56");
-    }
-    //assertThat(result.getExitCode(), equalTo(0));
-    assert true;
-    assertThat(result.getTextWrittenToStandardOut(), containsString("File with the given name does not exist. New file has been created"));
-  }
-
-//  @Test
-//  void testNewlyAddedPhoneCallInPrint(){
-//    File f = new File("TestPhoneBill.txt");
-//
-//  }
 
 
 
@@ -142,4 +117,7 @@ class Project1Test extends InvokeMainTestCase {
 
 
 
-}
+
+
+
+}}

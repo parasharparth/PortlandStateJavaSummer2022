@@ -43,8 +43,8 @@ class Project1IT extends InvokeMainTestCase {
 
     @Test
     public void printOptionPrintsOnlyNewlyCreatedPhoneCallTest() {
-        MainMethodResult result = invokeMain("-print", "Bhaskar", "123-456-7890", "279-842-8901", "07/07/2022", "7:12", "07/07/2022", "7:56");
-        assertThat(result.getTextWrittenToStandardOut(), containsString("Phone call from 123-456-7890 to 279-842-8901 from 7:12 to 7:56"));
+        MainMethodResult result = invokeMain("-textFile", "newPhoneBill.txt", "-print", "Bhaskar", "123-456-7890", "245-566-7863", "07/07/2022", "12:43", "07/07/2022", "12:45" );
+        assertThat(result.getTextWrittenToStandardOut(), containsString("Phone call from "));
     }
 }
 

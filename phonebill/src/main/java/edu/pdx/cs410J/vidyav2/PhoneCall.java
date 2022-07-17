@@ -28,7 +28,6 @@ public class PhoneCall extends AbstractPhoneCall {
 
   }
 
-
   @Override
   public String getCaller() {
     return callerNumber;
@@ -51,15 +50,9 @@ public class PhoneCall extends AbstractPhoneCall {
     return phoneCallEndTime;
   }
 
-
-
-
-
   /*public String getBeginDateString() {
     return phoneCallBeginDate;
   }
-
-
 
   public String getEndDateString() {
     return phoneCallEndDate;

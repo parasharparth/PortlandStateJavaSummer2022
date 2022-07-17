@@ -28,24 +28,30 @@ public class Project2 {
     ArrayList<String> commandLineArgs = new ArrayList<>(Arrays.asList(args));
 
     boolean print = false;
-    int countIdxValueForPrint = 0;
-    for (String arg : args) {
-      if (countIdxValueForPrint > 3) {
-        break;
+      for (String commandLineArg : commandLineArgs) {
+          if(commandLineArg.contains("-print")){
+              print = true;
+          }
       }
-      else if (arg.toLowerCase().contains("print") && (countIdxValueForPrint == 0)) {
-        print = true;
-        break;
-      }
-      else if (arg.toLowerCase().contains("print") && (countIdxValueForPrint == 3)) {
 
-        System.out.println("Entered values are in wrong order");
-        return;
-      }
-      else {
-        countIdxValueForPrint++;
-      }
-    }
+//    int countIdxValueForPrint = 0;
+//    for (String arg : args) {
+//      if (countIdxValueForPrint > 3) {
+//        break;
+//      }
+//      else if (arg.toLowerCase().contains("print") && (countIdxValueForPrint == 0)) {
+//        print = true;
+//        break;
+//      }
+//      else if (arg.toLowerCase().contains("print") && (countIdxValueForPrint == 3)) {
+//
+//        System.out.println("Entered values are in wrong order");
+//        return;
+//      }
+//      else {
+//        countIdxValueForPrint++;
+//      }
+//    }
 
     if(commandLineArgs.size() == 10)
     {
@@ -68,14 +74,14 @@ public class Project2 {
       PhoneBill bill = parser.parse();
       //Add details from command line arguments to bill.calls
       PhoneCall call = new PhoneCall();
-      call.setCallerName(commandLineArgs.get(1));
-      call.setCalleeName(commandLineArgs.get(2));
-      call.setCallerNumber(commandLineArgs.get(3));
-      call.setCalleeNumber(commandLineArgs.get(4));
-      call.setPhoneCallBeginDate(commandLineArgs.get(5));
-      call.setPhoneCallBeginTime(commandLineArgs.get(6));
-      call.setPhoneCallEndDate(commandLineArgs.get(7));
-      call.setPhoneCallEndTime(commandLineArgs.get(8));
+      call.setCallerName(commandLineArgs.get(3));
+      //call.setCalleeName("commandLineArgs.get(4)");
+      call.setCallerNumber(commandLineArgs.get(4));
+      call.setCalleeNumber(commandLineArgs.get(5));
+      call.setPhoneCallBeginDate(commandLineArgs.get(6));
+      call.setPhoneCallBeginTime(commandLineArgs.get(7));
+      call.setPhoneCallEndDate(commandLineArgs.get(8));
+      call.setPhoneCallEndTime(commandLineArgs.get(9));
       bill.addPhoneCall(call);
       dumper.dump(bill);
     }
@@ -92,8 +98,8 @@ public class Project2 {
     }
 
     //Creating and adding phone call for the customer
-    PhoneCall call = new PhoneCall(commandLineArgs.get(0), commandLineArgs.get(1), commandLineArgs.get(2), commandLineArgs.get(3)
-            , commandLineArgs.get(4), commandLineArgs.get(5), commandLineArgs.get(6));
+    PhoneCall call = new PhoneCall(commandLineArgs.get(3), commandLineArgs.get(4), commandLineArgs.get(5), commandLineArgs.get(6)
+            , commandLineArgs.get(7), commandLineArgs.get(8), commandLineArgs.get(9));
 
     PhoneBill bill = new PhoneBill(commandLineArgs.get(0));
     bill.addPhoneCall(call);
@@ -109,18 +115,18 @@ public class Project2 {
    * @return returns the command line input data if it is correct
    */
   static boolean checkValidityOfRequiredArgs(ArrayList<String> commandLineArgs) {
-      String callerName = commandLineArgs.get(0);
-      String numberOfCaller = commandLineArgs.get(1);
-      String numberOfCallee = commandLineArgs.get(2);
-      String dateOfPhoneCallStart = commandLineArgs.get(3);
-      String timeOfPhoneCallStart = commandLineArgs.get(4);
-      String dateOfPhoneCallEnd = commandLineArgs.get(5);
-      String timeOfPhoneCallEnd = commandLineArgs.get(6);
+      String callerName = commandLineArgs.get(3);
+      String numberOfCaller = commandLineArgs.get(4);
+      String numberOfCallee = commandLineArgs.get(5);
+      String dateOfPhoneCallStart = commandLineArgs.get(6);
+      String timeOfPhoneCallStart = commandLineArgs.get(7);
+      String dateOfPhoneCallEnd = commandLineArgs.get(8);
+      String timeOfPhoneCallEnd = commandLineArgs.get(9);
       boolean isCallerNumberValid = checkForValidPhoneNumber(numberOfCaller);
       if(!isCallerNumberValid){
           return false;
       }
-      boolean isCalleeNumberValid = checkForValidPhoneNumberCallee(numberOfCallee);
+      boolean isCalleeNumberValid = checkForValidPhoneNumber(numberOfCallee);
       if(!isCalleeNumberValid){
           return false;
       }
@@ -193,17 +199,17 @@ public class Project2 {
 
   }
 
-    static boolean checkForValidPhoneNumberCallee(String phoneNumber) {
-        String regPhoneNumber = "\\d\\d\\d-\\d\\d\\d-\\d\\d\\d\\d";
-        boolean validNumberOfCallee = Pattern.compile(regPhoneNumber).matcher(phoneNumber).matches();
-        if (!validNumberOfCallee) {
-            String invalidPhoneNumberMessage = "Phone Number provided is invalid, please retry by entering the correct one's";
-            System.out.println(invalidPhoneNumberMessage);
-            return false;
-        }
-        return true;
-
-    }
+//    static boolean checkForValidPhoneNumberCallee(String phoneNumber) {
+//        String regPhoneNumber = "\\d\\d\\d-\\d\\d\\d-\\d\\d\\d\\d";
+//        boolean validNumberOfCallee = Pattern.compile(regPhoneNumber).matcher(phoneNumber).matches();
+//        if (!validNumberOfCallee) {
+//            String invalidPhoneNumberMessage = "Phone Number provided is invalid, please retry by entering the correct one's";
+//            System.out.println(invalidPhoneNumberMessage);
+//            return false;
+//        }
+//        return true;
+//
+//    }
 
 
   /**
