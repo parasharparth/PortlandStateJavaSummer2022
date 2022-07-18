@@ -116,33 +116,33 @@ public class Project2 {
    */
   static boolean checkValidityOfRequiredArgs(ArrayList<String> commandLineArgs) {
       String callerName = commandLineArgs.get(3);
-      String numberOfCaller = commandLineArgs.get(4);
-      String numberOfCallee = commandLineArgs.get(5);
-      String dateOfPhoneCallStart = commandLineArgs.get(6);
-      String timeOfPhoneCallStart = commandLineArgs.get(7);
+      String noOfCaller = commandLineArgs.get(4);
+      String noOfCallee = commandLineArgs.get(5);
+      String dateOfPhoneCallBegin = commandLineArgs.get(6);
+      String timeOfPhoneCallBegin = commandLineArgs.get(7);
       String dateOfPhoneCallEnd = commandLineArgs.get(8);
       String timeOfPhoneCallEnd = commandLineArgs.get(9);
-      boolean isCallerNumberValid = checkForValidPhoneNumber(numberOfCaller);
+      boolean isCallerNumberValid = checkForValidPhoneNumber(commandLineArgs.get(4));
       if(!isCallerNumberValid){
           return false;
       }
-      boolean isCalleeNumberValid = checkForValidPhoneNumber(numberOfCallee);
+      boolean isCalleeNumberValid = checkForValidPhoneNumber(commandLineArgs.get(5));
       if(!isCalleeNumberValid){
           return false;
       }
-      boolean isPhoneCallBeginDateValid = checkForValidDate(dateOfPhoneCallStart);
+      boolean isPhoneCallBeginDateValid = checkForValidDate(commandLineArgs.get(6));
       if(!isPhoneCallBeginDateValid){
           return false;
       }
-      boolean isPhoneCallBeginTimeValid = checkForValidPhoneCallTime(timeOfPhoneCallStart);
+      boolean isPhoneCallBeginTimeValid = checkForValidPhoneCallTime(commandLineArgs.get(7));
       if(!isPhoneCallBeginTimeValid){
           return false;
       }
-      boolean isPhoneCallEndDateValid = checkForValidDate(dateOfPhoneCallEnd);
+      boolean isPhoneCallEndDateValid = checkForValidDate(commandLineArgs.get(8));
       if(!isPhoneCallEndDateValid){
           return false;
       }
-      boolean isPhoneCallEndTimeValid = checkForValidPhoneCallTime(timeOfPhoneCallEnd);
+      boolean isPhoneCallEndTimeValid = checkForValidPhoneCallTime(commandLineArgs.get(9));
       return isPhoneCallEndTimeValid;
   }
 

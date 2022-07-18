@@ -29,8 +29,9 @@ public class TextParser implements PhoneBillParser<PhoneBill> {
         this.reader = null;
     }
 
-
-
+    public TextParser(String fileName) {
+        this.reader = null;
+    }
 
 
     @Override

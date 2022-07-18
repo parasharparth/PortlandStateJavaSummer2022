@@ -24,7 +24,7 @@ class Project1Test extends InvokeMainTestCase {
   @Test
   void readmeCanBeReadAsResource() throws IOException {
     try (
-      InputStream readme = Project2.class.getResourceAsStream("README.txt")
+            InputStream readme = Project2.class.getResourceAsStream("README.txt")
     ) {
       assertThat(readme, not(nullValue()));
       BufferedReader reader = new BufferedReader(new InputStreamReader(readme));
@@ -34,18 +34,18 @@ class Project1Test extends InvokeMainTestCase {
   }
 
   @Test
-  void readMeBooleanFlagTested(){
+  void readMeBooleanFlagTested() {
     String[] hasNoReadme = {"random", "words"};
     String[] hasReadme = {"-README"};
     boolean displayReadMeNo = Project2.readMeFlagCheck(hasNoReadme);
     boolean displayReadMeYes = Project2.readMeFlagCheck(hasReadme);
     assertThat(displayReadMeNo, equalTo(false));
-    assertThat(displayReadMeYes,equalTo(true));
+    assertThat(displayReadMeYes, equalTo(true));
   }
 
 
   @Test
-  void phoneNumberValidation(){
+  void phoneNumberValidation() {
     boolean thisNumberShouldBeValid = Project2.checkForValidPhoneNumber("123-456-7890");
     boolean thisNumberShouldBeInvalid = Project2.checkForValidPhoneNumber("23-567-8901");
     assertThat(thisNumberShouldBeValid, equalTo(true));
@@ -53,7 +53,7 @@ class Project1Test extends InvokeMainTestCase {
   }
 
   @Test
-  void validationOfTime(){
+  void validationOfTime() {
     boolean thisTimeShouldBeValid = Project2.checkForValidPhoneCallTime("7:12");
     boolean thisTimeShouldBeInvalid = Project2.checkForValidPhoneCallTime("7777:12");
     assertThat(thisTimeShouldBeValid, equalTo(true));
@@ -61,7 +61,7 @@ class Project1Test extends InvokeMainTestCase {
   }
 
   @Test
-  void correctDateValidation(){
+  void correctDateValidation() {
     boolean thisDateShouldBeValid = Project2.checkForValidDate("07/07/2022");
     boolean thisDateShouldBeInvalid = Project2.checkForValidDate("077/07/2022");
     assertThat(thisDateShouldBeValid, equalTo(true));
@@ -69,11 +69,11 @@ class Project1Test extends InvokeMainTestCase {
   }
 
   @Test
-  void requiredArgumentsValidation(){
+  void requiredArgumentsValidation() {
     String[] argumentsArray = {"-textFile", "phonebill.txt", "-print", "Bhaskar", "123-456-7890", "245-566-7863", "07/07/2022", "12:43", "07/07/2022", "12:45"};
     ArrayList<String> arrayListOfArgs = new ArrayList<>();
 
-    for (String s: argumentsArray){
+    for (String s : argumentsArray) {
       arrayListOfArgs.add(s);
     }
     boolean theseArgsShouldBeValid = Project2.checkValidityOfRequiredArgs(arrayListOfArgs);
@@ -81,12 +81,12 @@ class Project1Test extends InvokeMainTestCase {
   }
 
   @Test
-  //@Disabled
-    void requiredArgumentsInvalidation(){
+    //@Disabled
+  void requiredArgumentsInvalidation() {
     String[] invalidArgumentsArray = {"-textFile", "phonebill.txt", "-print", "Bhaskar", "13-456-7890", "245-566-7863", "07/07/2022", "12:43", "07/07/2022", "12:45"};
     ArrayList<String> invalidArrayListOfArgs = new ArrayList<>();
 
-    for (String s: invalidArgumentsArray){
+    for (String s : invalidArgumentsArray) {
       invalidArrayListOfArgs.add(s);
     }
 
@@ -96,11 +96,11 @@ class Project1Test extends InvokeMainTestCase {
 
 
   @Test
-  void testToPrintToTextFileWithValidArguments(){
+  void testToPrintToTextFileWithValidArguments() {
     String[] argumentsArray = {"-textFile", "phonebill.txt", "-print", "Bhaskar", "123-456-7890", "245-566-7863", "07/07/2022", "12:43", "07/07/2022", "12:45"};
     ArrayList<String> arrayListOfArgs = new ArrayList<>();
 
-    for (String s: argumentsArray){
+    for (String s : argumentsArray) {
       arrayListOfArgs.add(s);
     }
     boolean theseArgsShouldBeValid = Project2.checkValidityOfRequiredArgs(arrayListOfArgs);
@@ -108,16 +108,58 @@ class Project1Test extends InvokeMainTestCase {
   }
 
   @Test
-  void fileNotExists(){
+  void fileNotExists() {
+    String[] argumentsArray = {"-textFile", "bogus.txt", "-print", "Bhaskar", "123-456-7890", "245-566-7863", "07/07/2022", "12:43", "07/07/2022", "12:45"};
+    ArrayList<String> arrayListOfArgs = new ArrayList<>();
+
+    for (String s : argumentsArray) {
+      arrayListOfArgs.add(s);
+    }
+    boolean theseArgsShouldBeInvalid = Project2.checkValidityOfRequiredArgs(arrayListOfArgs);
+    assertThat(theseArgsShouldBeInvalid, notNullValue());
+
+  }
+
+  @Test
+  void fileThatHasInvalidDateFormat() {
+    String[] invalidArgumentsArray = {"-textFile", "phonebill.txt", "-print", "Bhaskar", "131-456-7890", "245-566-7863", "077/07/2022", "12:43", "07/07/2022", "12:45"};
+    ArrayList<String> invalidArrayListOfArgs = new ArrayList<>();
+
+    for (String s : invalidArgumentsArray) {
+      invalidArrayListOfArgs.add(s);
+    }
+
+    boolean theseArgsShouldBeInvalid = Project2.checkForValidDate("077/07/2022");
+    assertThat(theseArgsShouldBeInvalid, equalTo(false));
+  }
 
 
+  @Test
+  void fileThatHasInvalidTimeFormat() {
+    String[] invalidArgumentsArray = {"-textFile", "phonebill.txt", "-print", "Bhaskar", "131-456-7890", "245-566-7863", "07/07/2022", "454:43", "07/07/2022", "12:45"};
+    ArrayList<String> invalidArrayListOfArgs = new ArrayList<>();
+
+    for (String s : invalidArgumentsArray) {
+      invalidArrayListOfArgs.add(s);
+    }
+
+    boolean theseArgsShouldBeInvalid = Project2.checkForValidPhoneCallTime("454:43");
+    assertThat(theseArgsShouldBeInvalid, equalTo(false));
+  }
+
+  @Test
+  void fileThatHasInvalidPhoneNumberFormat() {
+    String[] invalidArgumentsArray = {"-textFile", "phonebill.txt", "-print", "Bhaskar", "1312-456-7890", "245-566-7863", "07/07/2022", "04:43", "07/07/2022", "12:45"};
+    ArrayList<String> invalidArrayListOfArgs = new ArrayList<>();
+
+    for (String s : invalidArgumentsArray) {
+      invalidArrayListOfArgs.add(s);
+    }
+
+    boolean theseArgsShouldBeInvalid = Project2.checkForValidPhoneNumber("1312-456-7890");
+    assertThat(theseArgsShouldBeInvalid, equalTo(false));
+  }
 
 
+}
 
-
-
-
-
-
-
-}}
