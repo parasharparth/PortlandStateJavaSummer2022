@@ -160,6 +160,19 @@ class Project1Test extends InvokeMainTestCase {
     assertThat(theseArgsShouldBeInvalid, equalTo(false));
   }
 
+  @Test
+  void fileThatHasInvalidLastEnteredTimeFormat() {
+    String[] invalidArgumentsArray = {"-textFile", "phonebill.txt", "-print", "Bhaskar", "131-456-7890", "245-566-7863", "07/07/2022", "04:43", "07/07/2022", "132:45"};
+    ArrayList<String> invalidArrayListOfArgs = new ArrayList<>();
+
+    for (String s : invalidArgumentsArray) {
+      invalidArrayListOfArgs.add(s);
+    }
+
+    boolean theseArgsShouldBeInvalid = Project2.checkForValidPhoneCallTime("132:45");
+    assertThat(theseArgsShouldBeInvalid, equalTo(false));
+  }
+
 
 }
 

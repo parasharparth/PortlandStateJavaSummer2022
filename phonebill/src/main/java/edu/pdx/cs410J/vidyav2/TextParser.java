@@ -51,7 +51,8 @@ public class TextParser implements PhoneBillParser<PhoneBill> {
                 }
                 out.write(this.customerName);   //print customer name here
                 out.close();
-            } else {
+            }
+            else {
                 File f = null;
                 File f1 = null;
                 String v;
@@ -60,7 +61,7 @@ public class TextParser implements PhoneBillParser<PhoneBill> {
                 f1 = f.getParentFile();
                 v = f1.getAbsolutePath();
                 //check if directory exists or not
-                if (f1.exists()) {
+                /*if (f1.exists()) {
                     try {
                         out = new PrintWriter(f);
                     } catch (FileNotFoundException ex) {
@@ -82,7 +83,7 @@ public class TextParser implements PhoneBillParser<PhoneBill> {
                         System.out.println("Could not create directory");
                         System.exit(1);
                     }
-                }
+                }*/
             }
         }
         try {
