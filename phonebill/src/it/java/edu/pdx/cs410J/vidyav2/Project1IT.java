@@ -44,7 +44,7 @@ class Project1IT extends InvokeMainTestCase {
 
     @Test
     public void printOptionPrintsOnlyNewlyCreatedPhoneCallTest() {
-        MainMethodResult result = invokeMain("-textFile", "phonebill.txt", "-print", "Bhaskar", "123-456-7890", "245-566-7863", "07/07/2022", "12:43", "07/07/2022", "12:45" );
+        MainMethodResult result = invokeMain("-textFile", "newPhonebill.txt", "-print", "Bhaskar", "123-456-7890", "245-566-7863", "07/07/2022", "12:43", "07/07/2022", "12:45" );
         assertThat(result.getTextWrittenToStandardOut(), containsString("Phone call from "));
     }
 }
