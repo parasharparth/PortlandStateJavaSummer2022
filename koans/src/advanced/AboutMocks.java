@@ -17,7 +17,8 @@ public class AboutMocks {
     }
 
     static class ClassUnderTest {
-        Collaborator c;
+        Collaborator c ;
+
 
         public ClassUnderTest() {
             // default is to pass a broken Collaborator, test should pass one
@@ -35,12 +36,18 @@ public class AboutMocks {
         }
     }
 
+    static class NonExplosiveCollaborator implements Collaborator {
+        public void doBusinessStuff() {  }
+    }
+
     @Koan
     public void simpleAnonymousMock() {
         // HINT: pass a safe Collaborator implementation to constructor
         // new ClassUnderTest(new Collaborator(){... it should not be the
         // objective of this test to test that collaborator, so replace it
-        new ClassUnderTest().doSomething();
+//        new ClassUnderTest().doSomething();
+        Collaborator nonExplosiveCollaborator = new NonExplosiveCollaborator();
+        new ClassUnderTest( nonExplosiveCollaborator ).doSomething();
     }
 
 }
