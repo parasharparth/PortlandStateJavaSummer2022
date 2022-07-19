@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--suppress MavenModelInspection -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
@@ -7,7 +6,7 @@
     <groupId>io.github.davidwhitlock.cs410J</groupId>
     <version>2022.1.0</version>
   </parent>
-  <groupId>edu.pdx.cs410J.whitlock</groupId>
+  <groupId>edu.pdx.cs410J.vidyav2</groupId>
   <artifactId>koans</artifactId>
   <packaging>jar</packaging>
   <version>2022.0.0</version>
