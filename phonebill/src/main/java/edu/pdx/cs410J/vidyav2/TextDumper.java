@@ -23,17 +23,23 @@ public class TextDumper implements PhoneBillDumper<PhoneBill> {
         //FileReader fr = new FileReader(f);
         try {
             PrintWriter out = new PrintWriter(filename);
-           out.write("");
+            out.write("");
             out.write(bill.getCustomer());
 
-            Collections.sort(phonecallList);
+            //Collections.sort(phonecallList);
 
             for (int i = 0; i < phonecallList.size(); i++) {
                 calls[i] = phonecallList.get(i).toString();
                 out.write("\n");
                 out.write(calls[i]);
-                out.close();
+                out.flush();
+                //out.close();
+
             }
+//            for (int i = 0; i < phonecallList.size(); i++) {
+//                out.flush();
+//                out.write(calls[i]);
+//            }
         }
         catch(Exception e)
         {

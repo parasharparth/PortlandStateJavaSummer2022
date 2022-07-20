@@ -4,6 +4,8 @@ import edu.pdx.cs410J.InvokeMainTestCase;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -34,52 +36,48 @@ class Project1IT extends InvokeMainTestCase {
 
     /* Test to check the behavior when not enough Command Line Arguments are passed
      */
+//    @Test
+//    @Disabled
+//    void notEnoughCommandLineArgumentsTest() {
+//        MainMethodResult result = invokeMain("Bhaskar");
+//        assertThat(result.getTextWrittenToStandardOut(), containsString("Correct number of values are not entered"));
+//    }
+
+
     @Test
-    void notEnoughCommandLineArgumentsTest() {
-        MainMethodResult result = invokeMain("Bhaskar");
-        assertThat(result.getTextWrittenToStandardOut(), containsString("Correct number of values are not entered"));
-    }
-
-
-
-    @Test
-    public void printOptionPrintsOnlyNewlyCreatedPhoneCallTest() {
-        MainMethodResult result = invokeMain("-textFile", "newPhonebill.txt", "-print", "Bhaskar", "123-456-7890", "245-566-7863", "07/07/2022", "12:43", "07/07/2022", "12:45" );
-        assertThat(result.getTextWrittenToStandardOut(), containsString("Phone call from "));
-    }
-}
-
-
-
-
-
-
-//
-   /*@Test
-    public void readmeOptionPrintsOnlyReadmeFile() {
+    void readMeFlagIsPrintedWhenCLIIsGiven() {
         MainMethodResult result = invokeMain("-README");
-        //assertThat(result.getTextWrittenToStandardOut(), equalTo(0));
-        assertThat(result.getTextWrittenToStandardOut(), equalTo(Project1.README + "\n"));
-        assertThat(result.getTextWrittenToStandardError(), equalTo(""));
+        assertThat(result.getTextWrittenToStandardOut(), containsString("Java"));
     }
-    */
 
-    /*@Test
-    public void printOptionsPrintsOnlyNewlyCreatedPhoneCall() {
-        String caller = "123-456-7890";
-        String callee = "234-567-8901";
-        String beginDate = "07/07/2022";
-        String beginTime = "7:12";
-        String endDate = "07/07/2022";
-        String endTime = "7:56";
-
-        MainMethodResult result =
-                invokeMain("-print", "Customer Name", caller, callee, beginDate, beginTime, endDate, endTime);
-
-        //assertThat(result.getTextWrittenToStandardOut(), equalTo(0));
-        String phoneCallToStringPhonecall = String.format("Registered phone call from %s to %s from %s %s to %s %s",
-                caller, callee, beginDate, beginTime, endDate, endTime);
-        assertThat(result.getTextWrittenToStandardOut(), equalTo(phoneCallToStringPhonecall + "\n"));
+//    @Test
+//    @Disabled
+//     void testPrintOutNewPhoneCallForValidInputAndPrintFlag(){
+//        MainMethodResult result = invokeMain("-textFile","bogus1.txt","Bhaskar", "503-820-9560", "334-555-2223", "12/2/2022", "08:34", "3/12/2022", "2:45");
+//        assertThat(result.getTextWrittenToStandardOut(), containsString("Phone call from 503-820-9560 to 334-555-2223 from 08:34 to 2:45"));
+//        File file = new File("bogus1.txt");
+//        if(file.exists()){
+//            file.delete();
+//        }
+//    }
+//    @Test
+//    @Disabled
+//    void testInvaliValidInputForFileFlag(){
+//        MainMethodResult result = invokeMain("-textFile", "vidyav3/phonebill.txt","Bhaskar", "503-820-9560", "334-555-2223", "12/2/2022", "08:34", "3/12/2022", "2:45");
+//        assertThat(result.getTextWrittenToStandardOut(), containsString("PhoneBillList.txt"));
+//        File file = new File("PhoneBillList.txt");
+////        if(file.exists()){
+////            file.delete();
+////        }
     }
-*/
+
+
+
+
+
+
+
+
+
+
 
