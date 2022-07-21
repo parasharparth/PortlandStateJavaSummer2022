@@ -107,9 +107,12 @@ public class TextParser implements PhoneBillParser<PhoneBill> {
         } catch (FileNotFoundException e) {
             System.out.println("File is not present.");
         }
+
         ArrayList<String> lines = new ArrayList<String>();
+
         while (sc.hasNextLine()) {
             lines.add(sc.nextLine());
+            //System.out.println(""+ lines);
         }
         PhoneBill bill = new PhoneBill(this.customerName);
         if(lines.size() == 0)
@@ -119,6 +122,14 @@ public class TextParser implements PhoneBillParser<PhoneBill> {
         }
         else {
             bill.setCustomer(lines.get(0));
+            String[] first_name = lines.get(0).split(" ");
+            //System.out.println("txt is" + first_name[0] + this.customerName);
+            if(!first_name[0].equals(this.customerName))
+            {
+                System.err.println("Customer name in command line and file don't match or there is bogus data");
+                System.exit(1);
+                System.out.println("txt is" + first_name[0]);
+            }
         }
 
         for(int i=1;i<lines.size(); i++)
@@ -133,11 +144,11 @@ public class TextParser implements PhoneBillParser<PhoneBill> {
             call.setCallerName(words[2]);
             //call.setCalleeName(words[2]);
             call.setCallerNumber(words[3]);
-            call.setCalleeNumber(words[4]);
+            call.setCalleeNumber(words[5]);
             call.setPhoneCallBeginDate(words[5]);
-            call.setPhoneCallBeginTime(words[6]);
+            call.setPhoneCallBeginTime(words[7]);
             call.setPhoneCallEndDate(words[7]);
-            call.setPhoneCallEndTime(words[8]);
+            call.setPhoneCallEndTime(words[9]);
             bill.addPhoneCall(call);
         }
         return bill;
