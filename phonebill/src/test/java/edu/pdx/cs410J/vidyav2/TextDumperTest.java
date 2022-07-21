@@ -24,10 +24,10 @@ public class TextDumperTest {
     sw.write(bill.getCustomer());
     String text = sw.toString();
     assertThat(text, containsString(customer));
-    File file = new File("vidyav2/testDumper.txt");
-    if (file.exists()) {
-      file.delete();
-    }
+    File file = new File("vidyav3/testDumper.txt");
+//    if (file.exists()) {
+//      file.delete();
+//    }
   }
 }
 

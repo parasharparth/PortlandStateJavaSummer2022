@@ -50,15 +50,15 @@ class Project1IT extends InvokeMainTestCase {
         assertThat(result.getTextWrittenToStandardOut(), containsString("Java"));
     }
 
-//    @Test
-//    @Disabled
-//     void testPrintOutNewPhoneCallForValidInputAndPrintFlag(){
-//        MainMethodResult result = invokeMain("-textFile","bogus1.txt","Bhaskar", "503-820-9560", "334-555-2223", "12/2/2022", "08:34", "3/12/2022", "2:45");
-//        assertThat(result.getTextWrittenToStandardOut(), containsString("Phone call from 503-820-9560 to 334-555-2223 from 08:34 to 2:45"));
-//        File file = new File("bogus1.txt");
-//        if(file.exists()){
-//            file.delete();
-//        }
+    @Test
+    @Disabled
+     void testPrintOutNewPhoneCallForValidInputAndPrintFlag(){
+        MainMethodResult result = invokeMain("-textFile","bogus1.txt","Bhaskar", "503-820-9560", "334-555-2223", "12/2/2022", "08:34", "3/12/2022", "2:45");
+        assertThat(result.getTextWrittenToStandardOut(), containsString("Phone call from 503-820-9560 to 334-555-2223 from 08:34 to 2:45"));
+        File file = new File("bogus1.txt");
+        if(file.exists()){
+            file.delete();
+        }
 //    }
 //    @Test
 //    @Disabled
@@ -69,7 +69,7 @@ class Project1IT extends InvokeMainTestCase {
 ////        if(file.exists()){
 ////            file.delete();
 ////        }
-    }
+    }}
 
 
 
