@@ -11,7 +11,6 @@ import java.util.regex.Pattern;
  */
 public class Project2 {
     public static void main(String[] args) throws Exception {
-        ArrayList<String> commandLineArgs = new ArrayList<>();
         int totalCommandLineArgumentsConsidered = args.length;
         if (totalCommandLineArgumentsConsidered == 0) {
             System.out.println("No arguments passed at the command line.");
@@ -35,6 +34,8 @@ public class Project2 {
                 break;
             }
         }
+
+        ArrayList<String> commandLineArgs = new ArrayList<>(Arrays.asList(args));
 
         //Case when the number of arguments are less than 9 (bare minimum arguments)
         if(commandLineArgs.size() < 9) {
@@ -171,13 +172,13 @@ public class Project2 {
             if (!commandLineArgs.get(2).equals("-print")) {
                 System.out.println("There is an extraneous argument on the command line.");
             }
-            String callerName = commandLineArgs.get(4);
-            String noOfCaller = commandLineArgs.get(5);
-            String noOfCallee = commandLineArgs.get(6);
-            String dateOfPhoneCallBegin = commandLineArgs.get(7);
-            String timeOfPhoneCallBegin = commandLineArgs.get(8);
-            String dateOfPhoneCallEnd = commandLineArgs.get(9);
-            String timeOfPhoneCallEnd = commandLineArgs.get(10);
+            String callerName = commandLineArgs.get(3);
+            String noOfCaller = commandLineArgs.get(4);
+            String noOfCallee = commandLineArgs.get(5);
+            String dateOfPhoneCallBegin = commandLineArgs.get(6);
+            String timeOfPhoneCallBegin = commandLineArgs.get(7);
+            String dateOfPhoneCallEnd = commandLineArgs.get(8);
+            String timeOfPhoneCallEnd = commandLineArgs.get(9);
 
             boolean isCallerNumberValid = checkForValidPhoneNumber(commandLineArgs.get(4));
             if (!isCallerNumberValid) {
