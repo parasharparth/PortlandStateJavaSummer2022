@@ -89,6 +89,14 @@ public class PhoneCall extends AbstractPhoneCall {
   public void setPhoneCallEndTime(String phoneCallEndTime) {
     this.phoneCallEndTime = phoneCallEndTime;
   }
+
+
+//  public void setBeginTimeString(String phoneCallBeginDate, String phoneCallBeginTime) {
+//    this.phoneCallBeginDate = phoneCallBeginDate;
+//    this.phoneCallBeginTime = phoneCallBeginTime;
+//  }
+
+
 }
 
 

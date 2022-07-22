@@ -69,7 +69,7 @@ class Project1Test extends InvokeMainTestCase {
 
   @Test
   void requiredArgumentsValidation() {
-    String[] argumentsArray = {"-textFile","vidyav2/vidyav2.txt","-print", "Bhaskar", "123-456-7890", "245-566-7863", "07/07/2022", "12:43", "07/07/2022", "12:45"};
+    String[] argumentsArray = {"Bhaskar", "123-456-7890", "245-566-7863", "07/07/2022", "12:43", "07/07/2022", "12:45"};
     ArrayList<String> arrayListOfArgs = new ArrayList<>();
 
     for (String s : argumentsArray) {
@@ -79,6 +79,33 @@ class Project1Test extends InvokeMainTestCase {
     assertThat(theseArgsShouldBeValid, equalTo(true));
   }
 
+  @Test
+  void requiredArgumentsInvalidation() {
+    String[] argumentsArray = {"Bhaskar", "12-456-7890", "245-566-7863", "07/07/2022", "12:4XX", "07/07/2022", "12:45"};
+    ArrayList<String> arrayListOfArgs = new ArrayList<>();
+
+    for (String s : argumentsArray) {
+      arrayListOfArgs.add(s);
+    }
+    boolean theseArgsShouldBeInvalid = Project2.checkValidityOfRequiredArgs(arrayListOfArgs);
+    assertThat(theseArgsShouldBeInvalid, notNullValue());
+  }
+
+  @Test
+  void fileNotFoundInDirectory() {
+    String[] argumentsArray = {"","abc.txt.txt","Bhaskar", "12-456-7890", "245-566-7863", "07/07/2022", "12:4XX", "07/07/2022", "12:45"};
+    ArrayList<String> arrayListOfArgs = new ArrayList<>();
+
+    for (String s : argumentsArray) {
+      arrayListOfArgs.add(s);
+    }
+    boolean theseArgsShouldBeInvalid = Project2.checkValidityOfRequiredArgs(arrayListOfArgs);
+    assertThat(theseArgsShouldBeInvalid, notNullValue());
+  }
+
 
 }
+
+
+
 

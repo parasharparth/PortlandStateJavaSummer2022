@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
  */
 public class Project2 {
     public static void main(String[] args) throws Exception {
+
         int totalCommandLineArgumentsConsidered = args.length;
         if (totalCommandLineArgumentsConsidered == 0) {
             System.out.println("No arguments passed at the command line.");
@@ -65,10 +66,10 @@ public class Project2 {
                 //call.setCalleeName("commandLineArgs.get(4)");
                 call1.setCallerNumber(commandLineArgs.get(3));
                 call1.setCalleeNumber(commandLineArgs.get(4));
-                call1.setPhoneCallBeginDate(commandLineArgs.get(5));
-                call1.setPhoneCallBeginTime(commandLineArgs.get(6));
+                call1.setPhoneCallBeginDate(commandLineArgs.get(5) + commandLineArgs.get(6));
+                call1.setPhoneCallBeginTime(commandLineArgs.get(5) + " " + commandLineArgs.get(6));
                 call1.setPhoneCallEndDate(commandLineArgs.get(7));
-                call1.setPhoneCallEndTime(commandLineArgs.get(8));
+                call1.setPhoneCallEndTime(commandLineArgs.get(7) + " " + commandLineArgs.get(8));
                 boolean allRequiredArgumentsAreValid = checkValidityOfRequiredArgs(commandLineArgs);
                     if (!allRequiredArgumentsAreValid) {
                         System.exit(1);
@@ -108,9 +109,9 @@ public class Project2 {
                 call.setCallerNumber(commandLineArgs.get(4));
                 call.setCalleeNumber(commandLineArgs.get(5));
                 call.setPhoneCallBeginDate(commandLineArgs.get(6));
-                call.setPhoneCallBeginTime(commandLineArgs.get(7));
+                call.setPhoneCallBeginTime(commandLineArgs.get(6) + " " + commandLineArgs.get(7));
                 call.setPhoneCallEndDate(commandLineArgs.get(8));
-                call.setPhoneCallEndTime(commandLineArgs.get(9));
+                call.setPhoneCallEndTime(commandLineArgs.get(8) + " " + commandLineArgs.get(9));
                 boolean allRequiredArgumentsAreValid = checkValidityOfRequiredArgs(commandLineArgs);
                 if (!allRequiredArgumentsAreValid) {
                     return;

@@ -37,9 +37,9 @@ public class TextParser implements PhoneBillParser<PhoneBill> {
     @Override
     public PhoneBill parse() throws ParserException {
         Scanner sc = null;
-        String [] directory_name;
-        String act_file_name;
-        String path_name;
+//        String [] directory_name;
+//        String act_file_name;
+//        String path_name;
         try {
             File input = new File(this.filename);
             BufferedReader br = new BufferedReader(new FileReader((input)));
@@ -54,8 +54,8 @@ public class TextParser implements PhoneBillParser<PhoneBill> {
                 } catch (FileNotFoundException ex) {
                     System.out.println("File is not present.");
                 }
-                out.write(this.customerName);   //print customer name here
-                System.out.println("I was here");
+                //out.write(this.customerName);   //print customer name here
+                //System.out.println("I was here");
                 out.write(this.customerName);
                 out.flush();
                 out.close();
@@ -82,9 +82,9 @@ public class TextParser implements PhoneBillParser<PhoneBill> {
                     out.close();
                 } else {
                     File folder = new File(v);
-                    directory_name = filename.split("/");
-                    path_name = directory_name[0];
-                    act_file_name = directory_name[1];
+//                    directory_name = filename.split("/");
+//                    path_name = directory_name[0];
+//                    act_file_name = directory_name[1];
                     if (folder.mkdir()) {
                         try {
                             out = new PrintWriter(this.filename);
@@ -93,7 +93,7 @@ public class TextParser implements PhoneBillParser<PhoneBill> {
                         }
                         out.write(this.customerName);
                         out.flush();
-                        System.out.println("debug1");
+                        //System.out.println("debug1");
                         out.close();
                     } else {
                         System.out.println("Could not create directory");
@@ -135,22 +135,31 @@ public class TextParser implements PhoneBillParser<PhoneBill> {
         for(int i=1;i<lines.size(); i++)
         {
             String[] words = lines.get(i).split(" ");
-            if(words.length!=10)
-            {
-                System.err.println("The text File is not in the formatted properly");
-                System.exit(0);
-            }
+//            if(words.length!=12)
+//            {
+//                System.err.println("The text File is not in the formatted properly");
+//                System.exit(0);
+//            }
             PhoneCall call = new PhoneCall();
             call.setCallerName(words[2]);
             //call.setCalleeName(words[2]);
             call.setCallerNumber(words[3]);
             call.setCalleeNumber(words[5]);
-            call.setPhoneCallBeginDate(words[5]);
-            call.setPhoneCallBeginTime(words[7]);
-            call.setPhoneCallEndDate(words[7]);
-            call.setPhoneCallEndTime(words[9]);
+            call.setPhoneCallBeginDate(words[7]);
+            if(!Project2.checkForValidDate(words[7])){
+                System.out.println("This text file cannot be parsed.");
+                System.exit(0);
+            }
+            call.setPhoneCallBeginTime(words[7] + " " + words[8]);
+            call.setPhoneCallEndDate(words[10]);
+            if(!Project2.checkForValidDate(words[10])){
+                System.out.println("This text file cannot be parsed.");
+                System.exit(0);
+            }
+            call.setPhoneCallEndTime(words[10] + " " + words[11]);
             bill.addPhoneCall(call);
         }
+
         return bill;
     }
 
