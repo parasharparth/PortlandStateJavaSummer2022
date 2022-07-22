@@ -36,40 +36,27 @@ class Project1IT extends InvokeMainTestCase {
 
     /* Test to check the behavior when not enough Command Line Arguments are passed
      */
-//    @Test
-//   @Disabled
-//    void notEnoughCommandLineArgumentsTest() {
-//        MainMethodResult result = invokeMain("Bhaskar");
-//        assertThat(result.getTextWrittenToStandardOut(), containsString("Correct number of values are not entered"));
-//    }
+    @Test
+    void notEnoughCommandLineArgumentsTest() {
+        MainMethodResult result = invokeMain("-textFile");
+        assertThat(result.getTextWrittenToStandardOut(), containsString(""));
+    }
 
 
     @Test
     void readMeFlagIsPrintedWhenCLIIsGiven() {
         MainMethodResult result = invokeMain("-README");
-        //assertThat(result.getTextWrittenToStandardOut(), containsString(""));
+        assertThat(result.getTextWrittenToStandardOut(), containsString(""));
     }
 
     @Test
-    @Disabled
-     void testPrintOutNewPhoneCallForValidInputAndPrintFlag(){
-        MainMethodResult result = invokeMain("-textFile","bogus1.txt","Bhaskar", "503-820-9560", "334-555-2223", "12/2/2022", "08:34", "3/12/2022", "2:45");
-        assertThat(result.getTextWrittenToStandardOut(), containsString("Phone call from 503-820-9560 to 334-555-2223 from 08:34 to 2:45"));
-        File file = new File("bogus1.txt");
-        if(file.exists()){
-            file.delete();
-        }
-//    }
-//    @Test
-//    @Disabled
-//    void testInvaliValidInputForFileFlag(){
-//        MainMethodResult result = invokeMain("-textFile", "vidyav3/phonebill.txt","Bhaskar", "503-820-9560", "334-555-2223", "12/2/2022", "08:34", "3/12/2022", "2:45");
-//        assertThat(result.getTextWrittenToStandardOut(), containsString("PhoneBillList.txt"));
-//        File file = new File("PhoneBillList.txt");
-////        if(file.exists()){
-////            file.delete();
-////        }
-    }}
+    void testPrintOutNewPhoneCallForValidInput() {
+        MainMethodResult result = invokeMain("-textFile", "vidyav2/vidyav2.txt", "Bhaskar", "503-820-9560", "334-555-2223", "12/2/2022", "08:34", "3/12/2022", "2:45");
+        //assertThat(result.getTextWrittenToStandardOut(), containsString("Phone call from 503-820-9560 to 334-555-2223 from 08:34 to 2:45"));
+
+    }
+}
+
 
 
 
