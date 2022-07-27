@@ -37,9 +37,6 @@ public class TextParser implements PhoneBillParser<PhoneBill> {
     @Override
     public PhoneBill parse() throws ParserException {
         Scanner sc = null;
-//        String [] directory_name;
-//        String act_file_name;
-//        String path_name;
         try {
             File input = new File(this.filename);
             BufferedReader br = new BufferedReader(new FileReader((input)));
@@ -54,8 +51,8 @@ public class TextParser implements PhoneBillParser<PhoneBill> {
                 } catch (FileNotFoundException ex) {
                     System.out.println("File is not present.");
                 }
-                //out.write(this.customerName);   //print customer name here
-                //System.out.println("I was here");
+               // out.write(this.customerName);   //print customer name here
+//                System.out.println("I was here");
                 out.write(this.customerName);
                 out.flush();
                 out.close();
@@ -70,10 +67,10 @@ public class TextParser implements PhoneBillParser<PhoneBill> {
                 v = f1.getAbsolutePath();
                 //check if directory exists or not
                 if (f1.exists()) {
-                    //System.out.println("debug 2");
+                    System.out.println("debug 2");
                     try {
                         out = new PrintWriter(f);
-                        //System.out.println("debug 3");
+                        System.out.println("debug 3");
                     } catch (FileNotFoundException ex) {
                         ex.printStackTrace();
                     }
@@ -82,9 +79,6 @@ public class TextParser implements PhoneBillParser<PhoneBill> {
                     out.close();
                 } else {
                     File folder = new File(v);
-//                    directory_name = filename.split("/");
-//                    path_name = directory_name[0];
-//                    act_file_name = directory_name[1];
                     if (folder.mkdir()) {
                         try {
                             out = new PrintWriter(this.filename);
@@ -122,18 +116,17 @@ public class TextParser implements PhoneBillParser<PhoneBill> {
         }
         else {
             bill.setCustomer(lines.get(0));
-            String[] first_name = lines.get(0).split(" ");
+            String[] first_name = lines.get(0).split("\n");
             //System.out.println("txt is" + first_name[0] + this.customerName);
             if(!first_name[0].equals(this.customerName))
             {
-                System.err.println("Customer name in command line and file don't match or there is bogus data");
+                System.err.println("Customer name in command line and file don't match or there is bogus data.");
                 System.exit(1);
                 System.out.println("txt is" + first_name[0]);
             }
         }
-
-        for(int i=1;i<lines.size(); i++)
-        {
+        for(int i=1;i<lines.size(); i++) {
+            //System.out.println("I was here");
             String[] words = lines.get(i).split(" ");
 //            if(words.length!=12)
 //            {
@@ -142,21 +135,20 @@ public class TextParser implements PhoneBillParser<PhoneBill> {
 //            }
             PhoneCall call = new PhoneCall();
             call.setCallerName(words[2]);
-            //call.setCalleeName(words[2]);
             call.setCallerNumber(words[3]);
             call.setCalleeNumber(words[5]);
             call.setPhoneCallBeginDate(words[7]);
-            if(!Project2.checkForValidDate(words[7])){
-                System.out.println("This text file cannot be parsed.");
-                System.exit(0);
-            }
-            call.setPhoneCallBeginTime(words[7] + " " + words[8]);
-            call.setPhoneCallEndDate(words[10]);
-            if(!Project2.checkForValidDate(words[10])){
-                System.out.println("This text file cannot be parsed.");
-                System.exit(0);
-            }
-            call.setPhoneCallEndTime(words[10] + " " + words[11]);
+            call.setPhoneCallBeginTime(words[7],words[8],words[9]);
+//            if(!Project2.checkForValidDate(words[5])){
+//                System.out.println("This text file cannot be parsed.");
+//                System.exit(0);
+//            }
+            call.setPhoneCallEndDate(words[11]);
+            call.setPhoneCallEndTime(words[11],words[12],words[13]);
+//            if(!Project2.checkForValidDate(words[8])){
+//                System.out.println("This text file cannot be parsed.");
+//                System.exit(0);
+//            }
             bill.addPhoneCall(call);
         }
 

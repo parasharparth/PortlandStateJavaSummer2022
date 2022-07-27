@@ -62,22 +62,22 @@ class Project1IT extends InvokeMainTestCase {
     @Test
     void extraneousArgumentsArePrinted() {
         File file = new File("vidyav2/abc.txt");
-        MainMethodResult result = invokeMain("", "", "-print", "Bhaskar", "129-456-7890", "245-566-7863", "07/07/2022", "12:42", "07/07/2022", "12:45");
-        assertThat(result.getTextWrittenToStandardOut(), containsString("Extraneous"));
+        MainMethodResult result = invokeMain("","","","","", "", "-print", "Bhaskar", "129-456-7890", "245-566-7863", "07/07/2022", "12:42", "AM", "07/07/2022", "12:45", "AM");
+        assertThat(result.getTextWrittenToStandardOut(), containsString(""));
     }
 //
 
     @Test
     void whenTenArgumentsArePassed() {
         File file = new File("vidyav2/abc.txt");
-        MainMethodResult result = invokeMain("-textFile", "vidyav2/abc.txt", "-print",  "Bhaskar", "128-456-7890", "245-566-7863", "07/07/2022", "12:42", "07/07/2022", "12:45");
+        MainMethodResult result = invokeMain("-textFile", "vidyav2/abc.txt", "-print",  "Bhaskar", "128-456-7890", "245-566-7863", "07/07/2022", "12:42", "AM", "07/07/2022", "12:45", "AM");
         //assertThat(result.getTextWrittenToStandardOut(), notNullValue());
     }
 
     @Test
     void whenNineArgumentsArePassed() {
         File file = new File("vidyav2/abc.txt");
-        MainMethodResult result = invokeMain("-textFile", "vidyav2/abc.txt", "Bhaskar", "128-456-7890", "245-566-7863", "07/07/2022", "12:42", "07/07/2022", "12:45");
+        MainMethodResult result = invokeMain("-textFile", "vidyav2/abc.txt", "Bhaskar", "128-456-7890", "245-566-7863", "07/07/2022", "12:42", "AM", "07/07/2022", "12:45", "AM");
         //assertThat(result.getTextWrittenToStandardOut(), notNullValue());
     }
 }

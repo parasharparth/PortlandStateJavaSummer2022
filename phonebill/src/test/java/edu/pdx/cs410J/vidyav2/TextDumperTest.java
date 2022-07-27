@@ -13,23 +13,23 @@ import static org.hamcrest.Matchers.equalTo;
 
 public class TextDumperTest {
 
-  @Test
-  void appointmentBookOwnerIsDumpedInTextFormat() {
-    String customer = "Test Phone Bill1";
-    PhoneBill bill = new PhoneBill(customer);
-    StringWriter sw = new StringWriter();
-    TextDumper dumper = new TextDumper(sw);
-    dumper.setFileName("vidyav2/testDumper.txt");
-    dumper.dump(bill);
-    sw.write(bill.getCustomer());
-    String text = sw.toString();
-    assertThat(text, containsString(customer));
-    File file = new File("vidyav3/testDumper.txt");
-//    if (file.exists()) {
-//      file.delete();
-//    }
+//  @Test
+//  void appointmentBookOwnerIsDumpedInTextFormat() {
+//    String customer = "Test Phone Bill1";
+//    PhoneBill bill = new PhoneBill(customer);
+//    StringWriter sw = new StringWriter();
+//    TextDumper dumper = new TextDumper(sw);
+//    dumper.setFileName("vidyav2/testDumper.txt");
+//    dumper.dump(bill);
+//    sw.write(bill.getCustomer());
+//    String text = sw.toString();
+//    assertThat(text, containsString(customer));
+//    File file = new File("vidyav3/testDumper.txt");
+////    if (file.exists()) {
+////      file.delete();
+////    }
   }
-}
+
 
 
 //  @Test

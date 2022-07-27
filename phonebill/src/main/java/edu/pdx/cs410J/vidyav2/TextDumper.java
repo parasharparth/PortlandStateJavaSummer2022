@@ -16,7 +16,7 @@ public class TextDumper implements PhoneBillDumper<PhoneBill> {
     }
 
     @Override
-    public void dump(PhoneBill bill) {
+    public void dump(PhoneBill bill) throws  IOException{
         ArrayList phonecallList = (ArrayList) bill.getPhoneCalls();
         String[] calls = new String[phonecallList.size()];
         File f = new File(filename);
@@ -26,7 +26,7 @@ public class TextDumper implements PhoneBillDumper<PhoneBill> {
             out.write("");
             out.write(bill.getCustomer());
 
-            //Collections.sort(phonecallList);
+            Collections.sort(phonecallList);
             ArrayList<String> lines = new ArrayList<String>();
             for (int i = 0; i < phonecallList.size(); i++) {
                 calls[i] = phonecallList.get(i).toString();
@@ -44,6 +44,7 @@ public class TextDumper implements PhoneBillDumper<PhoneBill> {
         }
         catch(Exception e)
         {
+            e.printStackTrace();
             System.out.println(e.getMessage());
         }
     }
