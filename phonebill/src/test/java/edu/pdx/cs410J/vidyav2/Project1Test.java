@@ -62,7 +62,7 @@ class Project1Test extends InvokeMainTestCase {
   @Test
   void correctDateValidation() {
     boolean thisDateShouldBeValid = Project2.checkForValidDate("07/07/2022");
-    boolean thisDateShouldBeInvalid = Project2.checkForValidDate("07/07/20ZZ");
+    boolean thisDateShouldBeInvalid = Project2.checkForValidDate("077/07/20ZZ");
 //    assertThat(thisDateShouldBeValid, equalTo(true));
 //    assertThat(thisDateShouldBeInvalid, equalTo(false));
   }
@@ -102,6 +102,7 @@ class Project1Test extends InvokeMainTestCase {
     boolean theseArgsShouldBeInvalid = Project2.checkValidityOfRequiredArgs(arrayListOfArgs);
     assertThat(theseArgsShouldBeInvalid, notNullValue());
   }
+
 }
 
 

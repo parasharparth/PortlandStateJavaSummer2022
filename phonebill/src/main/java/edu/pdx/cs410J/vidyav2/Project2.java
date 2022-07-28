@@ -1,10 +1,13 @@
 package edu.pdx.cs410J.vidyav2;
-import edu.pdx.cs410J.ParserException;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.regex.Pattern;
 
+/**
+ * The main class for the CS410J phonebill Project
+ */
 public class Project2 {
     public static void main(String[] args) throws Exception {
         if (args.length == 0) {
@@ -17,11 +20,11 @@ public class Project2 {
             System.out.println(FileContentReadMe);
             return;}
 
-        boolean print = false;
-        for (String commandLineArg : args) {
-            if (commandLineArg.contains("-print")) {
-                print = true;
-                break;}}
+//        boolean print = false;
+//        for (String commandLineArg : args) {
+//            if (commandLineArg.contains("-print")) {
+//                print = true;
+//                break;}}
 
         ArrayList<String> commandLineArgs = new ArrayList<>(Arrays.asList(args));
 
@@ -141,23 +144,17 @@ public class Project2 {
                 call.setPhoneCallEndDate(commandLineArgs.get(8));
                 call.setPhoneCallEndTime(commandLineArgs.get(8), commandLineArgs.get(9), commandLineArgs.get(10));
                 boolean allRequiredArgumentsAreValid = checkValidityOfRequiredArgs(commandLineArgs);
-                if (!allRequiredArgumentsAreValid) {
-                    return;
-                }
+                if (!allRequiredArgumentsAreValid) {}
                 bill.addPhoneCall(call);
                 dumper.dump(bill);
-
-                if (print) {
-                    System.out.println(call);
-                }
-            } else if ((commandLineArgs.get(0).contains("-pretty") && commandLineArgs.get(1).contains(".txt"))) {
+            } /*else if ((commandLineArgs.get(0).contains("-pretty") && commandLineArgs.get(1).contains(".txt"))) {
                 int index = 0;
                 for (int i = 0; true; i++) {
                     if (commandLineArgs.get(i).contains(".txt")) {
                         index = i + 2;}break;}
                 String fileName = commandLineArgs.get(1);
                 TextDumper dumper = new TextDumper();
-                TextParser parser = new TextParser(fileName, commandLineArgs.get(2));
+                TextParser parser = new TextParser(fileName, commandLineArgs.get(index));
                 parser.setFilename(fileName);
                 dumper.setFileName(fileName);
                 System.out.println("CustomerName: - " + commandLineArgs.get(2));
@@ -185,7 +182,8 @@ public class Project2 {
                 if (print) {
                     System.out.println(call);
                 }
-            } else if ((commandLineArgs.get(1).contains("-"))) {
+            } */
+            else if ((commandLineArgs.get(1).contains("-"))) {
                 int index = 0;
                 for (int i = 0; true; i++) {
                     if (commandLineArgs.get(i).contains("-pretty")) {
@@ -195,11 +193,7 @@ public class Project2 {
                 }
                 String fileName = commandLineArgs.get(index);
                 TextDumper dumper = new TextDumper();
-                //TextParser parser = new TextParser(fileName, commandLineArgs.get(2));
-                //parser.setFilename(fileName);
                 dumper.setFileName(fileName);
-                //parser.setCustomerName(commandLineArgs.get(2));
-                //PhoneBill bill = parser.parse();
                 PhoneBill bill = new PhoneBill(commandLineArgs.get(2));
                 PhoneCall call = new PhoneCall();
                 call.setCallerName(commandLineArgs.get(2));
@@ -210,9 +204,8 @@ public class Project2 {
                 call.setPhoneCallEndDate(commandLineArgs.get(8));
                 call.setPhoneCallEndTime(commandLineArgs.get(8), commandLineArgs.get(9), commandLineArgs.get(10));
                 boolean allRequiredArgumentsAreValid = checkValidityOfRequiredArgs(commandLineArgs);
-                if (!allRequiredArgumentsAreValid) {return;}
+                if (!allRequiredArgumentsAreValid) {}
                 bill.addPhoneCall(call);
-                //dumper.dump(bill);
                 PrettyPrinter printer = new PrettyPrinter();
                 System.out.println("\nThis is a pretty file, printing the following Phone details:\n" + printer.getpretty(call, bill.getCustomer()));
             }
@@ -260,14 +253,10 @@ public class Project2 {
                 printer.setCustomerName(commandLineArgs.get(3));
                 printer.getpretty(call, commandLineArgs.get(4));
                 printer.dump(bill);
-                if (print) {
-                    System.out.println(call);
-                }
             } else if ((commandLineArgs.get(0).contains("-pretty") && commandLineArgs.get(1).contains(".txt"))) {
-                int index = 0;
                 for (int i = 0; true; i++) {
                     if (commandLineArgs.get(i).contains(".txt")) {
-                        index = i + 2;
+                        int index = i + 2;
                     }
                     break;
                 }
@@ -289,7 +278,6 @@ public class Project2 {
                 call.setPhoneCallEndTime(commandLineArgs.get(8), commandLineArgs.get(9), commandLineArgs.get(10));
                 boolean allRequiredArgumentsAreValid = checkValidityOfRequiredArgs(commandLineArgs);
                 if (!allRequiredArgumentsAreValid) {
-                    return;
                 }
                 bill.addPhoneCall(call);
                 dumper.dump(bill);
@@ -298,9 +286,6 @@ public class Project2 {
                 printer.setCustomerName(commandLineArgs.get(2));
                 printer.getpretty(call, commandLineArgs.get(2));
                 printer.dump(bill);
-                if (print) {
-                    System.out.println(call);
-                }
             }
         }
         else if (commandLineArgs.size() == 13) {
@@ -315,7 +300,7 @@ public class Project2 {
                 }
                 String fileName = commandLineArgs.get(1);
                 TextDumper dumper = new TextDumper();
-                TextParser parser = new TextParser(fileName, commandLineArgs.get(index));
+                TextParser parser = new TextParser(fileName, commandLineArgs.get(2));
                 System.out.println("CustomerName: - " + commandLineArgs.get(4));
                 parser.setFilename(fileName);
                 dumper.setFileName(fileName);
@@ -331,22 +316,19 @@ public class Project2 {
                 call.setPhoneCallEndTime(commandLineArgs.get(10), commandLineArgs.get(11), commandLineArgs.get(12));
                 boolean allRequiredArgumentsAreValid = checkValidityOfRequiredArgs(commandLineArgs);
                 if (!allRequiredArgumentsAreValid) {
-                    return;
                 }
                 bill.addPhoneCall(call);
                 dumper.dump(bill);
 
                 PrettyPrinter printer = new PrettyPrinter();
-                printer.setFilename(commandLineArgs.get(1));
+                printer.setFilename(commandLineArgs.get(3));
                 printer.setCustomerName(commandLineArgs.get(4));
                 printer.getpretty(call, commandLineArgs.get(5));
                 printer.dump(bill);
-                if (print) {
-                    System.out.println(call);
-                }
             }
             else if ((commandLineArgs.get(0).contains("-textFile") && commandLineArgs.get(1).contains(".txt") &&
-                    commandLineArgs.get(2).equals("-pretty") && commandLineArgs.get(3).contains("-"))){
+                    (commandLineArgs.get(2).equals("-pretty") && commandLineArgs.get(3).contains("-")) ||
+                    (commandLineArgs.get(2).equals("-pretty") && commandLineArgs.get(3).contains(".txt")))){
                 int index = 0;
                 for (int i = 0; true; i++) {
                     if (commandLineArgs.get(i).contains("-")) {
@@ -378,39 +360,39 @@ public class Project2 {
                 printer.getpretty(call, commandLineArgs.get(5));
                 printer.dump(bill);
             }
-            else if ((commandLineArgs.get(0).contains("-textFile") && commandLineArgs.get(1).contains(".txt") &&
-                    commandLineArgs.get(2).equals("-pretty") && commandLineArgs.get(3).equals(".txt"))){
-                int index = 0;
-                for (int i = 0; true; i++) {
-                    if (commandLineArgs.get(i).contains(".txt")) {
-                        index = i + 3;}
-                    break;}
-                String fileName = commandLineArgs.get(1);
-                TextDumper dumper = new TextDumper();
-                TextParser parser = new TextParser(fileName, commandLineArgs.get(4));
-                parser.setFilename(fileName);
-                dumper.setFileName(fileName);
-                System.out.println("CustomerName: - " + commandLineArgs.get(4));
-                parser.setCustomerName(commandLineArgs.get(4));
-                PhoneBill bill = parser.parse();
-                PhoneCall call = new PhoneCall();
-                call.setCallerName(commandLineArgs.get(4));
-                call.setCallerNumber(commandLineArgs.get(5));
-                call.setCalleeNumber(commandLineArgs.get(6));
-                call.setPhoneCallBeginDate(commandLineArgs.get(7));
-                call.setPhoneCallBeginTime(commandLineArgs.get(7), commandLineArgs.get(8), commandLineArgs.get(9));
-                call.setPhoneCallEndDate(commandLineArgs.get(10));
-                call.setPhoneCallEndTime(commandLineArgs.get(10), commandLineArgs.get(11), commandLineArgs.get(12));
-                boolean allRequiredArgumentsAreValid = checkValidityOfRequiredArgs(commandLineArgs);
-                if (!allRequiredArgumentsAreValid) {return;}
-                bill.addPhoneCall(call);
-                dumper.dump(bill);
-                PrettyPrinter printer = new PrettyPrinter();
-                printer.setFilename(commandLineArgs.get(3));
-                printer.setCustomerName(commandLineArgs.get(4));
-                printer.getpretty(call, commandLineArgs.get(5));
-                printer.dump(bill);
-            }
+//            else if ((commandLineArgs.get(0).contains("-textFile") && commandLineArgs.get(1).contains(".txt") &&
+//                    commandLineArgs.get(2).equals("-pretty") && commandLineArgs.get(3).equals(".txt"))){
+//                int index = 0;
+//                for (int i = 0; true; i++) {
+//                    if (commandLineArgs.get(i).contains(".txt")) {
+//                        index = i + 3;}
+//                    break;}
+//                String fileName = commandLineArgs.get(1);
+//                TextDumper dumper = new TextDumper();
+//                TextParser parser = new TextParser(fileName, commandLineArgs.get(4));
+//                parser.setFilename(fileName);
+//                dumper.setFileName(fileName);
+//                System.out.println("CustomerName: - " + commandLineArgs.get(4));
+//                parser.setCustomerName(commandLineArgs.get(4));
+//                PhoneBill bill = parser.parse();
+//                PhoneCall call = new PhoneCall();
+//                call.setCallerName(commandLineArgs.get(4));
+//                call.setCallerNumber(commandLineArgs.get(5));
+//                call.setCalleeNumber(commandLineArgs.get(6));
+//                call.setPhoneCallBeginDate(commandLineArgs.get(7));
+//                call.setPhoneCallBeginTime(commandLineArgs.get(7), commandLineArgs.get(8), commandLineArgs.get(9));
+//                call.setPhoneCallEndDate(commandLineArgs.get(10));
+//                call.setPhoneCallEndTime(commandLineArgs.get(10), commandLineArgs.get(11), commandLineArgs.get(12));
+//                boolean allRequiredArgumentsAreValid = checkValidityOfRequiredArgs(commandLineArgs);
+//                if (!allRequiredArgumentsAreValid) {return;}
+//                bill.addPhoneCall(call);
+//                dumper.dump(bill);
+//                PrettyPrinter printer = new PrettyPrinter();
+//                printer.setFilename(commandLineArgs.get(3));
+//                printer.setCustomerName(commandLineArgs.get(4));
+//                printer.getpretty(call, commandLineArgs.get(5));
+//                printer.dump(bill);
+//            }
         }
         else {
             System.err.println("Extraneous or wrong arguments are being printed, this is not allowed.");

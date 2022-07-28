@@ -15,9 +15,9 @@ import java.util.concurrent.TimeUnit;
 public class PrettyPrinter implements PhoneBillDumper<PhoneBill> {
     /**
      * This method formats the phonebill in a pretty way
-     * @param
-     * @throws IOException
-     * @result
+     * @param This is the pretty print
+     * @throws IOException handles the IO exception
+     * @result this prints the pretty file
      */
 
     String fileName;
@@ -30,7 +30,7 @@ public class PrettyPrinter implements PhoneBillDumper<PhoneBill> {
 
     public void setFilename(String fileName)
     {
-        this.fileName = fileName.concat("pretty");
+        this.fileName = fileName; //.concat("pretty");
         //System.out.println(this.fileName);
     }
 

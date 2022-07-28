@@ -22,13 +22,13 @@ public class PhoneCall extends AbstractPhoneCall implements Comparable<PhoneCall
 
   PhoneCall(String callerName, String callerNumber, String calleeNumber, String phoneCallBeginDate,
                    Date phoneCallBeginTime, String phoneCallEndDate, Date phoneCallEndTime) {
-    this.callerName = callerName;
-    this.callerNumber = callerNumber;
-    this.calleeNumber = calleeNumber;
-    this.phoneCallBeginDate = phoneCallBeginDate;
-    this.phoneCallBeginTime = phoneCallBeginTime;
-    this.phoneCallEndDate = phoneCallEndDate;
-    this.phoneCallEndTime = phoneCallEndTime;
+//    this.callerName = callerName;
+//    this.callerNumber = callerNumber;
+//    this.calleeNumber = calleeNumber;
+//    this.phoneCallBeginDate = phoneCallBeginDate;
+//    this.phoneCallBeginTime = phoneCallBeginTime;
+//    this.phoneCallEndDate = phoneCallEndDate;
+//    this.phoneCallEndTime = phoneCallEndTime;
   }
 
   @Override

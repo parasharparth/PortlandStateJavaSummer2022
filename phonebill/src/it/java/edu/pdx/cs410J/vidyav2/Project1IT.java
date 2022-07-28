@@ -33,8 +33,7 @@ class Project1IT extends InvokeMainTestCase {
         MainMethodResult result = invokeMain();
         assertThat(result.getTextWrittenToStandardOut(), containsString("No arguments passed at the command line"));
     }
-//
-//
+
 //    /* Test to check the behavior when not enough Command Line Arguments are passed
 //     */
     @Test
@@ -42,7 +41,8 @@ class Project1IT extends InvokeMainTestCase {
         MainMethodResult result = invokeMain("-textFile");
         assertThat(result.getTextWrittenToStandardOut(), containsString(""));
     }
-//
+
+    //
 //
     @Test
     void readMeFlagIsPrintedWhenCLIIsGiven() {
@@ -50,37 +50,86 @@ class Project1IT extends InvokeMainTestCase {
         assertThat(result.getTextWrittenToStandardOut(), containsString(""));
     }
 
-//
-//    @Test
-//    @Disabled
-//    void testPrintOutNewPhoneCallForValidInput() {
-//        MainMethodResult result = invokeMain("-textFile", "vidyav2/av.txt", "Bhaskar", "503-820-9560", "334-555-2223", "12/2/2022", "08:34", "3/12/2022", "2:45");
-//        //assertThat(result.getTextWrittenToStandardOut(), containsString("Phone call from 503-820-9560 to 334-555-2223 from 08:34 to 2:45"));
-//
-//    }
-//
     @Test
     void extraneousArgumentsArePrinted() {
-        File file = new File("vidyav2/abc.txt");
-        MainMethodResult result = invokeMain("","","","","", "", "-print", "Bhaskar", "129-456-7890", "245-566-7863", "07/07/2022", "12:42", "AM", "07/07/2022", "12:45", "AM");
+        //File file = new File("vidyav2/abc.txt");
+        MainMethodResult result = invokeMain("", "", "", "", "", "", "-print", "Bhaskar", "129-456-7890", "245-566-7863", "07/07/2022", "12:42", "AM", "07/07/2022", "12:45", "AM");
         assertThat(result.getTextWrittenToStandardOut(), containsString(""));
     }
-//
 
     @Test
     void whenTenArgumentsArePassed() {
-        File file = new File("vidyav2/abc.txt");
-        MainMethodResult result = invokeMain("-textFile", "vidyav2/abc.txt", "-print",  "Bhaskar", "128-456-7890", "245-566-7863", "07/07/2022", "12:42", "AM", "07/07/2022", "12:45", "AM");
-        //assertThat(result.getTextWrittenToStandardOut(), notNullValue());
+        //File file = new File("vidyav2/abc.txt");
+        MainMethodResult result = invokeMain("-textFile", "vidyav2/abc.txt", "-print", "Bhaskar", "128-456-7890", "245-566-7863", "07/07/2022", "12:42", "AM", "07/07/2022", "12:45", "AM");
+        assertThat(result.getTextWrittenToStandardOut(), notNullValue());
     }
 
     @Test
     void whenNineArgumentsArePassed() {
-        File file = new File("vidyav2/abc.txt");
+        //File file = new File("vidyav2/abc.txt");
         MainMethodResult result = invokeMain("-textFile", "vidyav2/abc.txt", "Bhaskar", "128-456-7890", "245-566-7863", "07/07/2022", "12:42", "AM", "07/07/2022", "12:45", "AM");
+        assertThat(result.getTextWrittenToStandardOut(), notNullValue());
+    }
+
+    @Test
+    void whenElevenArgumentsArePassed() {
+        File file = new File("vidyav2/abc.txt");
+        MainMethodResult result = invokeMain("-pretty", "-", "vidyav2/abc.txt", "Bhaskar", "128-456-7890", "245-566-7863", "07/07/2022", "12:42", "AM", "07/07/2022", "12:45", "AM");
+        //assertThat(result.getTextWrittenToStandardOut(), notNullValue());
+    }
+
+    @Test
+    void whenTwelveArgumentsArePassed() {
+        File file = new File("vidyav2/abc.txt");
+        MainMethodResult result = invokeMain("-pretty", "-", "Bhaskar", "128-456-7890", "245-566-7863", "07/07/2022", "12:42", "AM", "07/07/2022", "12:45", "AM");
+        //assertThat(result.getTextWrittenToStandardOut(), notNullValue());
+    }
+
+    @Test
+    @Disabled
+    void when13ArgumentsArePassed_1() {
+        File file = new File("vidyav3/abc1.txt");
+        MainMethodResult result = invokeMain("-textFile", "vidyav3/abc1.txt", "-pretty", "-", "Bhaskar", "128-456-7890", "245-566-7863", "07/07/2022", "12:42", "AM", "07/07/2022", "12:45", "AM");
+        //assertThat(result.getTextWrittenToStandardOut(), notNullValue());
+        result.getTextWrittenToStandardOut();
+    }
+
+    @Test
+    void when13ArgumentsArePassed_2() {
+        File file = new File("vidyav3/abc.txt");
+        MainMethodResult result = invokeMain("-textFile", "vidyav3/abc.txt", "-pretty", "vidyav3/abcpretty.txt", "Bhaskar", "128-456-7890", "245-566-7863", "07/07/2022", "12:42", "AM", "07/07/2022", "12:45", "AM");
+        //assertThat(result.getTextWrittenToStandardOut(), notNullValue());
+    }
+
+    @Test
+    void when13ArgumentsArePassed_3() {
+        File file = new File("vidyav3/abc.txt");
+        MainMethodResult result = invokeMain("-textFile", "vidyav3/abc.txt", "-pretty", "vidyav3/abcpretty.txt", "Bhaskar", "128-456-7890", "245-566-7863", "07/07/2022", "12:42", "AM", "07/07/2022", "12:45", "AM");
+        //assertThat(result.getTextWrittenToStandardOut(), notNullValue());
+    }
+
+    @Test
+    void when14ArgumentsArePassed() {
+        File file = new File("vidyav4/abc.txt");
+        MainMethodResult result = invokeMain("","","-textFile", "vidyav4/abc.txt", "-pretty", "vidyav4/abcpretty.txt", "Bhaskar", "128-456-7890", "245-566-7863", "07/07/2022", "12:42", "AM", "07/07/2022", "12:45", "AM");
+        assertThat(result.getTextWrittenToStandardOut(), containsString(""));
+    }
+    @Test
+    void whenInvalidArgumentsDatePassed() {
+        File file = new File("vidyav2/abc.txt");
+        MainMethodResult result = invokeMain("-textFile", "vidyav3/abc2.txt", "-pretty", "-", "Bhaskar",
+                "128-456-7890", "245-566-7863", "07/07/20ZZ", "12:42", "AM", "07/07/2022", "12:45", "AM");
+        assertThat(result.getTextWrittenToStandardError(), containsString(""));
+    }
+    @Test
+    @Disabled
+    void when13ArgumentsArePassed_4() {
+        File file = new File("vidyav3/abc.txt");
+        MainMethodResult result = invokeMain("-textFile", "vidyav2/abc.txt", "-pretty", "vidyav2/abcpretty.txt", "Bhaskar", "128-456-7890", "245-566-7863", "07/07/20ZZ", "12:42", "AM", "07/07/2022", "12:45", "AM");
         //assertThat(result.getTextWrittenToStandardOut(), notNullValue());
     }
 }
+
 
 
 
