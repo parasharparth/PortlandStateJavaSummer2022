@@ -2,10 +2,10 @@ package edu.pdx.cs410J.vidyav2;
 
 import edu.pdx.cs410J.InvokeMainTestCase;
 import org.junit.jupiter.api.Test;
-
 import java.io.*;
 import java.util.ArrayList;
-
+import java.util.Arrays;
+import java.util.Collections;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -63,8 +63,8 @@ class Project1Test extends InvokeMainTestCase {
   void correctDateValidation() {
     boolean thisDateShouldBeValid = Project2.checkForValidDate("07/07/2022");
     boolean thisDateShouldBeInvalid = Project2.checkForValidDate("077/07/20ZZ");
-//    assertThat(thisDateShouldBeValid, equalTo(true));
-//    assertThat(thisDateShouldBeInvalid, equalTo(false));
+    assertThat(thisDateShouldBeValid, equalTo(true));
+    //assertThat(thisDateShouldBeInvalid, equalTo(false));
   }
 
   @Test
@@ -72,9 +72,7 @@ class Project1Test extends InvokeMainTestCase {
     String[] argumentsArray = {"Bhaskar", "123-456-7890", "245-566-7863", "07/07/2022", "12:43", "AM", "07/07/2022", "12:45", "AM"};
     ArrayList<String> arrayListOfArgs = new ArrayList<>();
 
-    for (String s : argumentsArray) {
-      arrayListOfArgs.add(s);
-    }
+    Collections.addAll(arrayListOfArgs, argumentsArray);
     boolean theseArgsShouldBeValid = Project2.checkValidityOfRequiredArgs(arrayListOfArgs);
     assertThat(theseArgsShouldBeValid, equalTo(true));
   }
@@ -82,11 +80,8 @@ class Project1Test extends InvokeMainTestCase {
   @Test
   void requiredArgumentsInvalidation() {
     String[] argumentsArray = {"Bhaskar", "12-456-7890", "245-566-7863", "07/07/2022", "12:4XX", "AM", "07/07/2022", "12:45", "AM"};
-    ArrayList<String> arrayListOfArgs = new ArrayList<>();
 
-    for (String s : argumentsArray) {
-      arrayListOfArgs.add(s);
-    }
+    ArrayList<String> arrayListOfArgs = new ArrayList<>(Arrays.asList(argumentsArray));
     boolean theseArgsShouldBeInvalid = Project2.checkValidityOfRequiredArgs(arrayListOfArgs);
     assertThat(theseArgsShouldBeInvalid, notNullValue());
   }
@@ -94,14 +89,12 @@ class Project1Test extends InvokeMainTestCase {
   @Test
   void fileNotFoundInDirectory() {
     String[] argumentsArray = {"","abc.txt.txt","Bhaskar", "12-456-7890", "245-566-7863", "07/07/2022", "12:4XX", "AM", "07/07/2022", "12:45", "AM"};
-    ArrayList<String> arrayListOfArgs = new ArrayList<>();
 
-    for (String s : argumentsArray) {
-      arrayListOfArgs.add(s);
-    }
+    ArrayList<String> arrayListOfArgs = new ArrayList<>(Arrays.asList(argumentsArray));
     boolean theseArgsShouldBeInvalid = Project2.checkValidityOfRequiredArgs(arrayListOfArgs);
     assertThat(theseArgsShouldBeInvalid, notNullValue());
   }
+
 
 }
 

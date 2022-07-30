@@ -13,13 +13,13 @@ import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TextParserTest {
-//    String
+
 //    @Test
 //    void validTextFileCanBeParsed() throws ParserException {
-//    InputStream resource = getClass().getResourceAsStream("valid-phonebill.txt");
-//    assertThat(resource, notNullValue());
+//    InputStream resource = getClass().getResourceAsStream("/Users/vidyavarshinihj/PortlandStateJavaSummer2022/phonebill/src/test/resources/edu.pdx.cs410J.vidyav2/valid-phonebill.txt");
+//    assertThat(resource, equalTo(null));
 //
-//    TextParser parser = new TextParser(new InputStreamReader(resource));
+//        TextParser parser = new TextParser(new InputStreamReader(resource));
 //    PhoneBill bill = parser.parse();
 //    assertThat(bill.getCustomer(), equalTo("Test Phone Bill"));
 //

@@ -18,10 +18,12 @@ public class PhoneCallTest {
     String calleeNumber = "888-998-9999";
 
 
-    Date phoneCallBeginTime = new Date("07/07/2021 08:00PM"), phoneCallEndTime = new Date("08/07/2021");
+    Date phoneCallBeginTime = new Date("07/07/2021 08:00 PM"), phoneCallEndTime = new Date("07/07/2021 08:05 PM");
     String callerName = "Bhaskar";
     String phoneCallBeginDate;
+            //= "07/07/2022";
     String phoneCallEndDate;
+                    //= "07/07/2022";
 
   PhoneCall call = new PhoneCall(callerName, callerNumber, calleeNumber, phoneCallBeginDate,phoneCallBeginTime, phoneCallEndDate,phoneCallEndTime);
 
@@ -30,32 +32,32 @@ public class PhoneCallTest {
    * your project.
    */
 
-//  @Test
-//  void getCallerIsImplemented() {
-//    assertThat(call.getCaller(), equalTo(callerNumber));
-//  }
-//
-//  @Test
-//  void getCalleeIsImplemented() {
-//    assertThat(call.getCallee(), equalTo(calleeNumber));
-//  }
+  @Test
+  void getCallerIsImplemented() {
+    assertThat(call.getCaller(), equalTo(callerNumber));
+  }
+
+  @Test
+  void getCalleeIsImplemented() {
+    assertThat(call.getCallee(), equalTo(calleeNumber));
+  }
 //  @Test
 //  void getBeginTimeStringIsImplemented() {
 //    assertThat(call.getBeginTimeString(), equalTo(phoneCallBeginTime));
 //  }
-//
+
 //  @Test
 //  void getEndTimeStringIsImplemented() {
 //    assertThat(call.getEndTimeString(), equalTo(phoneCallEndTime));
 //  }
-//
-//  @Test
-//  void initiallyAllPhoneCallsHaveTheSameCallee() {
-//    assertThat(call.getCallee(), equalTo(calleeNumber));
-//  }
-//
-//  @Test
-//  void forProject1ItIsOkayIfGetBeginTimeReturnsNull() {
-//    assertThat(call.getBeginTime(), is(nullValue()));
-//  }
+
+  @Test
+  void initiallyAllPhoneCallsHaveTheSameCallee() {
+    assertThat(call.getCallee(), equalTo(calleeNumber));
+  }
+
+  @Test
+  void forProject1ItIsOkayIfGetBeginTimeReturnsNull() {
+    assertThat(call.getBeginTime(), is(nullValue()));
+  }
 }

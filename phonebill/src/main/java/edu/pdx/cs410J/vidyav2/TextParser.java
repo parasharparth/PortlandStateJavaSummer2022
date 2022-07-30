@@ -14,9 +14,9 @@ public class TextParser implements PhoneBillParser<PhoneBill> {
     public String customerName;
     public String billDetails;
 
-    public TextParser(Reader reader) {
-        this.reader = reader;
-    }
+//    public TextParser(Reader reader) {
+//        this.reader = reader;
+//    }
 
     public TextParser(String filename, String customerName)
     {
@@ -24,14 +24,14 @@ public class TextParser implements PhoneBillParser<PhoneBill> {
         this.customerName = customerName;
         this.reader = null;
     }
-    public TextParser()
-    {
-        this.reader = null;
-    }
+//    public TextParser()
+//    {
+//        this.reader = null;
+//    }
 
-    public TextParser(String fileName) {
-        this.reader = null;
-    }
+//    public TextParser(String fileName) {
+//        this.reader = null;
+//    }
 
 
     @Override
@@ -67,10 +67,10 @@ public class TextParser implements PhoneBillParser<PhoneBill> {
                 v = f1.getAbsolutePath();
                 //check if directory exists or not
                 if (f1.exists()) {
-                    System.out.println("debug 2");
+                    //System.out.println("debug 2");
                     try {
                         out = new PrintWriter(f);
-                        System.out.println("debug 3");
+                        //System.out.println("debug 3");
                     } catch (FileNotFoundException ex) {
                         ex.printStackTrace();
                     }
@@ -125,7 +125,7 @@ public class TextParser implements PhoneBillParser<PhoneBill> {
                 System.out.println("txt is" + first_name[0]);
             }
         }
-        for(int i=1;i<lines.size(); i++) {
+        for(int i=1;i<lines.size(); i++) {/*
             //System.out.println("I was here");
             String[] words = lines.get(i).split(" ");
 //            if(words.length!=12)
@@ -149,7 +149,7 @@ public class TextParser implements PhoneBillParser<PhoneBill> {
 //                System.out.println("This text file cannot be parsed.");
 //                System.exit(0);
 //            }
-            bill.addPhoneCall(call);
+            bill.addPhoneCall(call);*/
         }
 
         return bill;

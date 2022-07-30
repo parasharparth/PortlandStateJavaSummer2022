@@ -5,8 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 /************************************************
- * @project PortlandStateJavaSummer2022
- * @class PhoneBill
+ * This is a PhoneBill class
  ************************************************/
 public class  PhoneBill extends AbstractPhoneBill<PhoneCall> {
 
@@ -22,7 +21,8 @@ public class  PhoneBill extends AbstractPhoneBill<PhoneCall> {
   private final ArrayList<PhoneCall> calls = new ArrayList<>();
 
   /********************
-   * @param customer
+   * @param customer this is a customer method used to define the specified customer
+   * for the PhoneBill method
    ********************/
   public PhoneBill(String customer) {
      this.customer = customer;
@@ -39,16 +39,18 @@ public class  PhoneBill extends AbstractPhoneBill<PhoneCall> {
 
   /********************
    * setCustomer() method is used to set the customer details
-   * @param customer
+   * @param customer this is a customer method used to define the specified customer
+   * for the PhoneBill method
+   * @return return the customer data
    *********************/
   public String setCustomer(String customer){
-    return this.customer = customer;
     //return customer;
+    return this.customer = customer;
   }
 
   /********************
    * addPhoneCall() method is used to add phone call to the phone bill
-   * @param call
+   * @param call this is a call method used to define the calls printed in a PhoneBill
    *********************/
   @Override
   public void addPhoneCall(PhoneCall call) {

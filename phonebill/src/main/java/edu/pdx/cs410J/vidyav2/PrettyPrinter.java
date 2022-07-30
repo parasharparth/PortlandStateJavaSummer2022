@@ -15,9 +15,6 @@ import java.util.concurrent.TimeUnit;
 public class PrettyPrinter implements PhoneBillDumper<PhoneBill> {
     /**
      * This method formats the phone-bill in a pretty way
-     * @param This is the pretty print
-     * @throws IOException handles the IO exception
-     * @result this prints the pretty file
      */
 
     String fileName;
@@ -102,7 +99,6 @@ public class PrettyPrinter implements PhoneBillDumper<PhoneBill> {
                     } catch (FileNotFoundException ex) {
                         ex.printStackTrace();
                     }
-                    //**************************
                     out.write("");
                     for (int i = 0; i < phonecallList.size(); i++) {
                         String x = getpretty((PhoneCall) phonecallList.get(i), bill.getCustomer());
@@ -137,7 +133,7 @@ public class PrettyPrinter implements PhoneBillDumper<PhoneBill> {
                 try {
                     out = new PrintWriter(this.fileName);
                 } catch (FileNotFoundException ex) {
-                    System.out.println("Pretty Print file is not present.");
+                    System.err.println("Pretty Print file is not present.");
                 }
                 out.write("");
                 for (int i = 0; i < phonecallList.size(); i++) {
@@ -169,7 +165,8 @@ public class PrettyPrinter implements PhoneBillDumper<PhoneBill> {
                         out.write(x);
                     }
                     out.close();
-                } else {
+                }
+                else {/*
                     File folder = new File(v);
                     if (folder.mkdir()) {
                         try {
@@ -193,7 +190,7 @@ public class PrettyPrinter implements PhoneBillDumper<PhoneBill> {
                     } else {
                         System.out.println("Could not create directory");
                         System.exit(1);
-                    }
+                    }*/
                 }
             }
 
