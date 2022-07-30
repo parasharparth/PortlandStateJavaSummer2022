@@ -1,7 +1,6 @@
 package edu.pdx.cs410J.vidyav2;
 
 import com.google.common.annotations.VisibleForTesting;
-
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,12 +15,13 @@ import java.util.Map;
  * of how to use HTTP and Java servlets to store simple dictionary of words
  * and their definitions.
  */
+
 public class PhoneBillServlet extends HttpServlet
 {
     static final String WORD_PARAMETER = "word";
     static final String DEFINITION_PARAMETER = "definition";
 
-    private final Map<String, String> dictionary = new HashMap<>();
+    private final Map<String, String> phoneBillArrayList = new HashMap<>();
 
     /**
      * Handles an HTTP GET request from a client by writing the definition of the
@@ -32,134 +32,144 @@ public class PhoneBillServlet extends HttpServlet
     @Override
     protected void doGet( HttpServletRequest request, HttpServletResponse response ) throws IOException
     {
-        response.setContentType( "text/plain" );
+        private ArrayList<PhoneBill> phoneBillArrayList = new ArrayList<PhoneBill>();
+        Map names = phoneBillArrayList.getCustomer();
 
-        String word = getParameter( WORD_PARAMETER, request );
-        if (word != null) {
-            writeDefinition(word, response);
+        /**
+         * Handles an HTTP GET request from a client by writing the airlines from
+         * specified source to destination in XML format. If just the
+         * "name" parameter is specified, all of the flights in the airline
+         * are written to the HTTP response.
+         */
+        @Override
+        protected void doGet( HttpServletRequest request, HttpServletResponse response ) throws IOException
+        {
+            response.setContentType( "text/plain" );
+
+            String callerName = getParameter( "callerName", request );
+            if (callerName == null) {
+                missingRequiredParameter(response, "callerName");
+                return;
+            }
+
+            String callerNumber = getParameter( "callerNumber", request );
+            if (callerNumber == null) {
+                missingRequiredParameter(response, "callerNumber");
+                return;
+            }
+
+            String calleeNumber = getParameter( "calleeNumber", request );
+            if (calleeNumber == null) {
+                missingRequiredParameter(response, "calleeNumber");
+                return;
+            }
+
+            PhoneBill bill = null;
+            for (PhoneBill bill : phoneBillArrayList) {
+                if (bill.getCustomerName().equals(customerName)) {
+                    getCustomerName = bill;
+                    break;
+                }
+            }
+            if(getCustomerName == null){
+                noairlinefound(getCustomerName, response);
+            } else {
+                StringWriter stringWriter = new StringWriter();
+                stringWriter.flush();
+                XmlDumper dumper = null;
+                try {
+                    dumper = new XmlDumper(stringWriter);
+                } catch (TransformerConfigurationException e) {
+                    e.printStackTrace();
+                }
+                ArrayList<PhoneCall> calls = getphoneBillArrayList.getPhoneCalls();
+                if (callerName == null && calleeName == null) {
+                    dumper.dump(getphoneBillArrayList);
+                } else {
+                    PhoneBill filteredPhoneBill = new PhoneBill();
+                    filteredPhoneBill.setCustomer(customerName);
+//                    for (Flight flight : arrli) {
+//                        if (flight.getSource().equals(source) && flight.getDestination().equals(destination)) {
+//                            filteredairline.addFlight(flight);
+//                        }
+//                    }
+                    dumper.dump(filteredPhoneBill);
+                }
+                response.getWriter().println(dumper.generateAsString());
+                response.setStatus(HttpServletResponse.SC_OK);
+            }
+        }
+
+        /**
+         * Handles an HTTP POST request by storing the flight entry for the airline.
+         */
+        @Override
+        protected void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException
+        {
+            response.setContentType( "text/plain" );
+
+            String customerName = getParameter("customerName", request );
+            if (customerName == null) {
+                missingRequiredParameter(response, "customerName");
+                return;
+            }
+            String callerName = getParameter("callerName", request );
+            if ( callerName == null) {
+                missingRequiredParameter( response, "callerName" );
+                return;
+            }
+            String callerNumber = getParameter("callerNumber", request );
+            if ( callerNumber == null) {
+                missingRequiredParameter( response, "callerNumber" );
+                return;
+            }
+
+            String calleeNumber = getParameter("calleeNumber", request );
+            if ( calleeNumber == null) {
+                missingRequiredParameter( response, "calleeNumber" );
+                return;
+            }
+
+            PhoneBill bill = createOrValidatePhoneBillForPost(customerName);
+            PhoneCall call = new PhoneCall();
+            call.setCallerName(words[2]);
+            call.setCallerNumber(words[3]);
+            call.setCalleeNumber(words[5]);
+            call.setPhoneCallBeginDate(words[7]);
+            call.setPhoneCallBeginTime(words[7],words[8],words[9]);
+            call.setPhoneCallEndDate(words[11]);
+            call.setPhoneCallEndTime(words[11],words[12],words[13]);
+            bill.addPhoneCall(call);
+            phoneBillArrayList.add(bill);
+            response.setStatus( HttpServletResponse.SC_OK);
+        }
+
+
+        /**
+         * Writes an error message about a missing parameter to the HTTP response.
+         *
+         * The text of the error message
+         */
+        private void missingRequiredParameter( HttpServletResponse response, String parameterName )
+            throws IOException
+        {
+            String message = "The required parameter " + parameterName + " is missing!";
+            response.sendError(HttpServletResponse.SC_PRECONDITION_FAILED, message);
+        }
+
+        /**
+         * Returns the value of the HTTP request parameter with the given name.
+         *
+         * @return <code>null</code> if the value of the parameter is
+         *         <code>null</code> or is the empty string
+         */
+        private String getParameter(String name, HttpServletRequest request) {
+        String value = request.getParameter(name);
+        if (value == null || "".equals(value)) {
+            return null;
 
         } else {
-            writeAllDictionaryEntries(response);
+            return value;
         }
     }
-
-    /**
-     * Handles an HTTP POST request by storing the dictionary entry for the
-     * "word" and "definition" request parameters.  It writes the dictionary
-     * entry to the HTTP response.
-     */
-    @Override
-    protected void doPost( HttpServletRequest request, HttpServletResponse response ) throws IOException
-    {
-        response.setContentType( "text/plain" );
-
-        String word = getParameter(WORD_PARAMETER, request );
-        if (word == null) {
-            missingRequiredParameter(response, WORD_PARAMETER);
-            return;
-        }
-
-        String definition = getParameter(DEFINITION_PARAMETER, request );
-        if ( definition == null) {
-            missingRequiredParameter( response, DEFINITION_PARAMETER );
-            return;
-        }
-
-        this.dictionary.put(word, definition);
-
-        PrintWriter pw = response.getWriter();
-        pw.println(Messages.definedWordAs(word, definition));
-        pw.flush();
-
-        response.setStatus( HttpServletResponse.SC_OK);
-    }
-
-    /**
-     * Handles an HTTP DELETE request by removing all dictionary entries.  This
-     * behavior is exposed for testing purposes only.  It's probably not
-     * something that you'd want a real application to expose.
-     */
-    @Override
-    protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.setContentType("text/plain");
-
-        this.dictionary.clear();
-
-        PrintWriter pw = response.getWriter();
-        pw.println(Messages.allDictionaryEntriesDeleted());
-        pw.flush();
-
-        response.setStatus(HttpServletResponse.SC_OK);
-
-    }
-
-    /**
-     * Writes an error message about a missing parameter to the HTTP response.
-     *
-     * The text of the error message is created by {@link Messages#missingRequiredParameter(String)}
-     */
-    private void missingRequiredParameter( HttpServletResponse response, String parameterName )
-        throws IOException
-    {
-        String message = Messages.missingRequiredParameter(parameterName);
-        response.sendError(HttpServletResponse.SC_PRECONDITION_FAILED, message);
-    }
-
-    /**
-     * Writes the definition of the given word to the HTTP response.
-     *
-     * The text of the message is formatted with {@link TextDumper}
-     */
-    private void writeDefinition(String word, HttpServletResponse response) throws IOException {
-        String definition = this.dictionary.get(word);
-
-        if (definition == null) {
-            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-
-        } else {
-            PrintWriter pw = response.getWriter();
-
-            Map<String, String> wordDefinition = Map.of(word, definition);
-            TextDumper dumper = new TextDumper(pw);
-            dumper.dump(wordDefinition);
-
-            response.setStatus(HttpServletResponse.SC_OK);
-        }
-    }
-
-    /**
-     * Writes all of the dictionary entries to the HTTP response.
-     *
-     * The text of the message is formatted with {@link TextDumper}
-     */
-    private void writeAllDictionaryEntries(HttpServletResponse response ) throws IOException
-    {
-        PrintWriter pw = response.getWriter();
-        TextDumper dumper = new TextDumper(pw);
-        dumper.dump(dictionary);
-
-        response.setStatus( HttpServletResponse.SC_OK );
-    }
-
-    /**
-     * Returns the value of the HTTP request parameter with the given name.
-     *
-     * @return <code>null</code> if the value of the parameter is
-     *         <code>null</code> or is the empty string
-     */
-    private String getParameter(String name, HttpServletRequest request) {
-      String value = request.getParameter(name);
-      if (value == null || "".equals(value)) {
-        return null;
-
-      } else {
-        return value;
-      }
-    }
-
-    @VisibleForTesting
-    String getDefinition(String word) {
-        return this.dictionary.get(word);
-    }
-
 }

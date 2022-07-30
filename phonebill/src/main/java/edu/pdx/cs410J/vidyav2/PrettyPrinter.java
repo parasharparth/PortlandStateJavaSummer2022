@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 public class PrettyPrinter implements PhoneBillDumper<PhoneBill> {
     /**
-     * This method formats the phonebill in a pretty way
+     * This method formats the phone-bill in a pretty way
      * @param This is the pretty print
      * @throws IOException handles the IO exception
      * @result this prints the pretty file
