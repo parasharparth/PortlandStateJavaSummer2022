@@ -166,7 +166,8 @@ public class PrettyPrinter implements PhoneBillDumper<PhoneBill> {
                     }
                     out.close();
                 }
-                else {/*
+                else {
+                    /*
                     File folder = new File(v);
                     if (folder.mkdir()) {
                         try {
