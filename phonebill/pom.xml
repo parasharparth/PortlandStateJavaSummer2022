@@ -84,6 +84,7 @@
             <manifest>
               <mainClass>edu.pdx.cs410J.vidyav2.Project1</mainClass>
               <mainClass>edu.pdx.cs410J.vidyav2.Project2</mainClass>
+              <mainClass>edu.pdx.cs410J.vidyav2.Project3</mainClass>
             </manifest>
           </archive>
         </configuration>
