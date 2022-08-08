@@ -1,4 +1,16 @@
 <resources>
     <string name="app_name">Phone Bill</string>
     <string name="hello">Hello, this is Vidyavarshini\'s Java Phone Bill Application!</string>
+    <string name="tap_for_phonebill">Navigate to Phone Bill</string>
+    <string name="create_new_phone_call">CREATE NEW PHONE CALL</string>
+    <string name="display_phone_bill">DISPLAY PHONE BILL</string>
+    <string name="title_activity_add_phonecall">AddPhonecallActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>
