@@ -20,9 +20,9 @@ public class PhoneCall extends AbstractPhoneCall implements Comparable<PhoneCall
    ************************************************/
   Date phoneCallBeginTime, phoneCallEndTime;
 
-  /*******
+  /***********************************************
   * PhoneCall method to specify the phone call
-   * *******/
+   * *********************************************/
   public PhoneCall() {}
 
   /*******
