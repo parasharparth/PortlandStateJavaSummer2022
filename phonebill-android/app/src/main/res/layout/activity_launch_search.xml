@@ -4,73 +4,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ABD6D0"
-    tools:context=".MainActivity">
+    android:background="#EA81A7"
+    tools:context=".LaunchSearchActivity">
 
     <TextView
-        android:id="@+id/hello"
+        android:id="@+id/phonecalldetailstitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_vidya"
+        android:text="@string/searchphonecalldetails"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.134" />
+        app:layout_constraintVertical_bias="0.137" />
 
-    <Button
-        android:id="@+id/launchaddphonecall"
+    <EditText
+        android:id="@+id/searchphonecall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#7543DC"
-        android:onClick="launchaddphonecall"
-        android:text="@string/create_new_phone_call"
+        android:hint="@string/customername"
+        android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/hello"
-        app:layout_constraintVertical_bias="0.187" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.199" />
 
-    <Button
-        android:id="@+id/launchsearch"
+    <EditText
+        android:id="@+id/searchcallernumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#7543DC"
-        android:onClick="launchsearch"
-        android:text="@string/searchphonecalls"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/hello"
-        app:layout_constraintVertical_bias="0.339" />
-
-    <Button
-        android:id="@+id/launchdelete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#7543DC"
-        android:onClick="launchdelete"
-        android:text="@string/launchdelete"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/hello"
-        app:layout_constraintVertical_bias="0.471" />
-
-    <Button
-        android:id="@+id/launchhelp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#7543DC"
-        android:onClick="launchreadme"
-        android:text="@string/help"
+        android:hint="@string/callerHint"
+        android:inputType="phone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/hello"
-        app:layout_constraintVertical_bias="0.623" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.293" />
+
+    <EditText
+        android:id="@+id/searchcalleenumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/calleeHint"
+        android:inputType="phone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.39" />
+
+    <Button
+        android:id="@+id/searchphonecallbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="280dp"
+        android:backgroundTint="#7543DC"
+        android:onClick="searchphonecallbtn"
+        android:text="@string/searchPhonecallHint"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,16 +1,41 @@
 <resources>
     <string name="app_name">Phone Bill</string>
-    <string name="hello">Hello, this is Vidyavarshini\'s Java Phone Bill Application!</string>
+    <string name="hello_vidya">Hello, this is Vidyavarshini\'s Java Phone Bill Application!</string>
     <string name="tap_for_phonebill">Navigate to Phone Bill</string>
     <string name="create_new_phone_call">CREATE NEW PHONE CALL</string>
     <string name="display_phone_bill">DISPLAY PHONE BILL</string>
     <string name="title_activity_add_phonecall">AddPhonecallActivity</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="customername">Customer Name</string>
+    <string name="caller">Caller</string>
+    <string name="callerHint">Caller Phone Number</string>
+    <string name="phoneHint">xxx-xxx-xxxx</string>
+    <string name="customer">Customer</string>
+    <string name="callee">Callee</string>
+    <string name="calleeHint">Callee Phone Number</string>
+    <string name="beginDateTime">Phone Call Begin Date-Time</string>
+    <string name="endDateTime">Phone Call End Date-Time</string>
+    <string name="beginHint">Begin Date (MM/DD/YYYY HH:MM AM/PM)</string>
+    <string name="endHint">End Date (MM/DD/YYYY HH:MM AM/PM)</string>
+    <string name="submitPhonecallHint">SUBMIT PHONECALL</string>
+    <string name="searchPhonecallHint">SEARCH PHONECALL</string>
+    <string name="searchphonecalldetails">Enter the search parameters</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="Date">mm/dd/yyyy</string>
+    <string name="Time">hh:mm</string>
+    <string name="am_pm">AM/PM</string>
+    <string name="endtime">EndTime</string>
+    <string name="submit">Submit</string>
+    <string name="customerNew">Customer</string>
+    <string name="readme">README for Project 5\n\nName: Vidyavarshini H J\n\nProject 6 : An Android Airline Application\n\nThis is an app that allows the user to create PhoneBills, add PhoneCalls to PhoneBills, display
+        the contents of a Bill, and search calls within a particular bill.\nCustomer - the customer
+        field may be any combination of alphanumeric characters, and may not be blank.\nCaller - the
+        customer\'s phone number. Must be entered in xxx-xxx-xxxx format.\nCallee - the callee\'s
+        phone number.  Must be entered in xxx-xxx-xxxx format.\nDate must be entered in mm/dd/yyyy format, time must be entered in hh:mm format.
+    </string>
+    <string name="help">HELP</string>
+    <string name="searchphonecalls">SEARCH PHONECALLS</string>
+    <string name="addphonecalldetails">Enter the Phonecall details</string>
+    <string name="deleteairlinetitle">Enter the Customer\'s name who\'s phonecall should be deleted</string>
+    <string name="deletebutton">DELETE PHONECALL</string>
+    <string name="launchdelete">Delete Phonecall</string>
 </resources>

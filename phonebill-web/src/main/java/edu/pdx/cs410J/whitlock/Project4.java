@@ -31,7 +31,7 @@ public class Project4 {
             }
         }
 
-        String hostName = args[0];
+        String hostName = args[1];
         int portName;
         //hostName = args[5];
         if (args[1] == null) {
@@ -46,214 +46,213 @@ public class Project4 {
             System.err.println("The port number cannot be 0");
         }
 
-
         ArrayList<String> commandLineArgs = new ArrayList<>(Arrays.asList(args));
 
         //Case when the number of arguments are less than 10 (bare minimum arguments)
-        if (commandLineArgs.size() < 11) {
+        if (commandLineArgs.size() < 13) {
             System.err.println("There are some missing arguments.");
         }
 
-        if (commandLineArgs.size() == 11) {
-            if ((commandLineArgs.get(0).contains("-textFile") && commandLineArgs.get(1).contains(".txt") ||
-                    (commandLineArgs.get(0).equals("-print") && commandLineArgs.get(1).equals("-textFile") &&
-                            commandLineArgs.get(2).contains(".txt")))) {
-                int index = 0;
-                for (int i = 0; i<commandLineArgs.size(); i++) {
-                    if (commandLineArgs.get(i).contains("-textFile")) {
-                        index = i;
-                    }
-                }
-                String fileName = commandLineArgs.get(index);
-                edu.pdx.cs410J.vidyav2.TextDumper dumper = new edu.pdx.cs410J.vidyav2.TextDumper();
-                edu.pdx.cs410J.vidyav2.TextParser parser = new edu.pdx.cs410J.vidyav2.TextParser(fileName, commandLineArgs.get(index));
-                System.out.println("CustomerName: - " + commandLineArgs.get(2));
-                parser.setFilename(fileName);
-                dumper.setFileName(fileName);
-                parser.setCustomerName(commandLineArgs.get(2));
-                edu.pdx.cs410J.vidyav2.PhoneBill bill = parser.parse();
-                PhoneCall call = new PhoneCall();
-                call.setCallerName(commandLineArgs.get(2));
-                call.setCallerNumber(commandLineArgs.get(3));
-                call.setCalleeNumber(commandLineArgs.get(4));
-                call.setPhoneCallBeginDate(commandLineArgs.get(5));
-                call.setPhoneCallBeginTime(commandLineArgs.get(5), commandLineArgs.get(6), commandLineArgs.get(7));
-                call.setPhoneCallEndDate(commandLineArgs.get(8));
-                call.setPhoneCallEndTime(commandLineArgs.get(8), commandLineArgs.get(9), commandLineArgs.get(10));
-                boolean allRequiredArgumentsAreValid = checkValidityOfRequiredArgs(commandLineArgs);
-                if (!allRequiredArgumentsAreValid) {
-                    return;
-                }
-                bill.addPhoneCall(call);
-                dumper.dump(bill);
-            } else if ((commandLineArgs.get(1).contains("-"))) {
-                int index ;
-                for (int i = 0; true; i++) {
-                    if (commandLineArgs.get(i).contains("-pretty")) {
-                        index = i;
-                        break;
-                    }
-                }
-                String fileName = commandLineArgs.get(index);
-                edu.pdx.cs410J.vidyav2.TextDumper dumper = new edu.pdx.cs410J.vidyav2.TextDumper();
-                dumper.setFileName(fileName);
-                edu.pdx.cs410J.vidyav2.PhoneBill bill = new edu.pdx.cs410J.vidyav2.PhoneBill(commandLineArgs.get(2));
-                PhoneCall call = new PhoneCall();
-                call.setCallerName(commandLineArgs.get(2));
-                call.setCallerNumber(commandLineArgs.get(3));
-                call.setCalleeNumber(commandLineArgs.get(4));
-                call.setPhoneCallBeginDate(commandLineArgs.get(5));
-                call.setPhoneCallBeginTime(commandLineArgs.get(5), commandLineArgs.get(6), commandLineArgs.get(7));
-                call.setPhoneCallEndDate(commandLineArgs.get(8));
-                call.setPhoneCallEndTime(commandLineArgs.get(8), commandLineArgs.get(9), commandLineArgs.get(10));
-                boolean allRequiredArgumentsAreValid = checkValidityOfRequiredArgs(commandLineArgs);
-                if (!allRequiredArgumentsAreValid) {
-                    return;
-                }
-                bill.addPhoneCall(call);
-                edu.pdx.cs410J.vidyav2.PrettyPrinter printer = new edu.pdx.cs410J.vidyav2.PrettyPrinter();
-                System.out.println("\nThis is a pretty file, printing the following Phone details:\n" + printer.getpretty(call, bill.getCustomer()));
-            }
+        if (commandLineArgs.size() == 13) {
 
-        } else if (commandLineArgs.size() == 12) {
-            if ((commandLineArgs.get(0).contains("-textFile") && commandLineArgs.get(1).contains("-pretty") ||
-                    (commandLineArgs.get(0).equals("-pretty") && commandLineArgs.get(1).equals("-textFile") &&
-                            commandLineArgs.get(2).contains(".txt")) || commandLineArgs.get(0).contains("-print") &&
-                    commandLineArgs.get(1).equals("-pretty") && commandLineArgs.get(2).contains(".txt") ||
-                    commandLineArgs.get(0).contains("-pretty") && commandLineArgs.get(1).equals("-print") &&
-                            commandLineArgs.get(2).contains(".txt"))) {
-                int index = 0;
-                for (int i = 0; i<commandLineArgs.size(); i++) {
-                    if (commandLineArgs.get(i).contains("-pretty")) {
-                        index = i + 2;
-                        break;
-                    }
-                }
-                String fileName = commandLineArgs.get(2);
-                edu.pdx.cs410J.vidyav2.TextDumper dumper = new edu.pdx.cs410J.vidyav2.TextDumper();
-                edu.pdx.cs410J.vidyav2.TextParser parser = new edu.pdx.cs410J.vidyav2.TextParser(fileName, commandLineArgs.get(index));
-                System.out.println("CustomerName: - " + commandLineArgs.get(3));
-                parser.setFilename(fileName);
-                dumper.setFileName(fileName);
-                parser.setCustomerName(commandLineArgs.get(3));
-                edu.pdx.cs410J.vidyav2.PhoneBill bill = parser.parse();
-                PhoneCall call = new PhoneCall();
-                call.setCallerName(commandLineArgs.get(3));
-                call.setCallerNumber(commandLineArgs.get(4));
-                call.setCalleeNumber(commandLineArgs.get(5));
-                call.setPhoneCallBeginDate(commandLineArgs.get(6));
-                call.setPhoneCallBeginTime(commandLineArgs.get(6), commandLineArgs.get(7), commandLineArgs.get(8));
-                call.setPhoneCallEndDate(commandLineArgs.get(9));
-                call.setPhoneCallEndTime(commandLineArgs.get(9), commandLineArgs.get(10), commandLineArgs.get(11));
-                boolean allRequiredArgumentsAreValid = checkValidityOfRequiredArgs(commandLineArgs);
-                if (!allRequiredArgumentsAreValid) {
-                    return;
-                }
-                bill.addPhoneCall(call);
-                dumper.dump(bill);
-
-                edu.pdx.cs410J.vidyav2.PrettyPrinter printer = new edu.pdx.cs410J.vidyav2.PrettyPrinter();
-                printer.setFilename(commandLineArgs.get(2));
-                printer.setCustomerName(commandLineArgs.get(3));
-                printer.getpretty(call, commandLineArgs.get(4));
-                printer.dump(bill);
-            } else if ((commandLineArgs.get(0).contains("-pretty") && commandLineArgs.get(1).contains(".txt"))) {
-                 String fileName = commandLineArgs.get(1);
-                edu.pdx.cs410J.vidyav2.TextDumper dumper = new edu.pdx.cs410J.vidyav2.TextDumper();
-                edu.pdx.cs410J.vidyav2.TextParser parser = new edu.pdx.cs410J.vidyav2.TextParser(fileName, commandLineArgs.get(2));
-                parser.setFilename(fileName);
-                dumper.setFileName(fileName);
-                System.out.println("CustomerName: - " + commandLineArgs.get(2));
-                parser.setCustomerName(commandLineArgs.get(2));
-                edu.pdx.cs410J.vidyav2.PhoneBill bill = parser.parse();
-                PhoneCall call = new PhoneCall();
-                call.setCallerName(commandLineArgs.get(2));
-                call.setCallerNumber(commandLineArgs.get(3));
-                call.setCalleeNumber(commandLineArgs.get(4));
-                call.setPhoneCallBeginDate(commandLineArgs.get(5));
-                call.setPhoneCallBeginTime(commandLineArgs.get(5), commandLineArgs.get(6), commandLineArgs.get(7));
-                call.setPhoneCallEndDate(commandLineArgs.get(8));
-                call.setPhoneCallEndTime(commandLineArgs.get(8), commandLineArgs.get(9), commandLineArgs.get(10));
-                boolean allRequiredArgumentsAreValid = checkValidityOfRequiredArgs(commandLineArgs);
-                if (!allRequiredArgumentsAreValid) {
-                    return;
-                }
-                bill.addPhoneCall(call);
-                dumper.dump(bill);
-                edu.pdx.cs410J.vidyav2.PrettyPrinter printer = new edu.pdx.cs410J.vidyav2.PrettyPrinter();
-                printer.setFilename(commandLineArgs.get(1));
-                printer.setCustomerName(commandLineArgs.get(2));
-                printer.getpretty(call, commandLineArgs.get(2));
-                printer.dump(bill);
-                }
-            }
-         else if (commandLineArgs.size() == 13) {
-            if ((commandLineArgs.get(0).contains("-textFile") && commandLineArgs.get(1).contains(".txt") &&
-                    commandLineArgs.get(2).equals("-pretty") && !commandLineArgs.get(3).equals("-"))) {
-                String fileName = commandLineArgs.get(1);
-                edu.pdx.cs410J.vidyav2.TextDumper dumper = new edu.pdx.cs410J.vidyav2.TextDumper();
-                edu.pdx.cs410J.vidyav2.TextParser parser = new edu.pdx.cs410J.vidyav2.TextParser(fileName, commandLineArgs.get(2));
-                System.out.println("CustomerName: - " + commandLineArgs.get(4));
-                parser.setFilename(fileName);
-                dumper.setFileName(fileName);
-                parser.setCustomerName(commandLineArgs.get(4));
-                edu.pdx.cs410J.vidyav2.PhoneBill bill = parser.parse();
-                PhoneCall call = new PhoneCall();
-                call.setCallerName(commandLineArgs.get(4));
-                call.setCallerNumber(commandLineArgs.get(5));
-                call.setCalleeNumber(commandLineArgs.get(6));
-                call.setPhoneCallBeginDate(commandLineArgs.get(7));
-                call.setPhoneCallBeginTime(commandLineArgs.get(7), commandLineArgs.get(8), commandLineArgs.get(9));
-                call.setPhoneCallEndDate(commandLineArgs.get(10));
-                call.setPhoneCallEndTime(commandLineArgs.get(10), commandLineArgs.get(11), commandLineArgs.get(12));
-                boolean allRequiredArgumentsAreValid = checkValidityOfRequiredArgs(commandLineArgs);
-                if (!allRequiredArgumentsAreValid) {
-                    return;
-                }
-                bill.addPhoneCall(call);
-                dumper.dump(bill);
-
-                edu.pdx.cs410J.vidyav2.PrettyPrinter printer = new edu.pdx.cs410J.vidyav2.PrettyPrinter();
-                printer.setFilename(commandLineArgs.get(3));
-                printer.setCustomerName(commandLineArgs.get(4));
-                printer.getpretty(call, commandLineArgs.get(5));
-                printer.dump(bill);
-            } else if ((commandLineArgs.get(0).contains("-textFile") && commandLineArgs.get(1).contains(".txt") &&
-                    (commandLineArgs.get(2).equals("-pretty") && commandLineArgs.get(3).contains("-")) ||
-                    (commandLineArgs.get(2).equals("-pretty") && commandLineArgs.get(3).contains(".txt")))) {
-
-                String fileName = commandLineArgs.get(1);
-                edu.pdx.cs410J.vidyav2.TextDumper dumper = new TextDumper();
-                edu.pdx.cs410J.vidyav2.TextParser parser = new TextParser(fileName, commandLineArgs.get(4));
-                parser.setFilename(fileName);
-                dumper.setFileName(fileName);
-                System.out.println("CustomerName: - " + commandLineArgs.get(4));
-                parser.setCustomerName(commandLineArgs.get(4));
-                PhoneBill bill = parser.parse();
-                PhoneCall call = new PhoneCall();
-                call.setCallerName(commandLineArgs.get(4));
-                call.setCallerNumber(commandLineArgs.get(5));
-                call.setCalleeNumber(commandLineArgs.get(6));
-                call.setPhoneCallBeginDate(commandLineArgs.get(7));
-                call.setPhoneCallBeginTime(commandLineArgs.get(7), commandLineArgs.get(8), commandLineArgs.get(9));
-                call.setPhoneCallEndDate(commandLineArgs.get(10));
-                call.setPhoneCallEndTime(commandLineArgs.get(10), commandLineArgs.get(11), commandLineArgs.get(12));
-                boolean allRequiredArgumentsAreValid = checkValidityOfRequiredArgs(commandLineArgs);
-                if (!allRequiredArgumentsAreValid) {
-                    return;
-                }
-                bill.addPhoneCall(call);
-                dumper.dump(bill);
-                edu.pdx.cs410J.vidyav2.PrettyPrinter printer = new PrettyPrinter();
-                printer.setFilename(commandLineArgs.get(3));
-                printer.setCustomerName(commandLineArgs.get(4));
-                printer.getpretty(call, commandLineArgs.get(5));
-                printer.dump(bill);
-            } else {
-                System.err.println("Extraneous or wrong arguments are being printed, this is not allowed.");
-            }
         }
-    }
+//            if ((commandLineArgs.get(0).contains("-host") || commandLineArgs.get(2).contains("-port"))) {
+//                int index = 0;
+//                for (int i = 0; i<commandLineArgs.size(); i++) {
+//                    if (commandLineArgs.get(i).contains("-host")) {
+//                        index = i;
+//                    }
+//                }
+//                String fileName = commandLineArgs.get(index);
+//                edu.pdx.cs410J.vidyav2.TextDumper dumper = new edu.pdx.cs410J.vidyav2.TextDumper();
+//                edu.pdx.cs410J.vidyav2.TextParser parser = new edu.pdx.cs410J.vidyav2.TextParser(fileName, commandLineArgs.get(index));
+//                System.out.println("CustomerName: - " + commandLineArgs.get(2));
+//                parser.setFilename(fileName);
+//                dumper.setFileName(fileName);
+//                parser.setCustomerName(commandLineArgs.get(2+3));
+//                edu.pdx.cs410J.vidyav2.PhoneBill bill = parser.parse();
+//                PhoneCall call = new PhoneCall();
+//                call.setCallerName(commandLineArgs.get(2));
+//                call.setCallerNumber(commandLineArgs.get(3));
+//                call.setCalleeNumber(commandLineArgs.get(4));
+//                call.setPhoneCallBeginDate(commandLineArgs.get(5));
+//                call.setPhoneCallBeginTime(commandLineArgs.get(5), commandLineArgs.get(6), commandLineArgs.get(7));
+//                call.setPhoneCallEndDate(commandLineArgs.get(8));
+//                call.setPhoneCallEndTime(commandLineArgs.get(8), commandLineArgs.get(9), commandLineArgs.get(10));
+//                boolean allRequiredArgumentsAreValid = checkValidityOfRequiredArgs(commandLineArgs);
+//                if (!allRequiredArgumentsAreValid) {
+//                    return;
+//                }
+//                bill.addPhoneCall(call);
+//                dumper.dump(bill);
+//            } else if ((commandLineArgs.get(1).contains("-"))) {
+//                int index ;
+//                for (int i = 0; true; i++) {
+//                    if (commandLineArgs.get(i).contains("-pretty")) {
+//                        index = i;
+//                        break;
+//                    }
+//                }
+//                String fileName = commandLineArgs.get(index);
+//                edu.pdx.cs410J.vidyav2.TextDumper dumper = new edu.pdx.cs410J.vidyav2.TextDumper();
+//                dumper.setFileName(fileName);
+//                edu.pdx.cs410J.vidyav2.PhoneBill bill = new edu.pdx.cs410J.vidyav2.PhoneBill(commandLineArgs.get(2));
+//                PhoneCall call = new PhoneCall();
+//                call.setCallerName(commandLineArgs.get(2));
+//                call.setCallerNumber(commandLineArgs.get(3));
+//                call.setCalleeNumber(commandLineArgs.get(4));
+//                call.setPhoneCallBeginDate(commandLineArgs.get(5));
+//                call.setPhoneCallBeginTime(commandLineArgs.get(5), commandLineArgs.get(6), commandLineArgs.get(7));
+//                call.setPhoneCallEndDate(commandLineArgs.get(8));
+//                call.setPhoneCallEndTime(commandLineArgs.get(8), commandLineArgs.get(9), commandLineArgs.get(10));
+//                boolean allRequiredArgumentsAreValid = checkValidityOfRequiredArgs(commandLineArgs);
+//                if (!allRequiredArgumentsAreValid) {
+//                    return;
+//                }
+//                bill.addPhoneCall(call);
+//                edu.pdx.cs410J.vidyav2.PrettyPrinter printer = new edu.pdx.cs410J.vidyav2.PrettyPrinter();
+//                System.out.println("\nThis is a pretty file, printing the following Phone details:\n" + printer.getpretty(call, bill.getCustomer()));
+//            }
+//
+//        } else if (commandLineArgs.size() == 12) {
+//            if ((commandLineArgs.get(0).contains("-textFile") && commandLineArgs.get(1).contains("-pretty") ||
+//                    (commandLineArgs.get(0).equals("-pretty") && commandLineArgs.get(1).equals("-textFile") &&
+//                            commandLineArgs.get(2).contains(".txt")) || commandLineArgs.get(0).contains("-print") &&
+//                    commandLineArgs.get(1).equals("-pretty") && commandLineArgs.get(2).contains(".txt") ||
+//                    commandLineArgs.get(0).contains("-pretty") && commandLineArgs.get(1).equals("-print") &&
+//                            commandLineArgs.get(2).contains(".txt"))) {
+//                int index = 0;
+//                for (int i = 0; i<commandLineArgs.size(); i++) {
+//                    if (commandLineArgs.get(i).contains("-pretty")) {
+//                        index = i + 2;
+//                        break;
+//                    }
+//                }
+//                String fileName = commandLineArgs.get(2);
+//                edu.pdx.cs410J.vidyav2.TextDumper dumper = new edu.pdx.cs410J.vidyav2.TextDumper();
+//                edu.pdx.cs410J.vidyav2.TextParser parser = new edu.pdx.cs410J.vidyav2.TextParser(fileName, commandLineArgs.get(index));
+//                System.out.println("CustomerName: - " + commandLineArgs.get(3));
+//                parser.setFilename(fileName);
+//                dumper.setFileName(fileName);
+//                parser.setCustomerName(commandLineArgs.get(3));
+//                edu.pdx.cs410J.vidyav2.PhoneBill bill = parser.parse();
+//                PhoneCall call = new PhoneCall();
+//                call.setCallerName(commandLineArgs.get(3));
+//                call.setCallerNumber(commandLineArgs.get(4));
+//                call.setCalleeNumber(commandLineArgs.get(5));
+//                call.setPhoneCallBeginDate(commandLineArgs.get(6));
+//                call.setPhoneCallBeginTime(commandLineArgs.get(6), commandLineArgs.get(7), commandLineArgs.get(8));
+//                call.setPhoneCallEndDate(commandLineArgs.get(9));
+//                call.setPhoneCallEndTime(commandLineArgs.get(9), commandLineArgs.get(10), commandLineArgs.get(11));
+//                boolean allRequiredArgumentsAreValid = checkValidityOfRequiredArgs(commandLineArgs);
+//                if (!allRequiredArgumentsAreValid) {
+//                    return;
+//                }
+//                bill.addPhoneCall(call);
+//                dumper.dump(bill);
+//
+//                edu.pdx.cs410J.vidyav2.PrettyPrinter printer = new edu.pdx.cs410J.vidyav2.PrettyPrinter();
+//                printer.setFilename(commandLineArgs.get(2));
+//                printer.setCustomerName(commandLineArgs.get(3));
+//                printer.getpretty(call, commandLineArgs.get(4));
+//                printer.dump(bill);
+//            } else if ((commandLineArgs.get(0).contains("-pretty") && commandLineArgs.get(1).contains(".txt"))) {
+//                 String fileName = commandLineArgs.get(1);
+//                edu.pdx.cs410J.vidyav2.TextDumper dumper = new edu.pdx.cs410J.vidyav2.TextDumper();
+//                edu.pdx.cs410J.vidyav2.TextParser parser = new edu.pdx.cs410J.vidyav2.TextParser(fileName, commandLineArgs.get(2));
+//                parser.setFilename(fileName);
+//                dumper.setFileName(fileName);
+//                System.out.println("CustomerName: - " + commandLineArgs.get(2));
+//                parser.setCustomerName(commandLineArgs.get(2));
+//                edu.pdx.cs410J.vidyav2.PhoneBill bill = parser.parse();
+//                PhoneCall call = new PhoneCall();
+//                call.setCallerName(commandLineArgs.get(2));
+//                call.setCallerNumber(commandLineArgs.get(3));
+//                call.setCalleeNumber(commandLineArgs.get(4));
+//                call.setPhoneCallBeginDate(commandLineArgs.get(5));
+//                call.setPhoneCallBeginTime(commandLineArgs.get(5), commandLineArgs.get(6), commandLineArgs.get(7));
+//                call.setPhoneCallEndDate(commandLineArgs.get(8));
+//                call.setPhoneCallEndTime(commandLineArgs.get(8), commandLineArgs.get(9), commandLineArgs.get(10));
+//                boolean allRequiredArgumentsAreValid = checkValidityOfRequiredArgs(commandLineArgs);
+//                if (!allRequiredArgumentsAreValid) {
+//                    return;
+//                }
+//                bill.addPhoneCall(call);
+//                dumper.dump(bill);
+//                edu.pdx.cs410J.vidyav2.PrettyPrinter printer = new edu.pdx.cs410J.vidyav2.PrettyPrinter();
+//                printer.setFilename(commandLineArgs.get(1));
+//                printer.setCustomerName(commandLineArgs.get(2));
+//                printer.getpretty(call, commandLineArgs.get(2));
+//                printer.dump(bill);
+//                }
+//            }
+//         else if (commandLineArgs.size() == 13) {
+//            if ((commandLineArgs.get(0).contains("-textFile") && commandLineArgs.get(1).contains(".txt") &&
+//                    commandLineArgs.get(2).equals("-pretty") && !commandLineArgs.get(3).equals("-"))) {
+//                String fileName = commandLineArgs.get(1);
+//                edu.pdx.cs410J.vidyav2.TextDumper dumper = new edu.pdx.cs410J.vidyav2.TextDumper();
+//                edu.pdx.cs410J.vidyav2.TextParser parser = new edu.pdx.cs410J.vidyav2.TextParser(fileName, commandLineArgs.get(2));
+//                System.out.println("CustomerName: - " + commandLineArgs.get(4));
+//                parser.setFilename(fileName);
+//                dumper.setFileName(fileName);
+//                parser.setCustomerName(commandLineArgs.get(4));
+//                edu.pdx.cs410J.vidyav2.PhoneBill bill = parser.parse();
+//                PhoneCall call = new PhoneCall();
+//                call.setCallerName(commandLineArgs.get(4));
+//                call.setCallerNumber(commandLineArgs.get(5));
+//                call.setCalleeNumber(commandLineArgs.get(6));
+//                call.setPhoneCallBeginDate(commandLineArgs.get(7));
+//                call.setPhoneCallBeginTime(commandLineArgs.get(7), commandLineArgs.get(8), commandLineArgs.get(9));
+//                call.setPhoneCallEndDate(commandLineArgs.get(10));
+//                call.setPhoneCallEndTime(commandLineArgs.get(10), commandLineArgs.get(11), commandLineArgs.get(12));
+//                boolean allRequiredArgumentsAreValid = checkValidityOfRequiredArgs(commandLineArgs);
+//                if (!allRequiredArgumentsAreValid) {
+//                    return;
+//                }
+//                bill.addPhoneCall(call);
+//                dumper.dump(bill);
+//
+//                edu.pdx.cs410J.vidyav2.PrettyPrinter printer = new edu.pdx.cs410J.vidyav2.PrettyPrinter();
+//                printer.setFilename(commandLineArgs.get(3));
+//                printer.setCustomerName(commandLineArgs.get(4));
+//                printer.getpretty(call, commandLineArgs.get(5));
+//                printer.dump(bill);
+//            } else if ((commandLineArgs.get(0).contains("-textFile") && commandLineArgs.get(1).contains(".txt") &&
+//                    (commandLineArgs.get(2).equals("-pretty") && commandLineArgs.get(3).contains("-")) ||
+//                    (commandLineArgs.get(2).equals("-pretty") && commandLineArgs.get(3).contains(".txt")))) {
+//
+//                String fileName = commandLineArgs.get(1);
+//                edu.pdx.cs410J.vidyav2.TextDumper dumper = new TextDumper();
+//                edu.pdx.cs410J.vidyav2.TextParser parser = new TextParser(fileName, commandLineArgs.get(4));
+//                parser.setFilename(fileName);
+//                dumper.setFileName(fileName);
+//                System.out.println("CustomerName: - " + commandLineArgs.get(4));
+//                parser.setCustomerName(commandLineArgs.get(4));
+//                PhoneBill bill = parser.parse();
+//                PhoneCall call = new PhoneCall();
+//                call.setCallerName(commandLineArgs.get(4));
+//                call.setCallerNumber(commandLineArgs.get(5));
+//                call.setCalleeNumber(commandLineArgs.get(6));
+//                call.setPhoneCallBeginDate(commandLineArgs.get(7));
+//                call.setPhoneCallBeginTime(commandLineArgs.get(7), commandLineArgs.get(8), commandLineArgs.get(9));
+//                call.setPhoneCallEndDate(commandLineArgs.get(10));
+//                call.setPhoneCallEndTime(commandLineArgs.get(10), commandLineArgs.get(11), commandLineArgs.get(12));
+//                boolean allRequiredArgumentsAreValid = checkValidityOfRequiredArgs(commandLineArgs);
+//                if (!allRequiredArgumentsAreValid) {
+//                    return;
+//                }
+//                bill.addPhoneCall(call);
+//                dumper.dump(bill);
+//                edu.pdx.cs410J.vidyav2.PrettyPrinter printer = new PrettyPrinter();
+//                printer.setFilename(commandLineArgs.get(3));
+//                printer.setCustomerName(commandLineArgs.get(4));
+//                printer.getpretty(call, commandLineArgs.get(5));
+//                printer.dump(bill);
+//            } else {
+//                System.err.println("Extraneous or wrong arguments are being printed, this is not allowed.");
+//            }
+//        }
+   }
         /**
          * checkValidityOfRequiredArgs() method is used validate the Required arguments in the program
          *

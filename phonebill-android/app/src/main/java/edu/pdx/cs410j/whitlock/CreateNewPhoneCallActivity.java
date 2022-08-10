@@ -1,14 +1,111 @@
 package edu.pdx.cs410j.whitlock;
 
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
+import com.google.android.material.snackbar.Snackbar;
+
+import java.io.File;
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import edu.pdx.cs410J.ParserException;
 
 public class CreateNewPhoneCallActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_new_phone_call);
+        setContentView(R.layout.activity_create_phonecalls);
     }
+
+    public void addPhonecallBtn(View view) throws ParserException, IOException {
+        File dir = getFilesDir();
+        EditText customer = findViewById(R.id.customer);
+        EditText callerNumber = findViewById(R.id.caller);
+        EditText calleeNumber = findViewById(R.id.callee);
+        EditText beginDateTime = findViewById(R.id.beginDateTime);
+        EditText endDateTime = findViewById(R.id.endDateTime);
+
+        String[] beginDateTimeWords = beginDateTime.getText().toString().split(" ");
+        String[] endDateTimeWords = endDateTime.getText().toString().split(" ");
+
+        if(customer.getText().toString().equals("")){
+            Snackbar.make(view, "Enter valid Customer name", 1000).show();
+            return;
+        }
+        if(callerNumber.getText().toString().equals("")){
+            Snackbar.make(view, "Enter correct caller number", 1000).show();
+            return;
+        }
+        if(calleeNumber.getText().toString().equals("")){
+            Snackbar.make(view, "Enter correct callee number", 1000).show();
+            return;
+        }
+        if(beginDateTimeWords.length == 3) {
+            if (!checkdatetime(beginDateTimeWords[0], beginDateTimeWords[1], beginDateTimeWords[2])) {
+                Snackbar.make(view, "Enter valid begin date and time", 1000).show();
+                return;
+            }
+        }
+
+        if(endDateTimeWords.length == 3) {
+            if (!checkdatetime(endDateTimeWords[0], endDateTimeWords[1], endDateTimeWords[2])) {
+                Snackbar.make(view, "Enter valid end date time", 1000).show();
+                return;
+            }
+        }
+        else { Snackbar.make(view, "Enter valid end date time", 1000).show(); return;  }
+
+        PhoneCall call = new PhoneCall();
+        call.setCallerNumber(callerNumber.getText().toString());
+        call.setCalleeNumber(calleeNumber.getText().toString());
+        call.setPhoneCallBeginTime(beginDateTimeWords[0], beginDateTimeWords[1], beginDateTimeWords[2]);
+        call.setPhoneCallEndTime(endDateTimeWords[0], endDateTimeWords[1], endDateTimeWords[2]);
+
+        if(!call.chkEndAfterStart()){
+            Snackbar.make(view, "Error: Arrival is before Departure", 1000).show();
+            return;
+        }
+
+        TextParser parser = new TextParser(dir, customer.getText().toString() + ".txt", customer.getText().toString());
+        PhoneBill parsedphonebill  = parser.parse();
+        parsedphonebill.addPhoneCall(call);
+        TextDumper dumper = new TextDumper(dir, customer.getText().toString() + ".txt");
+        dumper.dump(parsedphonebill);
+
+        customer.setText("");
+        callerNumber.setText("");
+        calleeNumber.setText("");
+        beginDateTime.setText("");
+        endDateTime.setText("");
+        Snackbar.make(view, "Phonecall Added Successfully", 1000).show();
+    }
+
+    /**
+     * This method checks whether the dates and times in the text file are correct or not
+     * @param date defines call date
+     * @param time defines call time
+     * @param ampm The time of the day (am or pm)
+     */
+    public static boolean checkdatetime(String date, String time, String ampm) {
+        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
+        String finaldatetime = date + " " + time + " " + ampm;
+        try{
+            Date d = formatter.parse(finaldatetime);
+        }
+        catch (ParseException e){
+            System.err.println("Please verify the format for datetime");
+            return false;
+        }
+        return true;
+    }
+
 }
+
+
+
