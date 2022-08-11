@@ -68,7 +68,7 @@ public class CreateNewPhoneCallActivity extends AppCompatActivity {
         call.setPhoneCallEndTime(endDateTimeWords[0], endDateTimeWords[1], endDateTimeWords[2]);
 
         if(!call.chkEndAfterStart()){
-            Snackbar.make(view, "Error: Arrival is before Departure", 1000).show();
+            Snackbar.make(view, "Error: Begin Time is before End Time", 1000).show();
             return;
         }
 
@@ -99,7 +99,7 @@ public class CreateNewPhoneCallActivity extends AppCompatActivity {
             Date d = formatter.parse(finaldatetime);
         }
         catch (ParseException e){
-            System.err.println("Please verify the format for datetime");
+            System.err.println("Please verify the format for date time");
             return false;
         }
         return true;

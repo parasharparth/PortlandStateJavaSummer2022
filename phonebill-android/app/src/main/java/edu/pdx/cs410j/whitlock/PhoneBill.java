@@ -1,8 +1,6 @@
 package edu.pdx.cs410j.whitlock;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.TreeSet;
 
 import edu.pdx.cs410J.AbstractPhoneBill;
 

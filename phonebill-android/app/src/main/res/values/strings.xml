@@ -26,16 +26,15 @@
     <string name="endtime">EndTime</string>
     <string name="submit">Submit</string>
     <string name="customerNew">Customer</string>
-    <string name="readme">README for Project 5\n\nName: Vidyavarshini H J\n\nProject 6 : An Android Airline Application\n\nThis is an app that allows the user to create PhoneBills, add PhoneCalls to PhoneBills, display
-        the contents of a Bill, and search calls within a particular bill.\nCustomer - the customer
-        field may be any combination of alphanumeric characters, and may not be blank.\nCaller - the
-        customer\'s phone number. Must be entered in xxx-xxx-xxxx format.\nCallee - the callee\'s
-        phone number.  Must be entered in xxx-xxx-xxxx format.\nDate must be entered in mm/dd/yyyy format, time must be entered in hh:mm format.
-    </string>
+    <string name="readme">Course: CS 410/510 Advanced Programming with Java\n\nProject 5: A Small Device Application for a Phone Bill\n\n Student Name:
+        Vidyavarshini H J\n\nThis android application consists of the following functionalities:\n\n1.
+        Creating a phone bill — where a phonebill for a specific (given) customer is created by entering
+        calls\n2. Search the already created phonecall and pretty print a phone bill and its calls\n3.
+        Delete an already created phonecall.\n4. Display the details of the project in the "Help" section.</string>
     <string name="help">HELP</string>
     <string name="searchphonecalls">SEARCH PHONECALLS</string>
     <string name="addphonecalldetails">Enter the Phonecall details</string>
-    <string name="deleteairlinetitle">Enter the Customer\'s name who\'s phonecall should be deleted</string>
+    <string name="deletephonecalltitle">Enter the Customer\'s name who\'s phonecall should be deleted</string>
     <string name="deletebutton">DELETE PHONECALL</string>
     <string name="launchdelete">Delete Phonecall</string>
 </resources>

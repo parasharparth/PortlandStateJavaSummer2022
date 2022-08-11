@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Reader;
 import java.util.ArrayList;
@@ -31,15 +30,6 @@ public class TextParser implements PhoneBillParser<PhoneBill> {
         this.customerName = customerName;
         this.reader = null;
     }
-//    public TextParser()
-//    {
-//        this.reader = null;
-//    }
-
-//    public TextParser(String fileName) {
-//        this.reader = null;
-//    }
-
 
     @Override
     public PhoneBill parse() throws ParserException {

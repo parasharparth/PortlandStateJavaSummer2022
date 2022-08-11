@@ -59,7 +59,7 @@ public class resultsActivity extends AppCompatActivity {
             }
         }
         if (temp.size() == 0) {
-            adapter2.add("No flights found!");
+            adapter2.add("No phonecalls found!");
             listView.setAdapter(adapter2);
         } else {
             listView.setAdapter(adapter);
