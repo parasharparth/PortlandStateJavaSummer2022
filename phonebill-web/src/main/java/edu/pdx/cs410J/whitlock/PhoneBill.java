@@ -1,14 +1,12 @@
 package edu.pdx.cs410J.whitlock;
 
 import edu.pdx.cs410J.AbstractPhoneBill;
-import edu.pdx.cs410J.vidyav2.PhoneCall;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
 /************************************************
- * @project PortlandStateJavaSummer2022
- * @class PhoneBill
+ * This is a PhoneBill class
  ************************************************/
 public class  PhoneBill extends AbstractPhoneBill<PhoneCall> {
 

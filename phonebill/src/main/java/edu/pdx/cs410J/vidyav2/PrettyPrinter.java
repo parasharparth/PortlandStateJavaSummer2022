@@ -1,4 +1,4 @@
-package edu.pdx.cs410J.vidyav2;
+package edu.pdx.cs410J.vidya2;
 
 import edu.pdx.cs410J.PhoneBillDumper;
 import java.io.File;

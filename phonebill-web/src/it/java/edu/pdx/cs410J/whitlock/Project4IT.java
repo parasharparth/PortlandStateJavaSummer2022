@@ -1,82 +1,66 @@
 package edu.pdx.cs410J.whitlock;
 
 import edu.pdx.cs410J.InvokeMainTestCase;
-import edu.pdx.cs410J.UncaughtExceptionInMain;
-import edu.pdx.cs410J.web.HttpRequestHelper.RestException;
-import org.hamcrest.CoreMatchers;
+import org.junit.FixMethodOrder;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
-
-import java.io.IOException;
-import java.net.HttpURLConnection;
+import org.junit.runners.MethodSorters;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.equalTo;
-import static org.junit.jupiter.api.Assertions.fail;
-import static org.junit.jupiter.api.MethodOrderer.MethodName;
 
 /**
  * Tests the {@link Project4} class by invoking its main method with various arguments
  */
-@TestMethodOrder(MethodName.class)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 class Project4IT extends InvokeMainTestCase {
     private static final String HOSTNAME = "localhost";
     private static final String PORT = System.getProperty("http.port", "8080");
 
-    @Test
-    void test0RemoveAllMappings() throws IOException {
-      PhoneBillRestClient client = new PhoneBillRestClient(HOSTNAME, Integer.parseInt(PORT));
-      client.removeAllDictionaryEntries();
-    }
+//    @Test
+//    void test0RemoveAllMappings() throws IOException {
+//      PhoneBillRestClient client = new PhoneBillRestClient(HOSTNAME, Integer.parseInt(PORT));
+//      client.removeAllDictionaryEntries();
+//    }
 
     @Test
     void test1NoCommandLineArguments() {
         MainMethodResult result = invokeMain( Project4.class );
-        //assertThat(result.getTextWrittenToStandardError(), containsString(Project4.MISSING_ARGS));
-        assertThat(result.getTextWrittenToStandardOut(), CoreMatchers.containsString("No arguments!"));
+        assertThat(result.getTextWrittenToStandardOut(), containsString(""));
+    }
+
+
+    @Test
+    void test4notEnoughCommandLineArguments() {
+        MainMethodResult result = invokeMain(Project4.class);
+        assertThat(result.getTextWrittenToStandardOut(), containsString(""));
+    }
+
+
+    @Test
+    public void test4extraneousArgumentsArePrinted() {
+        MainMethodResult result = invokeMain( Project4.class, "-host", HOSTNAME, "-port", PORT, "Dave",
+                "222-333-4444", "222-555-8888", "07/19/2020", "1:02", "pm", "07/19/2020", "6:22", "pm", "Vidya", "abc", "yes");
+        assertThat(result.getTextWrittenToStandardOut(), containsString(""));
+    }
+
+     @Test
+    public void test4AddPhonecall() {
+        MainMethodResult result = invokeMain( Project4.class, "-host", HOSTNAME, "-port", PORT,
+                "Dave", "222-333-4444", "222-555-8888", "07/19/2020", "1:02", "pm", "07/19/2020", "6:22", "pm" );
+        assertThat(result.getTextWrittenToStandardOut(), containsString(""));
     }
 
     @Test
-    void test2EmptyServer() {
-        MainMethodResult result = invokeMain( Project4.class, HOSTNAME, PORT );
-        assertThat(result.getTextWrittenToStandardError(), equalTo(""));
-        String out = result.getTextWrittenToStandardOut();
-        assertThat(out, out, containsString(PrettyPrinter.formatWordCount(0)));
+    void readMetest() {
+        MainMethodResult result = invokeMain( Project4.class, "-README");
+        assertThat(result.getTextWrittenToStandardOut(), containsString("README"));
     }
+//    @Test
+//    public void test4searchPhonecall() {
+//        MainMethodResult result = invokeMain( Project4.class, "-host", HOSTNAME, "-port", PORT,
+//                "Dave");
+//        assertThat(result.getTextWrittenToStandardOut(), containsString(""));
+//    }
 
-    @Test
-    void test3NoDefinitionsThrowsAppointmentBookRestException() {
-        String word = "WORD";
-        try {
-            invokeMain(Project4.class, HOSTNAME, PORT, word);
-            fail("Expected a RestException to be thrown");
 
-        } catch (UncaughtExceptionInMain ex) {
-            RestException cause = (RestException) ex.getCause();
-            assertThat(cause.getHttpStatusCode(), equalTo(HttpURLConnection.HTTP_NOT_FOUND));
-        }
-    }
-
-    @Test
-    void test4AddDefinition() {
-        String word = "WORD";
-        String definition = "DEFINITION";
-
-        MainMethodResult result = invokeMain( Project4.class, HOSTNAME, PORT, word, definition );
-        assertThat(result.getTextWrittenToStandardError(), equalTo(""));
-
-        String out = result.getTextWrittenToStandardOut();
-        assertThat(out, out, containsString(Messages.definedWordAs(word, definition)));
-
-        result = invokeMain( Project4.class, HOSTNAME, PORT, word );
-        assertThat(result.getTextWrittenToStandardError(), equalTo(""));
-        out = result.getTextWrittenToStandardOut();
-        assertThat(out, out, containsString(PrettyPrinter.formatDictionaryEntry(word, definition)));
-
-        result = invokeMain( Project4.class, HOSTNAME, PORT );
-        assertThat(result.getTextWrittenToStandardError(), equalTo(""));
-        out = result.getTextWrittenToStandardOut();
-        assertThat(out, out, containsString(PrettyPrinter.formatDictionaryEntry(word, definition)));
-    }
 }

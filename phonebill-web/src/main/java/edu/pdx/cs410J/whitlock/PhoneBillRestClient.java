@@ -2,9 +2,9 @@ package edu.pdx.cs410J.whitlock;
 
 import com.google.common.annotations.VisibleForTesting;
 import edu.pdx.cs410J.ParserException;
-import edu.pdx.cs410J.vidyav2.PhoneBill;
-import edu.pdx.cs410J.vidyav2.PhoneCall;
-import edu.pdx.cs410J.vidyav2.PrettyPrinter;
+import edu.pdx.cs410J.whitlock.PhoneBill;
+import edu.pdx.cs410J.whitlock.PhoneCall;
+import edu.pdx.cs410J.whitlock.PrettyPrinter;
 import edu.pdx.cs410J.web.HttpRequestHelper;
 
 import java.io.IOException;
@@ -75,7 +75,7 @@ public class PhoneBillRestClient {
     throwExceptionIfNotOkayHttpStatus(response);
     if (bill.getPhoneCalls().size() > 0){
       PrettyPrinter pretty = new PrettyPrinter();
-      ArrayList<PhoneCall> phone = bill.getPhoneCalls();
+      ArrayList<PhoneCall> phone = (ArrayList<PhoneCall>) bill.getPhoneCalls();
       Collections.sort(phone);
       finalpretty = "";
       for (PhoneCall call : phone) {
@@ -115,36 +115,36 @@ public class PhoneBillRestClient {
   /**
    * Returns all dictionary entries from the server
    */
-  public Map<String, String> getAllDictionaryEntries() throws IOException, ParserException {
-    Response response = http.get(Map.of());
-    throwExceptionIfNotOkayHttpStatus(response);
-
-    TextParser parser = new TextParser(new StringReader(response.getContent()));
-    return parser.parse();
-  }
+//  public Map<String, String> getAllDictionaryEntries() throws IOException, ParserException {
+//    Response response = http.get(Map.of());
+//    throwExceptionIfNotOkayHttpStatus(response);
+//
+//    TextParser parser = new TextParser(new StringReader(response.getContent()));
+//    return parser.parse();
+//  }
 
   /**
    * Returns the definition for the given word
    */
-  public String getDefinition(String word) throws IOException, ParserException {
-    Response response = http.get(Map.of("word", word));
-    throwExceptionIfNotOkayHttpStatus(response);
-    String content = response.getContent();
+//  public String getDefinition(String word) throws IOException, ParserException {
+//    Response response = http.get(Map.of("word", word));
+//    throwExceptionIfNotOkayHttpStatus(response);
+//    String content = response.getContent();
+//
+//    TextParser parser = new TextParser(new StringReader(content));
+//    return parser.parse().get(word);
+//  }
 
-    TextParser parser = new TextParser(new StringReader(content));
-    return parser.parse().get(word);
-  }
 
-
-  public void addDictionaryEntry(String word, String definition) throws IOException {
-    Response response = http.post(Map.of("word", word, "definition", definition));
-    throwExceptionIfNotOkayHttpStatus(response);
-  }
-
-  public void removeAllDictionaryEntries() throws IOException {
-    Response response = http.delete(Map.of());
-    throwExceptionIfNotOkayHttpStatus(response);
-  }
+//  public void addDictionaryEntry(String word, String definition) throws IOException {
+//    Response response = http.post(Map.of("word", word, "definition", definition));
+//    throwExceptionIfNotOkayHttpStatus(response);
+//  }
+//
+//  public void removeAllDictionaryEntries() throws IOException {
+//    Response response = http.delete(Map.of());
+//    throwExceptionIfNotOkayHttpStatus(response);
+//  }
 
   /**
    * This method handles the response if there is an HTTP error

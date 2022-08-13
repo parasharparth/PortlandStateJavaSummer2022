@@ -1,6 +1,7 @@
 package edu.pdx.cs410J.whitlock;
 
 import edu.pdx.cs410J.ParserException;
+import edu.pdx.cs410J.web.HttpRequestHelper;
 import edu.pdx.cs410J.web.HttpRequestHelper.RestException;
 import org.junit.jupiter.api.MethodOrderer.MethodName;
 import org.junit.jupiter.api.Test;
@@ -24,43 +25,37 @@ class PhoneBillRestClientIT {
 
   private PhoneBillRestClient newPhoneBillRestClient() {
     int port = Integer.parseInt(PORT);
-    //String url = new String();
     return new PhoneBillRestClient(HOSTNAME, port);
   }
 
+//  @Test
+//  void test0RemoveAllDictionaryEntries() throws IOException {
+//    PhoneBillRestClient client = newPhoneBillRestClient();
+//    client.removeAllDictionaryEntries();
+//  }
+//
+//  @Test
+//  void test1EmptyServerContainsNoDictionaryEntries() throws IOException, ParserException {
+//    PhoneBillRestClient client = newPhoneBillRestClient();
+//    Map<String, String> dictionary = client.getAllDictionaryEntries();
+//    assertThat(dictionary.size(), equalTo(0));
+//  }
+//
+//  @Test
+//  void test2DefineOneWord() throws IOException, ParserException {
+//    PhoneBillRestClient client = newPhoneBillRestClient();
+//    String testWord = "TEST WORD";
+//    String testDefinition = "TEST DEFINITION";
+//    client.addDictionaryEntry(testWord, testDefinition);
+//
+//    String definition = client.getDefinition(testWord);
+//    assertThat(definition, equalTo(testDefinition));
+//  }
+//
   @Test
-  void test0RemoveAllDictionaryEntries() throws IOException {
+  void test4MissingRequiredParameterReturnsPreconditionFailed() throws IOException {
     PhoneBillRestClient client = newPhoneBillRestClient();
-    client.removeAllDictionaryEntries();
+    HttpRequestHelper.Response response = client.postToMyURL(Map.of());
+    assertThat(response.getHttpStatusCode(), equalTo(HttpURLConnection.HTTP_PRECON_FAILED));
   }
-
-  @Test
-  void test1EmptyServerContainsNoDictionaryEntries() throws IOException, ParserException {
-    PhoneBillRestClient client = newPhoneBillRestClient();
-    Map<String, String> dictionary = client.getAllDictionaryEntries();
-    assertThat(dictionary.size(), equalTo(0));
-  }
-
-  @Test
-  void test2DefineOneWord() throws IOException, ParserException {
-    PhoneBillRestClient client = newPhoneBillRestClient();
-    String testWord = "TEST WORD";
-    String testDefinition = "TEST DEFINITION";
-    client.addDictionaryEntry(testWord, testDefinition);
-
-    String definition = client.getDefinition(testWord);
-    assertThat(definition, equalTo(testDefinition));
-  }
-
-  @Test
-  void test4EmptyWordThrowsException() {
-    PhoneBillRestClient client = newPhoneBillRestClient();
-    String emptyString = "";
-
-    RestException ex =
-      assertThrows(RestException.class, () -> client.addDictionaryEntry(emptyString, emptyString));
-    assertThat(ex.getHttpStatusCode(), equalTo(HttpURLConnection.HTTP_PRECON_FAILED));
-    assertThat(ex.getMessage(), equalTo(Messages.missingRequiredParameter("word")));
-  }
-
 }
