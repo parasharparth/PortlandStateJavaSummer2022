@@ -6,7 +6,7 @@
     <version>2022.1.0</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
-  <groupId>edu.pdx.cs410J.whitlock</groupId>
+  <groupId>edu.pdx.cs410J.vidyav2</groupId>
   <artifactId>phonebill</artifactId>
   <packaging>jar</packaging>
   <version>2022.0.0</version>
@@ -82,9 +82,9 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>edu.pdx.cs410J.whitlock.Project1</mainClass>
-              <mainClass>edu.pdx.cs410J.whitlock.Project2</mainClass>
-              <mainClass>edu.pdx.cs410J.whitlock.Project3</mainClass>
+              <mainClass>edu.pdx.cs410J.vidyav2.Project1</mainClass>
+              <mainClass>edu.pdx.cs410J.vidyav2.Project2</mainClass>
+              <mainClass>edu.pdx.cs410J.vidyav2.Project3</mainClass>
             </manifest>
           </archive>
         </configuration>
