@@ -6,7 +6,7 @@
     <groupId>io.github.davidwhitlock.cs410J</groupId>
     <version>2022.1.0</version>
   </parent>
-  <groupId>edu.pdx.cs410J.vidyav2</groupId>
+  <groupId>edu.pdx.cs410J.whitlock</groupId>
   <artifactId>koans</artifactId>
   <packaging>jar</packaging>
   <version>2022.0.0</version>
