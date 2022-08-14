@@ -14,22 +14,22 @@
         android:theme="@style/Theme.PhoneBill"
         tools:targetApi="31">
         <activity
-            android:name=".DeleteActivity"
+            android:name="edu.pdx.cs410j.whitlock.DeleteActivity"
             android:exported="false" />
         <activity
-            android:name=".resultsActivity"
+            android:name="edu.pdx.cs410j.whitlock.resultsActivity"
             android:exported="false" />
         <activity
-            android:name=".LaunchSearchActivity"
+            android:name="edu.pdx.cs410j.whitlock.LaunchSearchActivity"
             android:exported="false" />
         <activity
-            android:name=".readmeactivity"
+            android:name="edu.pdx.cs410j.whitlock.readmeactivity"
             android:exported="false" />
         <activity
-            android:name=".CreateNewPhoneCallActivity"
+            android:name="edu.pdx.cs410j.whitlock.CreateNewPhoneCallActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name="edu.pdx.cs410j.whitlock.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
