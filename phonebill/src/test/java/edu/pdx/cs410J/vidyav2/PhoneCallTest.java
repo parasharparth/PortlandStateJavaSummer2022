@@ -1,4 +1,4 @@
-package edu.pdx.cs410J.whitlock;
+package edu.pdx.cs410J.vidyav2;
 
 import org.junit.jupiter.api.Test;
 
