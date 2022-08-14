@@ -42,7 +42,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>edu.pdx.cs410J.vidyav2.Student</mainClass>
+              <mainClass>edu.pdx.cs410J.whitlock.Student</mainClass>
             </manifest>
           </archive>
         </configuration>

@@ -1,4 +1,4 @@
-package edu.pdx.cs410J.vidyav2;
+package edu.pdx.cs410J.whitlock;
 
 import edu.pdx.cs410J.InvokeMainTestCase;
 import org.junit.FixMethodOrder;

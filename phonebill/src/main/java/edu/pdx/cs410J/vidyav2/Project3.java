@@ -1,4 +1,4 @@
-package edu.pdx.cs410J.vidyav2;
+package edu.pdx.cs410J.whitlock;
 
 import java.io.BufferedReader;
 import java.io.IOException;

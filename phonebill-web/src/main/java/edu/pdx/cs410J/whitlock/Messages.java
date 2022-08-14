@@ -1,4 +1,4 @@
-package edu.pdx.cs410J.vidyav2;
+package edu.pdx.cs410J.whitlock;
 
 /**
  * Class for formatting messages on the server side.  This is mainly to enable

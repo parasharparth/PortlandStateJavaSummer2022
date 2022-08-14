@@ -1,4 +1,4 @@
-package edu.pdx.cs410J.vidyav2;
+package edu.pdx.cs410J.whitlock;
 
 import com.google.common.annotations.VisibleForTesting;
 import edu.pdx.cs410J.web.HttpRequestHelper;
@@ -40,8 +40,7 @@ public class PhoneBillRestClient {
     this.http = http;
   }
 
-  public void addCustomer(String customerName, PhoneCall call)
-  {
+  public void addCustomer(String customerName, PhoneCall call) throws IOException {
     Response response = postToMyURL(Map.of(
             "customerName",customerName,
             "callerName",call.getCaller(),
@@ -51,9 +50,8 @@ public class PhoneBillRestClient {
             "phoneCallBeginDate", call.getPhoneCallBeginDate(),
             "phoneCallEndDate", call.getPhoneCallEndDate(),
             "phoneCallBeginTime", call.getBeginTimeString(),
-            "phoneCallEndTime",call.getEndTimeString()
-                    ));
-    throwExceptionIfNotOkayHttpStatus(response);
+            "phoneCallEndTime",call.getEndTimeString()));
+    //throwExceptionIfNotOkayHttpStatus(response);
   }
 
   public String getCustomerDetails(String customerName, PhoneBill bill) throws Exception
@@ -100,7 +98,7 @@ public class PhoneBillRestClient {
       return http.post(dictionaryEntries);
     }
     catch (Exception e){
-      System.err.println("Please check the connection parameters for the client");
+      //System.err.println("Please check the connection parameters for the server.");
     }
     return null;
   }

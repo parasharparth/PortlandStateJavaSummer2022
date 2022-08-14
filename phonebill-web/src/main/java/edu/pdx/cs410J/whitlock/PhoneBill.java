@@ -1,4 +1,4 @@
-package edu.pdx.cs410J.vidyav2;
+package edu.pdx.cs410J.whitlock;
 
 import edu.pdx.cs410J.AbstractPhoneBill;
 import java.util.ArrayList;
@@ -20,6 +20,7 @@ public class  PhoneBill extends AbstractPhoneBill<PhoneCall> {
      *************************/
 
     private final ArrayList<PhoneCall> calls = new ArrayList<>();
+    private PhoneCall call;
 
     /********************
      * @param customer
@@ -37,6 +38,11 @@ public class  PhoneBill extends AbstractPhoneBill<PhoneCall> {
         return this.customer;
     }
 
+    @Override
+    public void addPhoneCall(PhoneCall phoneCall) {
+        
+    }
+
     /********************
      * setCustomer() method is used to set the customer details
      * @param customer
@@ -48,10 +54,8 @@ public class  PhoneBill extends AbstractPhoneBill<PhoneCall> {
 
     /********************
      * addPhoneCall() method is used to add phone call to the phone bill
-     * @param call
      *********************/
-    @Override
-    public void addPhoneCall(PhoneCall call) {
+    public void addPhoneCall() {
         this.calls.add(call);
     }
 

@@ -1,4 +1,4 @@
-package edu.pdx.cs410J.vidyav2;
+package edu.pdx.cs410J.whitlock;
 
 import edu.pdx.cs410J.ParserException;
 
@@ -32,36 +32,89 @@ public class Project4 {
                 return;
             }
         }
+        
+//            String hostName = args[1];
+//            String portName;
 
-        String hostName = args[1];
-        int portName;
+            ArrayList<String> commandLineArgs = new ArrayList<>(Arrays.asList(args));
 
-        if (args[1] == null) {
-            System.err.println("The port number cannot be null");
+            if (args.length < 5) {
+                System.err.println("There are some missing arguments.");
+                readmeinfo();
+                return;
+            }
+            
+        if(commandLineArgs.size() == 14){
+            if ((commandLineArgs.get(0).contains("-host") || commandLineArgs.get(2).contains("-port") ||
+                    commandLineArgs.get(4).contains("-print") )) {
+                int index = 0;
+                for (int i = 0; i < commandLineArgs.size(); i++) {
+                    if (commandLineArgs.get(i).contains("-print")) {
+                        index = i + 2;
+                        break;
+                    }
+                }
+                String hostName = "";
+                String portName = "";
+                for (int i = 0; i < args.length; i++) {
+                    if (args[i].equals("-host")) {
+                        hostName = args[i + 1];
+                    }
+                    if (args[i].equals("-port")) {
+                        portName = args[i + 1];
+                    }
+                }
+                checkhostandport(hostName, portName);
+                int portnum = Integer.parseInt(portName);
+                PhoneBillRestClient client = new PhoneBillRestClient(hostName, portnum);
+                String customerName = "";
+                PhoneBill bill = new PhoneBill(commandLineArgs.get(5));
+                PhoneCall call = new PhoneCall();
+                call.setCallerName(commandLineArgs.get(5));
+                call.setCallerNumber(commandLineArgs.get(6));
+                call.setCalleeNumber(commandLineArgs.get(7));
+                call.setPhoneCallBeginDate(commandLineArgs.get(8));
+                call.setPhoneCallBeginTime(commandLineArgs.get(8), commandLineArgs.get(9), commandLineArgs.get(10));
+                call.setPhoneCallEndDate(commandLineArgs.get(11));
+                call.setPhoneCallEndTime(commandLineArgs.get(11), commandLineArgs.get(12), commandLineArgs.get(13));
+                client.addCustomer(customerName, call);
+                boolean allRequiredArgumentsAreValid = checkValidityOfRequiredArgs(commandLineArgs);
+                if (!allRequiredArgumentsAreValid) {
+                    return;
+                }
+                for (String arg : args) {
+                    if (arg.equals("-print")) {
+                        System.out.println("This is the Printed text:");
+                        System.out.println("CallerNumber : " + commandLineArgs.get(6));
+                        System.out.println("CalleeNumber : " + commandLineArgs.get(7));
+                        System.out.println("Date of Begin : " + commandLineArgs.get(8));
+                        System.out.println("Time of Begin : " + commandLineArgs.get(9) + " " + commandLineArgs.get(10));
+                        System.out.println("Date of End : " + commandLineArgs.get(11));
+                        System.out.println("Time of End : " + commandLineArgs.get(12) + " " + commandLineArgs.get(13));
+                    }
+
+                }
+            }
+
         }
-        portName = Integer.parseInt(args[3]);
-        if (hostName == null) {
-            System.err.println("The hostname cannot be null");
-            return;
-        }
-        if (portName == 0) {
-            System.err.println("The port number cannot be 0");
-        }
-
-        ArrayList<String> commandLineArgs = new ArrayList<>(Arrays.asList(args));
-
-        if (args.length < 5) {
-            System.err.println("There are some missing arguments.");
-            readmeinfo();
-            return;
-        }
-
      //   0)-host 1)localhost 2)-port 3)12345 \
       //  4)"Dave" 5)503-245-2345 6)765-389-1273 7)02/27/2022 8)8:56 9)am 10)02/27/2022 11)10:27 12)am
-        if(commandLineArgs.size() == 13){
-            if ((commandLineArgs.get(0).contains("-host") || commandLineArgs.get(2).contains("-port"))) {
-                PhoneBillRestClient client = new PhoneBillRestClient(hostName, port);
-
+        else if(commandLineArgs.size() == 13){
+            if ((commandLineArgs.get(0).contains("-host") || commandLineArgs.get(2).contains("-port") )) {
+                String hostName = "";
+                String portName = "";
+                for (int i = 0; i < args.length; i++) {
+                    if (args[i].equals("-host")) {
+                        hostName = args[i + 1];
+                    }
+                    if (args[i].equals("-port")) {
+                        portName = args[i + 1];
+                    }
+                }
+                checkhostandport(hostName, portName);
+                int portnum = Integer.parseInt(portName);
+                PhoneBillRestClient client = new PhoneBillRestClient(hostName, portnum);
+                String customerName = "";
                 PhoneBill bill = new PhoneBill(commandLineArgs.get(4));
                 PhoneCall call = new PhoneCall();
                 call.setCallerName(commandLineArgs.get(4));
@@ -75,24 +128,15 @@ public class Project4 {
                 if (!allRequiredArgumentsAreValid) {
                     return;
                 }
-                PrettyPrinter printer = new PrettyPrinter();
-                System.out.println("This is the pretty text:");
-                //System.out.println("Customer : " + call.get());
-                System.out.println("CallerNumber : " + call.getCallerNumber());
-                System.out.println("CalleeNumber : " + call.getCalleeNumber());
-                System.out.println("Date of Begin : " + call.getPhoneCallBeginDate());
-                System.out.println("Time of Begin : " + call.getPhoneCallBeginTime());
-                System.out.println("Date of End : " + call.getPhoneCallEndDate());
-                System.out.println("Time of End : " + call.getPhoneCallEndTime());
-                printer.setFilename(commandLineArgs.get(4));
-                printer.setCustomerName(commandLineArgs.get(4));
-                printer.getpretty(call, commandLineArgs.get(4));
-                printer.dump(bill);
+                client.addCustomer(customerName, call);
+                System.err.println("\nThis is to inform you that the server cannot be contacted at the moment. " +
+                        "Please connect to the server and retry.");
             }
-
-        } else if (commandLineArgs.size() == 12) {
+        }
+        else if (commandLineArgs.size() == 12) {
             if ((commandLineArgs.get(0).contains("-host") || commandLineArgs.get(2).contains("-port") ||
-                    (commandLineArgs.get(4).equals("-search") || (commandLineArgs.get(0).equals("-search") )))) {
+                    (commandLineArgs.get(4).equals("-search") || (commandLineArgs.get(0).equals("-search") ||
+                            commandLineArgs.get(3).contains("-port") || (commandLineArgs.get(1).contains("-host")))))) {
                 int index = 0;
                 for (int i = 0; i < commandLineArgs.size(); i++) {
                     if (commandLineArgs.get(i).contains("-search")) {
@@ -100,31 +144,32 @@ public class Project4 {
                         break;
                     }
                 }
-
+                String hostName = "";
+                String portName = "";
+                for (int i = 0; i < args.length; i++) {
+                    if (args[i].equals("-host")) {
+                        hostName = args[i + 1];
+                    }
+                    if (args[i].equals("-port")) {
+                        portName = args[i + 1];
+                    }
+                }
+                checkhostandport(hostName, portName);
+                int portnum = Integer.parseInt(portName);
+                PhoneBillRestClient client = new PhoneBillRestClient(hostName, portnum);
+                String customerName = "";
+                //PhoneBill bill = new PhoneBill(commandLineArgs.get(5));
                 PhoneCall call = new PhoneCall();
                 call.setCallerName(commandLineArgs.get(5));
-
+                call.setCallerNumber("111-222-3333");
+                call.setCalleeNumber("111-222-3333");
                 call.setPhoneCallBeginDate(commandLineArgs.get(6));
                 call.setPhoneCallBeginTime(commandLineArgs.get(6), commandLineArgs.get(7), commandLineArgs.get(8));
                 call.setPhoneCallEndDate(commandLineArgs.get(9));
                 call.setPhoneCallEndTime(commandLineArgs.get(9), commandLineArgs.get(10), commandLineArgs.get(11));
-                boolean allRequiredArgumentsAreValid = checkValidityOfRequiredArgs(commandLineArgs);
-                if (!allRequiredArgumentsAreValid) {
-                    return;
-                }
-
-                PrettyPrinter printer = new PrettyPrinter();
-                System.out.println("This is the pretty text:");
-                //System.out.println("Customer : " + call.getCaller());
-                System.out.println("CallerNumber : " + call.getCallerNumber());
-                System.out.println("CalleeNumber : " + call.getCalleeNumber());
-                System.out.println("Date of Begin : " + call.getPhoneCallBeginDate());
-                System.out.println("Time of Begin : " + call.getPhoneCallBeginTime());
-                System.out.println("Date of End : " + call.getPhoneCallEndDate());
-                System.out.println("Time of End : " + call.getPhoneCallEndTime());
-                printer.setFilename(commandLineArgs.get(2));
-                printer.setCustomerName(commandLineArgs.get(3));
-                printer.getpretty(call, commandLineArgs.get(4));
+                //client.addCustomer(commandLineArgs.get(5), call);
+                client.addCustomer(customerName, call);
+                System.out.println("Error");
             }
         }
         else if (commandLineArgs.size() == 5) {
@@ -144,7 +189,7 @@ public class Project4 {
                 parser.setCustomerName(commandLineArgs.get(4));
                 PhoneBill bill = parser.parse();
                 PhoneCall call = new PhoneCall();
-                bill.addPhoneCall(call);
+                bill.addPhoneCall();
                 dumper.dump(bill);
 
                 PrettyPrinter printer = new PrettyPrinter();
@@ -163,7 +208,27 @@ public class Project4 {
                 printer.dump(bill);
             }
         } else if (commandLineArgs.size() == 15) {
-            System.out.println("Extraneous Arguments.\nPlease check the number of argumnets entered.");
+            System.out.println("Extraneous Arguments.\nPlease check the number of arguments entered.");
+        }
+    }
+
+
+    public static void checkhostandport(String hostName, String portName) {
+        if (hostName == null) {
+            System.err.println("Missing hostname!");
+            System.exit(1);
+
+        } else if ( portName == null) {
+            System.err.println("Missing port number!");
+            System.exit(1);
+        }
+        int portnum;
+        try {
+            portnum = Integer.parseInt( portName );
+
+        } catch (NumberFormatException ex) {
+            System.err.println("Port Number must be an integer!");
+            System.exit(1);
         }
     }
 
@@ -214,7 +279,32 @@ public class Project4 {
                     return false;
                 }
                 return checkForValidPhoneCallTime(commandLineArgs.get(11));
-            } else {
+            }
+            else if (commandLineArgs.size() == 14) {
+
+                boolean isCallerNumberValid = checkForValidPhoneNumber(commandLineArgs.get(6));
+                if (!isCallerNumberValid) {
+                    return false;
+                }
+                boolean isCalleeNumberValid = checkForValidPhoneNumber(commandLineArgs.get(7));
+                if (!isCalleeNumberValid) {
+                    return false;
+                }
+                boolean isPhoneCallBeginDateValid = checkForValidDate(commandLineArgs.get(8));
+                if (!isPhoneCallBeginDateValid) {
+                    return false;
+                }
+                boolean isPhoneCallBeginTimeValid = checkForValidPhoneCallTime(commandLineArgs.get(9));
+                if (!isPhoneCallBeginTimeValid) {
+                    return false;
+                }
+                boolean isPhoneCallEndDateValid = checkForValidDate(commandLineArgs.get(11));
+                if (!isPhoneCallEndDateValid) {
+                    return false;
+                }
+                return checkForValidPhoneCallTime(commandLineArgs.get(12));
+            }
+            else {
                 System.err.println("No args. Go check back.");
             }
             return true;
