@@ -1,6 +1,5 @@
-package edu.pdx.cs410J.whitlock;
+package edu.pdx.cs410J.vidyav2;
 import edu.pdx.cs410J.PhoneBillDumper;
-import edu.pdx.cs410J.whitlock.PhoneBill;
 
 import java.io.*;
 import java.util.*;

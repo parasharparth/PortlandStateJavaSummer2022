@@ -1,7 +1,6 @@
 package edu.pdx.cs410J.vidyav2;
 
 import edu.pdx.cs410J.InvokeMainTestCase;
-import edu.pdx.cs410J.whitlock.Project4;
 import org.junit.FixMethodOrder;
 import org.junit.jupiter.api.Test;
 import org.junit.runners.MethodSorters;

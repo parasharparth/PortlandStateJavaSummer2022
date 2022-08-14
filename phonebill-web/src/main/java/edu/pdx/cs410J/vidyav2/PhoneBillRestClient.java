@@ -1,14 +1,9 @@
-package edu.pdx.cs410J.whitlock;
+package edu.pdx.cs410J.vidyav2;
 
 import com.google.common.annotations.VisibleForTesting;
-import edu.pdx.cs410J.ParserException;
-import edu.pdx.cs410J.whitlock.PhoneBill;
-import edu.pdx.cs410J.whitlock.PhoneCall;
-import edu.pdx.cs410J.whitlock.PrettyPrinter;
 import edu.pdx.cs410J.web.HttpRequestHelper;
 
 import java.io.IOException;
-import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Map;
@@ -100,7 +95,7 @@ public class PhoneBillRestClient {
    * @return The response from the servlet
    */
   @VisibleForTesting
-  Response postToMyURL(Map<String, String> dictionaryEntries) {
+  public Response postToMyURL(Map<String, String> dictionaryEntries) {
     try{
       return http.post(dictionaryEntries);
     }

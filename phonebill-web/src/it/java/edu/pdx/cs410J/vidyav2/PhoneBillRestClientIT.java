@@ -1,9 +1,6 @@
 package edu.pdx.cs410J.vidyav2;
 
-import edu.pdx.cs410J.ParserException;
 import edu.pdx.cs410J.web.HttpRequestHelper;
-import edu.pdx.cs410J.web.HttpRequestHelper.RestException;
-import edu.pdx.cs410J.whitlock.PhoneBillRestClient;
 import org.junit.jupiter.api.MethodOrderer.MethodName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;

@@ -1,8 +1,4 @@
-package edu.pdx.cs410J.whitlock;
-
-import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
+package edu.pdx.cs410J.vidyav2;
 
 //public class PrettyPrinterTest {
 //    @Test
