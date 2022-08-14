@@ -20,9 +20,9 @@ public class TextDumper implements PhoneBillDumper<PhoneBill> {
 
     @Override
     public void dump(PhoneBill bill) throws IOException {
-        ArrayList phonecallList = (ArrayList) bill.getPhoneCalls();
+        ArrayList<PhoneCall> phonecallList = bill.getPhoneCalls();
         String[] calls = new String[phonecallList.size()];
-        PrintWriter out = new PrintWriter(filename);
+        PrintWriter out = new PrintWriter(new File(dir, filename));
         out.write("");
         out.write(bill.getCustomer());
         Collections.sort(phonecallList);

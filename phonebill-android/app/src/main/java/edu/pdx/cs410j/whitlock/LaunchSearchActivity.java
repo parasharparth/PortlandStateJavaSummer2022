@@ -10,7 +10,6 @@ import android.widget.EditText;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.io.File;
-import java.util.Map;
 
 public class LaunchSearchActivity extends AppCompatActivity {
 
