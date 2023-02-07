@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <parent>
-    <artifactId>PortlandStateJavaSummer2022</artifactId>
-    <groupId>edu.pdx.cs410J.vidyav2</groupId>
+    <artifactId>cs410j</artifactId>
+    <groupId>io.github.davidwhitlock.cs410J</groupId>
     <version>2022.0.0</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
@@ -27,7 +27,7 @@
     <dependency>
       <groupId>io.github.davidwhitlock.cs410J</groupId>
       <artifactId>examples</artifactId>
-      <version>2022.1.0</version>
+      <version>2022.0.0</version>
     </dependency>
     <dependency>
       <groupId>io.github.davidwhitlock.cs410J</groupId>
@@ -129,12 +129,12 @@
         </executions>
         <configuration>
           <archive>
-            <manifest>
-              <addClasspath>true</addClasspath>
-              <classpathLayoutType>repository</classpathLayoutType>
-              <classpathPrefix>file:///${localRepositoryWithEscapedSpaces}</classpathPrefix>
-              <mainClass>edu.pdx.cs410J.vidyav2.Project4</mainClass>
-            </manifest>
+<!--            <manifest>-->
+<!--              <addClasspath>true</addClasspath>-->
+<!--              <classpathLayoutType>repository</classpathLayoutType>-->
+<!--              <classpathPrefix>file:///${localRepositoryWithEscapedSpaces}</classpathPrefix>-->
+<!--              <mainClass>edu.pdx.cs410J.vidyav2.Project4</mainClass>-->
+<!--            </manifest>-->
           </archive>
         </configuration>
       </plugin>
@@ -146,64 +146,64 @@
     </plugins>
   </build>
   <profiles>
-    <profile>
-      <id>grader</id>
-      <activation>
-        <activeByDefault>${grader}</activeByDefault>
-      </activation>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-javadoc-plugin</artifactId>
-            <version>${maven-javadoc-plugin.version}</version>
-            <configuration>
-              <doclet>edu.pdx.cs410J.grader.APIDocumentationDoclet</doclet>
-              <docletArtifact>
-                <groupId>io.github.davidwhitlock.cs410J</groupId>
-                <artifactId>grader</artifactId>
-                <version>${student.version}</version>
-              </docletArtifact>
-              <useStandardDocletOptions>false</useStandardDocletOptions>
-              <show>private</show>
-            </configuration>
-          </plugin>
-          <plugin>
-            <groupId>org.jacoco</groupId>
-            <artifactId>jacoco-maven-plugin</artifactId>
-            <version>${jacoco-maven-plugin.version}</version>
-            <executions>
-              <execution>
-                <id>default-check</id>
-                <goals>
-                  <goal>check</goal>
-                </goals>
-                <configuration>
-                  <haltOnFailure>${haltOnFailingCoverage}</haltOnFailure>
-                  <rules>
-                    <rule>
-                      <element>BUNDLE</element>
-                      <limits>
-                        <limit>
-                          <counter>INSTRUCTION</counter>
-                          <value>COVEREDRATIO</value>
-                          <minimum>${jacoco.min.instruction.covered.ratio}</minimum>
-                        </limit>
-                        <limit>
-                          <counter>CLASS</counter>
-                          <value>MISSEDCOUNT</value>
-                          <maximum>${jacoco.max.missed.classes}</maximum>
-                        </limit>
-                      </limits>
-                    </rule>
-                  </rules>
-                  <dataFile>${project.build.directory}/jacoco-merged.exec</dataFile>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
+<!--    <profile>-->
+<!--      <id>grader</id>-->
+<!--      <activation>-->
+<!--        <activeByDefault>${grader}</activeByDefault>-->
+<!--      </activation>-->
+<!--      <build>-->
+<!--        <plugins>-->
+<!--          <plugin>-->
+<!--            <groupId>org.apache.maven.plugins</groupId>-->
+<!--            <artifactId>maven-javadoc-plugin</artifactId>-->
+<!--            <version>${maven-javadoc-plugin.version}</version>-->
+<!--            <configuration>-->
+<!--              <doclet>edu.pdx.cs410J.grader.APIDocumentationDoclet</doclet>-->
+<!--              <docletArtifact>-->
+<!--                <groupId>io.github.davidwhitlock.cs410J</groupId>-->
+<!--                <artifactId>grader</artifactId>-->
+<!--                <version>${student.version}</version>-->
+<!--              </docletArtifact>-->
+<!--              <useStandardDocletOptions>false</useStandardDocletOptions>-->
+<!--              <show>private</show>-->
+<!--            </configuration>-->
+<!--          </plugin>-->
+<!--          <plugin>-->
+<!--            <groupId>org.jacoco</groupId>-->
+<!--            <artifactId>jacoco-maven-plugin</artifactId>-->
+<!--            <version>${jacoco-maven-plugin.version}</version>-->
+<!--            <executions>-->
+<!--              <execution>-->
+<!--                <id>default-check</id>-->
+<!--                <goals>-->
+<!--                  <goal>check</goal>-->
+<!--                </goals>-->
+<!--                <configuration>-->
+<!--                  <haltOnFailure>${haltOnFailingCoverage}</haltOnFailure>-->
+<!--                  <rules>-->
+<!--                    <rule>-->
+<!--                      <element>BUNDLE</element>-->
+<!--                      <limits>-->
+<!--                        <limit>-->
+<!--                          <counter>INSTRUCTION</counter>-->
+<!--                          <value>COVEREDRATIO</value>-->
+<!--                          <minimum>${jacoco.min.instruction.covered.ratio}</minimum>-->
+<!--                        </limit>-->
+<!--                        <limit>-->
+<!--                          <counter>CLASS</counter>-->
+<!--                          <value>MISSEDCOUNT</value>-->
+<!--                          <maximum>${jacoco.max.missed.classes}</maximum>-->
+<!--                        </limit>-->
+<!--                      </limits>-->
+<!--                    </rule>-->
+<!--                  </rules>-->
+<!--                  <dataFile>${project.build.directory}/jacoco-merged.exec</dataFile>-->
+<!--                </configuration>-->
+<!--              </execution>-->
+<!--            </executions>-->
+<!--          </plugin>-->
+<!--        </plugins>-->
+<!--      </build>-->
+<!--    </profile>-->
   </profiles>
 </project>
