@@ -20,7 +20,7 @@
 //    }
 //
 //    boolean readMeFlag = readMeFlagCheck(args);
-//    if(readMeFlag){
+//    if(readMeFlag ){
 //      String FileContentReadMe = readFromReadMeFileOnly();
 //      System.out.println(FileContentReadMe);
 //      return;
