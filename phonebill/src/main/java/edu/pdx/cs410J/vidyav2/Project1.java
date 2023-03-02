@@ -6,13 +6,15 @@ import java.util.regex.Pattern;
 /**
  * The main class for the CS410J Phone Bill Project
  * Add comment for the command-line-arguments
+ * Vidya--> Use the in-built functions instead of using the variables (Modify that code)
+ * Annie --> Add comments to the code
  */
 public class Project1 {
 
   //The Constructors were modified
   //Removed the testing part
   public static void main(String[] args) {
-    int totalCommandLineArgumentsConsidered = args.length;
+    int totalCommandLineArgumentsConsidered = args.length;  //vidya use this as it is as it provides cleaner code and loads faster.
     if (totalCommandLineArgumentsConsidered == 0) {
       System.out.println("No arguments passed at the command line");
       return;
