@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 
 /**
  * The main class for the CS410J Phone Bill Project
+ * Add comment for the command-line-arguments
  */
 public class Project1 {
 
