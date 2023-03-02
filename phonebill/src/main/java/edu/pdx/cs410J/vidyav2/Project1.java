@@ -97,84 +97,34 @@ public class Project1 {
     String timeOfPhoneCallBegin = commandLineArgs.get(4);
     String dateOfPhoneCallEnd = commandLineArgs.get(5);
     String timeOfPhoneCallEnd = commandLineArgs.get(6);
-    boolean isCallerNumberValid = checkForValidPhoneNumber(noOfCaller);
+    boolean isCallerNumberValid = HelperFunctions.checkForValidPhoneNumber(noOfCaller);
     if(!isCallerNumberValid){
       return false;
     }
-    boolean isCalleeNumberValid = checkForValidPhoneNumber(noOfCallee);
+    boolean isCalleeNumberValid = HelperFunctions.checkForValidPhoneNumber(noOfCallee);
     if(!isCalleeNumberValid){
       return false;
     }
-    boolean isPhoneCallBeginDateValid = checkForValidDate(dateOfPhoneCallBegin);
+    boolean isPhoneCallBeginDateValid = HelperFunctions.checkForValidDate(dateOfPhoneCallBegin);
     if(!isPhoneCallBeginDateValid){
       return false;
     }
-    boolean isPhoneCallBeginTimeValid = checkForValidPhoneCallTime(timeOfPhoneCallBegin);
+    boolean isPhoneCallBeginTimeValid = HelperFunctions.checkForValidPhoneCallTime(timeOfPhoneCallBegin);
     if(!isPhoneCallBeginTimeValid){
       return false;
     }
-    boolean isPhoneCallEndDateValid = checkForValidDate(dateOfPhoneCallEnd);
+    boolean isPhoneCallEndDateValid = HelperFunctions.checkForValidDate(dateOfPhoneCallEnd);
     if(!isPhoneCallEndDateValid){
       return false;
     }
-    boolean isPhoneCallEndTimeValid = checkForValidPhoneCallTime(timeOfPhoneCallEnd);
+    boolean isPhoneCallEndTimeValid = HelperFunctions.checkForValidPhoneCallTime(timeOfPhoneCallEnd);
     if(!isPhoneCallEndTimeValid){
       return false;
     }
     return true;
   }
 
-  /** checkForValidPhoneCallTime() method is used to describe the correctness of the Time specified for a
-   * Phone Call created
-   *
-   * @param timeOfPhoneCall parameter tells about the time of the Phone Call start/end
-   * @return the value of the Phone Call time validity
-   */
-  static boolean checkForValidPhoneCallTime(String timeOfPhoneCall) {
-    String regTime = "\\d{1,2}[:]\\d\\d";
-    boolean validTimeOfPhoneCall = Pattern.compile(regTime).matcher(timeOfPhoneCall).matches();
 
-    if(!validTimeOfPhoneCall){
-      String invalidTimeOfPhoneCallMessage = "PhoneCall Argument provided is invalid, please retry by entering the correct one's";
-      System.out.println(invalidTimeOfPhoneCallMessage);
-      return false;
-    }
-    return true;
-  }
-
-
-  /** checkForValidDate() checks the correctness of the entered Date
-   *
-   * @param dateOfPhoneCall describes the date of Phone Call start/end
-   * @return the start or end Date of Phone Call
-   */
-  static boolean checkForValidDate(String dateOfPhoneCall) {
-    String regDate = "\\d{1,2}[/]\\d{1,2}[/]\\d\\d\\d\\d";
-    boolean validDateOfPhoneCall = Pattern.compile(regDate).matcher(dateOfPhoneCall).matches();
-    if(!validDateOfPhoneCall){
-      String invalidDateOfPhoneCallMessage = "Date provided is invalid, please retry by entering the correct one's";
-      System.out.println(invalidDateOfPhoneCallMessage);
-      return false;
-    }
-    return true;
-  }
-
-  /** checkForValidPhoneNumber() checks the correctness of the entered Phone Number in the
-   * correct format
-   *
-   * @param phoneNumber describes the Phone Number of customer who is making efforts to make a Phone Call
-   * @return the Phone Number for the customer
-   */
-  static boolean checkForValidPhoneNumber(String phoneNumber){
-    String regPhoneNumber = "\\d\\d\\d[-]\\d\\d\\d[-]\\d\\d\\d\\d";
-    boolean validNumberOfCaller = Pattern.compile(regPhoneNumber).matcher(phoneNumber).matches();
-    if(!validNumberOfCaller){
-      String invalidPhoneNumberMessage = "Phone Number provided is invalid, please retry by entering the correct one's";
-      System.out.println(invalidPhoneNumberMessage);
-      return false;
-    }
-    return true;
-  }
 }
 
 
