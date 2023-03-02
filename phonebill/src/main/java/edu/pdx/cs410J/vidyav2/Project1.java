@@ -1,6 +1,5 @@
 package edu.pdx.cs410J.vidyav2;
 
-import java.io.*;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
@@ -8,10 +7,9 @@ import java.util.regex.Pattern;
  * The main class for the CS410J Phone Bill Project
  */
 public class Project1 {
-  // @VisibleForTesting
-// static boolean isValidPhoneNumber(String phoneNumber) {
-// return true;
-// }
+
+  //The Constructors were modified
+  //Removed the testing part
   public static void main(String[] args) {
     int totalCommandLineArgumentsConsidered = args.length;
     if (totalCommandLineArgumentsConsidered == 0) {
@@ -19,12 +17,14 @@ public class Project1 {
       return;
     }
 
-    boolean readMeFlag = readMeFlagCheck(args);
-    if(readMeFlag ){
-      String FileContentReadMe = readFromReadMeFileOnly();
-      System.out.println(FileContentReadMe);
+    //Change here for directly printing the readMeFile
+    boolean readMeFlag = HelperFunctions.readMeFlagCheck(args);
+    if(readMeFlag){
+      System.out.println(HelperFunctions.readFromReadMeFileOnly());
+      //System.out.println(FileContentReadMe);
       return;
     }
+
     //copying command line arguments to a new arraylist
     ArrayList<String> commandLineArgs = new ArrayList<>();
     for (String arg : args) {
@@ -175,46 +175,6 @@ public class Project1 {
     }
     return true;
   }
-
-
-  /**
-   *The readMeFlagCheck() tells whether optional -README flag has been entered at Command Line
-   */
-  static boolean readMeFlagCheck(String[] args) {
-    int countIdxForREADME = 0;
-    for (String arg : args) {
-      if (countIdxForREADME > 1) {
-        break;
-      } else if (arg.toUpperCase().contains("README")) {
-        return true;
-      } else {
-        countIdxForREADME++;
-      }
-    }
-    return false;
-  }
-
-
-  /**
-   * The readFromReadMeFileOnly() method is responsible for reading from the README.txt file
-   *
-   * @return a string of the file contents given
-   */
-  static String readFromReadMeFileOnly() {
-    String line = "";
-    try (
-            InputStream ReadMe = Project1.class.getResourceAsStream("README.txt")
-    ) {
-
-
-      BufferedReader reader = new BufferedReader(new InputStreamReader(ReadMe));
-      line = reader.readLine();
-    } catch (IOException e) {
-      System.out.println("The README.txt file was not able to be located.");
-    }
-    return line;
-  }
-
 }
 
 
