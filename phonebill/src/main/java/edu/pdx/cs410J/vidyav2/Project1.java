@@ -63,26 +63,19 @@ public class Project1 {
     }
 
     //Our Command Line Arguments
-    String custName = commandLineArgs.get(0);
-    String noOfCaller = commandLineArgs.get(1);
-    String noOfCallee = commandLineArgs.get(2);
-    String dateOfPhoneCallBegin = commandLineArgs.get(3);
-    String timeOfPhoneCallBegin = commandLineArgs.get(4);
-    String dateOfPhoneCallEnd = commandLineArgs.get(5);
-    String timeOfPhoneCallEnd = commandLineArgs.get(6);
-
     boolean allRequiredArgumentsAreValid = checkValidityOfRequiredArgs(commandLineArgs);
     if(!allRequiredArgumentsAreValid){
       return;
     }
     //Creating and adding phone call for the customer
-    PhoneCall call1 = new PhoneCall(custName, noOfCaller, noOfCallee, dateOfPhoneCallBegin, timeOfPhoneCallBegin, dateOfPhoneCallEnd, timeOfPhoneCallEnd);
+    PhoneCall call1 = new PhoneCall(commandLineArgs.get(0), commandLineArgs.get(1), commandLineArgs.get(2),
+            commandLineArgs.get(3), commandLineArgs.get(4), commandLineArgs.get(5), commandLineArgs.get(6));
 
-    PhoneBill bill1 = new PhoneBill(custName);
+    PhoneBill bill1 = new PhoneBill(commandLineArgs.get(0));
     bill1.addPhoneCall(call1);
 
     if(print){
-      System.out.println( call1.toString());
+      System.out.println(call1);
     }
   }
 
@@ -95,41 +88,32 @@ public class Project1 {
    */
   static boolean checkValidityOfRequiredArgs(ArrayList<String> commandLineArgs) {
     //CustomerName is never passed here because it is unnecessary to validate name
-    String callerName = commandLineArgs.get(0);
-    String noOfCaller = commandLineArgs.get(1);
-    String noOfCallee = commandLineArgs.get(2);
-    String dateOfPhoneCallBegin = commandLineArgs.get(3);
-    String timeOfPhoneCallBegin = commandLineArgs.get(4);
-    String dateOfPhoneCallEnd = commandLineArgs.get(5);
-    String timeOfPhoneCallEnd = commandLineArgs.get(6);
-    boolean isCallerNumberValid = HelperFunctions.checkForValidPhoneNumber(noOfCaller);
+    boolean isCallerNumberValid = HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(1));
     if(!isCallerNumberValid){
       return false;
     }
-    boolean isCalleeNumberValid = HelperFunctions.checkForValidPhoneNumber(noOfCallee);
+    boolean isCalleeNumberValid = HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(2));
     if(!isCalleeNumberValid){
       return false;
     }
-    boolean isPhoneCallBeginDateValid = HelperFunctions.checkForValidDate(dateOfPhoneCallBegin);
+    boolean isPhoneCallBeginDateValid = HelperFunctions.checkForValidDate(commandLineArgs.get(3));
     if(!isPhoneCallBeginDateValid){
       return false;
     }
-    boolean isPhoneCallBeginTimeValid = HelperFunctions.checkForValidPhoneCallTime(timeOfPhoneCallBegin);
+    boolean isPhoneCallBeginTimeValid = HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(4));
     if(!isPhoneCallBeginTimeValid){
       return false;
     }
-    boolean isPhoneCallEndDateValid = HelperFunctions.checkForValidDate(dateOfPhoneCallEnd);
+    boolean isPhoneCallEndDateValid = HelperFunctions.checkForValidDate(commandLineArgs.get(5));
     if(!isPhoneCallEndDateValid){
       return false;
     }
-    boolean isPhoneCallEndTimeValid = HelperFunctions.checkForValidPhoneCallTime(timeOfPhoneCallEnd);
+    boolean isPhoneCallEndTimeValid = HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(6));
     if(!isPhoneCallEndTimeValid){
       return false;
     }
     return true;
   }
-
-
 }
 
 

@@ -2,8 +2,6 @@ package edu.pdx.cs410J.vidyav2;
 
 import edu.pdx.cs410J.AbstractPhoneBill;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Map;
 
 /************************************************
  * This is a PhoneBill class
@@ -65,5 +63,4 @@ public class  PhoneBill extends AbstractPhoneBill<PhoneCall> {
   public ArrayList<PhoneCall> getPhoneCalls() {
     return calls;
   }
-
 }
