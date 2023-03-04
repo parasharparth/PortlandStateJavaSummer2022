@@ -1,7 +1,6 @@
 package edu.pdx.cs410J.vidyav2;
 
 import java.util.ArrayList;
-import java.util.regex.Pattern;
 
 /**
  * The main class for the CS410J Phone Bill Project
@@ -34,6 +33,7 @@ public class Project1 {
       commandLineArgs.add(arg);
     }
 
+    //Understand the logic behind this and then act.
     boolean print = false;
     int countIdxValueForPrint = 0;
     for (String arg : args) {
@@ -90,6 +90,8 @@ public class Project1 {
    *
    * @param commandLineArgs denotes the entries at the command line
    * @return returns the command line input data if it is correct
+   * vidya make changes here to remove the command line arguments
+   * Parth will modify the function to include proper method calling which can be used in later projects as well.
    */
   static boolean checkValidityOfRequiredArgs(ArrayList<String> commandLineArgs) {
     //CustomerName is never passed here because it is unnecessary to validate name
