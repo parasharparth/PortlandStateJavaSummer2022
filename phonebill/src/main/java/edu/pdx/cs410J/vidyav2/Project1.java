@@ -13,27 +13,31 @@ public class Project1 {
   //The Constructors were modified
   //Removed the testing part
   public static void main(String[] args) {
-    int totalCommandLineArgumentsConsidered = args.length;  //vidya use this as it is as it provides cleaner code and loads faster.
+
+    // Get the total number of command-line arguments passed in
+    int totalCommandLineArgumentsConsidered = args.length;
+
+    // if no arguments were passed in, display the message and return
     if (totalCommandLineArgumentsConsidered == 0) {
       System.out.println("No arguments passed at the command line");
       return;
     }
 
-    //Change here for directly printing the readMeFile
+    // check if the user has specified the 'README' flag in the command-line arguments
     boolean readMeFlag = HelperFunctions.readMeFlagCheck(args);
     if(readMeFlag){
+      // If the user has specified the '-README' flag, display the contents of the README file and return
       System.out.println(HelperFunctions.readFromReadMeFileOnly());
-      //System.out.println(FileContentReadMe);
       return;
     }
 
-    //copying command line arguments to a new arraylist
+    // Copy the command-line arguments into a new ArrayList for the easy manipulations
     ArrayList<String> commandLineArgs = new ArrayList<>();
     for (String arg : args) {
       commandLineArgs.add(arg);
     }
 
-    //Understand the logic behind this and then act.
+    // Check if the user has specified the '-print' flag in the command-line arguments
     boolean print = false;
     int countIdxValueForPrint = 0;
     for (String arg : args) {
@@ -41,13 +45,13 @@ public class Project1 {
         break;
       }
       else if (arg.toLowerCase().contains("print") && (countIdxValueForPrint == 0)) {
+        // If the user has specified the '-print' flag, remove it from the ArrayList and set the 'print' variable to true
         print = true;
-
         commandLineArgs.remove(countIdxValueForPrint);
         break;
       }
       else if (arg.toLowerCase().contains("print") && (countIdxValueForPrint == 1)) {
-
+        // If the user has specified the '-print' flag twice or has entered them in the wrong order, display an error message and return
         System.out.println("Entered values are in wrong order");
         return;
       }
@@ -56,21 +60,22 @@ public class Project1 {
       }
     }
 
+    // Check if the correct number of required command-line arguments have been entered
     int numberOfRequiredCommandLineArguments = 7;
     if(commandLineArgs.size() != numberOfRequiredCommandLineArguments){
       System.out.println("Correct number of values are not entered");
       return;
     }
 
-    //Our Command Line Arguments
+    // Check the validity of the required command-line arguments
     boolean allRequiredArgumentsAreValid = checkValidityOfRequiredArgs(commandLineArgs);
     if(!allRequiredArgumentsAreValid){
       return;
     }
-    //Creating and adding phone call for the customer
+    // Created a new PhoneCall object using the command-line arguments
     PhoneCall call1 = new PhoneCall(commandLineArgs.get(0), commandLineArgs.get(1), commandLineArgs.get(2),
             commandLineArgs.get(3), commandLineArgs.get(4), commandLineArgs.get(5), commandLineArgs.get(6));
-
+// Created a new PhoneBill object with the customer name
     PhoneBill bill1 = new PhoneBill(commandLineArgs.get(0));
     bill1.addPhoneCall(call1);
 
