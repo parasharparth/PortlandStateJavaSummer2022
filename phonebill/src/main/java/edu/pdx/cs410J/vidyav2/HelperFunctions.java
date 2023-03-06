@@ -6,25 +6,44 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.regex.Pattern;
 
-//This class was created to get the helper functions in a single place to make the project file look clean
+/**
+ *This class was created to get the functions in a single place so that the code looks clean
+ */
+
 public class HelperFunctions {
 
-	//Sourced from the Project1
+	/**
+	 * This function checks if the command line argument contains the string "README"
+	 * If we have already found "README" in the argument list, we stop searching
+	 * If the argument contains "README", we return true
+	 * Otherwise, we increment our counter and keep searching
+	 *If we didn't find "README" in the argument list, we return false
+	 */
+
+
 	public static boolean readMeFlagCheck(String[] args){
 		int countIdxForREADME = 0;
+
 		for (String arg : args) {
 			if (countIdxForREADME > 1) {
 				break;
-			} else if (arg.toUpperCase().contains("README")) {
+			}
+
+			else if (arg.toUpperCase().contains("README")) {
 				return true;
-			} else {
+			}
+
+			else {
 				countIdxForREADME++;
 			}
 		}
+
 		return false;
 	}
 
-	//Sourced from Project1
+	/**
+	 *This function reads the first line from a file named "README.txt"
+	 */
 	public static String readFromReadMeFileOnly(){
 		String line = "";
 		try (
@@ -32,6 +51,7 @@ public class HelperFunctions {
 		) {
 
 
+			assert ReadMe != null;
 			BufferedReader reader = new BufferedReader(new InputStreamReader(ReadMe));
 			line = reader.readLine();
 		} catch (IOException e) {
@@ -40,14 +60,14 @@ public class HelperFunctions {
 		return line;
 	}
 
-	/** checkForValidPhoneCallTime() method is used to describe the correctness of the Time specified for a
-	 * Phone Call created
-	 *
+	/**
+	 *This function checks if the time string is in the correct format.
 	 * @param timeOfPhoneCall parameter tells about the time of the Phone Call start/end
 	 * @return the value of the Phone Call time validity
 	 */
+
 	static boolean checkForValidPhoneCallTime(String timeOfPhoneCall) {
-		String regTime = "\\d{1,2}[:]\\d\\d";
+		String regTime = "\\d{1,2} : \\d\\d";
 		boolean validTimeOfPhoneCall = Pattern.compile(regTime).matcher(timeOfPhoneCall).matches();
 
 		if(!validTimeOfPhoneCall){
@@ -55,12 +75,13 @@ public class HelperFunctions {
 			System.out.println(invalidTimeOfPhoneCallMessage);
 			return false;
 		}
+
 		return true;
 	}
 
 
-	/** checkForValidDate() checks the correctness of the entered Date
-	 *
+	/**
+	 * This function checks if the date is in the correct format
 	 * @param dateOfPhoneCall describes the date of Phone Call start/end
 	 * @return the start or end Date of Phone Call
 	 */
@@ -75,9 +96,8 @@ public class HelperFunctions {
 		return true;
 	}
 
-	/** checkForValidPhoneNumber() checks the correctness of the entered Phone Number in the
-	 * correct format
-	 *
+	/**
+	 *This function checks if it's the correct phone number
 	 * @param phoneNumber describes the Phone Number of customer who is making efforts to make a Phone Call
 	 * @return the Phone Number for the customer
 	 */
