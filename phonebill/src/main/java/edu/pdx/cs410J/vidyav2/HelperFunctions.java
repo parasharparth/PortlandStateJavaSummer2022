@@ -14,33 +14,30 @@ public class HelperFunctions {
 
 	/**
 	 * This function checks if the command line argument contains the string "README"
+	 * If we have already found "README" in the argument list, we stop searching
+	 * If the argument contains "README", we return true
+	 * Otherwise, we increment our counter and keep searching
+	 *If we didn't find "README" in the argument list, we return false
 	 */
+
 
 	public static boolean readMeFlagCheck(String[] args){
 		int countIdxForREADME = 0;
-		/**
-		 * If we have already found "README" in the argument list, we stop searching
-		 */
+
 		for (String arg : args) {
 			if (countIdxForREADME > 1) {
 				break;
 			}
-			/**
-			 * If the argument contains "README", we return true
-			 */
+
 			else if (arg.toUpperCase().contains("README")) {
 				return true;
 			}
-			/**
-			 * Otherwise, we increment our counter and keep searching
-			 */
+
 			else {
 				countIdxForREADME++;
 			}
 		}
-		/**
-		 * If we didn't find "README" in the argument list, we return false
-		 */
+
 		return false;
 	}
 
@@ -54,6 +51,7 @@ public class HelperFunctions {
 		) {
 
 
+			assert ReadMe != null;
 			BufferedReader reader = new BufferedReader(new InputStreamReader(ReadMe));
 			line = reader.readLine();
 		} catch (IOException e) {
@@ -69,7 +67,7 @@ public class HelperFunctions {
 	 */
 
 	static boolean checkForValidPhoneCallTime(String timeOfPhoneCall) {
-		String regTime = "\\d{1,2}[:]\\d\\d";
+		String regTime = "\\d{1,2} : \\d\\d";
 		boolean validTimeOfPhoneCall = Pattern.compile(regTime).matcher(timeOfPhoneCall).matches();
 
 		if(!validTimeOfPhoneCall){
