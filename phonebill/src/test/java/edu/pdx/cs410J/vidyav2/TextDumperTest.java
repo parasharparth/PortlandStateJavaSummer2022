@@ -1,15 +1,9 @@
 package edu.pdx.cs410J.vidyav2;
 
-import edu.pdx.cs410J.ParserException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
-
 import java.io.*;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.equalTo;
 
 public class TextDumperTest {
 
@@ -26,9 +20,9 @@ public class TextDumperTest {
     String text = sw.toString();
     assertThat(text, containsString(customer));
     //File file = new File("vidyav2/testDumper.txt");
-    if (file.exists()) {
-      file.delete();
-    }
+    //if (file.exists()) {
+      //file.delete();
+    //}
   }}
 
 
