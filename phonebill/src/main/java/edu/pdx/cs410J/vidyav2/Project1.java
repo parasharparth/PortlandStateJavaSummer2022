@@ -1,6 +1,6 @@
 package edu.pdx.cs410J.vidyav2;
-
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * The main class for the CS410J Phone Bill Project
@@ -50,10 +50,7 @@ public class Project1 {
      * Copy the command-line arguments into a new ArrayList for the easy manipulations
      */
 
-    ArrayList<String> commandLineArgs = new ArrayList<>();
-    for (String arg : args) {
-      commandLineArgs.add(arg);
-    }
+    ArrayList<String> commandLineArgs = new ArrayList<>(Arrays.asList(args));
 
     /**
      * Check if the user has specified the '-print' flag in the command-line arguments
@@ -135,28 +132,27 @@ public class Project1 {
      * CustomerName is never passed here because it is unnecessary to validate name
      */
 
-    boolean isCallerNumberValid = HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(1));
-    if(!isCallerNumberValid){
+    if(!HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(1))){
       return false;
     }
-    boolean isCalleeNumberValid = HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(2));
-    if(!isCalleeNumberValid){
+
+    if(!HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(2))){
       return false;
     }
-    boolean isPhoneCallBeginDateValid = HelperFunctions.checkForValidDate(commandLineArgs.get(3));
-    if(!isPhoneCallBeginDateValid){
+
+    if(!HelperFunctions.checkForValidDate(commandLineArgs.get(3))){
       return false;
     }
-    boolean isPhoneCallBeginTimeValid = HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(4));
-    if(!isPhoneCallBeginTimeValid){
+
+    if(!HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(4))){
       return false;
     }
-    boolean isPhoneCallEndDateValid = HelperFunctions.checkForValidDate(commandLineArgs.get(5));
-    if(!isPhoneCallEndDateValid){
+
+    if(!HelperFunctions.checkForValidDate(commandLineArgs.get(5))){
       return false;
     }
-    boolean isPhoneCallEndTimeValid = HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(6));
-    if(!isPhoneCallEndTimeValid){
+
+    if(!HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(6))){
       return false;
     }
     return true;
