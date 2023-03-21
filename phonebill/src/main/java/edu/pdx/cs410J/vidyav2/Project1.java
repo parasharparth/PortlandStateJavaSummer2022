@@ -3,9 +3,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * The main class for the CS410J Phone Bill Project
+ * @class The main class for the CS410J Phone Bill Project
  * The objective of the first project is to learn about handling the command-line arguments
  * The command line arguments for this project are in the following order
+ * @arguments --
  * argument 0 -- customer
  * argument 1 -- caller number
  * argument 2 -- callee number
@@ -29,7 +30,7 @@ public class Project1 {
 
     /**
      *  if no arguments were passed in, display the message and return
-      */
+     */
 
     if (args.length == 0) {
       System.out.println("No arguments passed at the command line");
@@ -99,7 +100,7 @@ public class Project1 {
     }
 
     /**
-     *    Check the validity of the required command-line arguments
+     *  Check the validity of the required command-line arguments
      */
 
     boolean allRequiredArgumentsAreValid = checkValidityOfRequiredArgs(commandLineArgs);
@@ -108,13 +109,13 @@ public class Project1 {
     }
     /**
      * Created a new PhoneCall object using the command-line arguments
-      */
+     */
 
     PhoneCall call1 = new PhoneCall(commandLineArgs.get(0), commandLineArgs.get(1), commandLineArgs.get(2),
             commandLineArgs.get(3), commandLineArgs.get(4), commandLineArgs.get(5), commandLineArgs.get(6));
-/**
- *  Created a new PhoneBill object with the customer name
-  */
+    /**
+     * Created a new PhoneBill object with the customer name
+     */
 
     PhoneBill bill1 = new PhoneBill(commandLineArgs.get(0));
     bill1.addPhoneCall(call1);
