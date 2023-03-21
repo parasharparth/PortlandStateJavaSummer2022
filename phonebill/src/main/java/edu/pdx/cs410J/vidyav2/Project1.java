@@ -4,30 +4,34 @@ import java.util.Arrays;
 
 /**
  * The main class for the CS410J Phone Bill Project
- * Add comment for the command-line-arguments
- * Vidya--> Use the in-built functions instead of using the variables (Modify that code)
- * Annie --> Add comments to the code
+ * The objective of the first project is to learn about handling the command-line arguments
+ * The command line arguments for this project are in the following order
+ * argument 0 -- customer
+ * argument 1 -- caller number
+ * argument 2 -- callee number
+ * argument 3 -- begin date (formatted in mm/dd/yyyy hh:mm)
+ * argument 4 -- end date (formatted in mm/dd/yyyy hh:mm)
+ * argument 5 -- print
+ * argument 6 -- read me
+ * Here, one phone-bill will have customer name and the details of the calls the person has attended
+ * The Constructors were modified
+ * Removed the testing part for including it in the testing classes
  */
 public class Project1 {
 
   /**
-   * The Constructors were modified
-   * Removed the testing part
+   * @function (main) This is the main function from where the execution of the first project will start
+   * @param args
+   * Multiple conditional statements will check the validity of the command line arguments
+   * The validity of command-line arguments is checked using Helper Functions
    */
-
   public static void main(String[] args) {
-
-    /**
-     * Get the total number of command-line arguments passed in
-     */
-
-    int totalCommandLineArgumentsConsidered = args.length;
 
     /**
      *  if no arguments were passed in, display the message and return
       */
 
-    if (totalCommandLineArgumentsConsidered == 0) {
+    if (args.length == 0) {
       System.out.println("No arguments passed at the command line");
       return;
     }
@@ -121,16 +125,20 @@ public class Project1 {
   }
 
   /** checkValidityOfRequiredArgs() method is used validate the Required arguments in the program
-   *
    * @param commandLineArgs denotes the entries at the command line
    * @return returns the command line input data if it is correct
-   * vidya make changes here to remove the command line arguments
-   * Parth will modify the function to include proper method calling which can be used in later projects as well.
+   * @function checkValidityOfRequiredArgs
+   * Here the Helper Functions are called generically to check the command - line arguments to eliminate redundancy of code
+   * CustomerName is never passed here because it is unnecessary to validate name
+   * The following arguments are checked :
+   * Valid Phone Number -- Argument 1 (The caller number)
+   * Valid Phone Number -- Argument 2 (The callee number)
+   * Valid Date -- Argument 3 (The date when the call began)
+   * Valid Time -- Argument 4 (The time when the call began)
+   * Valid Date -- Argument 5 (The date when the call ends)
+   * Valid Time -- Argument 6 (The time when the call ends)
    */
   static boolean checkValidityOfRequiredArgs(ArrayList<String> commandLineArgs) {
-    /**
-     * CustomerName is never passed here because it is unnecessary to validate name
-     */
 
     if(!HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(1))){
       return false;
