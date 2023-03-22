@@ -120,64 +120,65 @@ public class HelperFunctions {
 	 * @return returns the command line input data if it is correct
 	 */
 	static boolean checkValidityOfRequiredArgs(ArrayList<String> commandLineArgs) {
-		if (commandLineArgs.size() == 11) {
-			if (!HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(3))) {
-				return false;
+		switch (commandLineArgs.size()) {
+			case 11: {
+				if (!HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(3))) {
+					return false;
+				}
+				if (!HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(4))) {
+					return false;
+				}
+				if (!HelperFunctions.checkForValidDate(commandLineArgs.get(5))) {
+					return false;
+				}
+				if (!HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(6))) {
+					return false;
+				}
+				if (!HelperFunctions.checkForValidDate(commandLineArgs.get(8))) {
+					return false;
+				}
+				return HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(9));
 			}
-			if (!HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(4))) {
-				return false;
+			case 12: {
+				if (!HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(4))) {
+					return false;
+				}
+				if (!HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(5))) {
+					return false;
+				}
+				if (!HelperFunctions.checkForValidDate(commandLineArgs.get(6))) {
+					return false;
+				}
+				if (!HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(7))) {
+					return false;
+				}
+				if (!HelperFunctions.checkForValidDate(commandLineArgs.get(9))) {
+					return false;
+				}
+				return HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(10));
 			}
-			if (!HelperFunctions.checkForValidDate(commandLineArgs.get(5))) {
-				return false;
+			case 13: {
+				{
+					if (!HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(5))) {
+						return false;
+					}
+				}
+				if (!HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(6))) {
+					return false;
+				}
+				if (!HelperFunctions.checkForValidDate(commandLineArgs.get(7))) {
+					return false;
+				}
+				if (!HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(8))) {
+					return false;
+				}
+				if (!HelperFunctions.checkForValidDate(commandLineArgs.get(10))) {
+					return false;
+				}
+				return HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(11));
 			}
-			if (!HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(6))) {
-				return false;
-			}
-			if (!HelperFunctions.checkForValidDate(commandLineArgs.get(8))) {
-				return false;
-			}
-			return HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(9));
-		}
-		else if (commandLineArgs.size() == 12) {
-			if (!HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(4))) {
-				return false;
-			}
-			if (!HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(5))) {
-				return false;
-			}
-			if (!HelperFunctions.checkForValidDate(commandLineArgs.get(6))) {
-				return false;
-			}
-			if (!HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(7))) {
-				return false;
-			}
-			if (!HelperFunctions.checkForValidDate(commandLineArgs.get(9))) {
-				return false;
-			}
-			return HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(10));
-		}
-		else if (commandLineArgs.size() == 13) {
-			if (!HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(5))) {
-				return false;
-			}
-			if (!HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(6))) {
-				return false;
-			}
-			if (!HelperFunctions.checkForValidDate(commandLineArgs.get(7))) {
-				return false;
-			}
-			if (!HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(8))) {
-				return false;
-			}
-			if (!HelperFunctions.checkForValidDate(commandLineArgs.get(10))) {
-				return false;
-			}
-			return HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(11));
-		}
-
-		else {
-			System.err.println("No args. Go check back.");
+			default: System.err.println("No args. Go check back.");
 		}
 		return true;
 	}
-}
+		}
