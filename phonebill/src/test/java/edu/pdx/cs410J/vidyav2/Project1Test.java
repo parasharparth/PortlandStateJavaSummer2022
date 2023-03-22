@@ -72,7 +72,7 @@ class Project1Test extends InvokeMainTestCase {
     ArrayList<String> arrayListOfArgs = new ArrayList<>();
 
     Collections.addAll(arrayListOfArgs, argumentsArray);
-    boolean theseArgsShouldBeValid = Project2.checkValidityOfRequiredArgs(arrayListOfArgs);
+    boolean theseArgsShouldBeValid = HelperFunctions.checkValidityOfRequiredArgs(arrayListOfArgs);
     assertThat(theseArgsShouldBeValid, equalTo(true));
   }
 
@@ -81,7 +81,7 @@ class Project1Test extends InvokeMainTestCase {
     String[] argumentsArray = {"Bhaskar", "12-456-7890", "245-566-7863", "07/07/2022", "12:4XX", "AM", "07/07/2022", "12:45", "AM"};
 
     ArrayList<String> arrayListOfArgs = new ArrayList<>(Arrays.asList(argumentsArray));
-    boolean theseArgsShouldBeInvalid = Project2.checkValidityOfRequiredArgs(arrayListOfArgs);
+    boolean theseArgsShouldBeInvalid = HelperFunctions.checkValidityOfRequiredArgs(arrayListOfArgs);
     assertThat(theseArgsShouldBeInvalid, notNullValue());
   }
 
