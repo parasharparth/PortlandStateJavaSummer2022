@@ -64,7 +64,7 @@ public class Project2 {
                     call.setPhoneCallBeginTime(commandLineArgs.get(6), commandLineArgs.get(7), commandLineArgs.get(8));
                     call.setPhoneCallEndDate(commandLineArgs.get(9));
                     call.setPhoneCallEndTime(commandLineArgs.get(9), commandLineArgs.get(10), commandLineArgs.get(11));
-                    boolean allRequiredArgumentsAreValid = checkValidityOfRequiredArgs(commandLineArgs);
+                    boolean allRequiredArgumentsAreValid = HelperFunctions.checkValidityOfRequiredArgs(commandLineArgs);
                     if (!allRequiredArgumentsAreValid) {
                         return;
                     }
@@ -93,7 +93,7 @@ public class Project2 {
                     call.setPhoneCallBeginTime(commandLineArgs.get(5), commandLineArgs.get(6), commandLineArgs.get(7));
                     call.setPhoneCallEndDate(commandLineArgs.get(8));
                     call.setPhoneCallEndTime(commandLineArgs.get(8), commandLineArgs.get(9), commandLineArgs.get(10));
-                    boolean allRequiredArgumentsAreValid = checkValidityOfRequiredArgs(commandLineArgs);
+                    boolean allRequiredArgumentsAreValid = HelperFunctions.checkValidityOfRequiredArgs(commandLineArgs);
                     if (!allRequiredArgumentsAreValid) {
                         printThisUsageMessage();
                     }
@@ -126,7 +126,7 @@ public class Project2 {
                     call.setPhoneCallBeginTime(commandLineArgs.get(7), commandLineArgs.get(8), commandLineArgs.get(9));
                     call.setPhoneCallEndDate(commandLineArgs.get(10));
                     call.setPhoneCallEndTime(commandLineArgs.get(10), commandLineArgs.get(11), commandLineArgs.get(12));
-                    boolean allRequiredArgumentsAreValid = checkValidityOfRequiredArgs(commandLineArgs);
+                    boolean allRequiredArgumentsAreValid = HelperFunctions.checkValidityOfRequiredArgs(commandLineArgs);
                     if (!allRequiredArgumentsAreValid) {
                         printThisUsageMessage();
                     }
@@ -159,7 +159,7 @@ public class Project2 {
                     call.setPhoneCallBeginTime(commandLineArgs.get(7), commandLineArgs.get(8), commandLineArgs.get(9));
                     call.setPhoneCallEndDate(commandLineArgs.get(10));
                     call.setPhoneCallEndTime(commandLineArgs.get(10), commandLineArgs.get(11), commandLineArgs.get(12));
-                    boolean allRequiredArgumentsAreValid = checkValidityOfRequiredArgs(commandLineArgs);
+                    boolean allRequiredArgumentsAreValid = HelperFunctions.checkValidityOfRequiredArgs(commandLineArgs);
                     if (!allRequiredArgumentsAreValid) {return;}
                     bill.addPhoneCall(call);
                     dumper.dump(bill);
@@ -199,7 +199,7 @@ public class Project2 {
                 call.setPhoneCallBeginTime(commandLineArgs.get(5), commandLineArgs.get(6), commandLineArgs.get(7));
                 call.setPhoneCallEndDate(commandLineArgs.get(8));
                 call.setPhoneCallEndTime(commandLineArgs.get(8), commandLineArgs.get(9), commandLineArgs.get(10));
-                boolean allRequiredArgumentsAreValid = checkValidityOfRequiredArgs(commandLineArgs);
+                boolean allRequiredArgumentsAreValid = HelperFunctions.checkValidityOfRequiredArgs(commandLineArgs);
                 if (!allRequiredArgumentsAreValid) {
                     printThisUsageMessage();
                 }
@@ -225,7 +225,7 @@ public class Project2 {
         call.setPhoneCallBeginTime(commandLineArgs.get(5), commandLineArgs.get(6), commandLineArgs.get(7));
         call.setPhoneCallEndDate(commandLineArgs.get(8));
         call.setPhoneCallEndTime(commandLineArgs.get(8), commandLineArgs.get(9), commandLineArgs.get(10));
-        boolean allRequiredArgumentsAreValid = checkValidityOfRequiredArgs(commandLineArgs);
+        boolean allRequiredArgumentsAreValid = HelperFunctions.checkValidityOfRequiredArgs(commandLineArgs);
         if (!allRequiredArgumentsAreValid) {
             printThisUsageMessage();
         }
@@ -243,92 +243,6 @@ public class Project2 {
         DisplayPhoneBill.printValues();
         System.exit(1);
     }
-
-        /**
-         * checkValidityOfRequiredArgs() method is used validate the Required arguments in the program
-         *
-         * @param commandLineArgs denotes the entries at the command line
-         * @return returns the command line input data if it is correct
-         */
-        static boolean checkValidityOfRequiredArgs(ArrayList<String> commandLineArgs) {
-            if (commandLineArgs.size() == 11) {
-
-                boolean isCallerNumberValid = HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(3));
-                if (!isCallerNumberValid) {
-                    return false;
-                }
-                boolean isCalleeNumberValid = HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(4));
-                if (!isCalleeNumberValid) {
-                    return false;
-                }
-                boolean isPhoneCallBeginDateValid = HelperFunctions.checkForValidDate(commandLineArgs.get(5));
-                if (!isPhoneCallBeginDateValid) {
-                    return false;
-                }
-                boolean isPhoneCallBeginTimeValid = HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(6));
-                if (!isPhoneCallBeginTimeValid) {
-                    return false;
-                }
-                boolean isPhoneCallEndDateValid = HelperFunctions.checkForValidDate(commandLineArgs.get(8));
-                if (!isPhoneCallEndDateValid) {
-                    return false;
-                }
-                return HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(9));
-            }
-            else if (commandLineArgs.size() == 12) {
-
-                boolean isCallerNumberValid = HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(4));
-                if (!isCallerNumberValid) {
-                    return false;
-                }
-                boolean isCalleeNumberValid = HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(5));
-                if (!isCalleeNumberValid) {
-                    return false;
-                }
-                boolean isPhoneCallBeginDateValid = HelperFunctions.checkForValidDate(commandLineArgs.get(6));
-                if (!isPhoneCallBeginDateValid) {
-                    return false;
-                }
-                boolean isPhoneCallBeginTimeValid = HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(7));
-                if (!isPhoneCallBeginTimeValid) {
-                    return false;
-                }
-                boolean isPhoneCallEndDateValid = HelperFunctions.checkForValidDate(commandLineArgs.get(9));
-                if (!isPhoneCallEndDateValid) {
-                    return false;
-                }
-                return HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(10));
-            }
-            else if (commandLineArgs.size() == 13) {
-
-                boolean isCallerNumberValid = HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(5));
-                if (!isCallerNumberValid) {
-                    return false;
-                }
-                boolean isCalleeNumberValid = HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(6));
-                if (!isCalleeNumberValid) {
-                    return false;
-                }
-                boolean isPhoneCallBeginDateValid = HelperFunctions.checkForValidDate(commandLineArgs.get(7));
-                if (!isPhoneCallBeginDateValid) {
-                    return false;
-                }
-                boolean isPhoneCallBeginTimeValid = HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(8));
-                if (!isPhoneCallBeginTimeValid) {
-                    return false;
-                }
-                boolean isPhoneCallEndDateValid = HelperFunctions.checkForValidDate(commandLineArgs.get(10));
-                if (!isPhoneCallEndDateValid) {
-                    return false;
-                }
-                return HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(11));
-            }
-
-            else {
-                System.err.println("No args. Go check back.");
-            }
-            return true;
-        }
 }
 
 
