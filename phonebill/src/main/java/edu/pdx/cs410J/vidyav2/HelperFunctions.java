@@ -121,73 +121,55 @@ public class HelperFunctions {
 	 */
 	static boolean checkValidityOfRequiredArgs(ArrayList<String> commandLineArgs) {
 		if (commandLineArgs.size() == 11) {
-
-			boolean isCallerNumberValid = HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(3));
-			if (!isCallerNumberValid) {
+			if (!HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(3))) {
 				return false;
 			}
-			boolean isCalleeNumberValid = HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(4));
-			if (!isCalleeNumberValid) {
+			if (!HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(4))) {
 				return false;
 			}
-			boolean isPhoneCallBeginDateValid = HelperFunctions.checkForValidDate(commandLineArgs.get(5));
-			if (!isPhoneCallBeginDateValid) {
+			if (!HelperFunctions.checkForValidDate(commandLineArgs.get(5))) {
 				return false;
 			}
-			boolean isPhoneCallBeginTimeValid = HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(6));
-			if (!isPhoneCallBeginTimeValid) {
+			if (!HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(6))) {
 				return false;
 			}
-			boolean isPhoneCallEndDateValid = HelperFunctions.checkForValidDate(commandLineArgs.get(8));
-			if (!isPhoneCallEndDateValid) {
+			if (!HelperFunctions.checkForValidDate(commandLineArgs.get(8))) {
 				return false;
 			}
 			return HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(9));
 		}
 		else if (commandLineArgs.size() == 12) {
-
-			boolean isCallerNumberValid = HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(4));
-			if (!isCallerNumberValid) {
+			if (!HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(4))) {
 				return false;
 			}
-			boolean isCalleeNumberValid = HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(5));
-			if (!isCalleeNumberValid) {
+			if (!HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(5))) {
 				return false;
 			}
-			boolean isPhoneCallBeginDateValid = HelperFunctions.checkForValidDate(commandLineArgs.get(6));
-			if (!isPhoneCallBeginDateValid) {
+			if (!HelperFunctions.checkForValidDate(commandLineArgs.get(6))) {
 				return false;
 			}
-			boolean isPhoneCallBeginTimeValid = HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(7));
-			if (!isPhoneCallBeginTimeValid) {
+			if (!HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(7))) {
 				return false;
 			}
-			boolean isPhoneCallEndDateValid = HelperFunctions.checkForValidDate(commandLineArgs.get(9));
-			if (!isPhoneCallEndDateValid) {
+			if (!HelperFunctions.checkForValidDate(commandLineArgs.get(9))) {
 				return false;
 			}
 			return HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(10));
 		}
 		else if (commandLineArgs.size() == 13) {
-
-			boolean isCallerNumberValid = HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(5));
-			if (!isCallerNumberValid) {
+			if (!HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(5))) {
 				return false;
 			}
-			boolean isCalleeNumberValid = HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(6));
-			if (!isCalleeNumberValid) {
+			if (!HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(6))) {
 				return false;
 			}
-			boolean isPhoneCallBeginDateValid = HelperFunctions.checkForValidDate(commandLineArgs.get(7));
-			if (!isPhoneCallBeginDateValid) {
+			if (!HelperFunctions.checkForValidDate(commandLineArgs.get(7))) {
 				return false;
 			}
-			boolean isPhoneCallBeginTimeValid = HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(8));
-			if (!isPhoneCallBeginTimeValid) {
+			if (!HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(8))) {
 				return false;
 			}
-			boolean isPhoneCallEndDateValid = HelperFunctions.checkForValidDate(commandLineArgs.get(10));
-			if (!isPhoneCallEndDateValid) {
+			if (!HelperFunctions.checkForValidDate(commandLineArgs.get(10))) {
 				return false;
 			}
 			return HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(11));
