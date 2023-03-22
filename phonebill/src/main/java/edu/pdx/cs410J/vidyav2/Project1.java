@@ -34,6 +34,16 @@ public class Project1 {
    * Check if the correct number of required command-line arguments have been entered
    * Check the validity of the required command-line arguments
    * Create a new PhoneCall object using the command-line arguments and customer name
+   * checkValidityOfRequiredArgs() method is used validate the Required arguments in the program
+   * Here the Helper Functions are called generically to check the command - line arguments to eliminate redundancy of code
+   * CustomerName is never passed here because it is unnecessary to validate name
+   * The following arguments are checked :
+   * Valid Phone Number -- Argument 1 (The caller number)
+   * Valid Phone Number -- Argument 2 (The callee number)
+   * Valid Date -- Argument 3 (The date when the call began)
+   * Valid Time -- Argument 4 (The time when the call began)
+   * Valid Date -- Argument 5 (The date when the call ends)
+   * Valid Time -- Argument 6 (The time when the call ends)
    ********************************************************************************************************/
   public static void main(String[] args) {
 
@@ -82,7 +92,7 @@ public class Project1 {
       return;
     }
 
-    boolean allRequiredArgumentsAreValid = checkValidityOfRequiredArgs(commandLineArgs);
+    boolean allRequiredArgumentsAreValid = HelperFunctions.checkValidityOfRequiredArgs(commandLineArgs);
     if(!allRequiredArgumentsAreValid){
       return;
     }
@@ -96,36 +106,6 @@ public class Project1 {
     if(print){
       System.out.println(call1);
     }
-  }
-
-  /********************************************************************************************************************************
-   * checkValidityOfRequiredArgs() method is used validate the Required arguments in the program
-   * @param commandLineArgs denotes the entries at the command line
-   * @return returns the command line input data if it is correct
-   * Here the Helper Functions are called generically to check the command - line arguments to eliminate redundancy of code
-   * CustomerName is never passed here because it is unnecessary to validate name
-   * The following arguments are checked :
-   * Valid Phone Number -- Argument 1 (The caller number)
-   * Valid Phone Number -- Argument 2 (The callee number)
-   * Valid Date -- Argument 3 (The date when the call began)
-   * Valid Time -- Argument 4 (The time when the call began)
-   * Valid Date -- Argument 5 (The date when the call ends)
-   * Valid Time -- Argument 6 (The time when the call ends)
-   ***********************************************************************************************************************************/
-  static boolean checkValidityOfRequiredArgs(ArrayList<String> commandLineArgs) {
-    if(!HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(1))) return false;
-
-    if(!HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(2))) return false;
-
-    if(!HelperFunctions.checkForValidDate(commandLineArgs.get(3))) return false;
-
-    if(!HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(4))) return false;
-
-    if(!HelperFunctions.checkForValidDate(commandLineArgs.get(5)))  return false;
-
-    if(!HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(6))) return false;
-
-    return true;
   }
 }
 

@@ -115,12 +115,26 @@ public class HelperFunctions {
 
 	/**
 	 * checkValidityOfRequiredArgs() method is used validate the Required arguments in the program
-	 * i+1 logic here for generalization
 	 * @param commandLineArgs denotes the entries at the command line
 	 * @return returns the command line input data if it is correct
 	 */
 	static boolean checkValidityOfRequiredArgs(ArrayList<String> commandLineArgs) {
 		switch (commandLineArgs.size()) {
+			case 7: {
+				if(!HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(1))) return false;
+
+				if(!HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(2))) return false;
+
+				if(!HelperFunctions.checkForValidDate(commandLineArgs.get(3))) return false;
+
+				if(!HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(4))) return false;
+
+				if(!HelperFunctions.checkForValidDate(commandLineArgs.get(5)))  return false;
+
+				if(!HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(6))) return false;
+
+				return true;
+			}
 			case 11: {
 				if (!HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(3))) {
 					return false;
