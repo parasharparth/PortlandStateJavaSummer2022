@@ -87,7 +87,7 @@ public class HelperFunctions {
 	 * @return the start or end Date of Phone Call
 	 */
 	static boolean checkForValidDate(String dateOfPhoneCall) {
-		String regDate = "\\d{1,2}[/]\\d{1,2}[/]\\d\\d\\d\\d";
+		String regDate = "\\d{1,2}/\\d{1,2}/\\d\\d\\d\\d";
 		boolean validDateOfPhoneCall = Pattern.compile(regDate).matcher(dateOfPhoneCall).matches();
 		if(!validDateOfPhoneCall){
 			String invalidDateOfPhoneCallMessage = "Date provided is invalid, please retry by entering the correct one's";
@@ -103,7 +103,7 @@ public class HelperFunctions {
 	 * @return the Phone Number for the customer
 	 */
 	static boolean checkForValidPhoneNumber(String phoneNumber){
-		String regPhoneNumber = "\\d\\d\\d[-]\\d\\d\\d[-]\\d\\d\\d\\d";
+		String regPhoneNumber = "\\d\\d\\d-\\d\\d\\d-\\d\\d\\d\\d";
 		boolean validNumberOfCaller = Pattern.compile(regPhoneNumber).matcher(phoneNumber).matches();
 		if(!validNumberOfCaller){
 			String invalidPhoneNumberMessage = "Phone Number provided is invalid, please retry by entering the correct one's";
