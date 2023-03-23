@@ -67,16 +67,31 @@ public class Project2IT extends InvokeMainTestCase {
                 "09/24/2022", "12:50", "pm", "09/24/2022", "1:00", "pm");
         assertThat(result.getTextWrittenToStandardOut(),
                 containsString(""));
-
     }
 
     @Test
-    void unknownOptionGiven() {
+    void UnknownOptionGiven() {
         MainMethodResult result = invokeMain("-IDontKnowThisOption", "Nick Jonas", "425-555-5555", "206-555-5555",
                 "09/24/2022", "12:50", "pm", "09/24/2022", "1:00", "pm");
         assertThat(result.getTextWrittenToStandardError(),
-                containsString("unknown option used"));
-
+                containsString("Unknown option is provided"));
     }
+
+    @Test
+    void TooManyArguments() {
+        MainMethodResult result = invokeMain("-textFile", "Nick Jonas", "425-555-5555", "206-555-5555",
+                "09/24/2022", "12:50", "pm", "09/24/2022", "1:00", "pm", "too", "many", "arguments", "given");
+        assertThat(result.getTextWrittenToStandardError(),
+                containsString("Extraneous arguments"));
+    }
+
+    @Test
+    void NotEnoughArguments() {
+        MainMethodResult result = invokeMain("-textFile", "Nick Jonas", "425-555-5555", "206-555-5555",
+                "09/24/2022", "12:50", "pm", "09/24/2022");
+        assertThat(result.getTextWrittenToStandardError(),
+                containsString("Missing phone call information"));
+    }
+
 }
 
