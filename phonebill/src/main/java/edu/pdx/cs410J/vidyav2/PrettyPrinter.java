@@ -1,25 +1,17 @@
 package edu.pdx.cs410J.vidyav2;
 
 import edu.pdx.cs410J.PhoneBillDumper;
-import edu.pdx.cs410J.vidyav2.PhoneBill;
-import edu.pdx.cs410J.vidyav2.PhoneCall;
-
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
-public class PrettyPrinter implements PhoneBillDumper<PhoneBill> {
-    /**
-     * This method formats the phone-bill in a pretty way
-     */
+import static java.util.Collections.*;
 
+public class PrettyPrinter implements PhoneBillDumper<PhoneBill> {
     String fileName;
     String customerName;
 
@@ -30,42 +22,34 @@ public class PrettyPrinter implements PhoneBillDumper<PhoneBill> {
 
     public void setFilename(String fileName)
     {
-        this.fileName = fileName; //.concat("pretty");
-        //System.out.println(this.fileName);
+        this.fileName = fileName;
     }
 
     public String getpretty(PhoneCall call, String customer) {
-        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
         long callDuration = call.getPhoneCallEndTime().getTime() - call.getPhoneCallBeginTime().getTime();
-        String prettytext = "Customer : " + customer +
+        return "Customer : " + customer +
                 "\nCallerNumber : " + call.getCallerNumber() +
                 "\nCalleeNumber : " + call.getCalleeNumber() +
                 "\nDate of Begin : " + call.getPhoneCallBeginDate() +
-                "\nTime of Begin : " + formatter.getTimeInstance(DateFormat.SHORT).format(call.getPhoneCallBeginTime()) +
+                "\nTime of Begin : " + DateFormat.getTimeInstance(DateFormat.SHORT).format(call.getPhoneCallBeginTime()) +
                 "\nDate of End : " + call.getPhoneCallEndDate() +
-                "\nTime of End : " + formatter.getTimeInstance(DateFormat.SHORT).format(call.getPhoneCallEndTime()) +
+                "\nTime of End : " + DateFormat.getTimeInstance(DateFormat.SHORT).format(call.getPhoneCallEndTime()) +
                 "\nDuration (minutes) : " + TimeUnit.MILLISECONDS.toMinutes(callDuration) + "\n\n";
-
-        //Return pretty print
-        return prettytext;
     }
 
     @Override
-    public void dump(PhoneBill bill) throws IOException {
-        ArrayList phonecallList = (ArrayList) bill.getPhoneCalls();
-        String[] calls = new String[phonecallList.size()];
-        Collections.sort(phonecallList);
+    public void dump(PhoneBill bill) {
+        ArrayList<PhoneCall> phonecallList = bill.getPhoneCalls();
+        sort(phonecallList);
         Scanner sc = null;
         if (fileName.equals("-")) {
-            for (int i = 0; i < phonecallList.size(); i++) {
+            for (PhoneCall phoneCall : phonecallList) {
                 System.out.println("\nThis is a pretty file, printing the following Phone details:\n"
-                        + getpretty((PhoneCall) phonecallList.get(i), bill.getCustomer()));//getpretty(call, bill.getCustomer()));
+                        + getpretty(phoneCall, bill.getCustomer()));//getpretty(call, bill.getCustomer()));
 
-                }
+            }
             System.exit(0);
         }
-        //else if (filename contains - and .txt) then do a pretty print
-        // Case when pretty file is not present
         try {
             sc = new Scanner(new File(this.fileName));
         } catch (FileNotFoundException e) {
@@ -77,9 +61,10 @@ public class PrettyPrinter implements PhoneBillDumper<PhoneBill> {
                 } catch (FileNotFoundException ex) {
                     System.out.println("Pretty Print file is not present.");
                 }
+                assert out != null;
                 out.write("");
-                for (int i = 0; i < phonecallList.size(); i++) {
-                    String x = getpretty((PhoneCall) phonecallList.get(i), bill.getCustomer());
+                for (PhoneCall phoneCall : phonecallList) {
+                    String x = getpretty(phoneCall, bill.getCustomer());
                     out.write(x);
                 }
                 out.close();
@@ -88,23 +73,21 @@ public class PrettyPrinter implements PhoneBillDumper<PhoneBill> {
                 File f;
                 File f1;
                 String v;
-                boolean bool = false;
+                boolean bool;
                 f = new File(this.fileName);
                 f1 = f.getParentFile();
                 v = f1.getAbsolutePath();
                 bool = f1.exists();
-                //check if directory exists or not
                 if (bool) {
-                    //System.out.println("debug 2");
                     try {
                         out = new PrintWriter(this.fileName);
-                        //System.out.println("debug 3");
                     } catch (FileNotFoundException ex) {
                         ex.printStackTrace();
                     }
+                    assert out != null;
                     out.write("");
-                    for (int i = 0; i < phonecallList.size(); i++) {
-                        String x = getpretty((PhoneCall) phonecallList.get(i), bill.getCustomer());
+                    for (PhoneCall phoneCall : phonecallList) {
+                        String x = getpretty(phoneCall, bill.getCustomer());
                         out.write(x);
                     }
                     out.close();
@@ -116,9 +99,10 @@ public class PrettyPrinter implements PhoneBillDumper<PhoneBill> {
                         } catch (FileNotFoundException ex) {
                             ex.printStackTrace();
                         }
+                        assert out != null;
                         out.write("");
-                        for (int i = 0; i < phonecallList.size(); i++) {
-                            String x = getpretty((PhoneCall) phonecallList.get(i), bill.getCustomer());
+                        for (PhoneCall phoneCall : phonecallList) {
+                            String x = getpretty(phoneCall, bill.getCustomer());
                             out.write(x);
                         }
                         out.close();
@@ -138,9 +122,10 @@ public class PrettyPrinter implements PhoneBillDumper<PhoneBill> {
                 } catch (FileNotFoundException ex) {
                     System.err.println("Pretty Print file is not present.");
                 }
+                assert out != null;
                 out.write("");
-                for (int i = 0; i < phonecallList.size(); i++) {
-                    String x = getpretty((PhoneCall) phonecallList.get(i), bill.getCustomer());
+                for (PhoneCall phoneCall : phonecallList) {
+                    String x = getpretty(phoneCall, bill.getCustomer());
                     out.write(x);
                 }
                 out.close();
@@ -162,44 +147,14 @@ public class PrettyPrinter implements PhoneBillDumper<PhoneBill> {
                     }
                     assert out != null;
                     out.write("");
-                    for (Object o : phonecallList) {
-                    //for (int i = 0; i < phonecallList.size(); i++) {
-                        String x = getpretty((PhoneCall) o, bill.getCustomer());
+                    for (PhoneCall o : phonecallList) {
+                        String x = getpretty(o, bill.getCustomer());
                         out.write(x);
                     }
                     out.close();
                 }
-                else {
-                    /*
-                    File folder = new File(v);
-                    if (folder.mkdir()) {
-                        try {
-                            out = new PrintWriter(this.fileName);
-                        } catch (FileNotFoundException ex) {
-                            ex.printStackTrace();
-                        }
-                        try {
-                            assert out != null;
-                            out.write("");
-                        }
-                        catch(NullPointerException e)
-                        {
-                            System.out.println(e.getMessage());
-                        }
-                        for (Object o : phonecallList) {
-                            String x = getpretty((PhoneCall) o, bill.getCustomer());
-                            out.write(x);
-                        }
-                        out.close();
-                    } else {
-                        System.out.println("Could not create directory");
-                        System.exit(1);
-                    }*/
-                }
             }
-
         }
-
     }
 }
 
