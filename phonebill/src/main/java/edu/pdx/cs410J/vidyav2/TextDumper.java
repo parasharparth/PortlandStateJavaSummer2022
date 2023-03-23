@@ -20,7 +20,6 @@ public class TextDumper implements PhoneBillDumper<PhoneBill> {
         ArrayList phonecallList = (ArrayList) bill.getPhoneCalls();
         String[] calls = new String[phonecallList.size()];
         File f = new File(filename);
-        //FileReader fr = new FileReader(f);
         try {
             PrintWriter out = new PrintWriter(filename);
             out.write("");
@@ -32,15 +31,8 @@ public class TextDumper implements PhoneBillDumper<PhoneBill> {
                 calls[i] = phonecallList.get(i).toString();
                 out.write("\n");
                 out.write(calls[i]);
-                //out.write(lines.get(i));
                 out.flush();
-                //out.close();
-
             }
-//            for (int i = 0; i < phonecallList.size(); i++) {
-//                out.flush();
-//                out.write(calls[i]);
-//            }
         }
         catch(Exception e)
         {
