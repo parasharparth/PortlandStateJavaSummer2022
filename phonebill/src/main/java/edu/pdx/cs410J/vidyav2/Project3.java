@@ -30,7 +30,7 @@ public class Project3 {
 
         boolean readMeFlag = HelperFunctions.readMeFlagCheck(args);
         if (readMeFlag) {
-            String FileContentReadMe = readFromReadMeFileOnly();
+            String FileContentReadMe = HelperFunctions.readFromReadMeFileOnlyProject3();
             System.out.println(FileContentReadMe);
             System.out.println("Usage: java edu.pdx.cs410J.<login-id>.Project3 [options] <args> args are (in this order):");
             System.out.println("customer --> Person whose phone bill we’re modeling");
@@ -205,25 +205,6 @@ public class Project3 {
         else {
             System.err.println("Extraneous or wrong arguments are being printed, this is not allowed.");
         }
-    }
-
-    /**
-     * The readFromReadMeFileOnly() method is responsible for reading from the README.txt file
-     *
-     * @return a string of the file contents given
-     */
-    static String readFromReadMeFileOnly() {
-        String line = "";
-        try (
-                InputStream ReadMe = Project3.class.getResourceAsStream("README.txt")
-        ) {
-            assert ReadMe != null;
-            BufferedReader reader = new BufferedReader(new InputStreamReader(ReadMe));
-            line = reader.readLine();
-        } catch (IOException e) {
-            System.out.println("The README.txt file was not able to be located.");
-        }
-        return line;
     }
 
 }

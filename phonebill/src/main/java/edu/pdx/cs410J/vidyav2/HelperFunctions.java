@@ -179,4 +179,23 @@ public class HelperFunctions {
 		}
 		return true;
 	}
+
+	/**
+	 * The readFromReadMeFileOnly() method is responsible for reading from the README.txt file
+	 *
+	 * @return a string of the file contents given
+	 */
+	static String readFromReadMeFileOnlyProject3() {
+		String line = "";
+		try (
+				InputStream ReadMe = Project3.class.getResourceAsStream("README.txt")
+		) {
+			assert ReadMe != null;
+			BufferedReader reader = new BufferedReader(new InputStreamReader(ReadMe));
+			line = reader.readLine();
+		} catch (IOException e) {
+			System.out.println("The README.txt file was not able to be located.");
+		}
+		return line;
+	}
 }
