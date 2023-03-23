@@ -61,8 +61,22 @@ public class Project2IT extends InvokeMainTestCase {
         );
     }
 
+    @Test
+    void NoOptionArgument() {
+        MainMethodResult result = invokeMain("Nick Jonas", "425-555-5555", "206-555-5555",
+                "09/24/2022", "12:50", "pm", "09/24/2022", "1:00", "pm");
+        assertThat(result.getTextWrittenToStandardOut(),
+                containsString(""));
 
+    }
 
+    @Test
+    void unknownOptionGiven() {
+        MainMethodResult result = invokeMain("-IDontKnowThisOption", "Nick Jonas", "425-555-5555", "206-555-5555",
+                "09/24/2022", "12:50", "pm", "09/24/2022", "1:00", "pm");
+        assertThat(result.getTextWrittenToStandardError(),
+                containsString("unknown option used"));
 
+    }
 }
 
