@@ -64,23 +64,18 @@ public class PhoneCall extends AbstractPhoneCall implements Comparable<PhoneCall
   /** getBeginTimeString() method is used to retrieve the caller details **/
   @Override
   public String getBeginTimeString() {
-    SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy hh:mm aa");
-    //SimpleDateFormat dater = new SimpleDateFormat("MM/dd/yyyy");
+    new SimpleDateFormat("MM/dd/yyyy hh:mm aa");
 
-    String timestring = formatter.getTimeInstance(DateFormat.SHORT).format(phoneCallBeginTime);
+    String timestring = DateFormat.getTimeInstance(DateFormat.SHORT).format(phoneCallBeginTime);
     return phoneCallBeginDate + " " + timestring;
-    //return dater.format(this.phoneCallBeginTime);
   }
 
   /** getEndTimeString() method is used to retrieve the caller details **/
   @Override
   public String getEndTimeString() {
-    SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy hh:mm aa");
-    //SimpleDateFormat dater = new SimpleDateFormat("MM/dd/yyyy");
-//    String datestring = dater.format(this.phoneCallEndDate);
-   String timestring = formatter.getTimeInstance(DateFormat.SHORT).format(this.phoneCallEndTime);
+    new SimpleDateFormat("MM/dd/yyyy hh:mm aa");
+   String timestring = DateFormat.getTimeInstance(DateFormat.SHORT).format(this.phoneCallEndTime);
   return phoneCallEndDate + " " + timestring;
-    //return phoneCallEndDate;
   }
 
   /********************
@@ -114,7 +109,6 @@ public class PhoneCall extends AbstractPhoneCall implements Comparable<PhoneCall
     String finaldatetime = phoneCallBeginDate + " " + phoneCallBeginTime + " " + AMPM;
     SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy hh:mm aa");
     try{
-      //this.phoneCallBeginTime = String.valueOf(formatter.parse(finaldatetime));
      this.phoneCallBeginTime = formatter.parse(finaldatetime);
     }
     catch (Exception e){
@@ -141,7 +135,6 @@ public class PhoneCall extends AbstractPhoneCall implements Comparable<PhoneCall
     String finaldatetime1 = phoneCallEndDate + " " + phoneCallEndTime + " " + AMPM;
     SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy hh:mm aa");
     try{
-      //this.phoneCallEndTime = String.valueOf(formatter.parse(finaldatetime1));
       this.phoneCallEndTime = formatter.parse(finaldatetime1);
     }
     catch (Exception e){
@@ -150,11 +143,6 @@ public class PhoneCall extends AbstractPhoneCall implements Comparable<PhoneCall
     }
   }
 
-  //This method ensures that call begin time is before call end time
-//  public boolean checkBeginTimeBeforeEndTime(){
-//    return this.phoneCallBeginTime.compareTo(this.phoneCallEndTime) <= 0;
-//  }
-
   /********************
    * setPhoneCallEndDate() method is self defined
    * @param phoneCallEndDate defines call end date
@@ -162,10 +150,6 @@ public class PhoneCall extends AbstractPhoneCall implements Comparable<PhoneCall
   public void setPhoneCallEndDate(String phoneCallEndDate) {
     this.phoneCallEndDate = phoneCallEndDate;
   }
-
-//  public String getCallerName() {
-//    return callerName;
-//  }
 
   /********************
    * getCallerNumber() method is self defined
@@ -220,7 +204,6 @@ public class PhoneCall extends AbstractPhoneCall implements Comparable<PhoneCall
    */
   public int compareTo(PhoneCall o) {
     SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy hh:mm aa");
-    //if(this.getCallee().compareToIgnoreCase(o.getCallee()) == 0){
       try {
         Date d1 = formatter.parse(this.getBeginTimeString());
         Date d2 = formatter.parse(o.getBeginTimeString());
@@ -230,7 +213,8 @@ public class PhoneCall extends AbstractPhoneCall implements Comparable<PhoneCall
         System.exit(1);
       }
     return this.getCallee().compareToIgnoreCase(o.getCallee());
-  }}
+  }
+}
 
 
 
