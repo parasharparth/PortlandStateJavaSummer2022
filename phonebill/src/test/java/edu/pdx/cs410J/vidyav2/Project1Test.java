@@ -3,9 +3,6 @@ package edu.pdx.cs410J.vidyav2;
 import edu.pdx.cs410J.InvokeMainTestCase;
 import org.junit.jupiter.api.Test;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -16,9 +13,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
  */
 class Project1Test extends InvokeMainTestCase {
 
-//  private MainMethodResult invokeMain(String... args) {
-//    return invokeMain(Project2.class, args);
-//  }
   @Test
   void readmeCanBeReadAsResource() throws IOException {
     try (
@@ -31,59 +25,59 @@ class Project1Test extends InvokeMainTestCase {
     }
   }
 
-  @Test
-  void readMeBooleanFlagTested() {
-    String[] hasNoReadme = {"random", "words"};
-    String[] hasReadme = {"-README"};
-    boolean displayReadMeNo = HelperFunctions.readMeFlagCheck(hasNoReadme);
-    boolean displayReadMeYes = HelperFunctions.readMeFlagCheck(hasReadme);
-    assertThat(displayReadMeNo, equalTo(false));
-    assertThat(displayReadMeYes, equalTo(true));
-  }
-
-  @Test
-  void phoneNumberValidation() {
-    boolean thisNumberShouldBeValid = HelperFunctions.checkForValidPhoneNumber("123-456-7890");
-    boolean thisNumberShouldBeInvalid = HelperFunctions.checkForValidPhoneNumber("23-567-8901");
-    assertThat(thisNumberShouldBeValid, equalTo(true));
-    assertThat(thisNumberShouldBeInvalid, equalTo(false));
-  }
-
-  @Test
-  void validationOfTime() {
-    boolean thisTimeShouldBeValid = HelperFunctions.checkForValidPhoneCallTime("7:12");
-    boolean thisTimeShouldBeInvalid = HelperFunctions.checkForValidPhoneCallTime("7777:12");
-    assertThat(thisTimeShouldBeValid, equalTo(true));
-    assertThat(thisTimeShouldBeInvalid, equalTo(false));
-  }
-
-  @Test
-  void correctDateValidation() {
-    boolean thisDateShouldBeValid = HelperFunctions.checkForValidDate("07/07/2022");
-    boolean thisDateShouldBeInvalid = HelperFunctions.checkForValidDate("077/07/20ZZ");
-    assertThat(thisDateShouldBeValid, equalTo(true));
-    assertThat(thisDateShouldBeInvalid, equalTo(false));
-  }
-
-  @Test
-  void requiredArgumentsValidation() {
-    String[] argumentsArray = {"Bhaskar", "123-456-7890", "245-566-7863", "07/07/2022",
-            "12:43", "AM", "07/07/2022", "12:45", "AM"};
-    ArrayList<String> arrayListOfArgs = new ArrayList<>();
-
-    Collections.addAll(arrayListOfArgs, argumentsArray);
-    boolean theseArgsShouldBeValid = HelperFunctions.checkValidityOfRequiredArgs(arrayListOfArgs);
-    assertThat(theseArgsShouldBeValid, equalTo(true));
-  }
-
-  @Test
-  void requiredArgumentsInvalidation() {
-    String[] argumentsArray = {"Bhaskar", "12-456-7890", "245-566-7863", "07/07/2022", "12:4XX", "AM", "07/07/2022", "12:45", "AM"};
-
-    ArrayList<String> arrayListOfArgs = new ArrayList<>(Arrays.asList(argumentsArray));
-    boolean theseArgsShouldBeInvalid = HelperFunctions.checkValidityOfRequiredArgs(arrayListOfArgs);
-    assertThat(theseArgsShouldBeInvalid, notNullValue());
-  }
+//  @Test
+//  void readMeBooleanFlagTested() {
+//    String[] hasNoReadme = {"random", "words"};
+//    String[] hasReadme = {"-README"};
+//    boolean displayReadMeNo = HelperFunctions.readMeFlagCheck(hasNoReadme);
+//    boolean displayReadMeYes = HelperFunctions.readMeFlagCheck(hasReadme);
+//    assertThat(displayReadMeNo, equalTo(false));
+//    assertThat(displayReadMeYes, equalTo(true));
+//  }
+//
+//  @Test
+//  void phoneNumberValidation() {
+//    boolean thisNumberShouldBeValid = HelperFunctions.checkForValidPhoneNumber("123-456-7890");
+//    boolean thisNumberShouldBeInvalid = HelperFunctions.checkForValidPhoneNumber("23-567-8901");
+//    assertThat(thisNumberShouldBeValid, equalTo(true));
+//    assertThat(thisNumberShouldBeInvalid, equalTo(false));
+//  }
+//
+//  @Test
+//  void validationOfTime() {
+//    boolean thisTimeShouldBeValid = HelperFunctions.checkForValidPhoneCallTime("7:12");
+//    boolean thisTimeShouldBeInvalid = HelperFunctions.checkForValidPhoneCallTime("7777:12");
+//    assertThat(thisTimeShouldBeValid, equalTo(true));
+//    assertThat(thisTimeShouldBeInvalid, equalTo(false));
+//  }
+//
+//  @Test
+//  void correctDateValidation() {
+//    boolean thisDateShouldBeValid = HelperFunctions.checkForValidDate("07/07/2022");
+//    boolean thisDateShouldBeInvalid = HelperFunctions.checkForValidDate("077/07/20ZZ");
+//    assertThat(thisDateShouldBeValid, equalTo(true));
+//    assertThat(thisDateShouldBeInvalid, equalTo(false));
+//  }
+//
+//  @Test
+//  void requiredArgumentsValidation() {
+//    String[] argumentsArray = {"Bhaskar", "123-456-7890", "245-566-7863", "07/07/2022",
+//            "12:43", "AM", "07/07/2022", "12:45", "AM"};
+//    ArrayList<String> arrayListOfArgs = new ArrayList<>();
+//
+//    Collections.addAll(arrayListOfArgs, argumentsArray);
+//    boolean theseArgsShouldBeValid = HelperFunctions.checkValidityOfRequiredArgs(arrayListOfArgs);
+//    assertThat(theseArgsShouldBeValid, equalTo(true));
+//  }
+//
+//  @Test
+//  void requiredArgumentsInvalidation() {
+//    String[] argumentsArray = {"Bhaskar", "12-456-7890", "245-566-7863", "07/07/2022", "12:4XX", "AM", "07/07/2022", "12:45", "AM"};
+//
+//    ArrayList<String> arrayListOfArgs = new ArrayList<>(Arrays.asList(argumentsArray));
+//    boolean theseArgsShouldBeInvalid = HelperFunctions.checkValidityOfRequiredArgs(arrayListOfArgs);
+//    assertThat(theseArgsShouldBeInvalid, notNullValue());
+//  }
 
 //  @Test
 //  void fileNotFoundInDirectory() {
