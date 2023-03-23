@@ -198,4 +198,19 @@ public class HelperFunctions {
 		}
 		return line;
 	}
+
+	 static void printGenericMessage() {
+		System.out.println("Usage: java edu.pdx.cs410J.<login-id>.Project3 [options] <args> args are (in this order):" +
+				"customer --> Person whose phone bill we’re modeling" +
+				"callerNumber --> Phone number of caller" +
+				"calleeNumber --> Phone number of person who was called" +
+				"begin --> Date and time (am/pm) call began" +
+				"end --> Date and time (am/pm) call ended" +
+				"Options are (options may appear in any order):" +
+				"-pretty file --> Pretty print the phone bill to a text file or standard out (file -)" +
+				"-textFile file --> Where to read/write the phone bill" +
+				"-print --> Prints a description of the new phone call" +
+				"-README --> Prints a README for this project and exits");
+		return;
+	}
 }

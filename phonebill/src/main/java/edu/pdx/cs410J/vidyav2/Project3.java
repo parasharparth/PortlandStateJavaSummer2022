@@ -1,9 +1,4 @@
 package edu.pdx.cs410J.vidyav2;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -15,58 +10,22 @@ public class Project3 {
     public static void main(String[] args) throws Exception {
         if (args.length == 0) {
             System.out.println("\nNo arguments passed at the command line.\n");
-            System.out.println("Usage: java edu.pdx.cs410J.<login-id>.Project3 [options] <args> args are (in this order):");
-            System.out.println("customer --> Person whose phone bill we’re modeling");
-            System.out.println("callerNumber --> Phone number of caller");
-            System.out.println("calleeNumber --> Phone number of person who was called");
-            System.out.println("begin --> Date and time (am/pm) call began");
-            System.out.println("end --> Date and time (am/pm) call ended");
-            System.out.println("Options are (options may appear in any order):");
-            System.out.println("-pretty file --> Pretty print the phone bill to a text file or standard out (file -)");
-            System.out.println("-textFile file --> Where to read/write the phone bill");
-            System.out.println("-print --> Prints a description of the new phone call");
-            System.out.println("-README --> Prints a README for this project and exits");
-            return;}
+            HelperFunctions.printGenericMessage();
+            return;
+        }
 
         boolean readMeFlag = HelperFunctions.readMeFlagCheck(args);
         if (readMeFlag) {
             String FileContentReadMe = HelperFunctions.readFromReadMeFileOnlyProject3();
             System.out.println(FileContentReadMe);
-            System.out.println("Usage: java edu.pdx.cs410J.<login-id>.Project3 [options] <args> args are (in this order):");
-            System.out.println("customer --> Person whose phone bill we’re modeling");
-            System.out.println("callerNumber --> Phone number of caller");
-            System.out.println("calleeNumber --> Phone number of person who was called");
-            System.out.println("begin --> Date and time (am/pm) call began");
-            System.out.println("end --> Date and time (am/pm) call ended");
-            System.out.println("Options are (options may appear in any order):");
-            System.out.println("-pretty file --> Pretty print the phone bill to a text file or standard out (file -)");
-            System.out.println("-textFile file --> Where to read/write the phone bill");
-            System.out.println("-print --> Prints a description of the new phone call");
-            System.out.println("-README --> Prints a README for this project and exits");
-            return;}
-
-        boolean print = false;
-        for (String commandLineArg : args) {
-            if (commandLineArg.contains("-print")) {
-                print = true;
-                break;}}
+            HelperFunctions.printGenericMessage();
+        }
 
         ArrayList<String> commandLineArgs = new ArrayList<>(Arrays.asList(args));
 
         //Case when the number of arguments are less than 11 (bare minimum arguments)
         if (commandLineArgs.size() < 11) {
-            System.err.println("\nThere are some missing arguments.\n");
-            System.out.println("Usage: java edu.pdx.cs410J.<login-id>.Project3 [options] <args> args are (in this order):");
-            System.out.println("customer --> Person whose phone bill we’re modeling");
-            System.out.println("callerNumber --> Phone number of caller");
-            System.out.println("calleeNumber --> Phone number of person who was called");
-            System.out.println("begin --> Date and time (am/pm) call began");
-            System.out.println("end --> Date and time (am/pm) call ended");
-            System.out.println("Options are (options may appear in any order):");
-            System.out.println("-pretty file --> Pretty print the phone bill to a text file or standard out (file -)");
-            System.out.println("-textFile file --> Where to read/write the phone bill");
-            System.out.println("-print --> Prints a description of the new phone call");
-            System.out.println("-README --> Prints a README for this project and exits");
+            HelperFunctions.printGenericMessage();
         }
 
         if (commandLineArgs.size() == 11) {
@@ -80,6 +39,7 @@ public class Project3 {
                     }
                     break;
                 }
+
                 String fileName = commandLineArgs.get(index);
                 TextDumper dumper = new TextDumper();
                 TextParser parser = new TextParser(fileName, commandLineArgs.get(index));
@@ -199,12 +159,10 @@ public class Project3 {
                 printer.setCustomerName(commandLineArgs.get(4));
                 printer.getPretty(call, commandLineArgs.get(5));
                 printer.dump(bill);
-                //System.out.println("\nPretty file is printed. Check the pretty file folder." );
             }
         }
         else {
             System.err.println("Extraneous or wrong arguments are being printed, this is not allowed.");
         }
     }
-
 }
