@@ -7,19 +7,28 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
-/**
+/*******************************************************************************************
  *This class was created to get the functions in a single place so that the code looks clean
- */
+ *******************************************************************************************/
 
 public class HelperFunctions {
 
-	/**
-	 * This function checks if the command line argument contains the string "README"
+	/*****************************************************************************************************************
+	 * readMeFlagCheck() function checks if the command line argument contains the string "README"
 	 * If we have already found "README" in the argument list, we stop searching
 	 * If the argument contains "README", we return true
 	 * Otherwise, we increment our counter and keep searching
-	 *If we didn't find "README" in the argument list, we return false
-	 */
+	 * If we didn't find "README" in the argument list, we return false
+	 * readFromReadMeFileOnly() function reads the first line from a file named "README.txt"
+	 * checkForValidPhoneCallTime() function checks if the time string is in the correct format.
+	 * timeOfPhoneCall parameter tells about the time of the Phone Call start/end and return value of the Phone Call time validity
+	 * checkForValidDate() function checks if the date is in the correct format
+	 * dateOfPhoneCall parameter describes the date of Phone Call start/end and return the start or end Date of Phone Call
+	 * checkForValidPhoneNumber() function checks if it's the correct phone number
+	 * phoneNumber parameter describes the Phone Number of customer who is making efforts to make a Phone Call and return the Phone Number for the customer
+	 * checkValidityOfRequiredArgs() method is used validate the Required arguments in the program
+	 * commandLineArgs denotes the entries at the command line and return the command line input data if it is correct
+	 *****************************************************************************************************************/
 
 
 	public static boolean readMeFlagCheck(String[] args){
@@ -42,9 +51,7 @@ public class HelperFunctions {
 		return false;
 	}
 
-	/**
-	 *This function reads the first line from a file named "README.txt"
-	 */
+
 	public static String readFromReadMeFileOnly(){
 		String line = "";
 		try (
@@ -61,11 +68,7 @@ public class HelperFunctions {
 		return line;
 	}
 
-	/**
-	 *This function checks if the time string is in the correct format.
-	 * @param timeOfPhoneCall parameter tells about the time of the Phone Call start/end
-	 * @return the value of the Phone Call time validity
-	 */
+
 
 	static boolean checkForValidPhoneCallTime(String timeOfPhoneCall) {
 		String regTime = "\\d{1,2} : \\d\\d";
@@ -81,11 +84,7 @@ public class HelperFunctions {
 	}
 
 
-	/**
-	 * This function checks if the date is in the correct format
-	 * @param dateOfPhoneCall describes the date of Phone Call start/end
-	 * @return the start or end Date of Phone Call
-	 */
+
 	static boolean checkForValidDate(String dateOfPhoneCall) {
 		String regDate = "\\d{1,2}/\\d{1,2}/\\d\\d\\d\\d";
 		boolean validDateOfPhoneCall = Pattern.compile(regDate).matcher(dateOfPhoneCall).matches();
@@ -97,11 +96,7 @@ public class HelperFunctions {
 		return true;
 	}
 
-	/**
-	 *This function checks if it's the correct phone number
-	 * @param phoneNumber describes the Phone Number of customer who is making efforts to make a Phone Call
-	 * @return the Phone Number for the customer
-	 */
+
 	static boolean checkForValidPhoneNumber(String phoneNumber){
 		String regPhoneNumber = "\\d\\d\\d-\\d\\d\\d-\\d\\d\\d\\d";
 		boolean validNumberOfCaller = Pattern.compile(regPhoneNumber).matcher(phoneNumber).matches();
@@ -113,11 +108,7 @@ public class HelperFunctions {
 		return true;
 	}
 
-	/**
-	 * checkValidityOfRequiredArgs() method is used validate the Required arguments in the program
-	 * @param commandLineArgs denotes the entries at the command line
-	 * @return returns the command line input data if it is correct
-	 */
+
 	static boolean checkValidityOfRequiredArgs(ArrayList<String> commandLineArgs) {
 		switch (commandLineArgs.size()) {
 			case 0:  System.err.println("No args. Go check back.");
