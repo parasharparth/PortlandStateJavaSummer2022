@@ -5,12 +5,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+
 /*****************************************************
  * The main class for the CS410J phone bill Project
  *****************************************************/
 public class Project2 {
 
-    /**
+
+
+    /********************************************************************************************************************************************
      * Check if the -print flag is present in the command line arguments
      * Convert the command line arguments to an ArrayList for easier manipulation
      * Check if the -README flag is present in the command line arguments
@@ -24,7 +27,24 @@ public class Project2 {
      * Then check if the user specified a text file and pretty-print file with the -textFile and -pretty flags
      * Parse the phone bill from the specified text file
      * Create a new phone call from the command line arguments and add it to the phone bill
-     */
+     * textFileChecker() checks if "-textFile" option is present in command line args
+     * if "-textFile" option is not present and the second argument contains a hyphen, extract the filename from the "-pretty" option argument
+     * create a new phone bill object with the customer name provided in command line args
+     * create a new phone call object and set its properties based on command line args
+     * check if all required command line args are valid, if not, print a usage message and exit
+     * add the phone call to the phone bill object
+     * create a pretty printer object and print the phone call details
+     * indexSeparator() takes an arraylist of strings as parameter and throws ParserException and IOException
+     * Create a TextDumper object to write the phone bill to a text file
+     * Create a TextParser object to parse the phone bill from the text file
+     * Parse the phone bill from the text file using the TextParser object
+     * Create a new phone call object and Set the caller name, caller number, and callee number for the phone call object
+     * Set the begin and end date and time for the phone call object
+     * Add the phone call to the phone bill and write the phone bill to a text file using the TextDumper object
+     * printThisUsageMessage() displays the missing arguments message and then exits.
+     **********************************************************************************************************************************************/
+
+
     public static void main(String[] args) throws Exception {
 
         for (String commandLineArg : args) {
@@ -250,9 +270,7 @@ public class Project2 {
         System.out.println("\nA new file called " + fileName + " is created.");
     }
 
-    /*************
-     * This method displays the missing args message
-     *************/
+
     public static void printThisUsageMessage()
     {
         System.out.println("Usage: java edu.pdx.cs410J.<login-id>.Project-2 [options] <args> args are (in this order):");
