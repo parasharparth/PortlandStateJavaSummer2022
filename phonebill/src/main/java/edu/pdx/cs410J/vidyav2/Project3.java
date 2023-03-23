@@ -124,7 +124,7 @@ public class Project3 {
                 boolean allRequiredArgumentsAreValid = checkValidityOfRequiredArgs(commandLineArgs);
                 bill.addPhoneCall(call);
                 PrettyPrinter printer = new PrettyPrinter();
-                System.out.println("\nThis is a pretty file, printing the following Phone details:\n" + printer.getpretty(call, bill.getCustomer()));
+                System.out.println("\nThis is a pretty file, printing the following Phone details:\n" + printer.getPretty(call, bill.getCustomer()));
             }
 
         }
@@ -164,7 +164,7 @@ public class Project3 {
                 PrettyPrinter printer = new PrettyPrinter();
                 printer.setFilename(commandLineArgs.get(2));
                 printer.setCustomerName(commandLineArgs.get(3));
-                printer.getpretty(call, commandLineArgs.get(4));
+                printer.getPretty(call, commandLineArgs.get(4));
                 printer.dump(bill);
                 //System.out.println("\nPretty file is printed. Check the pretty file folder." );
             }
@@ -198,7 +198,7 @@ public class Project3 {
                 PrettyPrinter printer = new PrettyPrinter();
                 printer.setFilename(commandLineArgs.get(1));
                 printer.setCustomerName(commandLineArgs.get(2));
-                printer.getpretty(call, commandLineArgs.get(2));
+                printer.getPretty(call, commandLineArgs.get(2));
                 printer.dump(bill);
                 //System.out.println("\nPretty file is printed. Check the pretty file folder." );
             }
@@ -237,7 +237,7 @@ public class Project3 {
 	            edu.pdx.cs410J.vidyav2.PrettyPrinter printer = new edu.pdx.cs410J.vidyav2.PrettyPrinter();
                 printer.setFilename(commandLineArgs.get(3));
                 printer.setCustomerName(commandLineArgs.get(4));
-                printer.getpretty(call, commandLineArgs.get(5));
+                printer.getPretty(call, commandLineArgs.get(5));
                 printer.dump(bill);
                 //System.out.println("\nPretty file is printed. Check the pretty file folder." );
             }
@@ -272,7 +272,7 @@ public class Project3 {
                 PrettyPrinter printer = new PrettyPrinter();
                 printer.setFilename(commandLineArgs.get(3));
                 printer.setCustomerName(commandLineArgs.get(4));
-                printer.getpretty(call, commandLineArgs.get(5));
+                printer.getPretty(call, commandLineArgs.get(5));
                 printer.dump(bill);
                 //System.out.println("\nPretty file is printed. Check the pretty file folder." );
             }

@@ -25,7 +25,7 @@ public class PrettyPrinter implements PhoneBillDumper<PhoneBill> {
         this.fileName = fileName;
     }
 
-    public String getpretty(PhoneCall call, String customer) {
+    public String getPretty(PhoneCall call, String customer) {
         long callDuration = call.getPhoneCallEndTime().getTime() - call.getPhoneCallBeginTime().getTime();
         return "Customer : " + customer +
                 "\nCallerNumber : " + call.getCallerNumber() +
@@ -45,7 +45,7 @@ public class PrettyPrinter implements PhoneBillDumper<PhoneBill> {
         if (fileName.equals("-")) {
             for (PhoneCall phoneCall : phonecallList) {
                 System.out.println("\nThis is a pretty file, printing the following Phone details:\n"
-                        + getpretty(phoneCall, bill.getCustomer()));//getpretty(call, bill.getCustomer()));
+                        + getPretty(phoneCall, bill.getCustomer()));//getPretty(call, bill.getCustomer()));
 
             }
             System.exit(0);
@@ -64,7 +64,7 @@ public class PrettyPrinter implements PhoneBillDumper<PhoneBill> {
                 assert out != null;
                 out.write("");
                 for (PhoneCall phoneCall : phonecallList) {
-                    String x = getpretty(phoneCall, bill.getCustomer());
+                    String x = getPretty(phoneCall, bill.getCustomer());
                     out.write(x);
                 }
                 out.close();
@@ -87,7 +87,7 @@ public class PrettyPrinter implements PhoneBillDumper<PhoneBill> {
                     assert out != null;
                     out.write("");
                     for (PhoneCall phoneCall : phonecallList) {
-                        String x = getpretty(phoneCall, bill.getCustomer());
+                        String x = getPretty(phoneCall, bill.getCustomer());
                         out.write(x);
                     }
                     out.close();
@@ -102,7 +102,7 @@ public class PrettyPrinter implements PhoneBillDumper<PhoneBill> {
                         assert out != null;
                         out.write("");
                         for (PhoneCall phoneCall : phonecallList) {
-                            String x = getpretty(phoneCall, bill.getCustomer());
+                            String x = getPretty(phoneCall, bill.getCustomer());
                             out.write(x);
                         }
                         out.close();
@@ -125,7 +125,7 @@ public class PrettyPrinter implements PhoneBillDumper<PhoneBill> {
                 assert out != null;
                 out.write("");
                 for (PhoneCall phoneCall : phonecallList) {
-                    String x = getpretty(phoneCall, bill.getCustomer());
+                    String x = getPretty(phoneCall, bill.getCustomer());
                     out.write(x);
                 }
                 out.close();
@@ -148,7 +148,7 @@ public class PrettyPrinter implements PhoneBillDumper<PhoneBill> {
                     assert out != null;
                     out.write("");
                     for (PhoneCall o : phonecallList) {
-                        String x = getpretty(o, bill.getCustomer());
+                        String x = getPretty(o, bill.getCustomer());
                         out.write(x);
                     }
                     out.close();
