@@ -5,6 +5,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 /************************************************
  * This is a PhoneCall class extended by AbstractPhoneCall
@@ -64,7 +65,7 @@ public class PhoneCall extends AbstractPhoneCall implements Comparable<PhoneCall
   /** getBeginTimeString() method is used to retrieve the caller details **/
   @Override
   public String getBeginTimeString() {
-    new SimpleDateFormat("MM/dd/yyyy hh:mm aa");
+    new SimpleDateFormat("MM/dd/yyyy hh:mm aa", Locale.US);
 
     String timestring = DateFormat.getTimeInstance(DateFormat.SHORT).format(phoneCallBeginTime);
     return phoneCallBeginDate + " " + timestring;
@@ -73,7 +74,7 @@ public class PhoneCall extends AbstractPhoneCall implements Comparable<PhoneCall
   /** getEndTimeString() method is used to retrieve the caller details **/
   @Override
   public String getEndTimeString() {
-    new SimpleDateFormat("MM/dd/yyyy hh:mm aa");
+    new SimpleDateFormat("MM/dd/yyyy hh:mm aa", Locale.US);
    String timestring = DateFormat.getTimeInstance(DateFormat.SHORT).format(this.phoneCallEndTime);
   return phoneCallEndDate + " " + timestring;
   }
