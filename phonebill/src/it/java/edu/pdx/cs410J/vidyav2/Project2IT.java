@@ -23,8 +23,8 @@ public class Project2IT extends InvokeMainTestCase {
 
     @Test
     void validCallTimeAssertion(){
-        MainMethodResult result = invokeMain("-textFile", "path", "-print", "Nick Jonas", "425-555-5555", "206-555-5555",
-                "09/24/2022", "12:50", "pm", "09/24/2022", "1:00", "pm");
+        MainMethodResult result = invokeMain("-textFile", "src/test/resources/edu/pdx/cs410J/vidyav2/Project2TextFile.txt",
+                "Nick Jonas", "425-555-5555", "206-555-5555", "09/24/2022", "12:50", "pm", "09/24/2022", "1:00", "pm");
         assertAll(
                 () -> assertThat(result.getTextWrittenToStandardOut(), containsString("12:50")),
                 //() -> assertThat(new File("").exists(), equalTo(true)),
@@ -37,8 +37,8 @@ public class Project2IT extends InvokeMainTestCase {
 
     @Test
     void validPhoneNumberAssertion(){
-        MainMethodResult result = invokeMain("-textFile", "path", "-print", "Nick Jonas", "425-555-5555", "206-555-5555",
-                "09/24/2022", "12:50", "pm", "09/24/2022", "1:00", "pm");
+        MainMethodResult result = invokeMain("-textFile", "src/test/resources/edu/pdx/cs410J/vidyav2/Project2TextFile.txt",
+                "Nick Jonas", "425-555-5555", "206-555-5555", "09/24/2022", "12:50", "pm", "09/24/2022", "1:00", "pm");
         assertAll(
                 () -> assertThat(result.getTextWrittenToStandardOut(), containsString("425-555-5555")),
                 () -> {
@@ -50,8 +50,8 @@ public class Project2IT extends InvokeMainTestCase {
 
     @Test
     void validDateAssertion(){
-        MainMethodResult result = invokeMain("-textFile", "path", "-print", "Nick Jonas", "425-555-5555", "206-555-5555",
-                "09/24/2022", "12:50", "pm", "09/24/2022", "1:00", "pm");
+        MainMethodResult result = invokeMain("-textFile", "src/test/resources/edu/pdx/cs410J/vidyav2/Project2TextFile.txt",
+                "Nick Jonas", "425-555-5555", "206-555-5555", "09/24/2022", "12:50", "pm", "09/24/2022", "1:00", "pm");
         assertAll(
                 () -> assertThat(result.getTextWrittenToStandardOut(), containsString("09/24/2022")),
                 () -> {
@@ -93,5 +93,35 @@ public class Project2IT extends InvokeMainTestCase {
                 containsString("Missing phone call information"));
     }
 
+    @Test
+    void CorrectFileTypeCheckTest(){
+        MainMethodResult result = invokeMain("-textFile", "src/test/resources/edu/pdx/cs410J/vidyav2/Project2TextFile.txt",
+                "Nick Jonas", "425-555-5555", "206-555-5555", "09/24/2022", "12:50", "pm", "09/24/2022", "1:00", "pm");
+        assertThat(result.getTextWrittenToStandardOut(),
+                containsString(".txt"));
+    }
+    @Test
+    void WrongFileTypeTest(){
+        MainMethodResult result = invokeMain("-textFile", "src/test/resources/edu/pdx/cs410J/vidyav2/WrongFileType.abc",
+                "Nick Jonas", "425-555-5555", "206-555-5555", "09/24/2022", "12:50", "pm", "09/24/2022", "1:00", "pm");
+        assertThat(result.getTextWrittenToStandardError(),
+                containsString(".abc"));
+    }
+
+    @Test
+    void TextFileExistsTest(){
+        MainMethodResult result = invokeMain("-textFile", "src/test/resources/edu/pdx/cs410J/vidyav2/valid-phonebill.txt",
+                "Nick Jonas", "425-555-5555", "206-555-5555", "09/24/2022", "12:50", "pm", "09/24/2022", "1:00", "pm");
+        assertThat(result.getTextWrittenToStandardOut(),
+                containsString("valid-phonebill.txt"));
+    }
+
+    @Test
+    void TextFileExistsOtherThanResourceFolder(){
+        MainMethodResult result = invokeMain("-textFile", "WrongFilePathTest.txt",
+                "Nick Jonas", "425-555-5555", "206-555-5555", "09/24/2022", "12:50", "pm", "09/24/2022", "1:00", "pm");
+        assertThat(result.getTextWrittenToStandardError(),
+                containsString("WrongFilePathTest.txt"));
+    }
 }
 
