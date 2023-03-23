@@ -11,7 +11,6 @@ public class Project2IT extends InvokeMainTestCase {
     /**
      * Invokes the main method of {@link Project2IT} with the given arguments.
      */
-
     private MainMethodResult invokeMain(String... args) {
         return invokeMain(Project1.class, args);
     }
@@ -23,7 +22,7 @@ public class Project2IT extends InvokeMainTestCase {
     }
 
     @Test
-    void validCallTimeAssertion1(){
+    void validCallTimeAssertion(){
         MainMethodResult result = invokeMain("-textFile", "path", "-print", "Nick Jonas", "425-555-5555", "206-555-5555",
                 "09/24/2022", "12:50", "pm", "09/24/2022", "1:00", "pm");
         assertAll(
@@ -37,7 +36,7 @@ public class Project2IT extends InvokeMainTestCase {
     }
 
     @Test
-    void validPhoneNumberAssertion1(){
+    void validPhoneNumberAssertion(){
         MainMethodResult result = invokeMain("-textFile", "path", "-print", "Nick Jonas", "425-555-5555", "206-555-5555",
                 "09/24/2022", "12:50", "pm", "09/24/2022", "1:00", "pm");
         assertAll(
@@ -50,7 +49,7 @@ public class Project2IT extends InvokeMainTestCase {
     }
 
     @Test
-    void validDateAssertion1(){
+    void validDateAssertion(){
         MainMethodResult result = invokeMain("-textFile", "path", "-print", "Nick Jonas", "425-555-5555", "206-555-5555",
                 "09/24/2022", "12:50", "pm", "09/24/2022", "1:00", "pm");
         assertAll(
@@ -61,5 +60,9 @@ public class Project2IT extends InvokeMainTestCase {
                 }
         );
     }
+
+
+
+
 }
 
