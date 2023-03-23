@@ -14,25 +14,12 @@ public class TextParser implements PhoneBillParser<PhoneBill> {
     public String customerName;
     public String billDetails;
 
-//    public TextParser(Reader reader) {
-//        this.reader = reader;
-//    }
-
     public TextParser(String filename, String customerName)
     {
         this.filename = filename;
         this.customerName = customerName;
         this.reader = null;
     }
-//    public TextParser()
-//    {
-//        this.reader = null;
-//    }
-
-//    public TextParser(String fileName) {
-//        this.reader = null;
-//    }
-
 
     @Override
     public PhoneBill parse() throws ParserException {
