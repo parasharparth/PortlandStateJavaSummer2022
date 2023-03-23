@@ -9,6 +9,22 @@ import java.util.Arrays;
  * The main class for the CS410J phone bill Project
  *****************************************************/
 public class Project2 {
+
+    /**
+     * Check if the -print flag is present in the command line arguments
+     * Convert the command line arguments to an ArrayList for easier manipulation
+     * Check if the -README flag is present in the command line arguments
+     * @param args
+     * @throws Exception
+     * commandLineArgs.size() Checks if there are at least 11 command line arguments (excluding the -print and -README flags)
+     * Check how many command line arguments were passed where we have used switch case.
+     * If no arguments were passed, display a usage message
+     * If 11 arguments were passed, check if a text file was specified
+     * If 12 arguments were passed, check if a text file and/or a pretty-print file was specified
+     * Then check if the user specified a text file and pretty-print file with the -textFile and -pretty flags
+     * Parse the phone bill from the specified text file
+     * Create a new phone call from the command line arguments and add it to the phone bill
+     */
     public static void main(String[] args) throws Exception {
 
         for (String commandLineArg : args) {
