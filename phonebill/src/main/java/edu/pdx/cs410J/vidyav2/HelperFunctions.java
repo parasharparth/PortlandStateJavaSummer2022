@@ -144,4 +144,39 @@ public class HelperFunctions {
 		}
 		return true;
 	}
+
+	/** checkForValidPhoneCallTime() method is used to describe the correctness of the Time specified for a
+	 * Phone Call created
+	 *
+	 * @param timeOfPhoneCall parameter tells about the time of the Phone Call start/end
+	 * @return the value of the Phone Call time validity
+	 */
+	static boolean checkForValidPhoneCallTimeFormat(String timeOfPhoneCall) {
+		String regTime = "\\d{1,2}:\\d\\d";
+		boolean validTimeOfPhoneCall = Pattern.compile(regTime).matcher(timeOfPhoneCall).matches();
+
+		if(!validTimeOfPhoneCall){
+			String invalidTimeOfPhoneCallMessage = "PhoneCall Time Argument provided is invalid, please retry by entering the correct one's";
+			System.out.println(invalidTimeOfPhoneCallMessage);
+			return false;
+		}
+		return true;
+	}
+
+
+	/** checkForValidDate() checks the correctness of the entered Date
+	 *
+	 * @param dateOfPhoneCall describes the date of Phone Call start/end
+	 * @return the start or end Date of Phone Call
+	 */
+	static boolean checkForValidDateFormat(String dateOfPhoneCall) {
+		String regDate = "\\d{1,2}/\\d{1,2}/\\d\\d\\d\\d";
+		boolean validDateOfPhoneCall = Pattern.compile(regDate).matcher(dateOfPhoneCall).matches();
+		if(!validDateOfPhoneCall){
+			//String invalidDateOfPhoneCallMessage = "Date provided is invalid, please retry by entering the correct one's";
+			//System.out.println(invalidDateOfPhoneCallMessage);
+			return true;
+		}
+		return true;
+	}
 }
