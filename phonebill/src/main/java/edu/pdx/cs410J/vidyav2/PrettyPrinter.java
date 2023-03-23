@@ -28,8 +28,8 @@ public class PrettyPrinter implements PhoneBillDumper<PhoneBill> {
     public String getPretty(PhoneCall call, String customer) {
         long callDuration = call.getPhoneCallEndTime().getTime() - call.getPhoneCallBeginTime().getTime();
         return "Customer : " + customer +
-                "\nCallerNumber : " + call.getCallerNumber() +
-                "\nCalleeNumber : " + call.getCalleeNumber() +
+                "\nCallerNumber : " + call.getCaller() +
+                "\nCalleeNumber : " + call.getCallee() +
                 "\nDate of Begin : " + call.getPhoneCallBeginDate() +
                 "\nTime of Begin : " + DateFormat.getTimeInstance(DateFormat.SHORT).format(call.getPhoneCallBeginTime()) +
                 "\nDate of End : " + call.getPhoneCallEndDate() +

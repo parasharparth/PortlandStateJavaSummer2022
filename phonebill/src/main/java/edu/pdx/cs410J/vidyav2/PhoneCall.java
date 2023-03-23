@@ -153,22 +153,6 @@ public class PhoneCall extends AbstractPhoneCall implements Comparable<PhoneCall
   }
 
   /********************
-   * getCallerNumber() method is self defined
-   * @return caller number
-   *********************/
-  public String getCallerNumber() {
-    return callerNumber;
-  }
-
-  /********************
-   * getCalleeNumber() method is self defined
-   * @return callee number
-   *********************/
-  public String getCalleeNumber() {
-    return calleeNumber;
-  }
-
-  /********************
    * getPhoneCallBeginDate() method is self defined
    * @return phoneCallBeginDate
    *********************/
