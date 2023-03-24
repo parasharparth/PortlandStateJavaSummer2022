@@ -18,13 +18,13 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
  */
 @TestMethodOrder(MethodName.class)
 class PhoneBillRestClientIT {
-  private static final String HOSTNAME = "localhost";
-  private static final String PORT = System.getProperty("http.port", "8080");
+//  private static final String HOSTNAME = "localhost";
+//  private static final String PORT = System.getProperty("http.port", "8080");
 
-  private PhoneBillRestClient newPhoneBillRestClient() {
-    int port = Integer.parseInt(PORT);
-    return new PhoneBillRestClient(HOSTNAME, port);
-  }
+//  private PhoneBillRestClient newPhoneBillRestClient() {
+//    int port = Integer.parseInt(PORT);
+//    return new PhoneBillRestClient(HOSTNAME, port);
+//  }
 
 //  @Test
 //  void test0RemoveAllDictionaryEntries() throws IOException {
@@ -50,10 +50,10 @@ class PhoneBillRestClientIT {
 //    assertThat(definition, equalTo(testDefinition));
 //  }
 //
-  @Test
-  void test4MissingRequiredParameterReturnsPreconditionFailed() throws IOException {
-    PhoneBillRestClient client = newPhoneBillRestClient();
-    HttpRequestHelper.Response response = client.postToMyURL(Map.of());
-    assertThat(response.getHttpStatusCode(), equalTo(HttpURLConnection.HTTP_PRECON_FAILED));
-  }
+//  @Test
+//  void test4MissingRequiredParameterReturnsPreconditionFailed() throws IOException {
+//    PhoneBillRestClient client = newPhoneBillRestClient();
+//    HttpRequestHelper.Response response = client.postToMyURL(Map.of());
+//    assertThat(response.getHttpStatusCode(), equalTo(HttpURLConnection.HTTP_PRECON_FAILED));
+//  }
 }

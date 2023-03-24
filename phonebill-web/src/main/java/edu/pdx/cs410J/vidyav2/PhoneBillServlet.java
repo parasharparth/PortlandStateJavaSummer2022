@@ -115,12 +115,7 @@ public class PhoneBillServlet extends HttpServlet
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
 
         } else {
-            PrintWriter pw = response.getWriter();
-
-//            Map<String, String> wordDefinition = Map.of(word, definition);
-//            TextDumper dumper = new TextDumper(pw);
-//            dumper.dump(wordDefinition);
-
+            response.getWriter();
             response.setStatus(HttpServletResponse.SC_OK);
         }
     }
@@ -131,10 +126,7 @@ public class PhoneBillServlet extends HttpServlet
      */
     private void writeAllDictionaryEntries(HttpServletResponse response ) throws IOException
     {
-        PrintWriter pw = response.getWriter();
-//        TextDumper dumper = new TextDumper(pw);
-//        dumper.dump();
-
+        response.getWriter();
         response.setStatus( HttpServletResponse.SC_OK );
     }
 
