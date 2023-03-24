@@ -3,11 +3,15 @@ package edu.pdx.cs410J.vidyav2;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+
 public class PhoneCallTest {
 
-    /**
-     * This method tests getBeginTimeString() method
-     */
+    /***************************************************************************
+     * getBeginTimeStringTest() This method tests getBeginTimeString() method
+     * getEndTimeStringTest() This method tests getEndTimeString() method
+     * getCallerTest() tests getCaller method
+     * getCalleeTest() tests getCallee method
+     ***************************************************************************/
     @Test
     void getBeginTimeStringTest()  {
         PhoneCall call = new PhoneCall();
@@ -18,9 +22,7 @@ public class PhoneCallTest {
         assertEquals(expectedOutput, actualOutput);
     }
 
-    /**
-     * This method tests getEndTimeString() method
-     */
+
     @Test
     void getEndTimeStringTest()  {
         PhoneCall call = new PhoneCall();
@@ -31,9 +33,6 @@ public class PhoneCallTest {
         assertEquals(expectedOutput, actualOutput);
     }
 
-    /**
-     * tests getCaller method
-     */
     @Test
     void getCallerTest() {
         PhoneCall call = new PhoneCall();
@@ -44,9 +43,6 @@ public class PhoneCallTest {
         assertEquals(expectedCallerNumber, actualCallerNumber);
     }
 
-    /**
-     * tests getCallee method
-     */
     @Test
     void getCalleeTest() {
         PhoneCall call = new PhoneCall();
