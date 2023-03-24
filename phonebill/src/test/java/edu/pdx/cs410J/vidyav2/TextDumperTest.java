@@ -65,7 +65,7 @@ public class TextDumperTest {
     dumper.dump(bill);
 
     Reader reader = null;
-    TextParser parser = new TextParser(new FileReader(textFile), null);
+    TextParser parser = new TextParser(new FileReader(textFile));
     PhoneBill read = parser.parse();
     assertThat(read.getCustomer(), equalTo(customer));
   }
