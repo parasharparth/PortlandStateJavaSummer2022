@@ -7,13 +7,33 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
+/***************************************************************************
+ *class named "Project3IT" which extends the "InvokeMainTestCase" class.
+ * Invokes the main method of {@link Project3IT} with the given arguments.
+ ***************************************************************************/
 public class Project3IT extends InvokeMainTestCase {
-    /**
-     * Invokes the main method of {@link Project3IT} with the given arguments.
-     */
+
     private MainMethodResult invokeMain(String... args) {
         return invokeMain(Project3.class, args);
     }
+
+    /****************************************************************************************************************************************************************************************************************
+     * readMeAssertionTest() Test that checks whether the README file is present in the project directory.
+     * validCallTimeAssertion() Test that checks whether the start time of the phone call is valid.
+     * validPhoneNumberAssertion() Test that checks whether the phone number is valid.
+     * validDateAssertion() Test that checks whether the date is valid.
+     * NoOptionArgument() Test that checks for handling of no command line options.
+     * UnknownOptionGiven() This test case checks if the program handles the case when an unknown option is provided.
+     * TooManyArguments() This test case checks if the program handles the case when too many arguments are provided.
+     * NotEnoughArguments() This test case checks if the program handles the case when not enough arguments are provided.
+     * CorrectFileTypeCheckTest(): This test checks if the file type specified with the "-textFile" option is ".txt".
+     * WrongFileTypeTest(): This test checks if an error message is printed to the standard error when an unsupported file type is specified.
+     * TextFileExistsTest(): This test checks if the specified text file exists.
+     * TextFileExistsOtherThanResourceFolder(): This test checks if an error message is printed to the standard error when a file path other than the one specified in the resources folder is provided.
+     * accurateCommandLineWithPrint(): This test checks if the phone bill is printed accurately when the "-print" option is used.
+     * accurateCommandLineWithPrintAndTextFile(): This test checks if the phone bill is printed accurately when both "-print" and "-textFile" options are used.
+     * printwithTextFileOptionsWithPrintFirst(): This test checks if the phone bill is printed accurately when the "-print" option is used before the "-textFile" option.
+     *************************************************************************************************************************************************************************************************************/
 
     @Test
     void readMeAssertionTest(){
