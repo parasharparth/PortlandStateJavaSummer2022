@@ -62,22 +62,17 @@ public class PhoneCall extends AbstractPhoneCall implements Comparable<PhoneCall
     @Override
     public String getBeginTimeString() {
         SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy hh:mm aa");
-        //SimpleDateFormat dater = new SimpleDateFormat("MM/dd/yyyy");
 
         String timestring = formatter.getTimeInstance(DateFormat.SHORT).format(phoneCallBeginTime);
         return phoneCallBeginDate + " " + timestring;
-        //return dater.format(this.phoneCallBeginTime);
     }
 
     /** getEndTimeString() method is used to retrieve the caller details **/
     @Override
     public String getEndTimeString() {
         SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy hh:mm aa");
-        //SimpleDateFormat dater = new SimpleDateFormat("MM/dd/yyyy");
-//    String datestring = dater.format(this.phoneCallEndDate);
         String timestring = formatter.getTimeInstance(DateFormat.SHORT).format(this.phoneCallEndTime);
         return phoneCallEndDate + " " + timestring;
-        //return phoneCallEndDate;
     }
 
     /********************
