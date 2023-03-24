@@ -32,72 +32,37 @@ public class HelperFunctions {
 	 */
 	public static boolean checkValidityOfRequiredArgs(ArrayList<String> commandLineArgs)
 	{
-		if (commandLineArgs.size() == 12) {
-
-			boolean isPhoneCallBeginDateValid = checkForValidDate(commandLineArgs.get(6));
-			if (!isPhoneCallBeginDateValid) {
+		switch (commandLineArgs.size()) {
+			case 0:  System.err.println("No args. Go check back.");
 				return false;
-			}
-			boolean isPhoneCallBeginTimeValid = checkForValidPhoneCallTime(commandLineArgs.get(7));
-			if (!isPhoneCallBeginTimeValid) {
-				return false;
-			}
-			boolean isPhoneCallEndDateValid = checkForValidDate(commandLineArgs.get(9));
-			if (!isPhoneCallEndDateValid) {
-				return false;
-			}
-			return checkForValidPhoneCallTime(commandLineArgs.get(10));
-		}
-		else if (commandLineArgs.size() == 13) {
-
-			boolean isCallerNumberValid = checkForValidPhoneNumber(commandLineArgs.get(5));
-			if (!isCallerNumberValid) {
-				return false;
-			}
-			boolean isCalleeNumberValid = checkForValidPhoneNumber(commandLineArgs.get(6));
-			if (!isCalleeNumberValid) {
-				return false;
-			}
-			boolean isPhoneCallBeginDateValid = checkForValidDate(commandLineArgs.get(7));
-			if (!isPhoneCallBeginDateValid) {
-				return false;
-			}
-			boolean isPhoneCallBeginTimeValid = checkForValidPhoneCallTime(commandLineArgs.get(8));
-			if (!isPhoneCallBeginTimeValid) {
-				return false;
-			}
-			boolean isPhoneCallEndDateValid = checkForValidDate(commandLineArgs.get(10));
-			if (!isPhoneCallEndDateValid) {
-				return false;
-			}
-			return checkForValidPhoneCallTime(commandLineArgs.get(11));
-		}
-		else if (commandLineArgs.size() == 14) {
-
-			boolean isCallerNumberValid = checkForValidPhoneNumber(commandLineArgs.get(6));
-			if (!isCallerNumberValid) {
-				return false;
-			}
-			boolean isCalleeNumberValid = checkForValidPhoneNumber(commandLineArgs.get(7));
-			if (!isCalleeNumberValid) {
-				return false;
-			}
-			boolean isPhoneCallBeginDateValid = checkForValidDate(commandLineArgs.get(8));
-			if (!isPhoneCallBeginDateValid) {
-				return false;
-			}
-			boolean isPhoneCallBeginTimeValid = checkForValidPhoneCallTime(commandLineArgs.get(9));
-			if (!isPhoneCallBeginTimeValid) {
-				return false;
-			}
-			boolean isPhoneCallEndDateValid = checkForValidDate(commandLineArgs.get(11));
-			if (!isPhoneCallEndDateValid) {
-				return false;
-			}
-			return checkForValidPhoneCallTime(commandLineArgs.get(12));
-		}
-		else {
-			System.err.println("No args. Go check back.");
+			case 7:  if (!HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(1)) ||
+					!HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(2)) ||
+					!HelperFunctions.checkForValidDate(commandLineArgs.get(3)) ||
+					!HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(4)) ||
+					!HelperFunctions.checkForValidDate(commandLineArgs.get(5)) ||
+					!HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(6))) return false;
+				break;
+			case 11: if (!HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(3)) ||
+					!HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(4)) ||
+					!HelperFunctions.checkForValidDate(commandLineArgs.get(5)) ||
+					!HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(6)) ||
+					!HelperFunctions.checkForValidDate(commandLineArgs.get(8)) ||
+					!HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(9))) return false;
+				break;
+			case 12: if (!HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(4)) ||
+					!HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(5)) ||
+					!HelperFunctions.checkForValidDate(commandLineArgs.get(6)) ||
+					!HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(7)) ||
+					!HelperFunctions.checkForValidDate(commandLineArgs.get(9)) ||
+					!HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(10))) return false;
+				break;
+			case 13: if (!HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(5)) ||
+					!HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(6)) ||
+					!HelperFunctions.checkForValidDate(commandLineArgs.get(7)) ||
+					!HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(8)) ||
+					!HelperFunctions.checkForValidDate(commandLineArgs.get(10)) ||
+					!HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(11))) return false;
+				break;
 		}
 		return true;
 	}
