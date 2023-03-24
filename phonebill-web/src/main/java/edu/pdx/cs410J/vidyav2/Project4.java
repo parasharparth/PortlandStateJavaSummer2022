@@ -46,7 +46,7 @@ public class Project4 {
                           PhoneBillRestClient client = HelperFunctions.hostCalling(args);
                           String customerName=commandLineArgs.get(1);
                           PhoneCall call= BaseConditions.baseCondition13Print(commandLineArgs);
-                          if (!HelperFunctions.checkValidityOfRequiredArgs(commandLineArgs)) {
+                          if (HelperFunctions.checkValidityOfRequiredArgs(commandLineArgs)) {
                                 return;
                           }
                           client.addCustomer(customerName, call);
@@ -59,7 +59,7 @@ public class Project4 {
                             String customerName = "";
                             PhoneCall call = BaseConditions.baseCondition14Print(commandLineArgs);
                             client.addCustomer(customerName,call);
-                            if (!HelperFunctions.checkValidityOfRequiredArgs(commandLineArgs))
+                            if (HelperFunctions.checkValidityOfRequiredArgs(commandLineArgs))
                             {
                             return;
                             }
