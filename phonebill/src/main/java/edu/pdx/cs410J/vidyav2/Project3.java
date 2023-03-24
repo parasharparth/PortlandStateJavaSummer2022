@@ -2,11 +2,28 @@ package edu.pdx.cs410J.vidyav2;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-/**
+/***************************************************
  * The main class for the CS410J phone bill Project
- */
+ ***************************************************/
 
 public class Project3 {
+    /**************************************************************************************************************************
+     * Main method that takes in command line arguments
+     * Check if the '-README' flag is present in the command line arguments
+     * If the '-README' flag is present, read from README file and print to console
+     * If there are less than 11 arguments provided, print a generic message and exit
+     * Check the number of arguments and perform the corresponding action
+     * If no arguments are provided, print a message and exit
+     * If 11 arguments are provided--If the '-textFile' flag is present, create a new PhoneCall object and add to PhoneBill object,
+     * If the '-pretty' flag is present, create a new PhoneCall object and add to PhoneBill object then print to console in pretty format
+     * If 12 arguments, then baseCondition12 is called
+     * if there are 13 arguments and either "-textFile" or "-pretty" is present
+     * If "-textFile" is present, perform text dump
+     * If "-pretty" is present, perform pretty file dump
+     * For default case-- Handle any other number of arguments as an error
+     **************************************************************************************************************************/
+
+
     public static void main(String[] args) throws Exception {
         ArrayList<String> commandLineArgs = new ArrayList<>(Arrays.asList(args));
 
