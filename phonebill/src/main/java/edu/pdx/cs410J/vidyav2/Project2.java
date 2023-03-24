@@ -106,22 +106,25 @@ public class Project2 {
         }
     }
 
-    private static void textFileChecker(ArrayList<String> commandLineArgs) throws ParserException, IOException {
+    private static void textFileChecker(ArrayList<String> commandLineArgs) throws ParserException, IOException
+    {
         if ((commandLineArgs.get(0).contains("-textFile") && commandLineArgs.get(1).contains(".txt") ||
                 (commandLineArgs.get(0).equals("-print") && commandLineArgs.get(1).equals("-textFile") &&
-                        commandLineArgs.get(2).contains(".txt")))) {
+                        commandLineArgs.get(2).contains(".txt"))))
+        {
             indexSeparator(commandLineArgs);
         }
-        else if ((commandLineArgs.get(1).contains("-"))) {
+        else if ((commandLineArgs.get(1).contains("-")))
+        {
                 String fileName = commandLineArgs.get(commandLineArgs.indexOf("-pretty"));
                 TextDumper dumper = new TextDumper();
                 dumper.setFileName(fileName);
                 PhoneBill bill = new PhoneBill(commandLineArgs.get(2));
                 PhoneCall call = new PhoneCall();
-            BaseConditions.setName(commandLineArgs, bill, call);
-            PrettyPrinter printer = new PrettyPrinter();
+                BaseConditions.setName(commandLineArgs, bill, call);
+                PrettyPrinter printer = new PrettyPrinter();
                 System.out.println("\nThis is a pretty file, printing the following Phone details:\n" + printer.getPretty(call, bill.getCustomer()));
-            }
+        }
     }
 
     private static void indexSeparator(ArrayList<String> commandLineArgs) throws ParserException, IOException {

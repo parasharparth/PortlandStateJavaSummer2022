@@ -15,6 +15,10 @@ public class BaseConditions {
 						commandLineArgs.get(2).equals("-pretty") && commandLineArgs.get(3).equals(".txt")));
 	}
 
+	public static boolean baseCondition13Dump(ArrayList<String> commandLineArgs){
+		return (commandLineArgs.get(0).contains("-textFile") && commandLineArgs.get(1).contains(".txt") &&
+				commandLineArgs.get(2).equals("-pretty") && !commandLineArgs.get(3).equals("-"));
+	}
 	public static void baseCondition13PrettyFileDump(ArrayList<String> commandLineArgs) throws ParserException, IOException {
 		String fileName = commandLineArgs.get(1);
 		TextDumper dumper = new TextDumper();
@@ -142,5 +146,11 @@ public class BaseConditions {
 		call.setPhoneCallEndDate(commandLineArgs.get(8));
 		call.setPhoneCallEndTime(commandLineArgs.get(8), commandLineArgs.get(9), commandLineArgs.get(10));
 		HelperFunctions.checkValidityOfRequiredArgs(commandLineArgs);
+	}
+
+	public static boolean baseCondition11TextDump(ArrayList<String> commandLineArgs){
+		return (commandLineArgs.get(0).contains("-textFile") && commandLineArgs.get(1).contains(".txt") ||
+				(commandLineArgs.get(0).equals("-print") && commandLineArgs.get(1).equals("-textFile") &&
+						commandLineArgs.get(2).contains(".txt")));
 	}
 }
