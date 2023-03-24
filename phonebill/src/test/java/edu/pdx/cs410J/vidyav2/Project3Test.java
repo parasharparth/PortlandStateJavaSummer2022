@@ -9,15 +9,24 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-/**
+/************************************************************************************
  * A unit test for code in the <code>Project1</code> class.  This is different
  * from <code>Project1IT</code> which is an integration test (and can capture data)
  * written to {@link System#out} and the like.
- */
+ ************************************************************************************/
 class Project3Test extends InvokeMainTestCase {
-  /**
+
+
+  /*********************************************************************************************************************************************
    * Invokes the main method of {@link Project3} with the given arguments.
-   */
+   * readmeCanBeReadAsResource() this checks that the README.txt file can be read as a resource, and that it contains the word "Java".
+   * readMeBooleanFlagTested() checks that the -README flag is properly recognized by calling the readMeFlagCheck method of the HelperFunctions class on arrays with and without the flag.
+   * fileNotFoundInDirectory() This JUnit test checks that the checkValidityOfRequiredArgs method of the HelperFunctions class correctly identifies invalid arguments (in this case, a file name with a double extension).
+   * testTextFileExists() This JUnit test checks that a text file can be created with the given name and contents
+   * testTextFileIsPretty()  Test case to check if the pretty print flag works correctly when writing to a file
+   * phoneNumbersHaveCharacters() Test case to check if phone numbers with characters throw an error
+   * billHasNoCustomer() Test case to check if a bill with no customer name throws an error
+   *********************************************************************************************************************************************/
 
   public MainMethodResult invokeMain(String... args) {
 
