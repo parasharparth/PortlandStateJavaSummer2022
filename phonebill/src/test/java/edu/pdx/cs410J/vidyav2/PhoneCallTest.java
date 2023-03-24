@@ -1,42 +1,33 @@
 package edu.pdx.cs410J.vidyav2;
 
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
-/**
- * Unit tests for the {@link PhoneCall} class.
- *
- * You'll need to update these unit tests as you build out your program.
- */
 public class PhoneCallTest {
 
     /**
-     * This unit test will need to be modified (likely deleted) as you implement
-     * your project.
+     * This method tests getBeginTimeString() method
      */
     @Test
-    void getBeginTimeStringNeedsToBeImplemented() {
+    void getBeginTimeStringTest()  {
         PhoneCall call = new PhoneCall();
-        assertThrows(UnsupportedOperationException.class, call::getBeginTimeString);
+        call.setPhoneCallBeginTime("03/23/2023", "11:45", "AM");
+
+        String expectedOutput = "03/23/2023 11:45 AM";
+        String actualOutput = call.getBeginTimeString();
+        assertEquals(expectedOutput, actualOutput);
     }
 
     /**
-     * This unit test will need to be modified (likely deleted) as you implement
-     * your project.
+     * This method tests getEndTimeString() method
      */
     @Test
-    void initiallyAllPhoneCallsHaveTheSameCallee() {
+    void getEndTimeStringTest()  {
         PhoneCall call = new PhoneCall();
-        assertThat(call.getCallee(), containsString("not implemented"));
-    }
+        call.setPhoneCallEndTime("03/23/2023", "12:45", "PM");
 
-    @Test
-    void forProject1ItIsOkayIfGetBeginTimeReturnsNull() {
-        PhoneCall call = new PhoneCall();
-        assertThat(call.getBeginTime(), is(nullValue()));
+        String expectedOutput = "03/23/2023 12:45 PM";
+        String actualOutput = call.getEndTimeString();
+        assertEquals(expectedOutput, actualOutput);
     }
-
 }

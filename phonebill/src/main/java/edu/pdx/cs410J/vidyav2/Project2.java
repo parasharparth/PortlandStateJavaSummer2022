@@ -139,9 +139,6 @@ public class Project2 {
         BaseConditions.setCaller(commandLineArgs, dumper, bill, call);
         System.out.println("\nA new file called " + fileName + " is created.");
     }
-
-
-
 }
 
 
