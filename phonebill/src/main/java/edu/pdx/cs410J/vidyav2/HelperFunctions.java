@@ -213,4 +213,11 @@ public class HelperFunctions {
 				"-README --> Prints a README for this project and exits");
 		return;
 	}
+
+	public static void printThisUsageMessage()
+	{
+		System.out.println("Usage: java edu.pdx.cs410J.<login-id>.Project-2 [options] <args> args are (in this order):");
+		DisplayPhoneBill.printValues();
+		System.exit(1);
+	}
 }
