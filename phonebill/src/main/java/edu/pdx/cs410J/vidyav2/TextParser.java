@@ -4,11 +4,31 @@ import edu.pdx.cs410J.PhoneBillParser;
 import java.util.*;
 import java.io.*;
 
+/**************************************************************************************************************
+ * TextParser class that implements PhoneBillParser interface
+ * This class is responsible for parsing the text files containing phone call information and populating a PhoneBill object with the parsed data.
+ * It implements the PhoneBillParser interface for parsing phone bills.
+ * Filename to read/write phone bill data
+ * Customer name associated with the phone bill data
+ **************************************************************************************************************/
 public class TextParser implements PhoneBillParser<PhoneBill> {
 
     public String filename;
 
     public String customerName;
+
+    /****************************************************************************************************************
+     * TextParser Constructor to set filename and customer name
+     * PhoneBill parse()  Method to read phone bill data from text file and parse it to create a PhoneBill object
+     * Try to read from the given file, or create a new file if it doesn't exist
+     * If filename doesn't contain a directory path, create a new file with given filename
+     * If filename contains a directory path, create the directory if it doesn't exist and create the file
+     * Create a PhoneBill object and set its customer name
+     * If the file is empty, set the customer name of the PhoneBill object to the given customer name
+     * If the file is not empty, set the customer name of the PhoneBill object to the first line of the file
+     * setFilename() This method sets the filename of the phone bill text file to be parsed.
+     * setCustomerName() This method sets the customer name for the phone bill to be parsed.
+     *****************************************************************************************************************/
 
     public TextParser(String filename, String customerName)
     {
