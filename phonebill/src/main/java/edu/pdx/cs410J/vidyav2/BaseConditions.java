@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 public class BaseConditions {
 
-	//This is the condition when both textFile and Pretty Printer file are present
 	public static boolean baseCondition13(ArrayList<String> commandLineArgs){
 
 		return (commandLineArgs.get(0).contains("-textFile") && commandLineArgs.get(1).contains(".txt") &&
