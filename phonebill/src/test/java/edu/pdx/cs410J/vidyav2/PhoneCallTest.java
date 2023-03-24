@@ -30,4 +30,30 @@ public class PhoneCallTest {
         String actualOutput = call.getEndTimeString();
         assertEquals(expectedOutput, actualOutput);
     }
+
+    /**
+     * tests getCaller method
+     */
+    @Test
+    void getCallerTest() {
+        PhoneCall call = new PhoneCall();
+        call.setCallerNumber("123-456-7890");
+
+        String expectedCallerNumber = "123-456-7890";
+        String actualCallerNumber = call.getCaller();
+        assertEquals(expectedCallerNumber, actualCallerNumber);
+    }
+
+    /**
+     * tests getCallee method
+     */
+    @Test
+    void getCalleeTest() {
+        PhoneCall call = new PhoneCall();
+        call.setCalleeNumber("123-456-7890");
+
+        String expectedCalleeNumber = "123-456-7890";
+        String actualCalleeNumber = call.getCallee();
+        assertEquals(expectedCalleeNumber, actualCalleeNumber);
+    }
 }
