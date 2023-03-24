@@ -11,8 +11,19 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ *  declares a public class named TextDumperTest
+ */
 public class TextDumperTest {
 
+
+  /********************************************************************************************************************************
+   * appointmentBookOwnerIsDumpedInTextFormat() This test checks if the owner of a phone bill is properly dumped in text format.
+   * testDump() This test checks if the dump method of TextDumper correctly writes phone bill information to a file.
+   * Prepare test data and Set up test environment
+   *  Call the method under test and Verify the results
+   * ParseTextWrittenByTextDumper() This test checks if a phone bill written to a text file by a TextDumper can be correctly parsed by a TextParser.
+   *********************************************************************************************************************************/
   @Test
   void appointmentBookOwnerIsDumpedInTextFormat() {
     new File("vidyav2/testDumper.txt");
@@ -29,27 +40,27 @@ public class TextDumperTest {
 
   @Test
   public void testDump() {
-    // Prepare test data
+
     PhoneBill bill = new PhoneBill("Test Customer");
     PhoneCall call1 = new PhoneCall();
     PhoneCall call2 = new PhoneCall();
     bill.addPhoneCall(call1);
     bill.addPhoneCall(call2);
 
-    // Set up test environment
+
     String filename = "testDump.txt";
     File file = new File(filename);
     if (file.exists()) {
       file.delete();
     }
 
-    // Call the method under test
+
     StringWriter sw = new StringWriter();
     TextDumper dumper = new TextDumper(sw);
     dumper.setFileName("vidyav2/testDumper.txt");
     dumper.dump(bill);
 
-    // Verify the results
+
     assertTrue(file.exists());
 
     String text = sw.toString();
