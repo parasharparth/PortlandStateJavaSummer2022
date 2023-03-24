@@ -14,7 +14,15 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * from <code>Project1IT</code> which is an integration test (and can capture data)
  * written to {@link System#out} and the like.
  */
-class Project2Test extends InvokeMainTestCase {
+class Project3Test extends InvokeMainTestCase {
+  /**
+   * Invokes the main method of {@link Project3} with the given arguments.
+   */
+
+  public MainMethodResult invokeMain(String... args) {
+
+    return invokeMain(Project3.class, args);
+  }
 
   @Test
   void readmeCanBeReadAsResource() throws IOException {
@@ -59,6 +67,22 @@ class Project2Test extends InvokeMainTestCase {
     HelperFunctions.writeToFile(textFileName, "customerName\ncallerNumber\ncalleeNumber\nstartTime\nendTime");
     Project2.main(new String[] { "-textFile", textFileName, "-pretty", "pretty.txt" });
     assertTrue(HelperFunctions.fileExists("pretty.txt"));
+  }
+
+  @Test
+  void phoneNumbersHaveCharacters() {
+    MainMethodResult result = invokeMain("Test3", "ABC-123-4567", "123-456-7890",
+            "03/03/2023", "12:00", "pm", "03/03/2023", "1:00", "pm");
+    assertThat(result.getTextWrittenToStandardError(),
+            containsString("NNN-NNN-NNNN where N is 0-9 for phone numbers"));
+  }
+
+  @Test
+  void billHasNoCustomer() {
+    MainMethodResult result = invokeMain("-print", "-textfile", "no-customer", "BillyBob",
+            "425-555-5555", "206-555-5555", "05/24/2023", "12:50", "pm", "05/24/2023", "1:00", "pm");
+    assertThat(result.getTextWrittenToStandardError(),
+            containsString("bill has no customer name"));
   }
 
 }
