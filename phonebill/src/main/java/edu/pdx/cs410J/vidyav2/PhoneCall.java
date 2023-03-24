@@ -51,7 +51,7 @@ public class PhoneCall extends AbstractPhoneCall implements Comparable<PhoneCall
    * getPhoneCallBeginTime() method is self defined
    * getPhoneCallEndDate() method is self defined
    * getPhoneCallEndTime() method is self defined
-   * compareTo()--Defines the comparable for Phonecall
+   * compareTo()--Defines the comparable for PhoneCall
    * o the object to be compared.
    *****************************************************************************************/
 
@@ -109,7 +109,7 @@ public class PhoneCall extends AbstractPhoneCall implements Comparable<PhoneCall
   public void setCallerNumber(String callerNumber) {
     this.callerNumber = callerNumber; }
 
-  /
+
   public void setCalleeNumber(String calleeNumber) { this.calleeNumber = calleeNumber;}
 
 
