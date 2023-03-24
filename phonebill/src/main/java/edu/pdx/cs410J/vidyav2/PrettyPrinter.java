@@ -11,9 +11,21 @@ import java.util.concurrent.TimeUnit;
 
 import static java.util.Collections.*;
 
+/***************************************************************************************************************************************************
+ * This class implements the PhoneBillDumper interface to provide a mechanism for pretty printing a PhoneBill object to a file or standard output.
+ ***************************************************************************************************************************************************/
 public class PrettyPrinter implements PhoneBillDumper<PhoneBill> {
     String fileName;
     String customerName;
+
+    /***********************************************************************************************************************************************
+     * setCustomerName() Sets the customer name.
+     * setFilename() Sets the name of the file to dump the phone bill to.
+     * getPretty() Method to return a pretty string representation of a phone call
+     * dump() method in the PrettyPrinter class, which is responsible for writing the phone bill information to a file in a "pretty" format.
+     * If fileName is equal to "-", the output is printed to the console using the getPretty() method to format each PhoneCall object in the list.
+     * If fileName is not equal to "-", the method attempts to open the specified file for writing using a Scanner object.
+     ************************************************************************************************************************************************/
 
     public void setCustomerName(String customerName)
     {
