@@ -1,7 +1,14 @@
 package edu.pdx.cs410J.vidyav2;
 
+/********************************************
+ * Declares public class "DisplayPhoneBill"
+ ********************************************/
 public class DisplayPhoneBill {
 
+	/*******************************************************************************************
+	 * noArguments() method is called when no command-line arguments are passed to the program
+	 * printValues() method prints out usage information for the phone bill program
+	 *******************************************************************************************/
 	public static void noArguments(){
 		System.out.println("\nNo arguments passed at the command line.\n");
 		printValues();
