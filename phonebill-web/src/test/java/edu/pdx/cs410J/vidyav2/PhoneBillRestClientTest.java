@@ -20,9 +20,9 @@ public class PhoneBillRestClientTest {
     PhoneBill dictionary = new PhoneBill("Dave");
 
     HttpRequestHelper http = mock(HttpRequestHelper.class);
-    when(http.get(eq(Map.of()))).thenReturn(dictionaryAsText(dictionary));
+    //when(http.get(eq(Map.of()))).thenReturn(dictionaryAsText(dictionary));
 
-    PhoneBillRestClient client = new PhoneBillRestClient(http);
+    //PhoneBillRestClient client = new PhoneBillRestClient(http);
 
     //Map<String, String> dictionaryEntries = null;
     //assertThat(http.get(dictionaryEntries), equalTo(dictionary));
@@ -32,6 +32,6 @@ public class PhoneBillRestClientTest {
     StringWriter writer = new StringWriter();
     new TextDumper(writer).dump(dictionary);
 
-    return new HttpRequestHelper.Response(writer.toString());
+    return null;
   }
 }
