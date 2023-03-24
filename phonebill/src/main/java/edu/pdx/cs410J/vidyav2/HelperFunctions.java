@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 
 public class HelperFunctions {
 
-	/*****************************************************************************************************************
+	/***************************************************************************************************************************
 	 * readMeFlagCheck() function checks if the command line argument contains the string "README"
 	 * If we have already found "README" in the argument list, we stop searching
 	 * If the argument contains "README", we return true
@@ -33,7 +33,7 @@ public class HelperFunctions {
 	 * checkForValidDate() checks the correctness of the entered Date
 	 * dateOfPhoneCall describes the date of Phone Call start/end
 	 * The readFromReadMeFileOnly() method is responsible for reading from the README.txt file
-	 *****************************************************************************************************************/
+	 **************************************************************************************************************************/
 
 
 	public static boolean readMeFlagCheck(String[] args){
