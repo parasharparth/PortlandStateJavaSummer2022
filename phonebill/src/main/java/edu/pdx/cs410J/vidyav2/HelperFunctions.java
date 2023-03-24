@@ -211,4 +211,11 @@ public class HelperFunctions {
 		DisplayPhoneBill.printValues();
 		System.exit(1);
 	}
+
+	public static boolean fileExists(String s) {
+		return false;
+	}
+
+	public static void writeToFile(String textFileName, String s) {
+	}
 }

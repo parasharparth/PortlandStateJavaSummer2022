@@ -39,21 +39,28 @@ class Project2Test extends InvokeMainTestCase {
 
   @Test
   void fileNotFoundInDirectory() {
-    String[] argumentsArray = {"","abc.txt.txt","Bhaskar", "12-456-7890", "245-566-7863", "07/07/2022", "12:4XX", "AM", "07/07/2022", "12:45", "AM"};
-
+    String[] argumentsArray = {"","abc.txt.txt","Bhaskar", "12-456-7890", "245-566-7863", "07/07/2022",
+            "12:4XX", "AM", "07/07/2022", "12:45", "AM"};
     ArrayList<String> arrayListOfArgs = new ArrayList<>(Arrays.asList(argumentsArray));
     boolean theseArgsShouldBeInvalid = HelperFunctions.checkValidityOfRequiredArgs(arrayListOfArgs);
     assertThat(theseArgsShouldBeInvalid, notNullValue());
   }
 
   @Test
-  public void testMain_textFile() throws Exception {
-    // assume that the text file contains a valid phone call record
+  public void testTextFileExists() throws Exception {
     String textFileName = "test.txt";
-    HelperFunctions.writeToFile();
+    HelperFunctions.writeToFile(textFileName, "customerName\ncallerNumber\ncalleeNumber\nstartTime\nendTime");
     Project2.main(new String[] { "-textFile", textFileName });
-    assertTrue(HelperFunctions.fileExists());
+    assertTrue(HelperFunctions.fileExists("pretty.txt"));
   }
+  @Test
+  public void testTextFileIsPretty() throws Exception {
+    String textFileName = "test.txt";
+    HelperFunctions.writeToFile(textFileName, "customerName\ncallerNumber\ncalleeNumber\nstartTime\nendTime");
+    Project2.main(new String[] { "-textFile", textFileName, "-pretty", "pretty.txt" });
+    assertTrue(HelperFunctions.fileExists("pretty.txt"));
+  }
+
 }
 
 
