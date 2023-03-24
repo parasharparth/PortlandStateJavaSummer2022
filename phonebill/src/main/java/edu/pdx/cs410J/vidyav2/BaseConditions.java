@@ -5,8 +5,27 @@ import edu.pdx.cs410J.ParserException;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
+/******************************************************
+ * Class declaration for class called BaseCondition
+ *****************************************************/
+
 public class BaseConditions {
 
+	/*********************************************************************************************************************************************************************************
+	 * baseCondition13() Check if command line arguments contain text file and pretty printing options
+	 * baseCondition13Dump() Check if command line arguments are valid for dumping to a pretty file
+	 * baseCondition13PrettyFileDump() Dump to a pretty file after parsing from text file
+	 * settingCallDetailsForParsing() Set phone call details for parsing
+	 * addingPhoneBillAfterParsing() Dump to a text file after parsing from text file
+	 * baseCondition13FileDump() takes ArrayList of Strings as input and throws ParserException and IOException
+	 * baseCondition12() method takes an ArrayList of String objects as input, representing the command line arguments and throws two exceptions: ParserException and IOException.
+	 * baseCondition12Dump() Adds a new phone call to the phone bill with the specified caller, callee, start time, and end time.
+	 * setCaller() Sets the name of the caller for the new phone call, adds the phone call to the phone bill, and dumps the bill to a text file.
+	 * setName() Sets the name of the caller for the new phone call, and checks the validity of the required arguments.
+	 * Caller() Sets the properties of the new phone call, including the caller name, caller number, callee number, and start/end dates and times.
+	 * baseCondition11TextDump() Checks if the given command line arguments indicate that the user wants to perform a text dump of the phone bill.
+	 **********************************************************************************************************************************************************************************/
 	public static boolean baseCondition13(ArrayList<String> commandLineArgs){
 
 		return (commandLineArgs.get(0).contains("-textFile") && commandLineArgs.get(1).contains(".txt") &&
