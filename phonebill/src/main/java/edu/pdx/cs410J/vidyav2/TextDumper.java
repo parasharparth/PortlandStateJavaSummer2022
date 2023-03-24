@@ -26,10 +26,10 @@ public class TextDumper implements PhoneBillDumper<PhoneBill> {
      * setFileName() setter method for the filename variable
      *****************************************************************************************/
     @Override
-    public void dump(PhoneBill bill) throws  IOException{
-        ArrayList phonecallList = (ArrayList) bill.getPhoneCalls();
+    public void dump(PhoneBill bill) {
+        ArrayList<PhoneCall> phonecallList = bill.getPhoneCalls();
         String[] calls = new String[phonecallList.size()];
-        File f = new File(filename);
+        new File(filename);
         try {
             PrintWriter out = new PrintWriter(filename);
             out.write("");
