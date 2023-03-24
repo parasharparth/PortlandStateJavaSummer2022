@@ -28,6 +28,11 @@ public class HelperFunctions {
 	 * phoneNumber parameter describes the Phone Number of customer who is making efforts to make a Phone Call and return the Phone Number for the customer
 	 * checkValidityOfRequiredArgs() method is used validate the Required arguments in the program
 	 * commandLineArgs denotes the entries at the command line and return the command line input data if it is correct
+	 * checkForValidPhoneCallTime() method is used to describe the correctness of the Time specified for a Phone Call created
+	 * timeOfPhoneCall parameter tells about the time of the Phone Call start/end
+	 * checkForValidDate() checks the correctness of the entered Date
+	 * dateOfPhoneCall describes the date of Phone Call start/end
+	 * The readFromReadMeFileOnly() method is responsible for reading from the README.txt file
 	 *****************************************************************************************************************/
 
 
@@ -82,7 +87,6 @@ public class HelperFunctions {
 
 		return true;
 	}
-
 
 
 	static boolean checkForValidDate(String dateOfPhoneCall) {
@@ -145,12 +149,7 @@ public class HelperFunctions {
 		return true;
 	}
 
-	/** checkForValidPhoneCallTime() method is used to describe the correctness of the Time specified for a
-	 * Phone Call created
-	 *
-	 * @param timeOfPhoneCall parameter tells about the time of the Phone Call start/end
-	 * @return the value of the Phone Call time validity
-	 */
+
 	static boolean checkForValidPhoneCallTimeFormat(String timeOfPhoneCall) {
 		String regTime = "\\d{1,2}:\\d\\d";
 		boolean validTimeOfPhoneCall = Pattern.compile(regTime).matcher(timeOfPhoneCall).matches();
@@ -164,11 +163,6 @@ public class HelperFunctions {
 	}
 
 
-	/** checkForValidDate() checks the correctness of the entered Date
-	 *
-	 * @param dateOfPhoneCall describes the date of Phone Call start/end
-	 * @return the start or end Date of Phone Call
-	 */
 	static boolean checkForValidDateFormat(String dateOfPhoneCall) {
 		String regDate = "\\d{1,2}/\\d{1,2}/\\d\\d\\d\\d";
 		boolean validDateOfPhoneCall = Pattern.compile(regDate).matcher(dateOfPhoneCall).matches();
@@ -180,11 +174,8 @@ public class HelperFunctions {
 		return true;
 	}
 
-	/**
-	 * The readFromReadMeFileOnly() method is responsible for reading from the README.txt file
-	 *
-	 * @return a string of the file contents given
-	 */
+
+
 	static String readFromReadMeFileOnlyProject3() {
 		String line = "";
 		try (
