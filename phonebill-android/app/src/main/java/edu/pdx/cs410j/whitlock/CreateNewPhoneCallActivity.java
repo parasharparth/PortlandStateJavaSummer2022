@@ -50,20 +50,8 @@ public class CreateNewPhoneCallActivity extends AppCompatActivity {
             return;
         }
 
-        PhoneCall call = new PhoneCall();
-        call.setCallerName(customer.getText().toString());
-        call.setCallerNumber(callerNumber.getText().toString());
-        call.setCalleeNumber(calleeNumber.getText().toString());
-        call.setPhoneCallBeginDate(beginDateTimeWords[0]);
-        call.setPhoneCallBeginTime(beginDateTimeWords[0], beginDateTimeWords[1], beginDateTimeWords[2]);
-        call.setPhoneCallEndDate(endDateTimeWords[0]);
-        call.setPhoneCallEndTime(endDateTimeWords[0], endDateTimeWords[1], endDateTimeWords[2]);
-
-        TextParser parser = new TextParser(dir, customer.getText().toString() + ".txt", customer.getText().toString());
-        PhoneBill parsedphonebill  = parser.parse();
-        parsedphonebill.addPhoneCall(call);
-        TextDumper dumper = new TextDumper(dir, customer.getText().toString() + ".txt");
-        dumper.dump(parsedphonebill);
+        PhoneCall call = getPhoneCallDetails();
+        dumpcallDetails(call);
 
 
         customer.setText("");
@@ -93,6 +81,24 @@ public class CreateNewPhoneCallActivity extends AppCompatActivity {
         return true;
     }
 
+    public PhoneCall getPhoneCallDetails(){
+        call.setCallerName(customer.getText().toString());
+        call.setCallerNumber(callerNumber.getText().toString());
+        call.setCalleeNumber(calleeNumber.getText().toString());
+        call.setPhoneCallBeginDate(beginDateTimeWords[0]);
+        call.setPhoneCallBeginTime(beginDateTimeWords[0], beginDateTimeWords[1], beginDateTimeWords[2]);
+        call.setPhoneCallEndDate(endDateTimeWords[0]);
+        call.setPhoneCallEndTime(endDateTimeWords[0], endDateTimeWords[1], endDateTimeWords[2]);
+        return call;
+    }
+
+    public void dumpcallDetails(PhoneCall call){
+        TextParser parser = new TextParser(dir, customer.getText().toString() + ".txt", customer.getText().toString());
+        PhoneBill parsedphonebill  = parser.parse();
+        parsedphonebill.addPhoneCall(call);
+        TextDumper dumper = new TextDumper(dir, customer.getText().toString() + ".txt");
+        dumper.dump(parsedphonebill);
+    }
 }
 
 
