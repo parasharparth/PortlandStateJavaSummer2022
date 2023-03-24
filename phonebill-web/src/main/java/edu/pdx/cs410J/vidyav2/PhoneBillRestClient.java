@@ -9,8 +9,8 @@ import java.net.URL;
 
 public class PhoneBillRestClient {
 
-	String hostName = "My app";
-	int portNum = 8080;
+	String hostName;
+	int portNum ;
 	PhoneBillRestClient(String hostName, int portNum){
 		this.hostName = hostName;
 		this.portNum = portNum;
