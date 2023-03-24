@@ -36,7 +36,6 @@ public class TextDumper implements PhoneBillDumper<PhoneBill> {
             out.write(bill.getCustomer());
 
             Collections.sort(phonecallList);
-            ArrayList<String> lines = new ArrayList<String>();
             for (int i = 0; i < phonecallList.size(); i++) {
                 calls[i] = phonecallList.get(i).toString();
                 out.write("\n");
