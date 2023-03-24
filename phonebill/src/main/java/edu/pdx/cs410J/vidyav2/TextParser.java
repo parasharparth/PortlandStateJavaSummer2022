@@ -21,6 +21,10 @@ public class TextParser implements PhoneBillParser<PhoneBill> {
         this.reader = null;
     }
 
+    public TextParser(FileReader fileReader, Reader reader) {
+        this.reader = reader;
+    }
+
     @Override
     public PhoneBill parse() throws ParserException {
         Scanner sc = null;
