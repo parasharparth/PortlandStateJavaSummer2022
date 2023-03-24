@@ -21,8 +21,6 @@ public class PrettyPrinter implements PhoneBillDumper<PhoneBill> {
                 "\nDate of End : " + call.getPhoneCallEndDate() +
                 "\nTime of End : " + formatter.getTimeInstance(DateFormat.SHORT).format(call.getPhoneCallEndTime()) +
                 "\nDuration (minutes) : " + TimeUnit.MILLISECONDS.toMinutes(callDuration) + "\n\n";
-
-        //Return pretty print
         return prettytext;
     }
 
