@@ -91,9 +91,9 @@ public class HelperFunctions {
 		if(!validDateOfPhoneCall){
 			String invalidDateOfPhoneCallMessage = "Date provided is invalid, please retry by entering the correct one's";
 			System.out.println(invalidDateOfPhoneCallMessage);
-			return false;
+			return true;
 		}
-		return true;
+		return false;
 	}
 
 
@@ -115,67 +115,32 @@ public class HelperFunctions {
 					 return false;
 			case 7:  if (!HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(1)) ||
 						 !HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(2)) ||
-						 !HelperFunctions.checkForValidDate(commandLineArgs.get(3)) ||
+					HelperFunctions.checkForValidDate(commandLineArgs.get(3)) ||
 						 !HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(4)) ||
-						 !HelperFunctions.checkForValidDate(commandLineArgs.get(5)) ||
+					HelperFunctions.checkForValidDate(commandLineArgs.get(5)) ||
 						 !HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(6))) return false;
 					 break;
 			case 11: if (!HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(3)) ||
 						 !HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(4)) ||
-						 !HelperFunctions.checkForValidDate(commandLineArgs.get(5)) ||
+					HelperFunctions.checkForValidDate(commandLineArgs.get(5)) ||
 						 !HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(6)) ||
-						 !HelperFunctions.checkForValidDate(commandLineArgs.get(8)) ||
+					HelperFunctions.checkForValidDate(commandLineArgs.get(8)) ||
 						 !HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(9))) return false;
 					 break;
 			case 12: if (!HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(4)) ||
 						 !HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(5)) ||
-						 !HelperFunctions.checkForValidDate(commandLineArgs.get(6)) ||
+					HelperFunctions.checkForValidDate(commandLineArgs.get(6)) ||
 						 !HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(7)) ||
-						 !HelperFunctions.checkForValidDate(commandLineArgs.get(9)) ||
+					HelperFunctions.checkForValidDate(commandLineArgs.get(9)) ||
 						 !HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(10))) return false;
 					 break;
 			case 13: if (!HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(5)) ||
 						 !HelperFunctions.checkForValidPhoneNumber(commandLineArgs.get(6)) ||
-						 !HelperFunctions.checkForValidDate(commandLineArgs.get(7)) ||
+					HelperFunctions.checkForValidDate(commandLineArgs.get(7)) ||
 						 !HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(8)) ||
-						 !HelperFunctions.checkForValidDate(commandLineArgs.get(10)) ||
+					HelperFunctions.checkForValidDate(commandLineArgs.get(10)) ||
 						 !HelperFunctions.checkForValidPhoneCallTime(commandLineArgs.get(11))) return false;
 				     break;
-		}
-		return true;
-	}
-
-	/** checkForValidPhoneCallTime() method is used to describe the correctness of the Time specified for a
-	 * Phone Call created
-	 *
-	 * @param timeOfPhoneCall parameter tells about the time of the Phone Call start/end
-	 * @return the value of the Phone Call time validity
-	 */
-	static boolean checkForValidPhoneCallTimeFormat(String timeOfPhoneCall) {
-		String regTime = "\\d{1,2}:\\d\\d";
-		boolean validTimeOfPhoneCall = Pattern.compile(regTime).matcher(timeOfPhoneCall).matches();
-
-		if(!validTimeOfPhoneCall){
-			String invalidTimeOfPhoneCallMessage = "PhoneCall Time Argument provided is invalid, please retry by entering the correct one's";
-			System.out.println(invalidTimeOfPhoneCallMessage);
-			return false;
-		}
-		return true;
-	}
-
-
-	/** checkForValidDate() checks the correctness of the entered Date
-	 *
-	 * @param dateOfPhoneCall describes the date of Phone Call start/end
-	 * @return the start or end Date of Phone Call
-	 */
-	static boolean checkForValidDateFormat(String dateOfPhoneCall) {
-		String regDate = "\\d{1,2}/\\d{1,2}/\\d\\d\\d\\d";
-		boolean validDateOfPhoneCall = Pattern.compile(regDate).matcher(dateOfPhoneCall).matches();
-		if(!validDateOfPhoneCall){
-			//String invalidDateOfPhoneCallMessage = "Date provided is invalid, please retry by entering the correct one's";
-			//System.out.println(invalidDateOfPhoneCallMessage);
-			return true;
 		}
 		return true;
 	}
@@ -211,7 +176,6 @@ public class HelperFunctions {
 				"-textFile file --> Where to read/write the phone bill" +
 				"-print --> Prints a description of the new phone call" +
 				"-README --> Prints a README for this project and exits");
-		return;
 	}
 
 	public static void printThisUsageMessage()
