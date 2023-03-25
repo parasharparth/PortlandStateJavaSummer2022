@@ -1,5 +1,7 @@
 package edu.pdx.cs410J.vidyav2;
 
+import java.util.Map;
+
 /**
  * Class for formatting messages on the server side.  This is mainly to enable
  * test methods that validate that the server returned expected strings.
@@ -20,4 +22,7 @@ public class Messages
         return "All dictionary entries have been deleted";
     }
 
+    public static long dumpDictionary(Map<String, String> dictionary) {
+        return 0;
+    }
 }

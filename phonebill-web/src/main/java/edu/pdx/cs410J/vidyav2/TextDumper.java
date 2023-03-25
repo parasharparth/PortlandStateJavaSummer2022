@@ -13,6 +13,10 @@ public class TextDumper implements PhoneBillDumper<PhoneBill> {
     {
     }
 
+    public static long formatDefinition(String test, String thisIsATestDefinition) {
+        return 0;
+    }
+
     @Override
     public void dump(PhoneBill bill) {
         ArrayList phoneCallList = (ArrayList) bill.getPhoneCalls();

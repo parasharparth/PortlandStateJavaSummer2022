@@ -51,8 +51,7 @@ public class PhoneBillRestClient {
 	}
 
 	public void addCustomer(String customerName,PhoneCall call) {
-		String customer = customerName;
-		System.out.println(customer);
+		System.out.println(customerName);
 		call.calleeNumber = "callee Number";
 	}
 }

@@ -21,7 +21,7 @@ public class PhoneBillServlet extends HttpServlet
     static final String WORD_PARAMETER = "word";
     static final String DEFINITION_PARAMETER = "definition";
 
-    private final Map<String, String> dictionary = new HashMap<>();
+    Map<String, String> dictionary = new HashMap<>();
 
     /**
      * Handles an HTTP GET request from a client by writing the definition of the
