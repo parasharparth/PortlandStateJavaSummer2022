@@ -16,6 +16,10 @@ public class TextParser implements PhoneBillParser<PhoneBill> {
         this.customerName = customerName;
     }
 
+    public TextParser(StringReader stringReader) {
+
+    }
+
     @Override
     public PhoneBill parse() {
         Scanner sc = null;
