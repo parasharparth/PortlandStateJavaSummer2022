@@ -1,122 +1,57 @@
 package edu.pdx.cs410J.vidyav2;
 
+import edu.pdx.cs410J.ParserException;
 import edu.pdx.cs410J.PhoneBillParser;
 import java.util.*;
 import java.io.*;
 
 public class TextParser implements PhoneBillParser<PhoneBill> {
 
-    public String filename;
+    private String filename;
+    private String customerName;
 
-    public String customerName;
-
-    public TextParser(String filename, String customerName)
-    {
+    public TextParser(String filename, String customerName) {
         this.filename = filename;
         this.customerName = customerName;
     }
 
     public TextParser(StringReader stringReader) {
-
     }
 
     @Override
-    public PhoneBill parse() {
-        Scanner sc = null;
-        try {
-            File input = new File(this.filename);
-            new BufferedReader(new FileReader((input)));
-        } catch (Exception e)
-        {
-            System.out.println("Text Dump File with given name does not exist. New File created.");
-            PrintWriter out = null;
-            if (!this.filename.contains("/")) {
-                try {
-                    out = new PrintWriter(this.filename);
-                } catch (FileNotFoundException ex) {
-                    System.out.println("File is not present.");
-                }
-                assert out != null;
-                out.write(this.customerName);
-                out.flush();
-                out.close();
+    public PhoneBill parse() throws ParserException {
+        try (Scanner scanner = new Scanner(new File(filename))) {
+            if (!scanner.hasNextLine()) {
+                throw new ParserException("File is empty");
             }
-            else {
-                File f;
-                File f1 ;
-                String v;
-                f = new File(this.filename);
-                f1 = f.getParentFile();
-                v = f1.getAbsolutePath();
-                if (f1.exists()) {
-                    try {
-                        out = new PrintWriter(f);
-                    } catch (FileNotFoundException ex) {
-                        ex.printStackTrace();
-                    }
-                    assert out != null;
-                    out.write(this.customerName);
-                    out.flush();
-                    out.close();
-                } else {
-                    File folder = new File(v);
-                    if (folder.mkdir()) {
-                        try {
-                            out = new PrintWriter(this.filename);
-                        } catch (FileNotFoundException ex) {
-                            ex.printStackTrace();
-                        }
-                        assert out != null;
-                        out.write(this.customerName);
-                        out.flush();
-                        out.close();
-                    } else {
-                        System.out.println("Could not create directory");
-                        System.exit(1);
-                    }
-                }
+            String firstLine = scanner.nextLine().trim();
+            if (!firstLine.equals(customerName)) {
+                throw new ParserException("Customer name in command line and file don't match or there is bogus data.");
             }
-        }
-        try {
-            sc = new Scanner(new File(this.filename));
+            PhoneBill bill = new PhoneBill(customerName);
+            bill.setCustomer(firstLine);
+            return bill;
         } catch (FileNotFoundException e) {
-            System.out.println("File is not present.");
-        }
-
-        ArrayList<String> lines = new ArrayList<>();
-
-        while (true) {
-            assert sc != null;
-            if (!sc.hasNextLine()) break;
-            lines.add(sc.nextLine());
-        }
-        PhoneBill bill = new PhoneBill(this.customerName);
-        if(lines.size() == 0)
-        {
-            System.out.println("File(): - Empty");
-            bill.setCustomer(this.customerName);
-        }
-        else {
-            bill.setCustomer(lines.get(0));
-            String[] first_name = lines.get(0).split("\n");
-            if(!first_name[0].equals(this.customerName))
-            {
-                System.err.println("Customer name in command line and file don't match or there is bogus data.");
-                System.exit(1);
-                System.out.println("txt is" + first_name[0]);
+            try {
+                File file = new File(filename);
+                file.getParentFile().mkdirs();
+                file.createNewFile();
+                PrintWriter writer = new PrintWriter(file);
+                writer.write(customerName);
+                writer.flush();
+                writer.close();
+                return new PhoneBill(customerName);
+            } catch (IOException ex) {
+                throw new ParserException("Unable to create file: " + filename);
             }
         }
-
-        return bill;
     }
 
-    public void setFilename(String filename)
-    {
+    public void setFilename(String filename) {
         this.filename = filename;
     }
 
-    public void setCustomerName(String customerName)
-    {
+    public void setCustomerName(String customerName) {
         this.customerName = customerName;
     }
 }
