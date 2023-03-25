@@ -46,6 +46,9 @@ public class PhoneCall extends AbstractPhoneCall implements Comparable<PhoneCall
     this.phoneCallEndTime = phoneCallEndTime;
   }
 
+  public PhoneCall(String s) {
+  }
+
   /** getCaller() method is used to retrieve the caller details **/
   @Override
   public String getCaller() {

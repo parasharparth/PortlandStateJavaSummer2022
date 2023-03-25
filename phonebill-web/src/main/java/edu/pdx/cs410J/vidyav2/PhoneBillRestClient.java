@@ -43,11 +43,11 @@ public class PhoneBillRestClient {
 		System.out.println("Response from servlet: " + response);
 	}
 
-	public static <JSONObject> void sendJsonResponse(HttpServletResponse response, int statusCode, JSONObject json) throws IOException {
+	public static <JSONObject> void sendJsonResponse(HttpServletResponse response, int statusCode) throws IOException {
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 		response.setStatus(statusCode);
-		response.getWriter().write(json.toString());
+		//response.getWriter().write(json.toString());
 	}
 
 	public void addCustomer(String customerName,PhoneCall call) {
