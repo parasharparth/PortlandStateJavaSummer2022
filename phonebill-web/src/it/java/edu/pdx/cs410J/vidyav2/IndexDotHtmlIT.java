@@ -27,7 +27,7 @@ class IndexDotHtmlIT {
   }
 
   private Class<? extends HttpRequestHelper> fetchIndexDotHtml() {
-    int port = Integer.parseInt(PORT);
+    Integer.parseInt(PORT);
     return new IndexDotHtmlHelper().getIndexDotHtml();
   }
 

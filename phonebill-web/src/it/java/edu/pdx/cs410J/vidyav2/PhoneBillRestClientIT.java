@@ -3,9 +3,7 @@ package edu.pdx.cs410J.vidyav2;
 import org.junit.jupiter.api.MethodOrderer.MethodName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-
 import java.util.Map;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
@@ -38,9 +36,6 @@ class PhoneBillRestClientIT {
 
     @Test
     void test2RecievePhoneBill() {
-
-
-
         PhoneBillRestClient client = newPhoneBillRestClient();
         String customer = "customer";
         String caller = "425-741-1269";
