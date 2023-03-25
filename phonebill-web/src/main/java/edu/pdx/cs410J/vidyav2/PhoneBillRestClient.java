@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Map;
 
 public class PhoneBillRestClient {
 
@@ -53,5 +54,20 @@ public class PhoneBillRestClient {
 	public void addCustomer(String customerName,PhoneCall call) {
 		System.out.println(customerName);
 		call.calleeNumber = "callee Number";
+	}
+
+    public void removeAllDictionaryEntries() {
+    }
+
+	public Map<String, PhoneBill> getPhoneBillEntries(String customer) {
+		return null;
+	}
+
+	public void addPhoneCallEntry(String customer, String caller, String callee, String beginTime, String endTime) {
+	}
+
+
+	public <T> T addCustomer(String calleeNumber) {
+		return null;
 	}
 }
