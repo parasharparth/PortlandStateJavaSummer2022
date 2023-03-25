@@ -6,8 +6,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+/***************************************************************************************
+ * This code defines the MainActivity class, which extends the AppCompatActivity class.
+ * It is the main activity of the Android application.
+ ***************************************************************************************/
 public class MainActivity extends AppCompatActivity {
 
+    /***********************************************************************************************
+     * onCreate() This method is called when the activity is created
+     * launchreadme() This method is called when the user clicks the "Read Me" button
+     * launchaddphonecall() This method is called when the user clicks the "Add Phone Call" button
+     * launchsearch() This method is called when the user clicks the "Search" button
+     * launchdelete() This method is called when the user clicks the "Delete" button
+     ***********************************************************************************************/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
