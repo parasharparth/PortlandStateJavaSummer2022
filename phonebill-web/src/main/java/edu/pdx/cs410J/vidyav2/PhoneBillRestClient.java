@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Map;
 
 public class PhoneBillRestClient {
 
@@ -43,16 +44,30 @@ public class PhoneBillRestClient {
 		System.out.println("Response from servlet: " + response);
 	}
 
-	public static <JSONObject> void sendJsonResponse(HttpServletResponse response, int statusCode, JSONObject json) throws IOException {
+	public static <JSONObject> void sendJsonResponse(HttpServletResponse response, int statusCode) throws IOException {
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 		response.setStatus(statusCode);
-		response.getWriter().write(json.toString());
+		//response.getWriter().write(json.toString());
 	}
 
 	public void addCustomer(String customerName,PhoneCall call) {
-		String customer = customerName;
-		System.out.println(customer);
+		System.out.println(customerName);
 		call.calleeNumber = "callee Number";
+	}
+
+    public void removeAllDictionaryEntries() {
+    }
+
+	public Map<String, PhoneBill> getPhoneBillEntries(String customer) {
+		return null;
+	}
+
+	public void addPhoneCallEntry(String customer, String caller, String callee, String beginTime, String endTime) {
+	}
+
+
+	public <T> T addCustomer(String calleeNumber) {
+		return null;
 	}
 }

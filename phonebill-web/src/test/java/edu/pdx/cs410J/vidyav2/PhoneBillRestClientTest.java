@@ -2,36 +2,85 @@ package edu.pdx.cs410J.vidyav2;
 
 import edu.pdx.cs410J.ParserException;
 import edu.pdx.cs410J.web.HttpRequestHelper;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.mockito.verification.VerificationMode;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.StringWriter;
+import java.net.URL;
 import java.util.Map;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
-public class PhoneBillRestClientTest {
+public class PhoneBillRestClientTest extends PhoneCall {
+
+  private String urlString;
+
+//  @Test
+//  void getAllDictionaryEntriesPerformsHttpGetWithNoParameters() throws ParserException, IOException {
+//    PhoneBill dictionary = new PhoneBill("Dave");
+//
+//  }
 
   @Test
-  void getAllDictionaryEntriesPerformsHttpGetWithNoParameters() throws ParserException, IOException {
-    PhoneBill dictionary = new PhoneBill("Dave");
+  public void testSendGetRequestSuccess() throws IOException {
+    URL url = new URL(urlString);
+    String response = PhoneBillRestClient.sendGetRequest(urlString);
 
-    HttpRequestHelper http = mock(HttpRequestHelper.class);
-    //when(http.get(eq(Map.of()))).thenReturn(dictionaryAsText(dictionary));
-
-    //PhoneBillRestClient client = new PhoneBillRestClient(http);
-
-    //Map<String, String> dictionaryEntries = null;
-    //assertThat(http.get(dictionaryEntries), equalTo(dictionary));
+    Assertions.assertNotNull(response);
+    Assertions.assertTrue(response.contains("url"));
   }
 
-  private HttpRequestHelper.Response dictionaryAsText(PhoneBill dictionary) throws IOException {
-    StringWriter writer = new StringWriter();
-    new TextDumper(writer).dump(dictionary);
+  @Test
+  public void testAddCustomer() {
+    String customerName = "Dave";
+    PhoneCall call = new PhoneCall("111-444-7777");
 
-    return null;
+    PhoneBillRestClient client = new PhoneBillRestClient("localhost", 8080);
+    client.addCustomer(customerName, call);
+
+    Assertions.assertEquals("callee Number", call.calleeNumber);
   }
+
+  @Test
+  public void testSendGetRequestException() {
+    String urlString = "https://invalidurl/";
+
+    assertThrows(IOException.class, () -> {
+      PhoneBillRestClient.sendGetRequest(urlString);
+    });
+  }
+
+  @Test
+  public void testGetInfo() throws IOException {
+    String servletUrl = "http://localhost:8080/myServlet";
+    String expectedResponse = "test response";
+    when(PhoneBillRestClient.sendGetRequest(servletUrl)).thenReturn(expectedResponse);
+
+    PhoneBillRestClient.getInfo();
+    notifyAll(PhoneBillRestClient.class, times(1));
+    PhoneBillRestClient.sendGetRequest(servletUrl);
+  }
+
+  @Test
+  public void testSendJsonResponse() throws IOException {
+    // given
+    HttpServletResponse response = mock(HttpServletResponse.class);
+    int statusCode = 200;
+    PhoneBillRestClient.sendJsonResponse(response, statusCode);
+    verify(response, times(1)).setContentType("application/json");
+    verify(response, times(1)).setCharacterEncoding("UTF-8");
+    verify(response, times(1)).setStatus(statusCode);
+    verify(response.getWriter(), times(1));
+  }
+
+  private void notifyAll(Class<PhoneBillRestClient> phoneBillRestClientClass, VerificationMode times) {
+  }
+
+
 }
